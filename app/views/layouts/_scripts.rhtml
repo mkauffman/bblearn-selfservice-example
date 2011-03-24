@@ -1,0 +1,4 @@
+<%= javascript_include_tag :defaults %>
+<% unless (/MSIE/.match(request.env["HTTP_USER_AGENT"])) %>  
+	<%= javascript_include_tag "sorttable.js" %>
+<% end %>

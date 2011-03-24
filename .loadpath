@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<loadpath>
+	<pathentry path="" type="src"/>
+	<pathentry path="GEM_LIB/rspec-core-2.5.1/lib" type="var"/>
+	<pathentry path="GEM_LIB/selenium-client-1.2.18/lib" type="var"/>
+</loadpath>

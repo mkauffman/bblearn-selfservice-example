@@ -5,8 +5,8 @@
 # Make sure the secret is at least 30 characters and all random, 
 # no regular words or you'll be exposed to dictionary attacks.
 ActionController::Base.session = {
-  :key         => '_bblearn_session',
-  :secret      => '599db9e9540e2520b642eee06c96f2e845ad9e21c5f447c047453c1c285a2fa7e2e5a8f9abe1937dac7a220f4c548fe801d94e874ba06dd18d7e7ec98cf05828'
+  :key         => '_vista_session',
+  :secret      => '1bd329bc80eb0bb2ef96a1047b61e3c1d7cc12335f83dfcd3751cb05440fc653e7d8cf9acae79de8f04a9b67248b2664e5659e11b8a4dbbab001db33ddd95057'
 }
 
 # Use the database for sessions instead of the cookie-based default,

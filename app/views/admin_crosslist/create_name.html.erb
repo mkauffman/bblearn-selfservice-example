@@ -1,0 +1,56 @@
+<div class="contnt">
+	<script type="text/javascript">
+		function check_field(x) {
+		if ((x=='') || (x.length > 51))
+			{
+				document.getElementById('submit_btn').disabled = true
+			}
+		else 
+			{
+				document.getElementById('submit_btn').disabled = false
+			}
+		} // function toggle()
+	</script>
+	<b>Select a name for the section.</b>
+	<br/>
+	Please choose a name for the new crosslist section.
+	<br/>
+	<b>Note:</b> the name cannot be longer than 65 characters. 
+	<br/>
+	The submit button is disabled if it's longer than 65 characters.
+	<% form_tag ({:action => "create"}) do %>
+		<%= hidden_field_tag "par_id", params[:par_id] %>
+		<%= hidden_field_tag "name_first", @name_first %>
+		<% for param in params[:sect_id] %>
+			<%= hidden_field_tag "sect_id[]", param %>
+		<% end # for param%>
+		<%= @name_first %> <%= text_field_tag "name_second", @name_second, :class=>"text_field", :onkeyup => "check_field(this.value);" %>
+		<br/>
+		<%= submit_tag "Submit", :id => "submit_btn" %>
+		<%= submit_tag "Cancel" %>
+	<% end # form_tag %>
+	<br/>
+	<hr/>
+	This is the crosslist your creating:
+	<table class="xlist_list">
+		<thead>
+			<tr>
+				<th colspan="2" class="name">
+					<%= @parent_sourced_id %>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% for sect in params[:sect_id] %>
+				<tr>
+					<td>
+						&#187;&#187;&#187;
+					</td>
+					<td>
+						<%= sect %>
+					</td>
+				</tr>
+			<% end # for sect %>
+		</tbody>
+	</table>
+</div>

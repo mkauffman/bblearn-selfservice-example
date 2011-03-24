@@ -1,0 +1,47 @@
+<div class="contnt">
+<h1>New User</h1>
+
+<% form_tag ({:action=>"create"}) do %>
+  <table>
+        <tr>
+            <td>
+                Portal ID:
+            </td>
+            <td>
+                <%= text_field_tag "portal" %>
+            </td>
+        </tr>
+		<tr>
+            <td>
+                First Name:
+            </td>
+            <td>
+                <%= text_field_tag "first_name" %>
+            </td>
+        </tr><tr>
+            <td>
+                Last Name:
+            </td>
+            <td>
+                <%= text_field_tag "last_name" %>
+            </td>
+        </tr>
+		<tr>
+            <td>
+                Role:
+            </td>
+			<td>
+            	<% options = ["admin", "tlp", "tlp_admin", "itss", "mlib"] %>
+                <select id="role" name="role">
+                	<% for opt in options %>
+							<option><%= opt %></option>
+					<% end %>
+                </select>
+            </td>
+        </tr>
+	</table>
+	<br/>
+    <%= submit_tag 'Create', :style=>"float:left;" %>
+	<%= submit_tag 'Cancel', :style=>"float:left;"%>
+<% end %>
+</div>

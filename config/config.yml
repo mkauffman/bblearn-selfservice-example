@@ -1,0 +1,40 @@
+span class="re0"> common: &common
+ vista_db_user: vistasupport
+ tp_extract_post_url: http://clebra.csuchico.edu/download.aspx
+ siapi_secret: guS5fezesTaUAuzkBM9cpRdq5wr6phay
+ # siapi_secret must be 32 characters long
+ siapi_glcid: URN:X-WEBCT-VISTA-V1:4e5f2e6f-84f1-fb85-0099-504b31d0e1d7
+ siapi_adapter: ims
+ siapi_action: import
+ siapi_option: restrict
+ 
+browsers:
+    firefox: 'c:\Program Files\Mozilla Firefox\firefox.exe'
+
+production:
+ <<: *common
+ environment: production
+ root_url: apphost.csuchico.edu
+ view_my_webct_url: https://vista.csuchico.edu/webct/urw/ssCSUC/viewMyWebCT.dowebct
+ siapi_post_url: https://vista.csuchico.edu/webct/systemIntegrationApi.dowebct 
+ #vista_db_password: may the
+ vista_db_string: //lmsdb1.csuchico.edu:1521/lmsdb1.lmsdb1.csuchico.edu
+
+test:
+ <<: *common
+ environment: test
+ root_url: apphostdev.csuchico.edu
+ view_my_webct_url: https://vista-staging.csuchico.edu/webct/urw/ssCSUC/viewMyWebCT.dowebct
+ siapi_post_url: https://vista-staging.csuchico.edu/webct/systemIntegrationApi.dowebct
+ #vista_db_password: may the
+ #vista_db_string: //lmsdb1.csuchico.edu:1521/lmsdb1.lmsdb1.csuchico.edu
+ 
+development:
+ <<: *common
+ #environment: production
+ environment: development
+ root_url: localhost:3000
+ vista_db_password: adm1nIZ34
+ vista_db_string: //lmsdb2.csuchico.edu:1521/stage1.lmsdb2.csuchico.edu
+ view_my_webct_url: https://vista-staging.csuchico.edu/webct/urw/ssCSUC/viewMyWebCT.dowebct
+ siapi_post_url: https://vista-staging.csuchico.edu/webct/systemIntegrationApi.dowebct

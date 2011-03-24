@@ -1,0 +1,75 @@
+<div id="task_box">
+    <ul id="left_nav">
+        <li>
+            <%= link_to "Home", :controller => "selfservice", :action => "index" %>
+        </li>
+        <li>
+            <a href="#">Manage People</a>
+            <ul>
+                <li>
+                    <%= link_to "Guests", :controller => "designers", :action => "index" %>
+                </li>
+                <li>
+                    <%= link_to "Community Members", :controller => "members", :action => "index" %>
+                </li>
+				<% if [:super, :admin].include?(session[:role]) %>
+				<li>
+                    <%= link_to "Students", :controller => "students", :action => "index" %>
+                </li>
+				<% end %>
+            </ul>
+        </li>
+        <li>
+            <a href="#">Manage Sections</a>
+            <ul>
+                <li>
+                    <%= link_to "Create/Delete Prep Areas", :controller => "prep_area", :action => "index" %>
+                </li>
+                <li>
+                    <%= link_to "Hide/Show Sections", :controller => "visibility", :action => "index" %>
+                </li>
+				<li>
+                    <%= link_to "Reset Sections", :controller => "reset", :action => "index" %>
+                </li>
+				<% if [:tlp, :tlp_admin, :admin, :super].include?(session[:role]) %>
+				<li>
+                    <%= link_to "Crosslists", :controller => "crosslist", :action => "index" %>
+                </li>
+				<% end %>
+            </ul>
+        </li>
+		<% if [:itss, :tlp, :tlp_admin, :mlib, :admin, :super].include?(session[:role]) %>
+        <li>
+            <a href="#">Help Desk</a>
+            <ul>
+            	<% if [:super, :admin, :tlp_admin].include?(session[:role]) %>
+                <li>
+                    <%= link_to "Edit HTML/CSS", :controller => "tlp_admin", :action => "index" %>
+                </li>
+				<% end %>
+				<% if [:super, :admin].include?(session[:role]) %>
+				<li>
+					<%= link_to "Admin Crosslisting", :controller => "admin_crosslist", :action => "index" %>
+				</li>
+                <li>
+                    <%= link_to "Term Management", :controller => "terms", :action => "index" %>
+                </li>
+				<li>
+					<%= link_to "Roles", :controller => "role", :action => "index" %>
+				</li>
+				<li>
+					<%= link_to "Test Setup", :controller => "selfservice", :action => "test_setup_form" %>
+				</li>
+				<% end %>
+                <li>
+                    <%= link_to "Single Signon", :controller => "sso", :action => "index" %>
+                </li>
+            </ul>
+        </li>
+		<% end %>
+        <li>
+            <%= link_to 'TurningPoint Extract',
+            :controller=>'tpextract', :action => "index" %>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,23 @@
+<div class="contnt">
+	<!--
+	params[:student_1]
+    params[:student_2]
+    params[:ta]
+    params[:auditor]
+    params[:init_guest]
+    params[:add_guest]
+	-->
+	Enter the data you want to use for the tests.
+	<br/>
+	<% form_tag(:action => "test_setup_exec") do %>
+		Student 1: <%= text_field_tag 'student_1', 'mlulic' %><br/>
+		Student 2: <%= text_field_tag 'student_2', 'jclower' %><br/>
+		Teacher Assistant: <%= text_field_tag 'ta', 'jconnolly' %><br/>
+		Auditor: <%= text_field_tag 'auditor', 'rpike' %><br/>
+		Guest Instructor: <%= text_field_tag 'init_guest', 'ksandoe' %><br/>
+		<%= submit_tag 'Create Test Data' %>
+	<% end # form_tag %>
+	<% form_tag(:action => "test_teardown") do %>
+		<%= submit_tag 'Tear Down Test Data' %>
+	<% end # form_tag %>
+</div>

@@ -1,0 +1,68 @@
+<div class="contnt">
+    <b>Create a new term</b>
+    <br/>
+	Every field must be populated.
+	<br/>
+	Characters allowed: - _ @ : A-Z a-z 0-9 spaces
+	<br/>
+    <% form_tag({:action => "new_term"}) do -%>
+    <table>
+        <tr>
+            <td>
+                Term ID:
+            </td>
+            <td>
+                <%= text_field_tag "term_id" %>
+            </td>
+			<td>
+				Must look like '2108-term'
+			</td>
+        </tr>
+        <tr>
+            <td>
+                Desctiption:
+            </td>
+            <td>
+                <%= text_field_tag "description" %>
+            </td>
+			<td>
+				40 character limit, e.g. Fall 2010
+			</td>
+        </tr>
+        <tr>
+            <td>
+                Start Date:
+            </td>
+            <td>
+                <%= text_field_tag "start_date" %>
+            </td>
+			<td>
+				Must look like YYYYMMDD (e.g. 20100823)
+			</td>
+        </tr>
+        <tr>
+            <td>
+                End Date:
+            </td>
+            <td>
+                <%= text_field_tag "end_date" %>
+            </td>
+			<td>
+				Must look like YYYYMMDD (e.g. 20101217)
+			</td>
+        </tr>
+        <tr>
+            <td>
+                Current Term?:
+            </td>
+            <td>
+                <%= select_tag "current", "<option>False</option><option>True</option>" %>
+            </td>
+			<td>
+			</td>
+        </tr>
+    </table>
+	<%= submit_tag "Submit", :confirm => "Are you sure you want to submit?" %>
+	<%= submit_tag "Cancel" %>
+    <% end %>
+</div>

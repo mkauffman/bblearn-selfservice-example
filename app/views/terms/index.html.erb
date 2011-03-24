@@ -1,0 +1,59 @@
+<div class="contnt">
+	<b>Terms</b>
+	<br/>
+	Click on a term below to edit or click the link to add a new term.
+	<br/>
+    <table class="output clickable sortable">
+        <thead>
+            <tr>
+                <th id="term_id">
+                    ID
+                </th>
+                <th id="term_desc">
+                    Description
+                </th>
+                <th id="term_start">
+                    Start Date
+                </th>
+                <th id="term_end">
+                    End Date
+                </th>
+                <th id="term_curr">
+                    Current
+                </th>
+				<th id="term_del" class="sorttable_nosort">
+					Delete
+				</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for term in @terms %>
+			<% link_url = url_for(:controller => "terms", :action => "edit_term", 
+				:term_id => term.term_id, :description => term.description, :start_date => term.start_date, 
+				:end_date => term.end_date, :current => term.current_term.to_s) %>
+            <tr>
+                <td onClick="window.location='<%= link_url %>'">
+                    <%= term.term_id %>
+                </td>
+                <td onClick="window.location='<%= link_url %>'">
+                    <%= term.description %>
+                </td>
+                <td onClick="window.location='<%= link_url %>'">
+                    <%= term.start_date %>
+                </td>
+                <td onClick="window.location='<%= link_url %>'">
+                    <%= term.end_date %>
+                </td>
+                <td onClick="window.location='<%= link_url %>'">
+                    <%= term.current_term.to_s %>
+                </td>
+				<td>
+					<%= link_to "Delete", url_for(:action => "delete_term", :term_id => term.term_id),
+						:confirm => "Are you sure you want to delete term "+term.term_id+"?" %>
+				</td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+	<%= link_to("Create a new term", :action => "create") %>
+</div>

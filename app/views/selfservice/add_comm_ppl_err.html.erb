@@ -1,0 +1,9 @@
+<div class="contnt">
+    The users you entered were added except for the following: 
+    <br/>
+    <% for person in params[:ids] %>
+    	<b><%= person %></b>
+    	<br/>
+    <% end %>
+    These don't seem to exist. Please go back and try again.
+</div>

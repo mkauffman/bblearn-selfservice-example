@@ -1,0 +1,39 @@
+guS5fezesTaq5wr6phay
+
+<?xml version="1.0" encoding="UTF-8"?>
+<enterprise>
+    <properties>
+        <datasource>
+            CSU Chico - CMS
+        </datasource>
+        <datetime>
+            2010-11-30_1019
+        </datetime>
+    </properties>
+    <person recstatus="1">
+        <sourcedid>
+            <source>
+                WebCT
+            </source>
+            <id>
+                tlp-mcarlson13-support-account-id
+            </id>
+        </sourcedid>
+        <userid>
+            tlp-mcarlson13
+        </userid>
+        <name>
+            <fn>
+                Mr Michael Carlson
+            </fn>
+            <n>
+                <family>
+                    Carlson
+                </family>
+                <given>
+                    Michael
+                </given>
+            </n>
+        </name>
+    </person>
+</enterprise>

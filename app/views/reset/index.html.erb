@@ -1,0 +1,50 @@
+<div class="contnt">
+    <b>Reset A Section</b>
+    <br/>
+    Click on a section to reset it. WARNING: All section data will be deleted.
+    <br/>
+    <br/>
+    <table class="output clickable sortable">
+        <thead>
+            <tr>
+                <th id="term">
+                    Term
+                </th>
+				<th id="rst_xlist">
+					Type
+				</th>
+                <th id="sect_name">
+                    Name
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+        	<% link_url = url_for(:action => "confirm") %>
+            <% for section in @list %>
+            <tr onClick="window.location='<%= link_url %>?source_id=<%= section.section_id %>'">
+                <td>
+                    <%= section.term_name %>
+                </td>
+				<td>
+					<% if (section.delivery_unit_type=="XLIST_MASTER") %>
+						Crosslist
+					<% else %>
+						Normal
+					<% end %>
+				</td>
+                <td>
+                    <%= section.short_name %>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+	<br/>
+	<% unless params[:res].nil? %>
+		<% unless (params[:res].is_a?(String)) %>
+			<%= params[:res].body.content %>
+		<% else %>
+			<%= params[:res] %>
+		<% end # unless res is a string %>
+	<% end # unless res nil %>
+</div>

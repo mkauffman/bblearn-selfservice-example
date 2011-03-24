@@ -1,0 +1,30 @@
+<div class="contnt">
+	<%= javascript_include_tag "field_watch.js" %>
+	<h2>WARNING</h2>
+    <span class="del_span">YOU ARE ABOUT TO PERMANENTLY DELETE</span>
+    <br/>
+    <span class="del_span">THE FOLLOWING CROSSLIST SECTION. ALL CONTENT NOT</span>
+    <br/>
+	<span class="del_span">IN THE MASTER CHILD SECTION.</span>
+	<br/>
+    <br/>
+    <%= params[:sect_id] %>
+    <br/>
+	<br/>
+    Please confirm that you wish to delete
+    <br/>
+    this cross-list section and it's content by typing 'delete'
+    <br/>
+    in lower case below.
+    <br/>
+	<br/>
+	NOTE: This process may take some time, please be patient.
+    <br/>
+    <% form_tag(:action => "del_exec" ) do -%>
+    <%= label_tag "del_confirm_field", "Confirm:" %>
+    <%= text_field_tag "del_confirm_field", "", :onchange => "check_field(this.value);", :onkeyup => "check_field(this.value);" %>
+	<%= hidden_field_tag "par_id", params[:sect_id] %>
+    <%= submit_tag "Confirm", :id => "confirm_btn", :disabled => true %>
+	<%= submit_tag "Cancel" %>
+    <% end %>
+</div>

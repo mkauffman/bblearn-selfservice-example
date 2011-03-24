@@ -1,0 +1,344 @@
+body {
+    background-image: url("../images/body-bkg.jpg");
+    background-position: center top;
+    background-repeat: no-repeat;
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    margin: 0;
+    background-color: #893602;
+    line-height: 1.5;
+}
+
+#container {
+    width: 930px;
+    margin: 0 auto;
+}
+
+a img {
+    border: medium none;
+}
+
+#user_ctrl {
+    margin-bottom: 10px;
+    background-color: #FFFFFF;
+    padding: 0;
+}
+
+#user_ctrl #user_table {
+    float: right;
+    text-align: right;
+    margin-right: 5px;
+    padding: 0;
+}
+
+#user_ctrl #user_id {
+    float: right;
+    text-align: right;
+    padding: 0;
+}
+
+#user_ctrl #act_as_div {
+    float: right;
+    text-align: right;
+    padding: 0;
+    margin: 5px 10px 0 -10px;
+    width: 560px;
+}
+
+#user_ctrl #act_as_div a {
+    color: #960000;
+}
+
+#status {
+    text-align: center;
+    background-color: #FFFFFF;
+}
+
+#func_area {
+    margin: 0 0 10px 0;
+    background-color: #FFFFFF;
+    padding: 0;
+    height: 636px;
+    width: 770px;
+    overflow: auto;
+}
+
+#func_area #intro {
+    text-align: center;
+    height: 636px;
+    background-repeat: no-repeat;
+}
+
+#tasks {
+    margin: 0 0 10px 0;
+    background-color: #FFFFFF;
+    padding: 0 0 0 10px;
+}
+
+#multi_portal_ids {
+    width: 450px;
+    height: 80px;
+}
+
+#add _rm_prep h2 {
+    background-color: #FFDBDB;
+    color: #960000;
+    text-align: center;
+}
+
+#add _rm_prep .del_span {
+    font-weight: bold;
+    text-align: center;
+}
+
+#add _rm_prep #add _prep_field {
+    width: 350px;
+}
+
+#tlp_html {
+	width: 350px;
+	height: 250px;
+}
+
+#tlp_html_form {
+	float: left;
+}
+
+#tlp_css {
+	width: 350px;
+	height: 250px;
+}
+
+#tlp_css_form {
+	float: right;
+}
+
+#tlp_css_form2 {
+	float: left;
+}
+
+#tlp_designer_ferpa {
+	float: right;
+}
+
+#ferpa_text {
+	width: 350px;
+	height: 250px;
+}
+
+#check_th {
+	width: 25px;
+}
+
+#xlist_name {
+	width: 300px;
+}
+
+#instructor_check_text {
+	float: left;
+	margin-left: 10px;
+}
+
+#instructor_check_box {
+	float: left;
+}
+
+#section_name_filter {
+	float: left;
+}
+
+#section_term_filter {
+	float: left;
+	margin-left: 5px;
+}
+
+.contnt {
+    padding: 0 10px 10px 10px;
+}
+
+table.output {
+    border-width: 1px;
+    border-spacing: 0px;
+    border-style: solid;
+    border-collapse: collapse;
+}
+
+table.output th {
+    background-color: #960000;
+    color: #FFFFFF;
+    border-width: thin;
+    border-style: solid;
+    border-color: #000000;
+}
+
+table.output th.xlisting {
+    text-align: left;
+    width: 350px;
+}
+
+table.output td {
+    border-width: thin;
+    padding: 2px;
+    border-style: solid;
+}
+
+table.clickable tr:hover {
+    cursor: pointer;
+    background-color: #FFDBDB;
+}
+
+table.output th:hover {
+    cursor: pointer;
+    background-color: #FFDBDB;
+    color: #000000;
+}
+
+table.output #term {
+    width: 120px;
+}
+
+table.output #rst_xlist {
+	width: 110px;
+}
+
+table.output #sect_id {
+    width: 250px;
+}
+
+table.output #sect_name {
+    width: 300px;
+}
+
+table.output #sect_inst {
+    width: 200px;
+}
+
+table.output #inst_id {
+    width: 150px;
+}
+
+table.output #first, #last, #user_id {
+    width: 150px;
+}
+
+table.output #role, #modify {
+    width: 100px;
+}
+
+table.output #modify:hover {
+    cursor: auto;
+    background-color: #960000;
+    color: #FFFFFF;
+}
+
+table.output #full_name {
+    width: 180px;
+}
+
+table.output #email {
+    width: 250px;
+}
+
+table.output #term_id {
+	width: 100px;
+}
+
+table.output #term_desc {
+	width: 130px;
+}
+
+table.output #term_start {
+	width: 110px;
+}
+
+table.output #term_end {
+	width: 110px;
+}
+
+table.output #term_curr {
+	width: 80px;
+}
+
+table.output #term_del {
+	width: 80px;
+}
+
+table.output .check_box {
+    text-align: center;
+}
+
+table.output #check_th:hover {
+    cursor: auto;
+    background-color: #960000;
+    color: #FFFFFF;
+}
+
+table.output #hidden_th:hover {
+    cursor: auto;
+    background-color: #960000;
+    color: #FFFFFF;
+}
+
+table.xlist_list {
+    border-width: 1px;
+    border-spacing: 0px;
+    border-style: solid;
+    border-collapse: collapse;
+}
+
+table.xlist_list th {
+    text-align: left;
+    background-color: #960000;
+    color: #FFFFFF;
+    border-width: thin;
+    border-style: solid;
+    border-color: #000000;
+}
+
+table.xlist_list th.name {
+	min-width: 430px;
+}
+
+table.xlist_list td {
+    border-width: thin;
+    padding: 2px;
+    border-style: solid;
+}
+
+.last, div.last {
+    margin-right: 0;
+    padding: 0;
+}
+
+.odd {
+    text-align: left;
+}
+
+.span-1 {
+    width: 930px;
+    margin-right: 0;
+    float: left;
+}
+
+.span-2 {
+    width: 360px;
+    float: left;
+}
+
+.span-3 {
+    width: 560px;
+}
+
+.span-4 {
+    width: 150px;
+    float: left;
+}
+
+.span-5 {
+    float: left;
+    width: 720px;
+}
+
+#xml {
+    width: 500px;
+    height: 500px;
+}

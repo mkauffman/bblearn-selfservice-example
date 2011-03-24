@@ -1,0 +1,52 @@
+<div class="contnt">
+<h1>Edit User</h1>
+
+<% form_tag ({:action=>"update"}) do %>
+<%= hidden_field_tag "old_portal_id", params[:portal_id] %>
+  <table>
+  		<tr>
+            <td>
+                User ID:
+            </td>
+            <td>
+                <%= text_field_tag "portal_id", @role.portal_id %>
+            </td>
+        </tr>
+		<tr>
+            <td>
+                First Name:
+            </td>
+            <td>
+                <%= text_field_tag "first_name", @role.first_name %>
+            </td>
+        </tr><tr>
+            <td>
+                Last Name:
+            </td>
+            <td>
+                <%= text_field_tag "last_name", @role.last_name %>
+            </td>
+        </tr>
+		<tr>
+            <td>
+                Role:
+            </td>
+            <td>
+            	<% options = ["admin", "tlp", "tlp_admin", "itss", "mlib"] %>
+                <select id="role" name="role">
+                	<% for opt in options %>
+						<% if @role.role == opt %>
+							<option selected><%= opt %></option>
+						<% else %>
+							<option><%= opt %></option>
+						<% end %>
+					<% end %>
+                </select>
+            </td>
+        </tr>
+	</table>
+	<br/>
+    <%= submit_tag 'Update', :style=>"float:left;" %>
+	<%= submit_tag 'Cancel', :style=>"float:left;"%>
+<% end %>
+</div>

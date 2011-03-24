@@ -1,5 +1,7 @@
 .tmp*
 log/*.log
 tmp/**/*
+
+# Other useful ones to ignore
 doc/api
 doc/app

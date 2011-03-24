@@ -1,0 +1,185 @@
+"
+<?xml version="1.0" encoding="UTF-8"?>
+<enterprise>
+    <properties>
+        <datasource>
+            CSU Chico - CMS
+        </datasource>
+        <datetime>
+            2011-01-11_1341
+        </datetime>
+    </properties>
+    <group>
+        <sourcedid>
+            <source>
+                CSU Chico - CMS
+            </source>
+            <id>
+                mcarlson13-selfservice-devcourse
+            </id>
+        </sourcedid>
+        <grouptype>
+            <scheme>
+                LEARNING_CONTEXT_V1
+            </scheme>
+            <typevalue level="80"/>
+        </grouptype>
+        <description>
+            <short>
+                Prep Area mcarlson13-selfservice
+            </short>
+            <long>
+                mcarlson13 Prep Area selfservice
+            </long>
+            <full>
+            </full>
+        </description>
+        <enrollcontrol>
+            <enrollaccept>
+                1
+            </enrollaccept>
+        </enrollcontrol>
+        <relationship relation="1">
+            <sourcedid>
+                <source>
+                    CSU Chico - CMS
+                </source>
+                <id>
+                    under_dev_selfservice
+                </id>
+            </sourcedid>
+            <label/>
+        </relationship>
+        <datasource>
+            CSU Chico - CMS
+        </datasource>
+    </group>
+    <group>
+        <sourcedid>
+            <source>
+                CSU Chico - CMS
+            </source>
+            <id>
+                mcarlson13-awesome test 3
+            </id>
+        </sourcedid>
+        <grouptype>
+            <scheme>
+                LEARNING_CONTEXT_V1
+            </scheme>
+            <typevalue level="90"/>
+        </grouptype>
+        <description>
+            <short>
+                awesome test 3
+            </short>
+            <long>
+                awesome test 3
+            </long>
+            <full>
+                awesome test 3
+            </full>
+        </description>
+        <enrollcontrol>
+            <enrollaccept>
+                1
+            </enrollaccept>
+        </enrollcontrol>
+        <relationship relation="1">
+            <sourcedid>
+                <source>
+                    CSU Chico - CMS
+                </source>
+                <id>
+                    preparea-term
+                </id>
+            </sourcedid>
+            <label>
+                Term
+            </label>
+        </relationship>
+        <relationship relation="1">
+            <sourcedid>
+                <source>
+                    CSU Chico - CMS
+                </source>
+                <id>
+                    mcarlson13-selfservice-devcourse
+                </id>
+            </sourcedid>
+            <label/>
+        </relationship>
+        <datasource>
+            CSU Chico - CMS
+        </datasource>
+    </group>
+    <membership>
+        <sourcedid>
+            <source>
+                CSU Chico - CMS
+            </source>
+            <id>
+                mcarlson13-awesome test 3
+            </id>
+        </sourcedid>
+        <member>
+            <sourcedid>
+                <source>
+                    CSU Chico - CMS
+                </source>
+                <id>
+                    004797716
+                </id>
+            </sourcedid>
+            <idtype>
+                1
+            </idtype>
+            <role recstatus="1" roletype="02">
+                <status>
+                    1
+                </status>
+                <userid>
+                    mcarlson13
+                </userid>
+                <datasource>
+                    CSU Chico - CMS
+                </datasource>
+            </role>
+        </member>
+    </membership>
+    <membership>
+        <sourcedid>
+            <source>
+                CSU Chico - CMS
+            </source>
+            <id>
+                mcarlson13-awesome test 3
+            </id>
+        </sourcedid>
+        <member>
+            <sourcedid>
+                <source>
+                    CSU Chico - CMS
+                </source>
+                <id>
+                    004797716
+                </id>
+            </sourcedid>
+            <idtype>
+                1
+            </idtype>
+            <role recstatus="1" roletype="03">
+                <status>
+                    1
+                </status>
+                <userid>
+                    mcarlson13
+                </userid>
+                <datasource>
+                    CSU Chico - CMS
+                </datasource>
+            </role>
+        </member>
+    </membership>
+</enterprise>
+"

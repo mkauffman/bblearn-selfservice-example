@@ -1,0 +1,92 @@
+#task_box {
+    margin: 0 10px 0 0;
+    height: 636px;
+}
+
+#task_box ul#left_nav {
+    margin-top: -40px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1.5em;
+    background-color: #E9E4D6;
+    background-image: url("http://www.csuchico.edu/_assets/2.0/images/left-nav-bkg-template.jpg");
+    background-position: left top;
+    background-repeat: repeat-x;
+    float: left;
+    list-style-type: none;
+    margin: 0 0 0 -10px;
+    min-height: 218px;
+    padding: 15px 0 20px;
+    width: 150px;
+    padding-left: 1.1em;
+    border: 0 none;
+    font-family: inherit;
+    vertical-align: baseline;
+}
+*:first-child + html #task_box ul#left_nav { /* hack for IE7 */
+    margin-left: 0px;
+}
+
+#task_box ul#left_nav li {
+    margin: 0 0 0 -17px;
+    padding: 0;
+    position: relative;
+    font-size: 70%;
+    font-weight: normal;
+    line-height: 15px;
+    vertical-align: baseline;
+    font-style: inherit;
+    border: 0 none;
+    font-family: inherit;
+    list-style-type: none;
+    color: #222222;
+}
+*:first-child + html #task_box ul#left_nav li { /* hack for IE7 */
+    margin-bottom: -5px;
+}
+
+#task_box ul#left_nav li ul {
+    display: none;
+    padding: 0 0 0 26px;
+}
+
+#task_box ul#left_nav li ul li {
+    width: 200px;
+	font-size: 100%;
+	background-color: #FFF6BF;
+}
+
+#task_box ul#left_nav li:hover {
+    background-color: #FFFFFF;
+}
+
+#task_box ul#left_nav li:hover ul {
+    display: block;
+    left: 150px;
+    margin: 0;
+    width: 20px;
+    position: absolute;
+    top: 0;
+}
+
+#task_box ul#left_nav li ul li:hover {
+    background-color: #FFF6E2;
+}
+
+#task_box ul#left_nav li a {
+    text-decoration: none;
+    display: block;
+    color: #000000;
+    display: block;
+    font-size: 95%;
+    padding: 6px 30px 7px;
+    text-decoration: none;
+    width: 100px;
+    vertical-align: baseline;
+    margin: 0;
+    font-style: inherit;
+    border: 0 none;
+    font-family: inherit;
+    line-height: 15px;
+    list-style-type: none;
+}

@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:3001/" />
+<title>Reset_test</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Reset_test</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>https://vista-staging.csuchico.edu/webct/entryPageIns.dowebct</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//tr[4]/td[1]/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>webctid</td>
+	<td>vista_usname</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>password</td>
+	<td>vista_paword</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='OK']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='calDayDiv']/ul/li[1]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Administration</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>link=Create Division</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Section Search</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>queryValue[0]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>queryValue[0]</td>
+	<td>001 Test Regular Section</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Run Query']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//tr[@id='row0']/td[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=001 Test Regular Section Selfservice</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>1tab</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//img[@alt='Properties']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//tr[4]/td[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//table[@class='simpletable tablebody']//tr[4]/td[2]</td>
+	<td>Yes</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Log out</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>http://dlt-dev.csuchico.edu/vista/selfservice</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Reset Sections</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>sect_name</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>001 Test Regular Section Selfservice</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//div[@id='func_area']/div/table/tbody/tr[1]/td[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>testsection-regular</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>del_confirm_field</td>
+	<td>delete</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>confirm_btn</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>success: importRestrict completed successfully</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>https://vista-staging.csuchico.edu/webct/entryPageIns.dowebct</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//tr[4]/td[1]/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>webctid</td>
+	<td>vista_usname</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>password</td>
+	<td>vista_paword</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='OK']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='calDayDiv']/ul/li[1]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Administration</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>link=Create Division</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Section Search</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>queryValue[0]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>queryValue[0]</td>
+	<td>001 Test Regular Section</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Run Query']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//tr[@id='row0']/td[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=001 Test Regular Section Selfservice</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>1tab</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//img[@alt='Properties']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//tr[4]/td[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//table[@class='simpletable tablebody']//tr[4]/td[2]</td>
+	<td>No</td>
+</tr>
+<tr>
+	<td>deleteAllVisibleCookies</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Log out</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

@@ -1,0 +1,24 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+Michael_admin:
+    portal_id: mcarlson13
+    first_name: Michael
+    last_name: Carlson
+    role: admin
+    
+Mark_admin:
+    portal_id: mkauffman
+    first_name: Mark
+    last_name: Kauffman
+    role: super
+    
+Scott_admin:
+    portal_id: skodai
+    first_name: Scott
+    last_name: Kodai
+    role: admin
+    
+Miroslav_admin:
+    portal_id: mlulic
+    first_name: Miroslav
+    last_name: Lulic
+    role: admin

@@ -1,0 +1,46 @@
+<div class="contnt">
+    <h1>Listing roles</h1>
+    <table class="output sortable">
+        <tr>
+            <th id="user_id">
+                Portal
+            </th>
+            <th id="first">
+                First name
+            </th>
+            <th id="last">
+                Last name
+            </th>
+            <th id="role">
+                Role
+            </th>
+			<th id="modify" colspan="2" class="sorttable_nosort">
+				Modify
+			</th>
+        </tr>
+        <% @roles.each do |role| %>
+        <tr>
+            <td>
+                <%= role.portal_id %>
+            </td>
+            <td>
+                <%= role.first_name %>
+            </td>
+            <td>
+                <%= role.last_name %>
+            </td>
+            <td>
+                <%= role.role %>
+            </td>
+            <td>
+                <%= link_to 'Edit', url_for(:action=>"edit_role", :portal_id=>role.portal_id) %>
+            </td>
+            <td>
+                <%= link_to 'Delete', url_for(:action=>"delete", :portal_id => role.portal_id), :confirm => 'Are you sure?' %>
+            </td>
+        </tr>
+        <% end %>
+    </table>
+    <br/>
+    <%= link_to 'New role', url_for(:action=>"new") %>
+</div>

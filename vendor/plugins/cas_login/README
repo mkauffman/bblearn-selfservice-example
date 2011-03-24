@@ -1,0 +1,42 @@
+CasLogin
+========
+
+CAS Authentication for CSU, Chico
+By: Scott Jungling <sjungling@csuchico.edu>
+Version: 1.1
+
+Example
+=======
+
+class ApplicationController < ActionController::Base
+  include CasLogin
+    
+  
+  private
+  def is_logged_in
+    return true unless session[:user].nil?
+    if is_authenticated?
+      begin
+        @user = User.find_by_uid(get_authenticated_user_id)
+        raise ActiveRecord::RecordNotFound if @user.nil?
+      rescue ActiveRecord::RecordNotFound => e
+        unified_message("Could not find user:\t#{get_authenticated_user_id}","error",false)
+        redirect_to unauthorized_path and return false
+      else
+        session[:user] = @user 
+        return true
+      end
+    end
+    return false
+  end
+end
+
+
+class FooController < ActiionController::Base
+    before_filter :is_logged_in
+    
+    def index
+        # foo
+    end
+end
+

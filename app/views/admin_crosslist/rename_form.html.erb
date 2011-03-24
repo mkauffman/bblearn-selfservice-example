@@ -1,0 +1,26 @@
+<div class="contnt">
+	<script type="text/javascript">
+		function check_field(x) {
+		if ((x=='') || (x.length > 65))
+			{
+				document.getElementById('submit_btn').disabled = true
+			}
+		else 
+			{
+				document.getElementById('submit_btn').disabled = false
+			}
+		} // function toggle()
+	</script>
+	<b>Choose a new name for the cross-list.</b>
+	<br/>
+	<b>Note:</b> the name cannot be longer than 65 characters. 
+	<br/>
+	The submit button is disabled if it's longer than 65 characters.
+	<% form_tag({:action => "rename"}) do %>
+		<%= hidden_field_tag "sect_id", params[:sect_id] %>
+		<%= text_field_tag "new_name", @section.short_name, :class=>"text_field", :onkeyup => "check_field(this.value);" %>
+		<br/>
+		<%= submit_tag "Submit", :id => "submit_btn" %>
+		<%= submit_tag "Cancel" %>
+	<% end # form_tag %>
+</div>

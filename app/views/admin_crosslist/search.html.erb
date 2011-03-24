@@ -1,0 +1,73 @@
+<div class="contnt">
+    <b>Section Results</b>
+	<% if (@sections.length > 100) %>
+		<br/>
+		The number of sections returned is greater than 100.
+		<br/>
+		If the section(s) your looking for doesn't appear below, please go 
+		<a href="<%=url_for(:action => 'search_form') %>">back</a> and refine your search.
+		<br/>
+	<% end # if @sections %>
+    <% form_tag(:action => "index") do %>
+    <table class="output sortable">
+        <thead>
+            <tr>
+                <th id="check_th" class="sorttable_nosort">
+                    <%= check_box_tag('check_all', 'check_all', false, :onClick =>
+                    "$$('input.check').each(function(box){
+                    box.checked=(box.checked==false)?true:false});") %>
+                </th>
+                <th id="sect_id">
+                    Section ID
+                </th>
+                <th id="sect_inst">
+                    Section Instructor
+                </th>
+				<th id="inst_id">
+					Instructor ID
+				</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for section in @sections %>
+            <% if (session[:sect_id_ary].nil?) %>
+            <tr>
+                <td class="check_box">
+                    <%= check_box_tag 'sections[]', section.section_id, false, :class => "check" %>
+                </td>
+                <td>
+                    <%= section.section_id %>
+                </td>
+                <td>
+                    <%= section.primary_instructor_name %>
+                </td>
+				<td>
+					<%= section.primary_instructor_id %>
+				</td>
+            </tr>
+            <% else %>
+            <% unless (session[:sect_id_ary].include?(section.section_id)) %>
+            <tr>
+                <td class="check_box">
+                    <%= check_box_tag 'sections[]', section.section_id, false, :class => "check" %>
+                </td>
+                <td>
+                    <%= section.section_id %>
+                </td>
+                <td>
+                    <%= section.primary_instructor_name %>
+                </td>
+				<td>
+					<%= section.primary_instructor_id %>
+				</td>
+            </tr>
+            <% end # unless session %>
+            <% end # if session %>
+            <% end # for section %>
+        </tbody>
+    </table>
+    <%= submit_tag "Submit" %>
+    <%= submit_tag "Cancel" %>
+	<%= link_to "New Search", :action => "search_form" %>
+    <% end # form_tag %>
+</div>

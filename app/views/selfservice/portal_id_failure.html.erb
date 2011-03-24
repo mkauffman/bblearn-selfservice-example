@@ -1,0 +1,11 @@
+<div class="contnt">
+	The portal id(s) you entered was(were) not found.
+	<% unless params[:portal_ids].empty? %>
+		<% params[:portal_ids].each do |id| %>
+			<br/>
+			<b><%= id %></b>
+		<% end %>
+	<% end # unless params %>
+	<br/> 
+	Please go back and try again.
+</div>

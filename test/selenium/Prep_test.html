@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="https://dlt-dev.csuchico.edu/" />
+<title>Create_prep</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Create_prep</td></tr>
+</thead><tbody>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Create/Delete Prep Areas</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Create or Delete a Prep Area</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>source_id</td>
+	<td>001 prep section</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@name='commit' and @value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>importRestrict completed successfully</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>sect_name</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>rm_prep_</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@name='commit' and @value='Delete']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>001 prep section</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>del_confirm_field</td>
+	<td>delete</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>confirm_btn</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>importRestrict completed successfully</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

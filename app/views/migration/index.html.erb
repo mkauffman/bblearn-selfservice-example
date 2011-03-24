@@ -1,0 +1,55 @@
+<div class="contnt">
+	<%= javascript_include_tag "filter.js" %>
+    <b>Migrate Sections</b>
+    <br/>
+    Select the sections you wish to migrate below.
+    <br/>
+	<b>Filters:</b>
+	<br/>
+	<div id="section_name_filter">
+	Section Name: 
+	<br/>
+	<input id="name_filter" type="text" class="text_field" onkeyup="filter(this, 'add_guest_table', 2)" />
+	</div>
+	<div id="section_term_filter">
+	Section Term: 
+	<br/>
+	<%= select_tag "term_filter", @option_string, :onmouseup => "filter(this, 'add_guest_table', 1)" %>
+	</div>
+	<br/>
+	<br/>
+	<br/>
+    <table id="add_guest_table" class="output sortable">
+        <thead>
+            <tr>
+                <th id="check_th" class="sorttable_nosort">
+                	<%= check_box_tag('check_all', 'check_all', false, :onClick =>
+                    "$$('input.check').each(function(box){
+                    box.checked=(box.checked==false)?true:false});") %>
+                </th>
+                <th id="term">
+                    Term
+                </th>
+                <th id="sect_name">
+                    Name
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <% link_url = url_for(:action => "form") %>
+            <% for section in @sections %>
+            <tr>
+                <td>
+                    <%= check_box_tag 'sections[]', section.section_id, false, :class => "check" %>
+                </td>
+                <td>
+                    <%= section.term_name %>
+                </td>
+                <td>
+                    <%= section.short_name %>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>

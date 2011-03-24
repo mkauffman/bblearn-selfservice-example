@@ -1,0 +1,16 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<% if @students.length <= 0 %>
+	<html>
+		<head>
+			<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+			<title>No Turning Point XML</title>
+		</head>
+		<body>
+	      	    <h1> No Students to Process </h1>
+
+		</body>
+	</html>
+<% else  #students.length > 0 %>
+	This never gets displayed because we do a send_data() in the controller - which is a "render" -
+	before the generateXML action completes when we have data to send to the user.
+<% end %>	
