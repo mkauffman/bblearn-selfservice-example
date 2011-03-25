@@ -19,7 +19,8 @@
 	<br/>
 	<br/>
 	<br/>
-    <table id="add_guest_table" class="output sortable">
+	<% form_tag(:action => "migrate") do %>
+    <table id="migrate_table" class="output sortable">
         <thead>
             <tr>
                 <th id="check_th" class="sorttable_nosort">
@@ -49,7 +50,9 @@
                     <%= section.short_name %>
                 </td>
             </tr>
-            <% end %>
+            <% end # for section %>
         </tbody>
     </table>
+	<%= submit_tag "Migrate" %>
+	<% end # migrate form %>
 </div>
