@@ -3,9 +3,11 @@
         <li>
             <%= link_to "Home", :controller => "selfservice", :action => "index" %>
         </li>
-        <li>
-            <%= link_to "Roles", :controller => "role", :action => "index" %>
-        </li>
+        <% if session[:role].include?(:admin, :super) %>
+        	<li>
+            	<%= link_to "Roles", :controller => "role", :action => "index" %>
+        	</li>
+        <% end %>
         <li>
             <%= link_to "Migrate", :controller => "migration", :action => "index" %>
         </li>
