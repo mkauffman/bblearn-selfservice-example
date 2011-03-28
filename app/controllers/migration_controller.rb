@@ -8,7 +8,9 @@ class MigrationController < ApplicationController
     end # for term
   end # index
 
-  def form
-  end # form
-
+  def migrate
+    client = Savon::Client.new do
+      wsdl.document = "http://"
+    end
+  end # migrate
 end # Migration Controller
