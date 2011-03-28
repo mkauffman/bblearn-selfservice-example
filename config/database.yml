@@ -27,6 +27,17 @@ development:
   password: eMyEZQc4ev5zeBbm
   host: apphostdev.csuchico.edu
 
+staging:
+  adapter: mysql
+  encoding: utf8
+  reconnect: false
+  database: dlt_vista_development
+  pool: 5
+  username: dltservice
+# This password is not used.  This file gets copied over on the staging server
+# when cap staging deploy runs.
+  password: #########
+  host: localhost
    
 vista_db:
     adapter: oracle
