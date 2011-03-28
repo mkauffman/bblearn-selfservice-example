@@ -5,7 +5,7 @@ require 'capistrano/ext/multistage'
 # =============================================================================
 # REQUIRED VARIABLES
 # =============================================================================
-set :application, "vista"
+set :application, "bblearn"
 set :deploy_to, "/h/dlt/opt/RailsApps/#{application}"
 set :user, "dltservice"
 set :use_sudo,false
