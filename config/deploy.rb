@@ -17,7 +17,7 @@ set :rails_config_files, %w(config.yml database.yml)
 # REVISION CONTROL
 # =============================================================================
 set :scm, :git
-set :repository,  "apphostdev-ssh:/h/dlt/git/#{application}.git"
+set :repository,  "apphostdev:/h/dlt/git/#{application}.git"
 set :deploy_via, :remote_cache
 
 # =============================================================================
