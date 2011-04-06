@@ -5,3 +5,6 @@ tmp/**/*
 # Other useful ones to ignore
 doc/api
 doc/app
+
+.idea/*
+.idea*

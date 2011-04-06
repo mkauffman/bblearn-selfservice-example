@@ -20,6 +20,16 @@ production:
  #vista_db_password: may the
  vista_db_string: //lmsdb1.csuchico.edu:1521/lmsdb1.lmsdb1.csuchico.edu
 
+staging:
+ <<: *common
+ environment: staging
+# The password, and the rest of this file are deployed into the shared directory on the target staging server. shared/config.yml gets copied over this file on
+cap deploy staging.
+  vista_db_password: ##### 
+  vista_db_string: //lmsdb2.csuchico.edu/stage1.lmsdb2.csuchico.edu
+  view_my_webct_url: https://vista-staging.csuchico.edu/webct/urw/ssCSUC/viewMyWebCT.dowebct
+  siapi_post_url: https://vista-staging.csuchico.edu/webct/systemIntegrationApi.dowebct
+
 test:
  <<: *common
  environment: test
