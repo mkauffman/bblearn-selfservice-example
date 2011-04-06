@@ -1,4 +1,4 @@
-module Xml_client
+module XmlClient
   require 'httpclient' # used to make a post HTTP call to SIAPI with the XML 
   require 'digest' # used to create the MD5 checksum for the HTTP post
 

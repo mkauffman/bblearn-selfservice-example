@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        <link rel="SHORTCUT ICON" href="<%= image_path('chico.ico') %>" />
+        <%= stylesheet_link_tag 'vista' %>
+        <% begin %>
+        	<% tasks_css = Tlp.find(:first, :conditions => "html_type = 'tasks_css'") %>
+        <% rescue %>
+        	<%= stylesheet_link_tag 'tasks' %>
+        <% end %>
+        <% if (tasks_css.nil?) %>
+        	<%= stylesheet_link_tag 'tasks' %>
+        <% else %>
+        	<% if (tasks_css.html.empty?) %>
+        		<%= stylesheet_link_tag 'tasks' %>
+        	<% else %>
+        		<style type="text/css">        
+             		<%= tasks_css.html %> 
+        		</style>
+        	<% end %>
+        <% end %>
+        <% begin %>
+        	<% main_css = Tlp.find(:first, :conditions => "html_type = 'main_css'") %>
+        <% rescue %>
+        <% end %>
+        <% unless main_css.nil? %>
+        	<style type="text/css">        
+        	     <%= main_css.html %>
+        	</style>
+        <% end %>
+        <%= render :partial => "application/scripts" %>
+        <title>Vista Self Service</title>
+    </head>
+    <body>
+        <div id="container">
+            <div id="user_ctrl" class="span-1">
+                <%= render :partial => "application/user_ctrl" %>
+            </div>
+            <div id="main" class="span-1">
+                <div id="tasks" class="span-4">
+                    <%= render :partial => "application/tasks" %>
+                </div>
+                <div id="func_area" class="span-5 last">
+                    <%= yield %>
+                </div>
+            </div>
+            <div id="status" class="span-1">
+                <%= render :partial => "application/status" %>
+            </div>
+        </div>
+    </body>
+</html>

@@ -6,7 +6,11 @@ class ApplicationController < ActionController::Base
   before_filter :vista_db_setup
   after_filter :vista_db_teardown
   include CasLogin
-  include Xml_client
+  begin
+    #include XmlClient
+  rescue
+    logger.info 'Xml_client library failed to load.'
+  end
   require 'oci8'
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details

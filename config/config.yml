@@ -22,7 +22,7 @@ production:
 
 staging:
  <<: *common
-  environment: staging
+ environment: staging
 # The password, and the rest of this file are deployed into the shared directory on the target staging server. shared/config.yml gets copied over this file on
 cap deploy staging.
   vista_db_password: ##### 

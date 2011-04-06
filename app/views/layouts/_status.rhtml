@@ -1,9 +1,0 @@
-<% unless (@response.nil?) %>
-	<% if (@response.kind_of?(Array)) %>
-		<%= @response.last.body.content %>
-	<% else %>
-		<%= @response.body.content %>
-	<% end %>
-<% else %>
-	<br/>
-<% end %>
