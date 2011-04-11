@@ -2,35 +2,73 @@
 <env:Envelope xmlns:wsdl="http://context.ws.blackboard/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:env="http://schemas.xmlsoap.org/soap/envelope/">
     <env:Header>
         <wsa:Action>
-            initialize
+            registerTool
         </wsa:Action>
         <wsa:MessageID>
-            context_initialize_2_04_05_2011_15_43_12
+            context_register_04_11_2011_09_40_29
         </wsa:MessageID>
         <wsa:To>
-            http://lms-temp.csuchico.edu/webapps/ws/services/Context.WS
+            https://lms-temp.csuchico.edu/webapps/ws/services/Context.WS
         </wsa:To>
         <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
             <wsu:Timestamp>
                 <wsu:Expires>
-                    2011-04-05T20:44:14Z
+                    2011-04-11T19:41:29Z
                 </wsu:Expires>
                 <wsu:Created>
-                    2011-04-05T20:43:14Z
+                    2011-04-11T19:40:29Z
                 </wsu:Created>
             </wsu:Timestamp>
-            <wsse:UsernameToken wsu:Id="UsernameToken-1" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+            <wsse:UsernameToken wsu:Id="UsernameToken-3" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
                 <wsse:Username>
                     session
                 </wsse:Username>
                 <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">
-                    nosession
+                    eb980d5f16bb4bfb8b2f6d00f7dd713a
                 </wsse:Password>
             </wsse:UsernameToken>
         </wsse:Security>
     </env:Header>
     <env:Body>
-        <initialize>
-        </initialize>
+        <ns3:registerTool xmlns:ns3="http://context.ws.blackboard">
+            <ns3:registerTool xmlns:ns3="http://context.ws.blackboard">
+                <ns3:clientVendorId>
+                    CSU_CHICO
+                </ns3:clientVendorId>
+                <ns3:clientProgramId>
+                    Rails BBL Self Service Tool
+                </ns3:clientProgramId>
+                <ns3:registrationPassword>
+                    pass1234
+                </ns3:registrationPassword>
+                <ns3:description>
+                    Migration tool web service consumer
+                </ns3:description>
+                <ns3:initialSharedSecret>
+                    atec!d1rn
+                </ns3:initialSharedSecret>
+                <ns3:requiredToolMethods>
+                    Context.WS:emulateUser
+                </ns3:requiredToolMethods>
+                <ns3:requiredToolMethods>
+                    Context.WS:logout
+                </ns3:requiredToolMethods>
+                <ns3:requiredToolMethods>
+                    Context.WS:getMemberships
+                </ns3:requiredToolMethods>
+                <ns3:requiredToolMethods>
+                    Context.WS:getServerVersion
+                </ns3:requiredToolMethods>
+                <ns3:requiredToolMethods>
+                    Context.WS:initialize
+                </ns3:requiredToolMethods>
+                <ns3:requiredToolMethods>
+                    Context.WS:loginTool
+                </ns3:requiredToolMethods>
+                <ns3:requiredToolMethods>
+                    Context.WS:registerTool
+                </ns3:requiredToolMethods>
+            </ns3:registerTool>
+        </ns3:registerTool>
     </env:Body>
 </env:Envelope>

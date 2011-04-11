@@ -7,13 +7,11 @@
     <% form_tag({:controller => "selfservice", :action => "act_as"}) do %>
     Act on behalf of: <%= text_field_tag "act_as", session[:on_behalf_of] %>
     <%= submit_tag "Change" %>
-    <br/>
     <% end %><!-- end form_tag do -->
 </div>
 <br/>
 <% end %>
 <% end %>
-<br/>
 <div id="user_table" class="last">
     <table>
         <tr>

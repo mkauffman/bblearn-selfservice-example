@@ -19,7 +19,7 @@
 	<br/>
 	<br/>
 	<br/>
-	<% form_tag(:action => "migrate") do %>
+	<% form_tag :action => 'form' do %>
     <table id="migrate_table" class="output sortable">
         <thead>
             <tr>
@@ -37,22 +37,21 @@
             </tr>
         </thead>
         <tbody>
-            <% link_url = url_for(:action => "form") %>
-            <% for section in @sections %>
+        	<% for section in @sections %>
             <tr>
                 <td>
-                    <%= check_box_tag 'sections[]', section.section_id, false, :class => "check" %>
+                	<%= check_box_tag 'sections[]', section.section_id, false, :class => "check" %>
                 </td>
                 <td>
-                    <%= section.term_name %>
+                	<%= section.term_name %>
                 </td>
                 <td>
-                    <%= section.short_name %>
+                	<%= section.short_name %>
                 </td>
             </tr>
-            <% end # for section %>
+            <% end %>
         </tbody>
     </table>
 	<%= submit_tag "Migrate" %>
-	<% end # migrate form %>
+	<% end %>
 </div>
