@@ -1,31 +1,11 @@
 <div class="contnt">
-    <b>Add or Remove Guest Designers</b>
-    <br/>
-    Click on a section below to add or remove guest designers to/from.
-    <br/>
-    <table id="add_guest_table" class="output clickable sortable">
-        <thead>
-            <tr>
-                <th id="term">
-                    Term
-                </th>
-                <th id="sect_name">
-                    Name
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-        	<% link_url = url_for(:action => "form") %>
-            <% for section in @sections %>
-            <tr onClick="window.location='<%= link_url %>?source_id=<%= section.section_id %>'">
-                <td>
-                    <%= section.term_name %>
-                </td>
-                <td>
-                    <%= section.short_name %>
-                </td>
-            </tr>
-            <% end %>
-        </tbody>
-    </table>
+	Pick what you want to do below
+	<br/>
+	<%= link_to "Register Tool", :action => "register" %>
+	<br/>
+	<%= link_to "Get Memberships", :action => "get_memberships" %>
+	<br/>
+	<%= link_to "Create Course", :action => "create_course" %>
+	<br/>
+	<%= link_to "Get User", :action => "get_user" %>
 </div>

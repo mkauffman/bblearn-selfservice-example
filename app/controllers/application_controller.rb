@@ -77,11 +77,11 @@ class ApplicationController < ActionController::Base
   end # def is_authorized
   
   def vista_db_setup
-    $vista_db_conn = OCI8.new(AppConfig.vista_db_user, AppConfig.vista_db_password, AppConfig.vista_db_string)
+    #$vista_db_conn = OCI8.new(AppConfig.vista_db_user, AppConfig.vista_db_password, AppConfig.vista_db_string)
   end # vista_db_setup
   
   def vista_db_teardown
-    $vista_db_conn.logoff
+    #$vista_db_conn.logoff
   end
   
   def unauthorized

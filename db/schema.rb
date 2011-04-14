@@ -9,28 +9,31 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110125180512) do
+ActiveRecord::Schema.define(:version => 20110412213732) do
+
+  create_table "bbl_contexts", :force => true do |t|
+    t.string   "user_to_emulate"
+    t.string   "additional_seconds"
+    t.string   "userid"
+    t.string   "method"
+    t.string   "password"
+    t.string   "client_vendor_id"
+    t.string   "client_program_id"
+    t.string   "login_extra_info"
+    t.string   "expected_life_seconds"
+    t.string   "ticket"
+    t.string   "client"
+    t.string   "session_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "logged_in"
+  end
 
   create_table "dbsessions", :force => true do |t|
     t.string   "session_number"
     t.string   "section_id"
     t.string   "section_type"
     t.string   "section_parent"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "memberships", :force => true do |t|
-    t.string   "source"
-    t.string   "member_source"
-    t.string   "member_id"
-    t.string   "member_user_id"
-    t.string   "id_type"
-    t.string   "rec_status"
-    t.string   "role_type"
-    t.string   "status"
-    t.string   "sub_role"
-    t.string   "datasource"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -70,7 +73,6 @@ ActiveRecord::Schema.define(:version => 20110125180512) do
   create_table "sections", :force => true do |t|
     t.string   "source"
     t.string   "lc_id"
-    t.string   "course_id"
     t.string   "section_id"
     t.string   "short_name"
     t.string   "long_name"
@@ -98,20 +100,10 @@ ActiveRecord::Schema.define(:version => 20110125180512) do
     t.string   "level"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "selfservices", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "sessions", :force => true do |t|
-    t.string   "portal_id"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "role"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "student_list_file_name"
+    t.string   "student_list_content_type"
+    t.integer  "student_list_file_size"
+    t.datetime "student_list_updated_at"
   end
 
   create_table "terms", :force => true do |t|
