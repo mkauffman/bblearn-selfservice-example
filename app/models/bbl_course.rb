@@ -18,7 +18,7 @@ class BblCourse < ActiveRecord::Base
       
     course_uniq = Time.now.strftime("course_create_course_%m_%d_%Y_%H_%M_%S")
     course_resp = self.client.request :getMemberships do
-      wsse.credentials "session", self.session_id
+      wsse.credentials "session", $session_id
       wsse.created_at = Time.now.utc + 10800
       wsse.expires_at = Time.now.utc + 10860
       soap.namespaces["xmlns:wsa"] = "http://www.w3.org/2005/08/addressing"
