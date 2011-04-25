@@ -14,11 +14,11 @@ class BblContext < ActiveRecord::Base
   ########################################### Instance Methods ######################################
   # Summary of BblContext Instance Methods:                                                         #
   def register_tool
-    if self.client.nil?: self.client = create_client end
+    if @context_client.nil?: @context_client = create_client end
     if self.session_id.nil?: self.session_id = ws_init end
     register_uniq = Time.now.strftime("context_register_%m_%d_%Y_%H_%M_%S")
     
-    register_resp = self.client.request :registerTool do
+    register_resp = @context_client.request :registerTool do
       wsse.credentials "session", self.session_id
       wsse.created_at = Time.now.utc + 10800
       wsse.expires_at = Time.now.utc + 10860
@@ -61,12 +61,12 @@ class BblContext < ActiveRecord::Base
   end # register_tool
   
   def get_memberships(userid)
-    if self.client.nil?: self.client = create_client end
+    if @context_client.nil?: @context_client = create_client end
     if self.session_id.nil?: self.session_id = ws_init end
     unless self.logged_in: self.logged_in = login_tool end
     
     mem_uniq = Time.now.strftime("context_memberships_%m_%d_%Y_%H_%M_%S")
-    mem_resp = self.client.request :getMemberships do
+    mem_resp = @context_client.request :getMemberships do
       wsse.credentials "session", self.session_id
       wsse.created_at = Time.now.utc + 10800
       wsse.expires_at = Time.now.utc + 10860
@@ -85,13 +85,19 @@ class BblContext < ActiveRecord::Base
     return mem_resp
   end # get_memberships
   
+  #def log_in
+   # if @context_client.nil?: @context_client = create_client end
+    #if self.session_id.nil?: self.session_id = ws_init end
+    #unless self.logged_in: self.logged_in = login_tool end
+    #return self
+  #end # log_in
+  
   ########################################### Class Methods #########################################
   # Summary of BblContext Class Methods:                                                            #
   def self.log_in
-    if self.client.nil?: self.client = create_client end
-    if self.session_id.nil?: self.session_id = ws_init end
-    unless self.logged_in: self.logged_in = login_tool end
-    return self.session_id
+    @context_client = create_context_client
+    if $session.nil?: $session = ws_init end
+    login_tool
   end # log_in
 
   ########################################### Private Methods #######################################
@@ -99,8 +105,8 @@ class BblContext < ActiveRecord::Base
   def login_tool
     login_uniq = Time.now.strftime("context_login_%m_%d_%Y_%H_%M_%S")
     
-    login_resp = self.client.request :loginTool do
-      wsse.credentials "session", self.session_id
+    login_resp = @context_client.request :loginTool do
+      wsse.credentials "session", $session
       wsse.created_at = Time.now.utc + 10800
       wsse.expires_at = Time.now.utc + 10860
       soap.namespaces["xmlns:wsa"] = "http://www.w3.org/2005/08/addressing"
@@ -127,7 +133,7 @@ class BblContext < ActiveRecord::Base
     # future calls to the context webservice. The session is used by setting the wsse.credentials to
     # 'wsse.credentials "session", session_id'
     init_uniq = Time.now.strftime("context_initialize_%m_%d_%Y_%H_%M_%S")
-    init_resp = self.client.request :initialize do  
+    init_resp = @context_client.request :initialize do  
       wsse.credentials "session", "nosession"
       wsse.created_at = Time.now.utc + 10800
       wsse.expires_at = Time.now.utc + 10860
@@ -145,7 +151,7 @@ class BblContext < ActiveRecord::Base
     return session_id  
   end # ws_init
   
-  def create_client
+  def create_context_client
     # Creates a new savon connection agent to be used for making web service calls to the context
     # wsdl on the server.
     client = Savon::Client.new 
@@ -153,5 +159,5 @@ class BblContext < ActiveRecord::Base
     client.wsdl.endpoint = AppConfig.bbl_context_endpoint
     client.wsdl.namespace = "http://context.ws.blackboard/"
     return client
-  end # create_client
+  end # create_context_client
 end # class BblContext

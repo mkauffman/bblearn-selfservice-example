@@ -17,6 +17,8 @@ span class="re0"> common: &common
  bbl_course_document: https://lms-temp.csuchico.edu/webapps/ws/services/Course.WS?wsdl
  bbl_user_endpoint: https://lms-temp.csuchico.edu/webapps/ws/services/User.WS
  bbl_user_document: https://lms-temp.csuchico.edu/webapps/ws/services/User.WS?wsdl
+ bbl_content_endpoint: https://lms-temp.csuchico.edu/webapps/ws/services/Content.WS
+ bbl_content_document: https://lms-temp.csuchico.edu/webapps/ws/services/Content.WS?wsdl
  bbl_tool_pass: atec!d1rn
  bbl_registration_pass: pass1234
  # BBL variables end

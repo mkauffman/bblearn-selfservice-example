@@ -1,90 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<env:Envelope xmlns:wsdl="http://context.ws.blackboard/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:env="http://schemas.xmlsoap.org/soap/envelope/">
+<env:Envelope xmlns:wsdl="http://user.ws.blackboard/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:env="http://schemas.xmlsoap.org/soap/envelope/">
     <env:Header>
         <wsa:Action>
-            registerTool
+            initializeContentWS
         </wsa:Action>
         <wsa:MessageID>
-            context_register_04_12_2011_15_47_47
+            user_initialize_04_21_2011_15_29_46
         </wsa:MessageID>
         <wsa:To>
-            https://lms-temp.csuchico.edu/webapps/ws/services/Context.WS
+            https://lms-temp.csuchico.edu/webapps/ws/services/Content.WS
         </wsa:To>
         <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
             <wsu:Timestamp>
                 <wsu:Expires>
-                    2011-04-13T01:48:47Z
+                    2011-04-22T01:30:47Z
                 </wsu:Expires>
                 <wsu:Created>
-                    2011-04-13T01:47:47Z
+                    2011-04-22T01:29:47Z
                 </wsu:Created>
             </wsu:Timestamp>
-            <wsse:UsernameToken wsu:Id="UsernameToken-2" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+            <wsse:UsernameToken wsu:Id="UsernameToken-1" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
                 <wsse:Username>
                     session
                 </wsse:Username>
                 <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">
-                    d06cc5be11d44dc5b8e688a368c0f6af
+                    nosession
                 </wsse:Password>
             </wsse:UsernameToken>
         </wsse:Security>
     </env:Header>
     <env:Body>
-        <ns:registerTool xmlns:ns3="http://context.ws.blackboard">
-            <ns3:registerTool xmlns:ns3="http://context.ws.blackboard">
-                <ns3:clientVendorId>
-                    CSU_CHICO
-                </ns3:clientVendorId>
-                <ns3:clientProgramId>
-                    RAILS_BBL_SS
-                </ns3:clientProgramId>
-                <ns3:registrationPassword>
-                    pass1234
-                </ns3:registrationPassword>
-                <ns3:description>
-                    Migration tool web service consumer
-                </ns3:description>
-                <ns3:initialSharedSecret>
-                    atec!d1rn
-                </ns3:initialSharedSecret>
-                <ns3:requiredToolMethods>
-                    Context.WS:*
-                </ns3:requiredToolMethods>
-                <ns3:requiredToolMethods>
-                    Course.WS:*
-                </ns3:requiredToolMethods>
-                <ns3:requiredToolMethods>
-                    User.WS:*
-                </ns3:requiredToolMethods>
-                <ns3:requiredToolMethods>
-                    CourseMembership.WS:*
-                </ns3:requiredToolMethods>
-            </ns3:registerTool>
-        </ns:registerTool>
+        <intializeContentWS>
+        </intializeContentWS>
     </env:Body>
 </env:Envelope>
-
-
-<?xml version='1.0' encoding='UTF-8'?>
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wsa="http://www.w3.org/2005/08/addressing">
-    <soapenv:Header>
-        <wsa:Action>
-            http://context.ws.blackboard/Context/registerToolResponse
-        </wsa:Action>
-        <wsa:RelatesTo>
-            context_register_04_12_2011_15_47_47
-        </wsa:RelatesTo>
-    </soapenv:Header>
-    <soapenv:Body>
-        <ns:registerToolResponse xmlns:ns="http://context.ws.blackboard">
-            <ns:return xmlns:ax27="http://ws.platform.blackboard/xsd" xmlns:ax28="http://context.ws.blackboard/xsd" type="blackboard.ws.context.RegisterToolResultVO">
-                <ax28:failureErrors xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
-                <ax28:proxyToolGuid>
-                </ax28:proxyToolGuid>
-                <ax28:status>
-                    true
-                </ax28:status>
-            </ns:return>
-        </ns:registerToolResponse>
-    </soapenv:Body>
-</soapenv:Envelope>
