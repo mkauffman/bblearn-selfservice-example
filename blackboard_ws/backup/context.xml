@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<env:Envelope 
+xmlns:env="http://schemas.xmlsoap.org/soap/envelope/"
+xmlns:wsdl="http://context.ws.blackboard/" 
+xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" 
+xmlns:wsa="http://www.w3.org/2005/08/addressing">
+    <env:Header>
+        <wsa:Action>
+        </wsa:Action>
+        <wsa:MessageID>
+        </wsa:MessageID>
+        <wsa:To>
+	https://lms-temp.csuchico.edu/webapps/ws/services/Context.WS
+        </wsa:To>
+        <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+            <wsu:Timestamp>
+                <wsu:Expires>
+                </wsu:Expires>
+                <wsu:Created>
+                </wsu:Created>
+            </wsu:Timestamp>
+            <wsse:UsernameToken wsu:Id="UsernameToken-1" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+                <wsse:Username>
+		session
+                </wsse:Username>
+                <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">
+                </wsse:Password>
+            </wsse:UsernameToken>
+        </wsse:Security>
+    </env:Header>
+    <env:Body>
+    </env:Body>
+</env:Envelope>
