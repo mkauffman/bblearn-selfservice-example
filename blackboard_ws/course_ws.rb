@@ -12,26 +12,30 @@ attr_reader :client, :ses_password
 
     def initialize(session_id)
         @client                       = Savon::Client.new
-        @client.wsdl.document         = DOCUMENT
-        @client.wsdl.endpoint         = ENDPOINT
-        @client.wsdl.namespace        = SERVICE
+        @client.wsdl.document         = C_DOCUMENT
+        @client.wsdl.endpoint         = C_ENDPOINT
+        @client.wsdl.namespace        = C_SERVICE
 		@ses_password = session_id
     end
 
+    def message_id
+        message_uniq = Time.now.strftime("context_initialize_%m_%d_%Y_%H_%M_%S") 
+    end
+#Working Method
     def ws_change_course_data_source_id(op={})
         ses_id   = @ses_password
         response = @client.request :changeCourseDataSourceId do
             wsse.credentials ses_id
-            soap.namespaces["xmlns:cour"] = SERVICE
+            soap.namespaces["xmlns:cour"] = C_SERVICE
             soap.header = { 
-                          "wsa:To"          => ENDPOINT, 
+                          "wsa:To"          => C_ENDPOINT, 
                           "wsa:MessageID"   => message_id,
                           "wsa:Action"      => "changeCourseDataSourceId"
                           }
-            soap.input  = ["user:changeCourseDataSourceId", {"xmlns:cour" => SERVICE}]
+            soap.input  = ["user:changeCourseDataSourceId", {"xmlns:cour" => C_SERVICE}]
             soap.body   = {
-                          "cour:courseId"           => op[:course_id],
-                          "cour:newDataSourceId"    => op[:data_id]
+                          "cour:courseId"           => op[:course_id]   || 324,
+                          "cour:newDataSourceId"    => op[:data_id]     || 61
                           }
         end
     end
@@ -40,18 +44,18 @@ attr_reader :client, :ses_password
         ses_id   = @ses_password
         response = @client.request :createCourse do
             wsse.credentials ses_id
-            soap.namespaces["xmlns:cour"] = SERVICE
+            soap.namespaces["xmlns:xsd"] = C_SERVICE
             soap.header = { 
-                          "wsa:To"          => ENDPOINT, 
+                          "wsa:To"          => C_ENDPOINT, 
                           "wsa:MessageID"   => message_id,
                           "wsa:Action"      => "createCourse"
                           }
-            soap.input  = ["cour:createCourse", {"xmlns:cour" => SERVICE}]
+            soap.input  = ["cour:createCourse", {"xmlns:cour" => C_SERVICE}]
             soap.body   =  {        
                             "cour:c" =>   {
-                                "xsd:allowGuests"           => op[:guests]      || true,
-                                "xsd:allowObservers"        => op[:observers]   || true,
-                                "xsd:available"             => op[:available]   || true,
+                                "xsd:allowGuests"           => op[:guests]      || nil,
+                                "xsd:allowObservers"        => op[:observers]   || nil,
+                                "xsd:available"             => op[:available]   || nil,
                                 "xsd:batchUid"              => op[:batch_id]    || nil,
                                 "xsd:buttonStyleBbId"       => op[:btn_id]      || nil,
                                 "xsd:buttonStyleShape"      => op[:btn_style]   || nil,
@@ -59,7 +63,7 @@ attr_reader :client, :ses_password
                                 "xsd:cartridgeId"           => op[:cart_id]     || nil,
                                 "xsd:classificationId"      => op[:class_id]    || nil,
                                 "xsd:courseDuration"        => op[:duration]    || nil,
-                                "xsd:courseId"              => op[:crse_id]     || nil,
+                                "xsd:courseId"              => op[:crse_id]     || "This new course1020",
                                 "xsd:coursePace"            => op[:crse_pace]   || nil,
                                 "xsd:courseServiceLevel"    => op[:crse_level]  || nil,
                                 "xsd:dataSourceId"          => op[:data_id]     || nil,
@@ -78,14 +82,14 @@ attr_reader :client, :ses_password
                                 "xsd:locale"                => op[:locale]      || nil,
                                 "xsd:localeEnforced"        => op[:loc_enf]     || nil,
                                 "xsd:lockedOut"             => op[:locked_out]  || nil,
-                                "xsd:name"                  => op[:name]        || nil,
+                                "xsd:name"                  => op[:name]        || "Mwoods Testing Course",
                                 "xsd:navCollapsable"        => op[:nav_cllpe]   || nil,
                                 "xsd:navColorBg"            => op[:nav_clr_bg]  || nil,
                                 "xsd:navColorFg"            => op[:nav_clr_fg]  || nil,
                                 "xsd:navigationStyle"       => op[:nav_style]   || nil,
                                 "xsd:numberOfDaysOfUse"     => op[:num_of_days] || nil,
                                 "xsd:organization"          => op[:org]         || nil,
-                                "xsd:showInCatalog"         => op[:show_in_cat] || true,
+                                "xsd:showInCatalog"         => op[:show_in_cat] || nil,
                                 "xsd:softLimit"             => op[:soft_limit]  || nil,
                                 "xsd:startDate"             => op[:start_date]  || nil,
                                 "xsd:uploadLimit"           => op[:upload_lim]  || nil
@@ -98,14 +102,14 @@ attr_reader :client, :ses_password
         ses_id   = @ses_password
         response = @client.request :deleteCourse do
             wsse.credentials ses_id
-            soap.namespaces["xmlns:cour"]   =  SERVICE
+            soap.namespaces["xmlns:cour"]   =  C_SERVICE
             soap.header = { 
-                          "wsa:To"          => ENDPOINT, 
+                          "wsa:To"          => C_ENDPOINT, 
                           "wsa:MessageID"   => message_id,
                           "wsa:Action"      => "deleteCourse"
                           }
             soap.input  = ["cour:deleteCourse", 
-                          {"xmlns:cour"     => SERVICE}]
+                          {"xmlns:cour"     => C_SERVICE}]
             soap.body   = {"cour:id"        => op[:id]}
         end
     end
@@ -114,14 +118,14 @@ attr_reader :client, :ses_password
         ses_id   = @ses_password
         response = @client.request :getCourse do
             wsse.credentials ses_id
-            soap.namespaces["xmlns:cour"]   =  SERVICE
+            soap.namespaces["xmlns:cour"]   =  C_SERVICE
             soap.header = { 
-                          "wsa:To"          => ENDPOINT, 
+                          "wsa:To"          => C_ENDPOINT, 
                           "wsa:MessageID"   => message_id,
                           "wsa:Action"      => "getCourse"
                           }
             soap.input  = ["cour:getCourse", 
-                          {"xmlns:cour"     => SERVICE}]
+                          {"xmlns:cour"     => C_SERVICE}]
             soap.body   = { 
                           "cour:filter" =>  {
                             "xsd:available"                 => op[:available_f]   ||  true,
@@ -185,18 +189,18 @@ attr_reader :client, :ses_password
                             }
         end
     end
-
+#Working Method
     def ws_initialize_course(op={})
         ses_id   = @ses_password
         response = @client.request :initializeCourseWS do
             wsse.credentials ses_id
-            soap.namespaces["xmlns:cour"] = SERVICE
+            soap.namespaces["xmlns:cour"] = C_SERVICE
             soap.header = { 
-                          "wsa:To"          => ENDPOINT, 
+                          "wsa:To"          => C_ENDPOINT, 
                           "wsa:MessageID"   => message_id,
                           "wsa:Action"      => "initializeCourseWS"
                           }
-            soap.input  = ["cour:initializeCourseWS", {"xmlns:cour" => SERVICE}]
+            soap.input  = ["cour:initializeCourseWS", {"xmlns:cour" => C_SERVICE}]
             soap.body   = {
                            "cour:ignore"        => op[:ignore] || true
                           }
@@ -207,18 +211,18 @@ attr_reader :client, :ses_password
         ses_id   = @ses_password
         response = @client.request :saveCourse do
             wsse.credentials ses_id
-            soap.namespaces["xmlns:cour"] = SERVICE
+            soap.namespaces["xmlns:xsd"] = C_SERVICE
             soap.header = { 
-                          "wsa:To"          => ENDPOINT, 
+                          "wsa:To"          => C_ENDPOINT, 
                           "wsa:MessageID"   => message_id,
                           "wsa:Action"      => "saveCourse"
                           }
-            soap.input  = ["cour:saveCourse", {"xmlns:cour" => SERVICE}]
+            soap.input  = ["cour:saveCourse", {"xmlns:cour" => C_SERVICE}]
             soap.body   = {
                             "cour:c" =>   {
-                                "xsd:allowGuests"           => op[:guests]      || true,
-                                "xsd:allowObservers"        => op[:observers]   || true,
-                                "xsd:available"             => op[:available]   || true,
+                                "xsd:allowGuests"           => op[:guests]      || nil,
+                                "xsd:allowObservers"        => op[:observers]   || nil,
+                                "xsd:available"             => op[:available]   || nil,
                                 "xsd:batchUid"              => op[:batch_id]    || nil,
                                 "xsd:buttonStyleBbId"       => op[:btn_id]      || nil,
                                 "xsd:buttonStyleShape"      => op[:btn_style]   || nil,
@@ -226,7 +230,7 @@ attr_reader :client, :ses_password
                                 "xsd:cartridgeId"           => op[:cart_id]     || nil,
                                 "xsd:classificationId"      => op[:class_id]    || nil,
                                 "xsd:courseDuration"        => op[:duration]    || nil,
-                                "xsd:courseId"              => op[:crse_id]     || nil,
+                                "xsd:courseId"              => op[:crse_id]     || "test course",
                                 "xsd:coursePace"            => op[:crse_pace]   || nil,
                                 "xsd:courseServiceLevel"    => op[:crse_level]  || nil,
                                 "xsd:dataSourceId"          => op[:data_id]     || nil,
@@ -245,14 +249,14 @@ attr_reader :client, :ses_password
                                 "xsd:locale"                => op[:locale]      || nil,
                                 "xsd:localeEnforced"        => op[:loc_enf]     || nil,
                                 "xsd:lockedOut"             => op[:locked_out]  || nil,
-                                "xsd:name"                  => op[:name]        || nil,
+                                "xsd:name"                  => op[:name]        || "mwoods Test Class",
                                 "xsd:navCollapsable"        => op[:nav_cllpe]   || nil,
                                 "xsd:navColorBg"            => op[:nav_clr_bg]  || nil,
                                 "xsd:navColorFg"            => op[:nav_clr_fg]  || nil,
                                 "xsd:navigationStyle"       => op[:nav_style]   || nil,
                                 "xsd:numberOfDaysOfUse"     => op[:num_of_days] || nil,
                                 "xsd:organization"          => op[:org]         || nil,
-                                "xsd:showInCatalog"         => op[:show_in_cat] || true,
+                                "xsd:showInCatalog"         => op[:show_in_cat] || nil,
                                 "xsd:softLimit"             => op[:soft_limit]  || nil,
                                 "xsd:startDate"             => op[:start_date]  || nil,
                                 "xsd:uploadLimit"           => op[:upload_lim]  || nil
@@ -265,13 +269,13 @@ attr_reader :client, :ses_password
         ses_id   = @ses_password
         response = @client.request :updateCourse do
             wsse.credentials ses_id
-            soap.namespaces["xmlns:cour"] = SERVICE
+            soap.namespaces["xmlns:cour"] = C_SERVICE
             soap.header = { 
-                          "wsa:To"          => ENDPOINT, 
+                          "wsa:To"          => C_ENDPOINT, 
                           "wsa:MessageID"   => message_id,
                           "wsa:Action"      => "updateCourse"
                           }
-            soap.input  = ["cour:updateCourse", {"xmlns:cour" => SERVICE}]
+            soap.input  = ["cour:updateCourse", {"xmlns:cour" => C_SERVICE}]
             soap.body   =  {
                             "cour:c" =>   {
                                 "xsd:allowGuests"           => op[:guests]      || true,

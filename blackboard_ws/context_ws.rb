@@ -48,9 +48,9 @@ attr_reader :client, :ses_password
                           }
             soap.input  = ["bbl:loginTool", {"xmlns:bbl" => SERVICE}]
             soap.body   = {
-                         "bbl:password"             => nil, 
-                         "bbl:clientVendorId"       => nil,
-                         "bbl:clientProgramId"      => nil,
+                         "bbl:password"             => "atec!d1rn", 
+                         "bbl:clientVendorId"       => "CSU_CHICO",
+                         "bbl:clientProgramId"      => "TESTING_BBL_SS",
                          "bbl:loginExtraInfo"       => nil,
                          "bbl:expectedLifeSeconds"  => 3600,
                          :order!                    => ["bbl:password", 

@@ -15,7 +15,10 @@ class Main
 
     con.ws_login_tool
     con.ws_emulate_user
-    crs.ws_course_initialize
+    crs.ws_initialize_course
+    crs.ws_save_course
+#    usr.ws_user_initialize
+#    usr.ws_save_user
 
 end
 	
