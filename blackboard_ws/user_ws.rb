@@ -23,7 +23,7 @@ attr_reader :client, :ses_password
         message_uniq = Time.now.strftime("context_initialize_%m_%d_%Y_%H_%M_%S") 
     end
 #Working Method
-    def ws_user_initialize(op={})
+    def ws_initialize_user(op={})
         ses_id   = @ses_password
         response = @client.request :initializeUserWS do
             wsse.credentials ses_id
@@ -86,12 +86,12 @@ attr_reader :client, :ses_password
                             "user:filter"   =>  {
                                "xsd:available"      => op[:available]   || true,
                                "xsd:batchId"        => op[:batch_id]    || nil,
-                               "xsd:courseId"       => op[:course_id]   || nil,
+                               "xsd:courseId"       => op[:course_id]   || "_375_1",
                                "xsd:expansionData"  => op[:expan_data]  || nil,
-                               "xsd:filterType"     => op[:filter]      || 6,
+                               "xsd:filterType"     => op[:filter]      || 4,
                                "xsd:groupId"        => op[:group_id]    || nil,
                                "xsd:id"             => op[:id]          || nil,
-                               "xsd:name"           => op[:name]        || "mwood14",
+                           #    "xsd:name"           => op[:name]        || "mwood14",
                                "xsd:systemRoles"    => op[:sys_roles]   || nil,
                                                 }
                            }
@@ -163,7 +163,7 @@ attr_reader :client, :ses_password
                             "xsd:id"                => op[:id]          || nil,
                             "xsd:insRoles"          => op[:ins_roles]   || nil,
                             "xsd:isAvailable"       => op[:available]   || true,
-                            "xsd:name"              => op[:name]        || "zest",
+                            "xsd:name"              => op[:name]        || "zoonie",
                             "xsd:password"          => op[:password]    || "test123",
                             "xsd:studentId"         => op[:student_id]  || "testin",
                             "xsd:systemRoles"       => op[:sys_roles]   || nil, 

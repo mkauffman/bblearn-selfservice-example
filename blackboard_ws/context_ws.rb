@@ -172,7 +172,7 @@ attr_reader :client, :ses_password
             soap.body   = {"bbl:addtionalSeconds" => op[:seconds] || 3600}
         end
     end
-
+#Working Method
     def ws_get_memberships(op={})
         ses_id   = @ses_password
         response = @client.request :getMemberships do
@@ -184,7 +184,7 @@ attr_reader :client, :ses_password
                           "wsa:Action"      => "getMemberships" 
                           }
             soap.input  = ["bbl:getMemberships", {"xmlns:bbl" => SERVICE}]
-            soap.body   = {"bbl:userid" => op[:userid]}
+            soap.body   = {"bbl:userid" => op[:userid] || "zoonie"}
         end
     end
 
