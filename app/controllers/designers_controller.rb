@@ -1,5 +1,4 @@
 class DesignersController < ApplicationController
-  include Validations
   
   def index
   end # index

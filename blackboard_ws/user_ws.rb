@@ -22,6 +22,36 @@ attr_reader :client, :ses_password
     def message_id
         message_uniq = Time.now.strftime("context_initialize_%m_%d_%Y_%H_%M_%S") 
     end
+
+    def user_information(html)
+        user_info = [ "birthDate", "", "dataSourceId", "",
+                      "educationLevel", "" , "businessFax",
+                      "", "businessPhone1","" , "businessPhone2",
+                      "", "city","", "company","", "country", 
+                      "", "country","", "department","", "emailAddress",
+                      "", "familyName","", "givenName","", "homeFax",
+                      "", "homePhone1","","homePhone2","" , "jobTitle",
+                      "", "middleName","", "mobilePhone","" , "state", 
+                      "", "street1","", "street2","" , "webPage",
+                      "", "zipCode","", "genderType","" , "id",
+                      "", "insRoles","", "isAvailable","" , "name",
+                      "", "password","", "studentId","", "systemRoles",
+                      "", "title","", "userBatchUid", ""
+                    ]
+
+        user_hash = Hash.new
+        user_info.each do |k,v|
+            session_reg = /([^><:]+)(?=<\/ax220:#{k}>)/
+            unless session_reg.match(html).to_s.empty?
+                user_hash[k] = session_reg.match(html).to_s
+            end
+        end
+        user_hash.each do |k,v|
+            puts "#{k}: #{v}"
+        end
+        user_hash
+    end
+
 #Working Method
     def ws_initialize_user(op={})
         ses_id   = @ses_password
@@ -96,8 +126,7 @@ attr_reader :client, :ses_password
                                                 }
                            }
         end
-        session_reg = /([^><]+)(?=<\/ns:return>)/
-        users = response.http.body.scan(session_reg)
+        user_information(response.http.body)
     end
 
 #Working Method
@@ -173,5 +202,5 @@ attr_reader :client, :ses_password
                             }
                 end
     end
-
+    
 end

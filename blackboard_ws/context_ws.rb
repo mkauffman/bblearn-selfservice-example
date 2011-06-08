@@ -108,8 +108,8 @@ attr_reader :client, :ses_password
                           }
             soap.input  = ["bbl:login", {"xmlns:bbl" => SERVICE}]
             soap.body   = {
-                         "bbl:userid"               => op[:user_id]     || "tester",
-                         "bbl:password"             => op[:password]    || nil,
+                         "bbl:userid"               => op[:user_id]     || "zoonie",
+                         "bbl:password"             => op[:password]    || "test123",
                          "bbl:clientVendorId"       => op[:vendor_id]   || 'CSU_CHICO',
                          "bbl:clientProgramId"      => op[:program_id]  || 'RAILS_BBL_SS',
                          "bbl:loginExtraInfo"       => op[:extra]       || nil,
