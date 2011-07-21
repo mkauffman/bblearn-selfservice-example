@@ -2,12 +2,78 @@ span class="re0"> common: &common
  vista_db_user: vistasupport
  tp_extract_post_url: http://clebra.csuchico.edu/download.aspx
  siapi_secret: guS5fezesTaUAuzkBM9cpRdq5wr6phay
- # siapi_secret must be 32 characters long
  siapi_glcid: URN:X-WEBCT-VISTA-V1:4e5f2e6f-84f1-fb85-0099-504b31d0e1d7
  siapi_adapter: ims
  siapi_action: import
  siapi_option: restrict
- 
+
+ #PERMISSIONS
+ perm_proxy: admin,tlp,tlp_admin
+ perm_migration: admin,tlp,tlp_admin,lrncrt
+ perm_helpdesk: admin,tlp_admin
+
+production:
+ <<: *common
+ environment: production
+ view_my_webct_url: https://vista.csuchico.edu/webct/urw/ssCSUC/viewMyWebCT.dowebct
+ siapi_post_url: https://vista.csuchico.edu/webct/systemIntegrationApi.dowebct
+ vista_db_password: noneofyourbusiness
+ vista_db_string: //lmsdb1.csuchico.edu:1521/lmsdb1.lmsdb2.csuchico.edu
+
+  # BBL variables begin
+ bbl_context_endpoint: https://lms-temp.csuchico.edu/webapps/ws/services/Context.WS
+ bbl_context_document: https://lms-temp.csuchico.edu/webapps/ws/services/Context.WS?wsdl
+ bbl_course_mem_endpoint: https://lms-temp.csuchico.edu/webapps/ws/services/CourseMembership.WS
+ bbl_course_mem_document: https://lms-temp.csuchico.edu/webapps/ws/services/CourseMembership.WS?wsdl
+ bbl_course_endpoint: https://lms-temp.csuchico.edu/webapps/ws/services/Course.WS
+ bbl_course_document: https://lms-temp.csuchico.edu/webapps/ws/services/Course.WS?wsdl
+ bbl_user_endpoint: https://lms-temp.csuchico.edu/webapps/ws/services/User.WS
+ bbl_user_document: https://lms-temp.csuchico.edu/webapps/ws/services/User.WS?wsdl
+ bbl_content_endpoint: https://lms-temp.csuchico.edu/webapps/ws/services/Content.WS
+ bbl_content_document: https://lms-temp.csuchico.edu/webapps/ws/services/Content.WS?wsdl
+ bbl_tool_pass: atec!d1rn
+ bbl_registration_pass: pass1234
+ bbl_db_string: //lmsdb2.csuchico.edu:1521/bbtest.lmsdb2.csuchico.edu
+ bbl_db_user: learnsupport
+ bbl_db_password: adm1nIZ34
+ bbl_db_table: BBLEARN
+ # BBL variables end
+
+staging:
+ <<: *common
+ environment: staging
+ vista_db_password: adm1nIZ34
+ vista_db_string: //lmsdb2.csuchico.edu:1521/stage1.lmsdb2.csuchico.edu
+ view_my_webct_url: https://vista-staging.csuchico.edu/webct/urw/ssCSUC/viewMyWebCT.dowebct
+ siapi_post_url: https://vista-staging.csuchico.edu/webct/systemIntegrationApi.dowebct
+
+  # BBL variables begin
+ bbl_context_endpoint: https://lms-temp.csuchico.edu/webapps/ws/services/Context.WS
+ bbl_context_document: https://lms-temp.csuchico.edu/webapps/ws/services/Context.WS?wsdl
+ bbl_course_mem_endpoint: https://lms-temp.csuchico.edu/webapps/ws/services/CourseMembership.WS
+ bbl_course_mem_document: https://lms-temp.csuchico.edu/webapps/ws/services/CourseMembership.WS?wsdl
+ bbl_course_endpoint: https://lms-temp.csuchico.edu/webapps/ws/services/Course.WS
+ bbl_course_document: https://lms-temp.csuchico.edu/webapps/ws/services/Course.WS?wsdl
+ bbl_user_endpoint: https://lms-temp.csuchico.edu/webapps/ws/services/User.WS
+ bbl_user_document: https://lms-temp.csuchico.edu/webapps/ws/services/User.WS?wsdl
+ bbl_content_endpoint: https://lms-temp.csuchico.edu/webapps/ws/services/Content.WS
+ bbl_content_document: https://lms-temp.csuchico.edu/webapps/ws/services/Content.WS?wsdl
+ bbl_tool_pass: atec!d1rn
+ bbl_registration_pass: pass1234
+ bbl_db_string: //lmsdb2.csuchico.edu:1521/bbtest.lmsdb2.csuchico.edu
+ bbl_db_user: learnsupport
+ bbl_db_password: adm1nIZ34
+ bbl_db_table: BBLEARN2
+ # BBL variables end
+
+development:
+ <<: *common
+ environment: development
+ vista_db_password: adm1nIZ34
+ vista_db_string: //lmsdb2.csuchico.edu:1521/stage1.lmsdb2.csuchico.edu
+ view_my_webct_url: https://vista-staging.csuchico.edu/webct/urw/ssCSUC/viewMyWebCT.dowebct
+ siapi_post_url: https://vista-staging.csuchico.edu/webct/systemIntegrationApi.dowebct
+
  # BBL variables begin
  bbl_context_endpoint: https://lms-temp.csuchico.edu/webapps/ws/services/Context.WS
  bbl_context_document: https://lms-temp.csuchico.edu/webapps/ws/services/Context.WS?wsdl
@@ -21,45 +87,9 @@ span class="re0"> common: &common
  bbl_content_document: https://lms-temp.csuchico.edu/webapps/ws/services/Content.WS?wsdl
  bbl_tool_pass: atec!d1rn
  bbl_registration_pass: pass1234
+ bbl_db_string: //lmsdb2.csuchico.edu:1521/bbtest.lmsdb2.csuchico.edu
+ bbl_db_user: learnsupport
+ bbl_db_password: adm1nIZ34
+ bbl_db_table: BBLEARN2
  # BBL variables end
- 
-browsers:
-    firefox: 'c:\Program Files\Mozilla Firefox\firefox.exe'
 
-production:
- <<: *common
- environment: production
- root_url: apphost.csuchico.edu
- view_my_webct_url: https://vista.csuchico.edu/webct/urw/ssCSUC/viewMyWebCT.dowebct
- siapi_post_url: https://vista.csuchico.edu/webct/systemIntegrationApi.dowebct 
- #vista_db_password: may the
- vista_db_string: //lmsdb1.csuchico.edu:1521/lmsdb1.lmsdb1.csuchico.edu
-
-staging:
- <<: *common
- environment: staging
-# The password, and the rest of this file are deployed into the shared directory on the target staging server. shared/config.yml gets copied over this file on
-cap deploy staging.
-  vista_db_password: ##### 
-  vista_db_string: //lmsdb2.csuchico.edu/stage1.lmsdb2.csuchico.edu
-  view_my_webct_url: https://vista-staging.csuchico.edu/webct/urw/ssCSUC/viewMyWebCT.dowebct
-  siapi_post_url: https://vista-staging.csuchico.edu/webct/systemIntegrationApi.dowebct
-
-test:
- <<: *common
- environment: test
- root_url: apphostdev.csuchico.edu
- view_my_webct_url: https://vista-staging.csuchico.edu/webct/urw/ssCSUC/viewMyWebCT.dowebct
- siapi_post_url: https://vista-staging.csuchico.edu/webct/systemIntegrationApi.dowebct
- #vista_db_password: may the
- #vista_db_string: //lmsdb1.csuchico.edu:1521/lmsdb1.lmsdb1.csuchico.edu
- 
-development:
- <<: *common
- #environment: production
- environment: development
- root_url: localhost:3000
- vista_db_password: adm1nIZ34
- vista_db_string: //lmsdb2.csuchico.edu:1521/stage1.lmsdb2.csuchico.edu
- view_my_webct_url: https://vista-staging.csuchico.edu/webct/urw/ssCSUC/viewMyWebCT.dowebct
- siapi_post_url: https://vista-staging.csuchico.edu/webct/systemIntegrationApi.dowebct

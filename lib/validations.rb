@@ -24,6 +24,10 @@ module Validations
     return false if !validate_enrollment(webct_id, section_id)
     return true
   end
+  
+  def validate_act_as
+    
+  end
 
   def validate_expressions(string, params)
     filter = '[^-_,@\s:A-Za-z0-9]'
@@ -46,7 +50,7 @@ module Validations
       problem = true
     end #if match
     if problem
-      redirect_to(:controller => "selfservice", :action => "problem") and return
+      redirect_to(:controller => "application", :action => "problem") and return
     else
       return true
     end # if problem
@@ -75,7 +79,7 @@ module Validations
       end
     end
     if problem == true
-      redirect_to(:controller => "selfservice", :action => "already_enrolled") and return false
+      redirect_to(:controller => "application", :action => "already_enrolled") and return false
     else
       return true
     end
@@ -97,7 +101,7 @@ module Validations
       end # if webct_id kind of
     end # for webct_id
     if problem
-      redirect_to(:controller => "selfservice", :action => "portal_id_failure") and return false
+      redirect_to(:controller => "application", :action => "not_allowed") and return false
     else
       return true
     end # if problem
@@ -106,7 +110,7 @@ module Validations
   def validate_permissions(section)
     db_sect_ary = Section.find_sections_by_primary_instructor_id(session[:on_behalf_of])
     if (db_sect_ary.select{|sect| sect.section_id == section}.empty?)
-      redirect_to(:controller => "selfservice", :action => "permission") and return false
+      redirect_to(:controller => "application", :action => "permission") and return false
     else
       return true
     end # if db_sec_ary select

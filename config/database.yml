@@ -18,14 +18,14 @@ development:
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: dlt_vista_development #mbk 101011 fix for local test
+  database: dlt_vista_development
   pool: 5
-  #username: root
-  #password: d0gstar2
-  #host: localhost
   username: dltservice
   password: eMyEZQc4ev5zeBbm
   host: apphostdev.csuchico.edu
+  #username: root
+  #password: d0gstar2
+  #host: localhost
 
 staging:
   adapter: mysql
@@ -33,30 +33,6 @@ staging:
   reconnect: false
   database: dlt_vista_development
   pool: 5
-  username: dltservice
-# This password is not used.  This file gets copied over on the staging server
-# when cap staging deploy runs.
-  password: #########
-  host: localhost
-   
-vista_db:
-    adapter: oracle
-    database: lmsdb2.csuchico.edu:1521/stage1.lmsdb2.csuchico.edu
-    username: vistasupport
-    password: adm1nIZ34
-
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
-test:
-  adapter: mysql
-  encoding: utf8
-  reconnect: false
-  database: dlt_vista_test 
-  pool: 5
-  #username: root
-  #password: d0gstar2
-  #host: localhost
   username: dltservice
   password: eMyEZQc4ev5zeBbm
   host: apphostdev.csuchico.edu
@@ -69,4 +45,24 @@ production:
   pool: 5
   username: dltservice
   password: eMyEZQc4ev5zeBbm
+  host: localhost # apphostdev.csuchico.edu
+
+vista_db:
+    adapter: oracle
+    database: lmsdb2.csuchico.edu:1521/stage1 #stage2
+    username: vistasupport
+    password: adm1nIZ34
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  adapter: mysql
+  encoding: utf8
+  reconnect: false
+  database: dlt_vista_test
+  pool: 5
+  username: root
+  password: d0gstar2
   host: localhost
+

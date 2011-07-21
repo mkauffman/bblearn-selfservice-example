@@ -15,29 +15,29 @@ attr_reader :client, :ses_password
         @client.wsdl.document         = CM_DOCUMENT
         @client.wsdl.endpoint         = CM_ENDPOINT
         @client.wsdl.namespace        = CM_SERVICE
-		@ses_password                 = session_id
+        @ses_password                 = session_id
     end
 
     def message_id
-        message_uniq = Time.now.strftime("context_initialize_%m_%d_%Y_%H_%M_%S") 
+        message_uniq = Time.now.strftime("context_initialize_%m_%d_%Y_%H_%M_%S")
     end
-#Working Method  
+#Working Method
     def ws_save_course_membership(op={})
         ses_id   = @ses_password
         response = @client.request :saveCourseMembership do
             wsse.credentials ses_id
-            soap.namespaces["xmlns:xsd"] = CM_SERVICE 
-            soap.header = { 
-                          "wsa:To"          => CM_ENDPOINT, 
+            soap.namespaces["xmlns:xsd"] = CM_SERVICE
+            soap.header = {
+                          "wsa:To"          => CM_ENDPOINT,
                           "wsa:MessageID"   => message_id,
-                          "wsa:Action"      => "saveCourseMembership" 
+                          "wsa:Action"      => "saveCourseMembership"
                           }
             soap.input  = ["cour:saveCourseMembership", {"xmlns:cour" => CM_SERVICE}]
             soap.body   =    {
                             "cour:courseId"     => op[:course_id]    || "_375_1",
                             "cour:cmArray"      => {
-                                "xsd:available"         =>  op[:available]    || true,
-                                "xsd:courseId"          =>  op[:cour]         || "_375_1",
+                                "xsd:available"         =>  op[:available]   || true,
+                                "xsd:courseId"          =>  op[:course_id]   || "_375_1",
                                 #"xsd:dataSourceId"      =>  op[:data_id]      || nil,
                                 #"xsd:enrollmentDate"    =>  op[:enroll_date]  || nil,
                                 #"xsd:expansionData"     =>  op[:expan_data]   || nil,
@@ -57,8 +57,8 @@ attr_reader :client, :ses_password
         response = @client.request :initializeCourseMembershipWS do
             wsse.credentials ses_id
             soap.namespaces["xmlns:cour"] = CM_SERVICE
-            soap.header = { 
-                          "wsa:To"          => CM_ENDPOINT, 
+            soap.header = {
+                          "wsa:To"          => CM_ENDPOINT,
                           "wsa:MessageID"   => message_id,
                           "wsa:Action"      => "initializeCourseMembershipWS"
                           }
@@ -74,8 +74,8 @@ attr_reader :client, :ses_password
         response = @client.request :deleteCourseMembership do
             wsse.credentials ses_id
             soap.namespaces["xmlns:cour"] = CM_SERVICE
-            soap.header = { 
-                          "wsa:To"          => CM_ENDPOINT, 
+            soap.header = {
+                          "wsa:To"          => CM_ENDPOINT,
                           "wsa:MessageID"   => message_id,
                           "wsa:Action"      => "deleteCourseMembership"
                           }
@@ -95,11 +95,11 @@ attr_reader :client, :ses_password
         ses_id   = @ses_password
         response = @client.request :getGroupMembership do
             wsse.credentials ses_id
-            soap.namespaces["xmlns:xsd"] = CM_SERVICE 
-            soap.header = { 
-                          "wsa:To"          => CM_ENDPOINT, 
+            soap.namespaces["xmlns:xsd"] = CM_SERVICE
+            soap.header = {
+                          "wsa:To"          => CM_ENDPOINT,
                           "wsa:MessageID"   => message_id,
-                          "wsa:Action"      => "getGroupMembership" 
+                          "wsa:Action"      => "getGroupMembership"
                           }
             soap.input  = ["cour:getGroupMembership", {"xmlns:cour" => CM_SERVICE}]
             soap.body   =    {
@@ -119,3 +119,4 @@ attr_reader :client, :ses_password
     end
 
 end
+
