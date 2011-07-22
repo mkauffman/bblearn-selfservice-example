@@ -1,11 +1,25 @@
 <div class="contnt">
-	Pick what you want to do below
-	<br/>
-	<%= link_to "Register Tool", :action => "register" %>
-	<br/>
-	<%= link_to "Get Memberships", :action => "get_memberships" %>
-	<br/>
-	<%= link_to "Create Course", :action => "create_course" %>
-	<br/>
-	<%= link_to "Get User", :action => "get_user" %>
+    <% @sections.each do |s| %>
+			<% link_url = url_for(:controller => "terms", :action => "edit_term",
+				:term_id => term.term_id, :description => term.description, :start_date => term.start_date,
+				:end_date => term.end_date, :current => term.current_term.to_s) %>
+            <tr>
+                <td onClick="window.location='<%= link_url %>'">
+                    <%= term.term_id %>
+                </td>
+                <td onClick="window.location='<%= link_url %>'">
+                    <%= term.description %>
+                </td>
+                <td onClick="window.location='<%= link_url %>'">
+                    <%= term.start_date %>
+                </td>
+                <td onClick="window.location='<%= link_url %>'">
+                    <%= term.end_date %>
+                </td>
+                <td onClick="window.location='<%= link_url %>'">
+                    <%= term.current_term.to_s %>
+                </td>
+        <td>
+      <% end %>
 </div>
+
