@@ -1,17 +1,17 @@
+require 'map'
+
 class Section < ActiveRecord::Base
-  attr_accessor :id, :source, :lc_id, :section_id, :short_name,
-   :long_name, :full_name, :timeframe_begin, :timeframe_restrict_begin,
-   :timeframe_end, :timeframe_restrict_end, :accept_enrollment, :datasource,
-   :parent_source, :parent_id, :template_parent_id, :template_parent_source,
-   :template_zip_or_epk_path, :template_none, :delivery_unit_type, :term_name,
-   :term_id, :admin_period, :term_datasource, :primary_instructor_name,
-   :primary_instructor_id, :admin_xlist_sect_type, :level, :created_at,
-   :updated_at, :student_list_file_name, :student_list_content_type,
-   :student_list_file_size, :student_list_updated_at, :status
+
+  def self.fill_attributes(attributes)
+    attributes.each do |key, value|
+      update_attribute key, value
+    end
+  end
+
 
   def self.find_by_user(user_id)
     sql = <<__SQL__
-    SELECT csm.COURSE_NAME
+    SELECT *
     FROM dbTable.COURSE_MAIN csm
     JOIN (SELECT csu.CRSMAIN_PK1
           FROM dbTable.COURSE_USERS csu
@@ -64,11 +64,19 @@ __SQL__
 
   def self.build_section(cursor)
     cursor.exec
+    col_names = cursor.get_col_names
+    attributes = Hash.new
     sections = Array.new
+    puts col_names.inspect
 
     while rs_row = cursor.fetch do
-      section       = Section.new
-      section.id   = rs_row[0]
+      c = col_names.reverse
+      rs_row.each do |r|
+        attributes[c.pop.downcase.to_sym] = r
+        c = c
+      end
+      section           = Section.new
+      section           = Section.fill_attributes(attributes)
       sections.push(section)
     end
 
