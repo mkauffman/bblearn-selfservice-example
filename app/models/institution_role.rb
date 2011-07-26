@@ -1,35 +1,31 @@
 class InstitutionRole < ActiveRecord::Base
 
-  def find_by_section
-  end
-
-  def find_by_user_and_section(user_id,course_id)
+  def find_by_user(user_id)
     sql = <<__SQL__
-        SELECT csu.PK1
-        FROM BBLEARN2.COURSE_USERS csu
+    SELECT ins.ROLE_ID
+    FROM BBLEARN.INSTITUTION_ROLES ins
+    JOIN (SELECT rls.INSTITUTION_ROLES_PK1
+          FROM BBLEARN.USER_ROLES rls
+          JOIN (SELECT PK1
+                FROM BBLEARN.USERS
+                WHERE USER_ID = :user_id) usr
+          ON rls.USERS_PK1 = usr.PK1) irl
+    ON ins.PK1 = irl.INSTITUTION_ROLES_PK1
 
-        JOIN (SELECT PK1
-        FROM BBLEARN2.USERS
-        WHERE USER_ID = :user_id) usr
-        ON csu.USERS_PK1 = usr.PK1
+    UNION
 
-        JOIN (SELECT PK1
-        FROM BBLEARN2.COURSE_MAIN
-        WHERE COURSE_ID = :course_id) crs
-        ON csu.CRSMAIN_PK1 = crs.PK1
+    SELECT ins.ROLE_ID
+    FROM BBLEARN.INSTITUTION_ROLES ins
+    JOIN (SELECT usr.INSTITUTION_ROLES_PK1
+          FROM BBLEARN.USERS usr
+          WHERE usr.USER_ID = :user_id) irl
+    ON ins.PK1 = irl.INSTITUTION_ROLES_PK1
 __SQL__
-  end
 
-  def update
-    ws_save_user
-  end
+    cursor = build_cursor(sql)
+    cursor.bind_param(':user_id', user_id)
 
-  def new
-    ws_save_user
-  end
-
-  def destroy
-    ws_save_user
+    return build_class(cursor)
   end
 
 end

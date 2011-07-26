@@ -1,25 +1,19 @@
 <div class="contnt">
     <% @sections.each do |s| %>
 			<% link_url = url_for(:controller => "terms", :action => "edit_term",
-				:term_id => sections.term_id, :description => sections.description, :start_date => sections.start_date,
-				:end_date => sections.end_date, :current => sections.current_term.to_s) %>
+				:term_id => s.pk1, :description => s.course_id, :start_date => s.start_date,
+				:end_date => s.end_date) %>
             <tr>
-                <td onClick="window.location='<%= link_url %>'">
-                    <%= sections.term_id %>
                 </td>
                 <td onClick="window.location='<%= link_url %>'">
-                    <%= sections.description %>
+                    <%= s.course_id %>
                 </td>
                 <td onClick="window.location='<%= link_url %>'">
-                    <%= sections.start_date %>
+                    <%= s.start_date %>
                 </td>
                 <td onClick="window.location='<%= link_url %>'">
-                    <%= sections.end_date %>
-                </td>
-                <td onClick="window.location='<%= link_url %>'">
-                    <%= sections.current_term.to_s %>
+                    <%= s.end_date %>
                 </td>
         <td>
       <% end %>
 </div>
-
