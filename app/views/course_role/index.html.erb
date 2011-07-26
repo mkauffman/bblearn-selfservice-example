@@ -1,8 +1,7 @@
 <div class="contnt">
     <% @sections.each do |s| %>
 			<% link_url = url_for(:controller => "course_role", :action => "edit_designers",
-				:term_id => s.pk1, :description => s.course_id, :start_date => s.start_date,
-				:end_date => s.end_date) %>
+				:id => s.pk1) %>
             <tr>
                 </td>
                 <td onClick="window.location='<%= link_url %>'">

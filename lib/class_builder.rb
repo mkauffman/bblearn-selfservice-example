@@ -27,7 +27,7 @@ module ClassBuilder
       objects.push(object)
     end
 
-    if object.nil? return nil
+    return nil if object.nil?
 
     if object.size > 1
       return objects
