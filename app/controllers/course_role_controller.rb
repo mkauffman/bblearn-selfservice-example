@@ -1,7 +1,7 @@
 class CourseRoleController < ApplicationController
 
   def index
-    @sections = Section.find_by_user(params[:current_user])
+    @sections = Section.find_by_user(session[:user])
   end
 
   def new
