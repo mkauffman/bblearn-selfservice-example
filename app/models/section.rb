@@ -3,6 +3,20 @@ require 'class_builder'
 class Section < ActiveRecord::Base
   extend ClassBuilder
 
+  def self.find(id)
+    sql = <<__SQL__
+    SELECT *
+    FROM dbTable.COURSE_MAIN
+    WHERE PK1 = :id
+__SQL__
+
+    cursor = build_cursor(sql)
+    cursor.bind_param(':id', id)
+
+    #logger.info ' *** The user \''+user_id+'\' is in the following courses: '+courses.join(",")
+    return build_class(cursor)
+  end
+
   def self.find_by_user(user_id)
     sql = <<__SQL__
     SELECT *
