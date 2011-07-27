@@ -15,6 +15,7 @@ class SectionRoleController < ApplicationController
   end
 
   def edit_designers
+    @section   = Section.find(params[:id])
     @designers = User.find_by_section_and_role(params[:id], 'gi')
   end
 

@@ -1,12 +1,12 @@
 <div class="contnt">
     <% form_tag({:action => "add"}) do -%>
 	<b>Enter a user's Portal ID to add them as a guest designer.</b><br/>
-	<span style="font-weight:bold; font-size:x-large;"><%= "Section: "+@section.short_name %></span><br/>
+	<span style="font-weight:bold; font-size:x-large;"><%= "Section: "+@section.course_id %></span><br/>
     <%= text_field_tag "portal_id" %>
 	<%= hidden_field_tag "source_id", params[:source_id] %>
     <%= submit_tag "Add" %>
 	<%= submit_tag "Cancel" %>
-    <br/>
+	<br/>
 	<%= check_box_tag 'instructor_check_box', 'add_instructor' %>
 	<div id="instructor_check_text">
 		<% if @ferpa_text.nil? %>
@@ -27,10 +27,11 @@
 	<br/>
 	<br/>
 	<br/>
+	<%= @res %>
 	<div id="guest_table">
 	<hr/>
     <b>Remove Guest Designers / Instructors</b>
-	<% form_tag(:action => "remove") do -%>
+	<% form_tag(:action => "destroy") do -%>
 	<%= hidden_field_tag "source_id", params[:source_id] %>
     <table class="output sortable">
         <thead>
@@ -55,13 +56,13 @@
             <% for designer in @designers %>
             <tr>
             	<td class="check_box">
-                    <%= check_box_tag 'rm_guest[]', designer.webct_id, false, :class => "check" %>
+                    <%= check_box_tag 'rm_guest[]', designer.pk1, false, :class => "check" %>
                 </td>
                 <td>
-                    <%= designer.first_name + " " + designer.last_name %>
+                    <%= designer.firstname + " " + designer.lastname %>
                 </td>
                 <td>
-                    <%= designer.id %>
+                    <%= designer.user_id %>
                 </td>
                 <td>
                     <%= designer.email %>
@@ -73,6 +74,5 @@
 	<%= submit_tag "Remove" %>
 	<%= submit_tag "Cancel" %>
 	<% end -%>
-	<%= @res %>
 </div>
 

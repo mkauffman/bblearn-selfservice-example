@@ -1,13 +1,13 @@
 require 'map'
-#require 'app_config'
+require 'app_config'
 
 module ClassBuilder
 
   def build_cursor(sql)
     # Substitute values into query and execute:
-#    $bbl_db_table = AppConfig.bbl_db_table
+    $bbl_db_table = AppConfig.bbl_db_table
     sql = sql.gsub!("dbTable",$bbl_db_table)
-#    $bbl_db_conn = OCI8.new(AppConfig.bbl_db_user, AppConfig.bbl_db_password, AppConfig.bbl_db_string)
+    $bbl_db_conn = OCI8.new(AppConfig.bbl_db_user, AppConfig.bbl_db_password, AppConfig.bbl_db_string)
     cursor = $bbl_db_conn.parse(sql)
   end
 
@@ -29,7 +29,7 @@ module ClassBuilder
 
     return nil if object.nil?
 
-    if object.size > 1
+    if objects.size > 1
       return objects
     else
       return object
