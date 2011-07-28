@@ -11,5 +11,23 @@
         <li>
             <%= link_to "Migrate", :controller => "migration", :action => "index" %>
         </li>
+        <li>
+            <a href="#">Manage Enrollments</a>
+            <ul>
+                <li>
+                    <%= link_to "Guest Instructors", :controller => "section_role", :action => "index",
+                    :enrollment => 'designers' %>
+                </li>
+                <li>
+                    <%= link_to "Community Members", :controller => "section_role", :action => "index",
+                    :enrollment => 'members' %>
+                </li>
+                <li>
+                    <%= link_to "Students", :controller => "section_role", :action => "index",
+                    :enrollment => 'students' %>
+                </li>
+            </ul>
+        </li>
     </ul>
 </div>
+

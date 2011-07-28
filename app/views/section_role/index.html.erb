@@ -1,23 +1,27 @@
-<div class="contnt"> 
-    <b>Add or Remove Guest Designers</b> 
-    <br/> 
+<div class="contnt">
+    <b>Add or Remove Guest Designers</b>
+    <br/>
     Click on a section below to add or remove guest designers to/from.
-    <br/> 
-    <table id="add_guest_table" class="output clickable sortable"> 
-        <thead> 
-            <tr> 
-                <th id="term"> 
+    <br/>
+    <table id="add_guest_table" class="output clickable sortable">
+        <thead>
+            <tr>
+                <th id="term">
                     Term
-                </th> 
-                <th id="sect_name"> 
+                </th>
+                <th id="sect_name">
                     Name
-                </th> 
-            </tr> 
-        </thead> 
+                </th>
+            </tr>
+        </thead>
         <tbody>
 <% unless @sections.nil? %>
     <% @sections.each do |s| %>
-			<% link_url = url_for(:controller => "section_role", :action => "edit_designers", :id => s.pk1) %>
+			<% link_url = url_for(
+			:controller => "section_role",
+			:action => 'edit',
+			:id => s.pk1,
+      :enrollment => params[:enrollment])%>
             <tr>
                 <td onClick="window.location='<%= link_url %>'">
                     <%= s.course_id %>
@@ -31,3 +35,4 @@
 		</tbody>
 	</table>
 </div>
+

@@ -1,5 +1,6 @@
-class SectionRoleController < ApplicationController
+require 'ruby-debug'
 
+class SectionRoleController < ApplicationController
   def index
     @sections = Section.find_by_user(session[:user])
   end
@@ -14,17 +15,26 @@ class SectionRoleController < ApplicationController
     @section_role = Role.destroy
   end
 
-  def edit_designers
-    @section   = Section.find(params[:id])
-    @designers = User.find_by_section_and_role(params[:id], 'gi')
+  def edit
+    role      = enrollment_type(params[:enrollment])
+    @section  = Section.find(params[:id])
+    @users    = User.find_by_section_and_role(params[:id],role)
   end
 
-  def edit_students
-    @students = User.find_by_section_and_role(params[:id], 'S')
-  end
+private
 
-  def edit_members
-    @members = User.find_by_section_and_role(params[:id], 'members')
+  def enrollment_type(role)
+
+    case role
+      when 'designers'
+      enrollment_type = 'gi'
+      when 'students'
+      enrollment_type = 'S'
+      when 'members'
+      enrollment_type = 'members'
+    end
+    return enrollment_type
+
   end
 
 end
