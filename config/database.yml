@@ -23,9 +23,6 @@ development:
   username: dltservice
   password: eMyEZQc4ev5zeBbm
   host: apphostdev.csuchico.edu
-  #username: root
-  #password: d0gstar2
-  #host: localhost
 
 staging:
   adapter: mysql
@@ -45,13 +42,20 @@ production:
   pool: 5
   username: dltservice
   password: eMyEZQc4ev5zeBbm
-  host: localhost # apphostdev.csuchico.edu
+  host: localhost
 
 vista_db:
-    adapter: oracle
-    database: lmsdb2.csuchico.edu:1521/stage1 #stage2
-    username: vistasupport
-    password: adm1nIZ34
+  adapter: oracle
+  database: lmsdb2.csuchico.edu:1521/stage1
+  username: vistasupport
+  password: adm1nIZ34
+
+bbl_db:
+  adapter: oracle_enhanced
+  database: lmsdb2.csuchico.edu:1521/bbtest
+  username: learnsupport
+  password: adm1nIZ34
+
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
