@@ -50,9 +50,10 @@ vista_db:
   username: vistasupport
   password: adm1nIZ34
 
-bbl_db:
+oracle_development:
   adapter: oracle_enhanced
-  database: lmsdb2.csuchico.edu:1521/bbtest
+  host: lmsdb2.csuchico.edu
+  database: bbtest.lmsdb2.csuchico.edu
   username: learnsupport
   password: adm1nIZ34
 
