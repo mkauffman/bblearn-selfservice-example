@@ -1,24 +1,28 @@
-require 'ruby-debug'
-
 class SectionRoleController < ApplicationController
   def index
-    @sections = Section.find_by_user(session[:user])
+    @section_roles = SectionRole.find(:all,
+        :conditions =>
+        ['users_pk1 = :users_pk1 and role = :role', {:users_pk1 => session[:users_pk1], :role => 'P'}])
   end
 
-  def new
-    @section_role = Role.new(params[:section_id], params[:user_id], params[:role_id])
+  def add
+    role          = enrollment_type(params[:enrollment])
+    user          = User.find_by_user_id(params[:user_id])
+    @section_role = SectionRole.create(params[:id], user.pk1, role)
   end
 
 
   def destroy
-    @section_role = Role.find(params[:user_id], params[:section_id])
-    @section_role = Role.destroy
+    @section_role = SectionRole.find(params[:rm_guest])
+    CourseRole.destroy(@section_role)
   end
 
   def edit
-    role      = enrollment_type(params[:enrollment])
-    @section  = Section.find(params[:id])
-    @users    = User.find_by_section_and_role(params[:id],role)
+    role              = enrollment_type(params[:enrollment])
+    @section          = Section.find(params[:id])
+    @section_roles    = SectionRole.find(:all,
+        :conditions =>
+        ['crsmain_pk1 = :id and role = :role', {:id => params[:id], :role => role}])
   end
 
 private

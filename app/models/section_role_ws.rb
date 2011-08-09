@@ -6,7 +6,7 @@ CM_ENDPOINT     = "https://lms-temp.csuchico.edu/webapps/ws/services/CourseMembe
 CM_DOCUMENT     = "https://lms-temp.csuchico.edu/webapps/ws/services/CourseMembership.WS?wsdl"
 CM_SERVICE      = "http://coursemembership.ws.blackboard"
 
-class CourseMembershipWS
+class SectionRoleWS
 
 attr_reader :client, :ses_password
 
@@ -22,11 +22,14 @@ attr_reader :client, :ses_password
         message_uniq = Time.now.strftime("context_initialize_%m_%d_%Y_%H_%M_%S")
     end
 #Working Method
-    def ws_save_course_membership(op={})
+    def save_course_membership(op={})
         ses_id   = @ses_password
         response = @client.request :saveCourseMembership do
-            wsse.credentials ses_id
-            soap.namespaces["xmlns:xsd"] = CM_SERVICE
+            wsse.credentials "session", ses_id
+            wsse.created_at               = Time.now.utc
+            wsse.expires_at               = Time.now.utc + 60
+            soap.namespaces["xmlns:wsa"]  = ADDRESSING
+            soap.namespaces["xmlns:xsd"]  = CM_SERVICE
             soap.header = {
                           "wsa:To"          => CM_ENDPOINT,
                           "wsa:MessageID"   => message_id,
@@ -34,28 +37,31 @@ attr_reader :client, :ses_password
                           }
             soap.input  = ["cour:saveCourseMembership", {"xmlns:cour" => CM_SERVICE}]
             soap.body   =    {
-                            "cour:courseId"     => op[:course_id]    || "_375_1",
+                            "cour:courseId"     => op[:crsmain_pk1]    || nil,
                             "cour:cmArray"      => {
                                 "xsd:available"         =>  op[:available]   || true,
-                                "xsd:courseId"          =>  op[:course_id]   || "_375_1",
+                                "xsd:courseId"          =>  op[:crsmain_pk1]   || nil,
                                 #"xsd:dataSourceId"      =>  op[:data_id]      || nil,
                                 #"xsd:enrollmentDate"    =>  op[:enroll_date]  || nil,
                                 #"xsd:expansionData"     =>  op[:expan_data]   || nil,
                                 #"xsd:hasCartridgeAccess"=>  op[:has_cart]     || nil,
                                 #"xsd:id"                =>  op[:id]           || nil,
                                 #"xsd:imageFile"         =>  op[:image_file]   || nil,
-                                #"xsd:roleId"            =>  op[:role_id]      || nil,
-                                "xsd:userId"            =>  op[:user_id]      || "_243_1"
+                                "xsd:roleId"            =>  op[:role_id]      || nil,
+                                "xsd:userId"            =>  op[:users_pk1]      || nil
                                                     }
                             }
         end
     end
 
 #Working Method
-    def ws_initialize_course_membership(op={})
+    def ws(op={})
         ses_id   = @ses_password
         response = @client.request :initializeCourseMembershipWS do
-            wsse.credentials ses_id
+            wsse.credentials "session", ses_id
+            wsse.created_at               = Time.now.utc
+            wsse.expires_at               = Time.now.utc + 60
+            soap.namespaces["xmlns:wsa"]  = ADDRESSING
             soap.namespaces["xmlns:cour"] = CM_SERVICE
             soap.header = {
                           "wsa:To"          => CM_ENDPOINT,
@@ -69,7 +75,7 @@ attr_reader :client, :ses_password
         end
     end
 
-    def ws_delete_course_membership(op={})
+    def delete_course_membership(op={})
         ses_id   = @ses_password
         response = @client.request :deleteCourseMembership do
             wsse.credentials ses_id

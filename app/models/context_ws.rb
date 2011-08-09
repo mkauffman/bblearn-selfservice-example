@@ -8,7 +8,7 @@ SERVICE      = "http://context.ws.blackboard"
 ADDRESSING   = "http://www.w3.org/2005/08/addressing"
 
 
-class ContextWS
+class ContextWS < ActiveResource::Base
 
 attr_reader :client, :ses_password
 
@@ -23,12 +23,13 @@ attr_reader :client, :ses_password
         message_uniq = Time.now.strftime("context_initialize_%m_%d_%Y_%H_%M_%S")
     end
 
-    def ws_initialize
+
+    def ws
         response = @client.request :initialize do
             wsse.credentials "session", "nosession"
-            wsse.created_at = Time.now.utc
-            wsse.expires_at = Time.now.utc + 60
-            soap.namespaces["xmlns:wsa"] = ADDRESSING
+            wsse.created_at               = Time.now.utc
+            wsse.expires_at               = Time.now.utc + 60
+            soap.namespaces["xmlns:wsa"]  = ADDRESSING
             soap.header = {
                           "wsa:To"          => ENDPOINT,
                           "wsa:MessageID"   => message_id,
@@ -39,10 +40,13 @@ attr_reader :client, :ses_password
         @ses_password = session_reg.match(response.http.body).to_s
     end
 
-    def ws_login_tool
+    def login_tool
         ses_id   = @ses_password
         response = @client.request :loginTool do
-            wsse.credentials ses_id
+            wsse.credentials "session", ses_id
+            wsse.created_at               = Time.now.utc
+            wsse.expires_at               = Time.now.utc + 60
+            soap.namespaces["xmlns:wsa"]  = ADDRESSING
             soap.namespaces["xmlns:bbl"] = SERVICE
             soap.header = {
                           "wsa:To"          => ENDPOINT,
@@ -129,10 +133,13 @@ attr_reader :client, :ses_password
         end
     end
 
-    def ws_emulate_user(op={})
+    def emulate_user(op={})
         ses_id   = @ses_password
         response = @client.request :emulateUser do
-            wsse.credentials ses_id
+            wsse.credentials "session", ses_id
+            wsse.created_at               = Time.now.utc
+            wsse.expires_at               = Time.now.utc + 60
+            soap.namespaces["xmlns:wsa"]  = ADDRESSING
             soap.namespaces["xmlns:bbl"] = SERVICE
             soap.header = {
                           "wsa:To"          => ENDPOINT,

@@ -2,8 +2,10 @@
     <% form_tag({:action => "add"}) do -%>
 	<b>Enter a user's Portal ID to add them as a guest designer.</b><br/>
 	<span style="font-weight:bold; font-size:x-large;"><%= "Section: "+@section.course_id %></span><br/>
-    <%= text_field_tag "portal_id" %>
+    <%= text_field_tag "user_id" %>
 	<%= hidden_field_tag "source_id", params[:source_id] %>
+	<%= hidden_field_tag "enrollment", params[:enrollment] %>
+	<%= hidden_field_tag "id", params[:id] %>
     <%= submit_tag "Add" %>
 	<%= submit_tag "Cancel" %>
 	<br/>
@@ -54,19 +56,19 @@
             </tr>
         </thead>
         <tbody>
-            <% for user in @users %>
+            <% @section_roles.each do |section_role|%>
             <tr>
             	<td class="check_box">
-                    <%= check_box_tag 'rm_guest[]', user.pk1, false, :class => "check" %>
+                    <%= check_box_tag 'rm_guest[]', section_role.pk1, false, :class => "check" %>
                 </td>
                 <td>
-                    <%= user.firstname + " " + user.lastname %>
+                    <%= section_role.user.firstname + " " + section_role.user.lastname %>
                 </td>
                 <td>
-                    <%= user.user_id %>
+                    <%= section_role.user.user_id %>
                 </td>
                 <td>
-                    <%= user.email %>
+                    <%= section_role.user.email %>
                 </td>
             </tr>
             <% end %>
