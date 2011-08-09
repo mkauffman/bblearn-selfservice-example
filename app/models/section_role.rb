@@ -1,0 +1,31 @@
+require 'context_ws'
+require 'section_role_ws'
+
+class SectionRole < ActiveRecord::Base
+  establish_connection :oracle_development
+  set_table_name "BBLEARN2.COURSE_USERS"
+  set_primary_key "pk1"
+  belongs_to :user, :foreign_key => "users_pk1"
+  belongs_to :section, :foreign_key => "crsmain_pk1"
+
+  def self.destroy(section_role)
+    session_id  = ContextWS.new
+    sr          = SectionRoleWS.init(session_id)
+    sr.initialize_course_membership
+    sr.delete_course_membership :pk1 => section_role.pk1
+  end
+
+  def self.create(crsmain_pk1, users_pk1, role_id)
+    con   = ContextWS.new
+    token = con.ws
+    con.login_tool
+    con.emulate_user
+    sr    = SectionRoleWS.new(token)
+    sr.ws
+    sr.save_course_membership   :crsmain_pk1 => crsmain_pk1,
+                                :users_pk1 => users_pk1,
+                                :role_id => role_id
+  end
+
+end
+

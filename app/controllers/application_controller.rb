@@ -1,7 +1,6 @@
 require 'oci8'
 require 'rubygems'
 
-
 class ApplicationController < ActionController::Base
   include CasLogin
   include Permissions
@@ -9,6 +8,7 @@ class ApplicationController < ActionController::Base
   before_filter :vista_db_setup
   before_filter :authentication
   before_filter :set_session_timeout
+#  before_filter :get_ws_token
   after_filter  :vista_db_teardown
   helper        :all
 
@@ -53,8 +53,9 @@ class ApplicationController < ActionController::Base
   end
 
   def set_session
-      session[:user] = @user
-      session[:on_behalf_of] = @user
+      session[:user]          = @user
+      session[:users_pk1]     = User.find_by_user_id(@user).pk1
+      session[:on_behalf_of]  = @user
   end
 
   def end_session
@@ -80,7 +81,12 @@ class ApplicationController < ActionController::Base
   #################### ROLE ##################
 
   def retrieve_roles
-    @role = Institution_role.find_by_user(session[:user])
+    @role     = Array.new
+    user      = User.find_by_user_id(session[:user])
+    ins_roles = user.all_roles
+    ins_roles.each do |r|
+      @role   << r.role_id
+    end
   end
 
   def set_roles
@@ -120,6 +126,15 @@ class ApplicationController < ActionController::Base
     $vista_db_conn.logoff
     $bbl_db_conn.logoff
   end
+  #################### WEB SERVICES ####################
+
+  def get_ws_token
+    if session[:token].nil?
+      con             = ContextWS.new
+      session[:token] = con.ws
+    end
+  end
+
 
   #################### ERROR HANDLING ##################
 
