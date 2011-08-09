@@ -4,6 +4,5 @@ class Section < ActiveRecord::Base
   set_primary_key "pk1"
   has_many :users, :through => :course_roles, :foreign_key => "course_id"
 
-
 end
 

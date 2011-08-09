@@ -80,7 +80,7 @@ class ApplicationController < ActionController::Base
   #################### ROLE ##################
 
   def retrieve_roles
-    @role = Role.find_by_user(session[:user])
+    @role = Institution_role.find_by_user(session[:user])
   end
 
   def set_roles

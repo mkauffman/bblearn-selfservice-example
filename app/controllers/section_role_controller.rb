@@ -1,4 +1,3 @@
-require 'ruby-debug'
 
 class SectionRoleController < ApplicationController
   def index

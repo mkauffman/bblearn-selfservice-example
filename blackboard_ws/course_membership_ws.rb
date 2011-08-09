@@ -81,8 +81,7 @@ attr_reader :client, :ses_password
                           }
             soap.input  = ["cour:deleteCourseMembership", {"xmlns:cour" => CM_SERVICE}]
             soap.body   = {
-                           "cour:courseId"      => op[:course_id]   ||  "_375_1",
-                           "cour:ids"           => op[:ids]         ||  "_243_1"
+                           "cour:ids"           => op[:pk1]
                           }
         end
     end
