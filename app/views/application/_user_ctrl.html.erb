@@ -1,16 +1,14 @@
 <div id="chico_img" class="span-2">
     <%= link_to(image_tag("csuc-signature.jpg"), "http://www.csuchico.edu/") %>
 </div>
-<% if ([:super, :admin, :tlp_admin, :tlp].include?(session[:role])) %>
-<% unless (params[:controller] == "sso") %>
+  <% if roles_comp :proxy, session[:role] %>
 <div id="act_as_div" class="last">
-    <% form_tag({:controller => "selfservice", :action => "act_as"}) do %>
+    <% form_tag({:controller => "application", :action => "check_proxy_use"}) do %>
     Act on behalf of: <%= text_field_tag "act_as", session[:on_behalf_of] %>
     <%= submit_tag "Change" %>
-    <% end %><!-- end form_tag do -->
+    <% end %>
 </div>
 <br/>
-<% end %>
 <% end %>
 <div id="user_table" class="last">
     <table>
