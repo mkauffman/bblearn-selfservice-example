@@ -34,7 +34,7 @@
 	<div id="guest_table">
 	<hr/>
     <b>Remove Guest Designers / Instructors</b>
-	<% form_tag(:action => "remove") do -%>
+	<% form_tag({:action => "remove"}) do -%>
 	<%= hidden_field_tag "source_id", params[:source_id] %>
 	<%= hidden_field_tag "id", params[:id] %>
 	<%= hidden_field_tag "enrollment", params[:enrollment] %>

@@ -12,10 +12,11 @@ class SectionRoleController < ApplicationController
     redirect_to :action => "edit", :enrollment => params[:enrollment], :id => params[:id]
   end
 
+
   def remove
     SectionRole.destroy(params[:rm_guest], params[:id])
     redirect_to :action => "edit", :enrollment => params[:enrollment], :id => params[:id]
-  end  
+  end
 
   def edit
     role              = enrollment_type(params[:enrollment])

@@ -79,7 +79,10 @@ attr_reader :client, :ses_password
         ses_id   = @ses_password
         response = @client.request :deleteCourseMembership do
             wsse.credentials "session", ses_id
+            wsse.created_at               = Time.now.utc
+            wsse.expires_at               = Time.now.utc + 60
             soap.namespaces["xmlns:wsa"]  = ADDRESSING
+            soap.namespaces["xmlns:xsd"]  = CM_SERVICE
             soap.namespaces["xmlns:cour"] = CM_SERVICE
             soap.header = {
                           "wsa:To"          => CM_ENDPOINT,
@@ -88,7 +91,7 @@ attr_reader :client, :ses_password
                           }
             soap.input  = ["cour:deleteCourseMembership", {"xmlns:cour" => CM_SERVICE}]
             soap.body   = {
-                           "cour:courseId"      => op[:crsmain_pk1] ,
+                           "cour:courseId"      => op[:crsmain_pk1],
                            "cour:ids"           => op[:pk1]
                           }
         end
