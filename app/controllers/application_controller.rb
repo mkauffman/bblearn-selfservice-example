@@ -103,7 +103,7 @@ class ApplicationController < ActionController::Base
   end
 
   def validate_proxy
-    if Person.find(params['act_as']).empty?
+    unless User.find_by_user_id(params['act_as'])
        redirect_to :controller => "application", :action => "invalid_user"
     else
        session[:on_behalf_of] = params['act_as']

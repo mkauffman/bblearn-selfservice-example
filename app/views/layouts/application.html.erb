@@ -5,7 +5,7 @@
         <link rel="SHORTCUT ICON" href="<%= image_path('chico.ico') %>" />
         <%= stylesheet_link_tag 'vista' %>
         <% begin %>
-        	<% tasks_css = Tlp.find(:first, :conditions => "html_type = 'tasks_css'") %>
+        	<% tasks_css = Tlp.find(:first, :conditions => "html_type = 'migrate_tasks_css'") %>
         <% rescue %>
         	<%= stylesheet_link_tag 'tasks' %>
         <% end %>
@@ -15,22 +15,24 @@
         	<% if (tasks_css.html.empty?) %>
         		<%= stylesheet_link_tag 'tasks' %>
         	<% else %>
-        		<style type="text/css">        
-             		<%= tasks_css.html %> 
+        		<style type="text/css">
+             		<%= tasks_css.html %>
         		</style>
         	<% end %>
         <% end %>
         <% begin %>
-        	<% main_css = Tlp.find(:first, :conditions => "html_type = 'main_css'") %>
+        	<% main_css = Tlp.find(:first, :conditions => "html_type = 'migrate_main_css'") %>
         <% rescue %>
         <% end %>
         <% unless main_css.nil? %>
-        	<style type="text/css">        
+        	<style type="text/css">
         	     <%= main_css.html %>
         	</style>
         <% end %>
         <%= render :partial => "application/scripts" %>
-        <title>Learn Self Service</title>
+
+        <title>Blackboard Learn Self Service</title>
+
     </head>
     <body>
         <div id="container">
@@ -51,3 +53,4 @@
         </div>
     </body>
 </html>
+
