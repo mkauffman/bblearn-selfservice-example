@@ -9,11 +9,11 @@ module Permissions
     if proxy(roles)
       allowed_perms.push("proxy".to_sym)
     end
-      
+
     if migration(roles)
       allowed_perms.push("migration".to_sym)
     end
-    
+
     if helpdesk(roles)
       allowed_perms.push("helpdesk".to_sym)
     end
@@ -31,7 +31,7 @@ module Permissions
 
 
   def migration(roles)
-    unless Role.check_cert_required
+    unless RoleCert.check_cert_required
       return true
     end
     if roles_comp(roles, AppConfig.perm_migration.split(/,/))
@@ -59,3 +59,4 @@ module Permissions
   end
 
 end
+

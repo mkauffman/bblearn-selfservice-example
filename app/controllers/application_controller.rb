@@ -85,7 +85,7 @@ class ApplicationController < ActionController::Base
     user      = User.find_by_user_id(session[:user])
     ins_roles = user.all_roles
     ins_roles.each do |r|
-      @role   << r.role_id
+    @role   << r.role_id
     end
   end
 
