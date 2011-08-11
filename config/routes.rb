@@ -1,7 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :roles
+  #map.resources :roles
   map.resources :section_role
-  map.root :controller => "selfservice"
+  map.root :controller => "application"
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
