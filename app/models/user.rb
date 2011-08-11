@@ -16,5 +16,9 @@ class User < ActiveRecord::Base
     return roles
   end
 
+  def clicker
+    clicker = Tpextract.find_by_bb_user_id(self.user_id)
+  end
+
 end
 

@@ -117,7 +117,7 @@ attr_reader :client, :ses_password
                           }
             soap.input  = ["cour:deleteCourse",
                           {"xmlns:cour"     => C_SERVICE}]
-            soap.body   = {"cour:id"        => op[:id]  ||  374}
+            soap.body   = {"cour:id"        => op[:crsmain_pk1]}
         end
     end
 
@@ -224,7 +224,7 @@ attr_reader :client, :ses_password
         end
     end
 
-    def ws_save_course(op={})
+    def save_course(op={})
         ses_id   = @ses_password
         response = @client.request :saveCourse do
             wsse.credentials ses_id

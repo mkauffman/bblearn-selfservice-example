@@ -1,0 +1,42 @@
+  <div class="contnt">
+  <b>Hide Sections</b>
+  <% form_tag({:action => "add"}) do -%>
+	  <b>Enter in section name</b><br/>
+    <%= text_field_tag "course_id" %>
+    <%= submit_tag "Add" %>
+	  <%= submit_tag "Cancel" %>
+	  <br/>
+	  <%= @role%>
+  <% end -%>
+	<% form_tag({:action => "remove"}) do -%>
+    <table class="output sortable">
+        <thead>
+            <tr>
+            	<th id="check_th" class="sorttable_nosort">
+            		<%= check_box_tag('check_all', 'check_all', false, :onClick =>
+                "$$('input.check').each(function(box){
+      box.checked=(box.checked==false)?true:false});") %>
+	  			</th>
+                <th id="course_id">
+                    Name
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @section_roles.each do |s|%>
+            <tr>
+            	<td class="check_box">
+                    <%= check_box_tag 'sections[]', s.section.pk1, false, :class => "check" %>
+                </td>
+                <td>
+                    <%= s.section.course_id%>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+	<%= submit_tag "remove" %>
+	<%= submit_tag "Cancel" %>
+	<% end -%>
+</div>
+

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<participantlist plistversion="2008">
+<headeritems count="5">
+<item type="field">Last Name</item>
+<item type="field">First Name</item>
+<item type="field">Device ID</item>
+<item type="field">WebCT ID</item>
+<item type="field">WCT Person ID</item>
+</headeritems>
+</participantlist>
+
