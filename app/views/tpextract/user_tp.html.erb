@@ -1,0 +1,24 @@
+            <% @section_roles.each do |section_role|%>
+            <tr>
+                <td>
+                    <%= section_role.user.lastname %>
+                </td>
+                <td>
+                    <%= section_role.user.firstname %>
+                </td>
+                <td>
+                    <%= section_role.user.user_id %>
+                </td>
+               <% unless section_role.user.clicker.nil? %>
+                <td>
+                    <%= section_role.user.clicker.resp_device_id %>
+                </td>
+              <% else %>
+                 <td>
+                    <%= "no clicker registered" %>
+                </td>
+                <% end %>
+            </tr>
+            </br>
+            <% end %>
+
