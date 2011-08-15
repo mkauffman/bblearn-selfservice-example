@@ -20,6 +20,9 @@
                 <th id="course_id">
                     Name
                 </th>
+                <th id="available_ind">
+                    Available
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -30,6 +33,9 @@
                 </td>
                 <td>
                     <%= s.section.course_id%>
+                </td>
+                <td>
+                    <%= s.section.available_ind%>
                 </td>
             </tr>
             <% end %>

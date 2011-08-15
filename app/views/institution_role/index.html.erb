@@ -18,25 +18,25 @@
 				Modify
 			</th>
         </tr>
-        <% @roles.each do |role| %>
+        <% @institution_roles.each do |role| %>
         <tr>
             <td>
-                <%= role.portal_id %>
+                <%= role.user.user_id %>
             </td>
             <td>
-                <%= role.first_name %>
+                <%= role.user.firstname %>
             </td>
             <td>
-                <%= role.last_name %>
+                <%= role.user.lastname %>
             </td>
             <td>
-                <%= role.role %>
+                <%= role.institution_role.role_id %>
             </td>
             <td>
-                <%= link_to 'Edit', url_for(:action=>"edit_role", :portal_id=>role.portal_id) %>
+                <%= link_to 'Edit', url_for(:action=>"edit_role", :user_id=>role.user.user_id) %>
             </td>
             <td>
-                <%= link_to 'Delete', url_for(:action=>"delete", :portal_id => role.portal_id), :confirm => 'Are you sure?' %>
+                <%= link_to 'Delete', url_for(:action=>"delete", :user_id => role.user.user_id), :confirm => 'Are you sure?' %>
             </td>
         </tr>
         <% end %>
