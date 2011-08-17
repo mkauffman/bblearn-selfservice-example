@@ -32,7 +32,7 @@ staging:
   pool: 5
   username: dltservice
   password: eMyEZQc4ev5zeBbm
-  host: apphostdev.csuchico.edu
+  host: localhost
 
 production:
   adapter: mysql
