@@ -66,7 +66,7 @@ attr_reader :client, :ses_password
                                 #"xsd:cartridgeId"           => op[:cart_id]     || nil,
                                 #"xsd:classificationId"      => op[:class_id]    || nil,
                                 #"xsd:courseDuration"        => op[:duration]    || nil,
-                                "xsd:courseId"              => op[:crse_id]     || "thisnewcourse",
+                                "xsd:courseId"              => op[:course_id],
                                 #"xsd:coursePace"            => op[:crse_pace]   || nil,
                                 #"xsd:courseServiceLevel"    => op[:crse_level]  || nil,
                                 #"xsd:dataSourceId"          => op[:data_id]     || nil,
@@ -85,7 +85,7 @@ attr_reader :client, :ses_password
                                 #"xsd:locale"                => op[:locale]      || nil,
                                 #"xsd:localeEnforced"        => op[:loc_enf]     || nil,
                                 #"xsd:lockedOut"             => op[:locked_out]  || nil,
-                                "xsd:name"                  => op[:name]        || "Mwoods Testing Course",
+                                "xsd:name"                  => op[:name],
                                 #"xsd:navCollapsable"        => op[:nav_cllpe]   || nil,
                                 #"xsd:navColorBg"            => op[:nav_clr_bg]  || nil,
                                 #"xsd:navColorFg"            => op[:nav_clr_fg]  || nil,
@@ -99,6 +99,8 @@ attr_reader :client, :ses_password
                                             }
                            }
         end
+        session_reg = /([^><]+)(?=<\/ns:return>)/
+        @ses_password = session_reg.match(response.http.body).to_s
     end
 
 #Working Method
@@ -117,7 +119,7 @@ attr_reader :client, :ses_password
                           }
             soap.input  = ["cour:deleteCourse",
                           {"xmlns:cour"     => C_SERVICE}]
-            soap.body   = {"cour:id"        => op[:crsmain_pk1]}
+            soap.body   = {"cour:id"        => op[:pk1]}
         end
     end
 
@@ -204,7 +206,7 @@ attr_reader :client, :ses_password
         end
     end
 #Working Method
-    def initialize_course(op={})
+    def ws(op={})
         ses_id   = @ses_password
         response = @client.request :initializeCourseWS do
             wsse.credentials "session", ses_id

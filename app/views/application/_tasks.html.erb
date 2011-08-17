@@ -42,10 +42,18 @@
                     <%= link_to "Edit HTML/CSS", :controller => "tlp_admin", :action => "index" %>
                 </li>
 				<li>
-					<%= link_to "Roles", :controller => "role", :action => "index" %>
+					<%= link_to "Roles", :controller => "institution_role", :action => "index" %>
 				</li>
                 <li>
                     <%= link_to "Single Signon", :controller => "sso", :action => "index" %>
+                </li>
+            </ul>
+        </li>
+	    <li>
+            <a href="#">Logs</a>
+            <ul>
+                <li>
+                    <%= link_to "View Logs", :controller => "log", :action => "index" %>
                 </li>
             </ul>
         </li>
