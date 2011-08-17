@@ -26,7 +26,6 @@ set :deploy_via, :remote_cache
 after "deploy:update_code" do
   rails_config_files.each do |filename|
     run "cp #{shared_path}/config/#{filename} #{release_path}/config/#{filename}"
-    run "mkdir #{shared_path}/log"
   end
 end
 
