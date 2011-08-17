@@ -12,14 +12,17 @@ class LogController < ApplicationController
 
   def development
     @log = File.new('log/development.log', 'r')
+    render :log
   end
 
   def staging
     @log = File.new('log/staging.log', 'r')
+    render :log
   end
 
   def production
     @log = File.new('log/production.log', 'r')
+    render :log
   end
 
   private
