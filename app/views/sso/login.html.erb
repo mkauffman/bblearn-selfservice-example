@@ -1,0 +1,17 @@
+<div class="contnt">
+	<p><h1> Logging in to Blackboard Learn... </h1></p>
+		<script type="text/javascript">
+			function submit_form () {
+				var form = document.getElementById("sso");
+				form.submit();
+			}
+			window.onload = submit_form;
+		</script>
+
+		<form name="sso" id="sso" method="post" action="<%= @url %>">
+			<input name="username" type="hidden" id="username" value="<%= @username %>" >
+			<input name="section" type="hidden" id="section" value="<%= @section %>" >
+			<input name="checksum" type="hidden" id="checksum" value="<%= @checksum %>" >
+			<input name="lcid" type="hidden" id="lcid" value="<%= @lcid %>" >
+		</form>
+</div>
