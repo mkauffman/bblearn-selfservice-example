@@ -6,45 +6,15 @@ module Permissions
   def sym_convert(roles)
     allowed_perms = Array.new
 
-    if proxy(roles)
-      allowed_perms.push("proxy".to_sym)
-    end
+    allowed_perms.push(:proxy) if roles_comp(roles, AppConfig.perm_proxy.split(/,/))  
+    allowed_perms.push(:helpdesk) if roles_comp(roles, AppConfig.perm_helpdesk.split(/,/)) 
 
-    if migration(roles)
-      allowed_perms.push("migration".to_sym)
-    end
-
-    if helpdesk(roles)
-      allowed_perms.push("helpdesk".to_sym)
+    if RoleCert.check_cert_required
+      allowed_perms.push(:migration) if roles_comp(roles, AppConfig.perm_migration.split(/,/))
     end
 
     return allowed_perms
 
-  end
-
-  def proxy(roles)
-    if roles_comp(roles, AppConfig.perm_proxy.split(/,/))
-      return true
-    end
-    return false
-  end
-
-
-  def migration(roles)
-    unless RoleCert.check_cert_required
-      return true
-    end
-    if roles_comp(roles, AppConfig.perm_migration.split(/,/))
-      return true
-    end
-    return false
-  end
-
-  def helpdesk(roles)
-    if roles_comp(roles, AppConfig.perm_helpdesk.split(/,/))
-      return true
-    end
-    return false
   end
 
   def roles_comp(roles, config_roles)

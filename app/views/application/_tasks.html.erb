@@ -45,6 +45,14 @@
                 </li>
             </ul>
         </li>
+	    <li>
+            <a href="#">Logs</a>
+            <ul>
+                <li>
+                    <%= link_to "View Logs", :controller => "log", :action => "index" %>
+                </li>
+            </ul>
+        </li>
         <li>
             <%= link_to 'TurningPoint Extract',
             :controller=>'tpextract', :action => "index" %>
