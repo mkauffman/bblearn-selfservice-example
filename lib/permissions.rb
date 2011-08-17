@@ -8,6 +8,7 @@ module Permissions
 
     allowed_perms.push(:proxy) if roles_comp(roles, AppConfig.perm_proxy.split(/,/))  
     allowed_perms.push(:helpdesk) if roles_comp(roles, AppConfig.perm_helpdesk.split(/,/)) 
+    allowed_perms.push(:logs) if roles_comp(roles, AppConfig.perm_logs.split(/,/)) 
 
     if RoleCert.check_cert_required
       allowed_perms.push(:migration) if roles_comp(roles, AppConfig.perm_migration.split(/,/))

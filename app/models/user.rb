@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-  establish_connection :oracle_development
-  set_table_name "BBLEARN2.USERS"
+  establish_connection "oracle_#{RAILS_ENV}"
+  set_table_name "#{AppConfig.bbl_db_table}.USERS"
   set_primary_key "pk1"
   has_many :section_roles, :foreign_key => "users_pk1"
   has_many :sections, :through => :course_roles, :foreign_key => "users_pk1"

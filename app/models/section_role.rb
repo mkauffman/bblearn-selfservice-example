@@ -2,8 +2,8 @@ require 'context_ws'
 require 'section_role_ws'
 
 class SectionRole < ActiveRecord::Base
-  establish_connection :oracle_development
-  set_table_name "BBLEARN2.COURSE_USERS"
+  establish_connection "oracle_#{RAILS_ENV}"
+  set_table_name "#{AppConfig.bbl_db_table}.COURSE_USERS"
   set_primary_key "pk1"
   belongs_to :user, :foreign_key => "users_pk1"
   belongs_to :section, :foreign_key => "crsmain_pk1"

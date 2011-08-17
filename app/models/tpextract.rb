@@ -1,5 +1,5 @@
 class Tpextract < ActiveRecord::Base
-  establish_connection :oracle_development
-  set_table_name "BBLEARN2.BBTP_USER_RESPDEVID"
+  establish_connection "oracle_#{RAILS_ENV}"
+  set_table_name "#{AppConfig.bbl_db_table}.BBTP_USER_RESPDEVID"
 end
 

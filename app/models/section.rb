@@ -1,6 +1,6 @@
 class Section < ActiveRecord::Base
-  establish_connection :oracle_development
-  set_table_name "BBLEARN2.COURSE_MAIN"
+  establish_connection "oracle_#{RAILS_ENV}"
+  set_table_name "#{AppConfig.bbl_db_table}.COURSE_MAIN"
   set_primary_key "pk1"
   has_many :section_roles, :foreign_key => "crsmain_pk1"
   has_many :users, :through => :course_roles, :foreign_key => "crsmain_pk1"
@@ -16,7 +16,7 @@ class Section < ActiveRecord::Base
           sections << s.section
       end
       return sections
-   end 
+   end
 
    def self.create(course_id)
     con   = ContextWS.new

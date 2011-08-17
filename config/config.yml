@@ -11,6 +11,7 @@ span class="re0"> common: &common
  perm_proxy: admin,tlp,tlp_admin
  perm_migration: admin,tlp,tlp_admin,lrncrt
  perm_helpdesk: admin,tlp_admin
+ perm_logs: admin,tlp_admin
 
 production:
  <<: *common
