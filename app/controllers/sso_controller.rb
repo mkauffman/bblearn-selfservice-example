@@ -1,9 +1,17 @@
 class SsoController < ApplicationController
   before_filter do |c|
-    #c.send(:is_authorized, [:super, :admin, :tlp, :tlp_admin, :stcp, :itss, :usrv, :mlib])
+    before_filter :check_permission
   end
   
   def index
+  end
+
+  def check_permission
+    if roles_comp :sso, session[:role]
+      return true
+    else
+      redirect_to :controller => "application", :action => "not_allowed" and return false
+    end
   end
   
   def sections
