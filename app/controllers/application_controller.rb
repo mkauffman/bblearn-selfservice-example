@@ -118,13 +118,13 @@ class ApplicationController < ActionController::Base
     vista_db_password = AppConfig.vista_db_password
     vista_db_string = AppConfig.vista_db_string
     $vista_db_conn = OCI8.new(vista_db_user, vista_db_password, vista_db_string)
-    #$bbl_db_conn = OCI8.new(AppConfig.bbl_db_user, AppConfig.bbl_db_password, AppConfig.bbl_db_string)
+    $bbl_db_conn = OCI8.new(AppConfig.bbl_db_user, AppConfig.bbl_db_password, AppConfig.bbl_db_string)
     $bbl_db_table = AppConfig.bbl_db_table
   end
 
   def vista_db_teardown
     $vista_db_conn.logoff
-    #$bbl_db_conn.logoff
+    $bbl_db_conn.logoff
   end
   #################### WEB SERVICES ####################
 
