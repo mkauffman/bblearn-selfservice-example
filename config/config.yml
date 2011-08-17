@@ -12,6 +12,10 @@ span class="re0"> common: &common
  perm_migration: admin,tlp,tlp_admin,lrncrt
  perm_helpdesk: admin,tlp_admin
  perm_logs: admin,tlp_admin
+ perm_sso: admin, tlp, tlp_admin, stcp, itss, usrv, mlib
+ perm_sso_admin: admin
+ perm_sso_designer: admin, tlp, tlp_admin, mlib
+ perm_sso_student: admin, tlp, tlp_admin, itss
 
 production:
  <<: *common

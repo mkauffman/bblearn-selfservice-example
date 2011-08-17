@@ -1,43 +1,35 @@
 <div class="contnt">
-    <b>You are working on <%= params[:sso_id] %>'s sections.</b>
-    <br/>
-    <% form_tag(:action => "vista_login", :method=> "post") do %>
-    <%= hidden_field_tag 'portal_id', params[:sso_id] %>
-    <br/>
-    Sections:
-    <table class="output sorttable">
-        <tr>
-            <th id="check_th">
-            </th>
-            <th id="sect_name">
-                Section ID
-            </th>
-        </tr>
-        <% @sections.each do |s| %>
-        <tr>
-            <td>
-                <%= radio_button_tag "section", s.course_id %>
-            </td>
-            <td>
-                <%= s.course_name %>
-            </td>
-        </tr>
-        <% end %>
-    </table>
-    <br/>
-    Role:<% if ([:super, :admin].include?(session[:role])) %>
-    <br/>
-    <%= radio_button_tag "role", "spoof" %><%= params[:sso_id] %>
-    <% end %>
-    <% if [:super, :admin, :tlp, :tlp_admin, :mlib].include?(session[:role]) %>
-    <br/>
-    <%= radio_button_tag "role", "designer" %>Designer<% end %>
-    <% if [:super, :admin, :tlp, :tlp_admin, :itss].include?(session[:role]) %>
-    <br/>
-    <%= radio_button_tag "role", "student" %>Student<% end %>
-    <br/>
-    <br/>
-    <%= submit_tag "Submit" %>
-    <%= submit_tag "Cancel" %>
-    <% end %>
+   <b>You are working on <%= params[:sso_id] %>'s sections.</b><br/>
+   <% form_tag(:action => "login", :method=> "post") do %>
+   <%= hidden_field_tag 'portal_id', params[:sso_id] %>
+
+   <br/>Section:
+   <table class="output sorttable">
+     <tr>
+       <th id="check_th"></th>
+	   <th id="sect_name">Section ID</th>
+     </tr>
+     <% @sections.each do |s| %>
+     <tr>
+       <td><%= radio_button_tag "section", s.course_id %></td>
+       <td><%= s.course_name %></td>
+     </tr>
+     <% end %>
+   </table>
+
+   <br/>Role:
+   <% if roles_comp :sso_admin, session[:role] %>
+     <br/><%= radio_button_tag "role", "spoof" %><%= params[:sso_id] %>
+   <% end %>
+   <% if roles_comp :sso_designer, session[:role] %>
+     <br/><%= radio_button_tag "role", "designer" %>Designer
+   <% end %>
+   <% if roles_comp :sso_student, session[:role] %>
+     <br/><%= radio_button_tag "role", "student" %>Student
+   <% end %>  
+	 
+   <br/><br/>
+   <%= submit_tag "Submit" %>
+   <%= submit_tag "Cancel" %>
+   <% end %>
 </div>

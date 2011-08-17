@@ -1,6 +1,6 @@
 class LogController < ApplicationController
   include CasLogin
-  before_filter :check_permission
+  #before_filter :check_permission
 
   def index
     @logs = []
