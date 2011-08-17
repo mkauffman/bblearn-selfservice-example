@@ -1,0 +1,10 @@
+<div class="contnt">
+	<b>Single Signon</b>
+  	<% form_tag(:action => "sections", :method=> "post") do %>
+		Enter the user's portal ID:&nbsp; <%= text_field_tag 'sso_id' %> 
+    	<%= submit_tag 'Submit' %>
+		(ex: jdoe)
+  	<% end -%>
+</div>
+
+
