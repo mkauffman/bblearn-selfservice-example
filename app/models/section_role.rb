@@ -18,7 +18,7 @@ class SectionRole < ActiveRecord::Base
     sr.delete_course_membership :pk1 => section_role,
                                 :crsmain_pk1 => crsmain_pk1
   end
-
+  
   def self.create(crsmain_pk1, users_pk1, role_id)
     con   = ContextWS.new
     token = con.ws
@@ -29,6 +29,13 @@ class SectionRole < ActiveRecord::Base
     sr.save_course_membership   :crsmain_pk1 => crsmain_pk1,
                                 :users_pk1 => users_pk1,
                                 :role_id => role_id
+  end
+
+  def self.find_by_id_comparison(slave,master)
+    slave_set  = Section.find(:all, :joins => :section_roles, :conditions => ["users_pk1 = ?", slave])
+    master_set = Section.find(:all, :joins => :section_roles, :conditions => ["users_pk1 = ?", master])
+
+    return slave_set.to_a - (slave_set.to_a & master_set.to_a)
   end
 
 end
