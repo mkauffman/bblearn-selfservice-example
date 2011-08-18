@@ -1,63 +1,32 @@
 <div id="task_box">
-    <ul id="left_nav">
-        <li>
-            <%= link_to "Home", :controller => "application", :action => "index" %>
-        </li>
-        <li>
-            <%= link_to "Migrate Prep Area", :controller => "migration", :action => "index" %>
-        </li>
-
-        <li>
-            <a href="#">Manage Enrollments</a>
-            <ul>
-                <li>
-                    <%= link_to "Guest Instructors", :controller => "section_role", :action => "index",
-                    :enrollment => 'designers' %>
-                </li>
-                <li>
-                    <%= link_to "Community Members", :controller => "section_role", :action => "index",
-                    :enrollment => 'members' %>
-                </li>
-                <li>
-                    <%= link_to "Students", :controller => "section_role", :action => "index",
-                    :enrollment => 'students' %>
-                </li>
-            </ul>
-        </li>
-	    <li>
-            <a href="#">Manage Sections</a>
-            <ul>
-                <li>
-                    <%= link_to "Create/Delete Prep Areas", :controller => "section", :action => "index" %>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a href="#">Help Desk</a>
-            <ul>
-                <li>
-                    <%= link_to "Edit HTML/CSS", :controller => "tlp_admin", :action => "index" %>
-                </li>
-				<li>
-					<%= link_to "Roles", :controller => "institution_role", :action => "index" %>
-				</li>
-                <li>
-                    <%= link_to "Single Signon", :controller => "sso", :action => "index" %>
-                </li>
-            </ul>
-        </li>
-	    <li>
-            <a href="#">Logs</a>
-            <ul>
-                <li>
-                    <%= link_to "View Logs", :controller => "log", :action => "index" %>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <%= link_to 'TurningPoint Extract',
-            :controller=>'tpextract', :action => "index" %>
-        </li>
-    </ul>
+  <ul id="left_nav">
+    <li><%= link_to "Home", :controller => "application", :action => "index" %></li>
+    <li><a href="#">Migrate Prep Area</a></li>
+    <li><a href="#">Manage Enrollments</a>
+      <ul>
+        <li><%= link_to "Guest Instructors", :controller => "section_role", :action => "index", :enrollment => 'designers' %></li>
+        <li><%= link_to "Community Members", :controller => "section_role", :action => "index", :enrollment => 'members' %></li>
+        <li><%= link_to "Students", :controller => "section_role", :action => "index", :enrollment => 'students' %></li>
+      </ul>
+    </li>
+	<li><a href="#">Manage Sections</a>
+      <ul>
+      	<li><%= link_to "Create/Delete Prep Areas", :controller => "section", :action => "index" %></li>
+      </ul>
+    </li>
+    <li><a href="#">Help Desk</a>
+      <ul>
+        <li><%= link_to "Edit HTML/CSS", :controller => "tlp_admin", :action => "index" %></li>
+		<li><%= link_to "Roles", :controller => "institution_role", :action => "index" %></li>
+        <li><%= link_to "Single Signon", :controller => "sso", :action => "index" %></li>
+      </ul>
+    </li>
+	<li><a href="#">Logs</a>
+      <ul>
+      	<li><%= link_to "View Logs", :controller => "log", :action => "index" %></li>
+      </ul>
+    </li>
+    <li><%= link_to 'TurningPoint Extract', :controller=>'tpextract', :action => "index" %></li>
+  </ul>
 </div>
 

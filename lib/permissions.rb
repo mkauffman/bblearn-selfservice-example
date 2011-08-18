@@ -12,7 +12,8 @@ module Permissions
     allowed_perms.push(:sso) if roles_comp(roles, AppConfig.perm_logs.split(/,/))
     allowed_perms.push(:sso_admin) if roles_comp(roles, AppConfig.perm_logs.split(/,/)) 
     allowed_perms.push(:sso_designer) if roles_comp(roles, AppConfig.perm_logs.split(/,/)) 
-    allowed_perms.push(:sso_student) if roles_comp(roles, AppConfig.perm_logs.split(/,/)) 
+    allowed_perms.push(:sso_instructor_designer) if roles_comp(roles, AppConfig.perm_logs.split(/,/)) 
+    allowed_perms.push(:sso_student) if roles_comp(roles, AppConfig.perm_logs.split(/,/))
 
     if RoleCert.check_cert_required
       allowed_perms.push(:migration) if roles_comp(roles, AppConfig.perm_migration.split(/,/))

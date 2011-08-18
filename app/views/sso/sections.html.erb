@@ -1,7 +1,7 @@
 <div class="contnt">
    <b>You are working on <%= params[:sso_id] %>'s sections.</b><br/>
    <% form_tag(:action => "login", :method=> "post") do %>
-   <%= hidden_field_tag 'portal_id', params[:sso_id] %>
+   <%= hidden_field_tag 'sso_id', params[:sso_id] %>
 
    <br/>Section:
    <table class="output sorttable">
