@@ -28,21 +28,28 @@ class SsoController < ApplicationController
   
   def login
     # MAC must be in the following order: courseId, timestamp, userId, secret
-    courseId  = Section.find_by_course_id(params[:section]).course_id
+    host      = "lms-temp.csuchico.edu"
+    block     = "/webapps/bbgs-autosignon-BBLEARN2/autoSignon.do"
+    courseId  = Section.find_by_course_id(params[:section]).batch_uid
     timestamp = Time.now.to_i.to_s
     userId    = User.find_by_user_id(params[:sso_id]).batch_uid
     secret    = "3B1!ndM!ce..."
 
+    #TEST DATA:
+    #timestamp = '1313707563'
+    #userId = "@tmsomma"
+    #courseId = "tms_sandbox_01"
+    
     auth = Digest::MD5.hexdigest(courseId+timestamp+userId+secret)
-    logger.info 'User: '+session[:user]+' is using the SSO tool on behalf of '+params[:sso_id]+' for course: '+params[:section]
     
     # Login to Blackboard Learn:
-    #url = "http://lms-temp.csuchico.edu/webapps/bbgs-autosignon-BBLEARN/autoSignon.do"
-    url = "http://lms-temp.csuchico.edu/webapps/bbgs-autosignon-bb_bb60/autoSignon.do"
+    url = "https://"+host+block
     url += "?courseId="+courseId
-    url += "?timestamp="+timestamp
+    url += "&timestamp="+timestamp
     url += "&userId="+userId
     url += "&auth="+auth
+
+    #logger.info 'User: '+session[:user]+' is using the SSO tool on behalf of '+params[:sso_id]+' for course: '+params[:section]
     redirect_to(url)   
   end
     
