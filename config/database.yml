@@ -45,8 +45,9 @@ production:
   host: localhost
 
 vista_db:
-  adapter: oracle
-  database: lmsdb2.csuchico.edu:1521/stage1
+  adapter: oracle_enhanced
+  host: lmsdb2.csuchico.edu
+  database: stage1.lmsdb2.csuchico.edu
   username: vistasupport
   password: adm1nIZ34
 

@@ -1,6 +1,6 @@
 <div class="contnt">
     <% form_tag({:action => "add"}) do -%>
-	<b>Enter a user's Portal ID to add them as a guest designer.</b><br/>
+      <b>Enter a user's Portal ID to add them as a <%=params[:enrollment]%>.</b><br/>
 	<span style="font-weight:bold; font-size:x-large;"><%= "Section: "+@section.course_id %></span><br/>
     <%= text_field_tag "user_id" %>
 	<%= hidden_field_tag "source_id", params[:source_id] %>
