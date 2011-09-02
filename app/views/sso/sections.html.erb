@@ -19,7 +19,7 @@
 
    <br/>Role:
    <% if roles_comp :sso_admin, session[:role] %>
-     <br/><%= radio_button_tag "role", "spoof" %><%= params[:sso_id] %>
+     <br/><%= radio_button_tag "role", "admin" %><%= params[:sso_id] %>
    <% end %>
    <% if roles_comp :sso_designer, session[:role] %>
      <br/><%= radio_button_tag "role", "designer" %>Designer
