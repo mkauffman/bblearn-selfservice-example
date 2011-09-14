@@ -21,7 +21,7 @@ attr_reader :client, :ses_password
     def message_id
         message_uniq = Time.now.strftime("context_initialize_%m_%d_%Y_%H_%M_%S")
     end
-#Working Method
+    
     def ws_change_course_data_source_id(op={})
         ses_id   = @ses_password
         response = @client.request :changeCourseDataSourceId do
@@ -39,7 +39,7 @@ attr_reader :client, :ses_password
                           }
         end
     end
-#Working Method
+
     def create_course(op={})
         ses_id   = @ses_password
         response = @client.request :createCourse do
@@ -103,7 +103,6 @@ attr_reader :client, :ses_password
         @ses_password = session_reg.match(response.http.body).to_s
     end
 
-#Working Method
     def delete_course(op={})
         ses_id   = @ses_password
         response = @client.request :deleteCourse do
@@ -123,6 +122,28 @@ attr_reader :client, :ses_password
         end
     end
 
+    def ws(op={})
+        ses_id   = @ses_password
+        response = @client.request :initializeCourseWS do
+            wsse.credentials "session", ses_id
+            wsse.created_at               = Time.now.utc
+            wsse.expires_at               = Time.now.utc + 60
+            soap.namespaces["xmlns:wsa"]  = ADDRESSING
+            soap.namespaces["xmlns:cour"] = C_SERVICE
+            soap.header = {
+                          "wsa:To"          => C_ENDPOINT,
+                          "wsa:MessageID"   => message_id,
+                          "wsa:Action"      => "initializeCourseWS"
+                          }
+            soap.input  = ["cour:initializeCourseWS", {"xmlns:cour" => C_SERVICE}]
+            soap.body   = {
+                           "cour:ignore"        => op[:ignore] || true
+                          }
+        end
+    end
+
+######## The following methods are not working:
+    
     def ws_get_course(op={})
     #MUST SET FILTER
     #0 - Load all (course|org)
@@ -203,26 +224,6 @@ attr_reader :client, :ses_password
                             "xsd:userIds"                   => op[:user_ids]    || "zoonie",
                                             },
                             }
-        end
-    end
-#Working Method
-    def ws(op={})
-        ses_id   = @ses_password
-        response = @client.request :initializeCourseWS do
-            wsse.credentials "session", ses_id
-            wsse.created_at               = Time.now.utc
-            wsse.expires_at               = Time.now.utc + 60
-            soap.namespaces["xmlns:wsa"]  = ADDRESSING
-            soap.namespaces["xmlns:cour"] = C_SERVICE
-            soap.header = {
-                          "wsa:To"          => C_ENDPOINT,
-                          "wsa:MessageID"   => message_id,
-                          "wsa:Action"      => "initializeCourseWS"
-                          }
-            soap.input  = ["cour:initializeCourseWS", {"xmlns:cour" => C_SERVICE}]
-            soap.body   = {
-                           "cour:ignore"        => op[:ignore] || true
-                          }
         end
     end
 
