@@ -28,11 +28,11 @@ class SsoController < ApplicationController
   end
   
   def login
-    if params[:role] == "admin"
+    if params[:mode] == "admin"
       url = admin_signon
-    elsif params[:role] == "designer"
+    elsif params[:mode] == "designer"
       url = designer_signon
-    elsif params[:role] == "student"
+    elsif params[:mode] == "student"
       url = student_signon
     end
     logger.info 'User: '+session[:user]+' is using the SSO tool on behalf of '+params[:sso_id]+' for course: '+params[:section]
