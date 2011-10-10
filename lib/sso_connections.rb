@@ -5,7 +5,7 @@ module Sso_connections
   #       MLIB permissions will factor in (role, not a permission group)
 
 
-  def create_and_add_sso(role)
+  def create_and_add_sso(role,section)
     user        = User.find_by_user_id(params[:sso_id])
     prefix      = InstitutionRole.find(user.institution_roles_pk1).role_name + "-"
     User.create(prefix + user.user_id)
@@ -21,11 +21,11 @@ module Sso_connections
   end
 
   def designer_signon(section)
-    create_and_add_sso('gi')
+    create_and_add_sso('gi',section)
   end
 
-  def student_signon
-    create_and_add_sso('S')
+  def student_signon(section)
+    create_and_add_sso('S',section)
   end
 
   def build_url(batchId)
