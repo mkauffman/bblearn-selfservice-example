@@ -27,26 +27,26 @@ attr_reader :client, :ses_password
         response = @client.request :saveCourseMembership do
             wsse.credentials "session", ses_id
             wsse.created_at               = Time.now.utc
-            wsse.expires_at               = Time.now.utc + 60
+            wsse.expires_at               = Time.now.utc + SOAP_TIME
             soap.namespaces["xmlns:wsa"]  = ADDRESSING
             soap.namespaces["xmlns:xsd"]  = CM_SERVICE
             soap.header = {
                           "wsa:To"          => CM_ENDPOINT,
                           "wsa:MessageID"   => message_id,
                           "wsa:Action"      => "saveCourseMembership"
-                          }
+                         }
             soap.input  = ["cour:saveCourseMembership", {"xmlns:cour" => CM_SERVICE}]
             soap.body   = {
                            "cour:courseId"         => op[:crsmain_pk1]   || nil,
                            "cour:cmArray"          => {
                            "xsd:available"         =>  op[:available]    || true,
                            "xsd:courseId"          =>  op[:crsmain_pk1]  || nil,
-                          #"xsd:dataSourceId"      =>  op[:data_id]      || nil,
-                          #"xsd:enrollmentDate"    =>  op[:enroll_date]  || nil,
-                          #"xsd:expansionData"     =>  op[:expan_data]   || nil,
-                          #"xsd:hasCartridgeAccess"=>  op[:has_cart]     || nil,
-                          #"xsd:id"                =>  op[:id]           || nil,
-                          #"xsd:imageFile"         =>  op[:image_file]   || nil,
+                           #"xsd:dataSourceId"      =>  op[:data_id]      || nil,
+                           #"xsd:enrollmentDate"    =>  op[:enroll_date]  || nil,
+                           #"xsd:expansionData"     =>  op[:expan_data]   || nil,
+                           #"xsd:hasCartridgeAccess"=>  op[:has_cart]     || nil,
+                           #"xsd:id"                =>  op[:id]           || nil,
+                           #"xsd:imageFile"         =>  op[:image_file]   || nil,
                            "xsd:roleId"            =>  op[:role_id]      || nil,
                            "xsd:userId"            =>  op[:users_pk1]    || nil
                                                       }
@@ -60,7 +60,7 @@ attr_reader :client, :ses_password
         response = @client.request :initializeCourseMembershipWS do
             wsse.credentials "session", ses_id
             wsse.created_at               = Time.now.utc
-            wsse.expires_at               = Time.now.utc + 60
+            wsse.expires_at               = Time.now.utc + SOAP_TIME
             soap.namespaces["xmlns:wsa"]  = ADDRESSING
             soap.namespaces["xmlns:cour"] = CM_SERVICE
             soap.header = {
@@ -80,7 +80,7 @@ attr_reader :client, :ses_password
         response = @client.request :deleteCourseMembership do
             wsse.credentials "session", ses_id
             wsse.created_at               = Time.now.utc
-            wsse.expires_at               = Time.now.utc + 60
+            wsse.expires_at               = Time.now.utc + SOAP_TIME
             soap.namespaces["xmlns:wsa"]  = ADDRESSING
             soap.namespaces["xmlns:xsd"]  = CM_SERVICE
             soap.namespaces["xmlns:cour"] = CM_SERVICE

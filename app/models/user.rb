@@ -20,25 +20,24 @@ class User < ActiveRecord::Base
     clicker = Tpextract.find_by_bb_user_id(self.user_id)
   end
 
-  def self.create(prefix, user_id)
+  def self.create(user_id)
     # TODO: determine better values for mandatory fields:
-    last_name = "temporary"
-    first_name = "temporary"
-    password = "temporary"
-    sys_roles = "temporary"
-    
+    last_name   = "User"
+    first_name  = "SSO"
+    password    = "tryingtest"
+
     con   = ContextWS.new
     token = con.ws
     con.login_tool
     con.emulate_user
     use   = UserWS.new(token)
     use.ws
-    use.create_user :fam_name => last_name,
-                    :given_name => first_name,
-                    :id => prefix + user_id,
-                    :name => user_id,
-                    :password => password,
-                    :sys_roles => roles
+    use.ws_save_user :fam_name    => last_name,
+                    :given_name   => first_name,
+                    :student_id   => user_id,
+                    :name         => user_id,
+                    :password     => password,
+                    :ins_roles    => 161
   end
 
 

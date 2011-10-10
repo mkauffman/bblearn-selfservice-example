@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<env:Envelope xmlns:wsdl="http://context.ws.blackboard"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+xmlns:ins0="http://context.ws.blackboard"
+xmlns:ins1="http://ws.platform.blackboard/xsd"
+xmlns:ins2="http://context.ws.blackboard/xsd"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:wsa="http://www.w3.org/2005/08/addressing"
+xmlns:env="http://schemas.xmlsoap.org/soap/envelope/">
+<env:Header><wsa:MessageID>context_initialize_10_10_2011_13_16_33</wsa:MessageID>
+<wsa:Action>initialize</wsa:Action>
+<wsa:To>https://lms-temp.csuchico.edu/webapps/ws/services/Context.WS</wsa:To>
+<wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+<wsu:Timestamp wsu:Id="Timestamp-2"
+xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+<wsu:Expires>2011-10-10T20:18:13Z</wsu:Expires>
+<wsu:Created>2011-10-10T20:16:33Z</wsu:Created>
+</wsu:Timestamp>
+<wsse:UsernameToken wsu:Id="UsernameToken-1" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+<wsse:Username>session</wsse:Username>
+<wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">nosession</wsse:Password>
+</wsse:UsernameToken>
+</wsse:Security>
+</env:Header>
+<env:Body>
+<initialize>
+</initialize>
+</env:Body>
+</env:Envelope>
+

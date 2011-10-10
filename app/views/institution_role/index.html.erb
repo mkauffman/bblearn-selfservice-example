@@ -1,5 +1,15 @@
 <div class="contnt">
-    <h1>Listing roles</h1>
+  <h1>Listing roles <%= @institution_roles.role_name %></h1>
+    <% form_tag({:controller => "institution_role", :action => "user_index"}) do %>
+    Find roles for user: <%= text_field_tag :user_id%>
+    <%= submit_tag "Find Roles" %>
+    <% end %>
+    <%= link_to "Learn Certifified", :controller => "institution_role", :action => "index", :role => "lrncrt" %> |
+    <%= link_to "Administrator", :controller => "institution_role", :action => "index", :role => "admin" %> |
+    <%= link_to "ITSS", :controller => "institution_role", :action => "index", :role => "itss" %> | 
+    <%= link_to "MLIB Staff", :controller => "institution_role", :action => "index", :role => "mlib" %> | 
+    <%= link_to "TLP", :controller => "institution_role", :action => "index", :role => "tlp" %> | 
+    <%= link_to "TLP Admin", :controller => "institution_role", :action => "index", :role => "tlp_admin" %>
     <table class="output sortable">
         <tr>
             <th id="user_id">
@@ -18,25 +28,22 @@
 				Modify
 			</th>
         </tr>
-        <% @institution_roles.each do |role| %>
+        <% @institution_roles.user_roles.each do |ur| %>
         <tr>
             <td>
-                <%= role.user.user_id %>
+                <%= ur.user.user_id %>
             </td>
             <td>
-                <%= role.user.firstname %>
+                <%= ur.user.firstname %>
             </td>
             <td>
-                <%= role.user.lastname %>
+                <%= ur.user.lastname %>
             </td>
             <td>
-                <%= role.institution_role.role_id %>
+                <%= link_to 'Edit', url_for(:action=>"edit_role", :user_id=>ur.user.user_id) %>
             </td>
             <td>
-                <%= link_to 'Edit', url_for(:action=>"edit_role", :user_id=>role.user.user_id) %>
-            </td>
-            <td>
-                <%= link_to 'Delete', url_for(:action=>"delete", :user_id => role.user.user_id), :confirm => 'Are you sure?' %>
+                <%= link_to 'Delete', url_for(:action=>"delete", :user_id => ur.user.user_id), :confirm => 'Are you sure?' %>
             </td>
         </tr>
         <% end %>

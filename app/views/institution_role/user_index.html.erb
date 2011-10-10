@@ -1,0 +1,50 @@
+<div class="contnt">
+  <h1>Listing roles for <%= @user.firstname %> <%= @user.lastname %></h1>
+    <% form_tag({:controller => "institution_role", :action => "user_index"}) do %>
+    Find roles for: <%= text_field_tag "user_id", params[:user_id] %>
+    <%= submit_tag "Find Roles" %>
+    <% end %>
+    <table class="output sortable">
+        <tr>
+            <th id="role_id">
+                Role
+            </th>
+            <th id="user_id">
+                User Id
+            </th>
+            <th id="firstname">
+                First Name
+            </th>
+            <th id="lastname">
+                Last Name
+            </th>
+	    <th id="modify" colspan="2" class="sorttable_nosort">
+                Modify 
+	    </th>
+        </tr>
+        <% @user.all_roles.each do |role| %>
+        <tr>
+            <td>
+                <%= role.role_id %>
+            </td>
+            <td>
+                <%= @user.user_id %>
+            </td>
+            <td>
+                <%= @user.firstname %>
+            </td>
+            <td>
+                <%= @user.lastname %>
+            </td>
+            <td>
+                <%= link_to 'Edit', url_for(:action=>"edit_role", :user_id=>@user.user_id) %>
+            </td>
+            <td>
+                <%= link_to 'Delete', url_for(:action=>"delete", :user_id => @user.user_id), :confirm => 'Are you sure?' %>
+            </td>
+        </tr>
+        <% end %>
+    </table>
+    <br/>
+    <%= link_to 'New role', url_for(:action=>"new") %>
+</div>

@@ -19,22 +19,25 @@ attr_reader :client, :ses_password
     end
 
     def message_id
-        message_uniq = Time.now.strftime("context_initialize_%m_%d_%Y_%H_%M_%S") 
+        message_uniq = Time.now.strftime("context_initialize_%m_%d_%Y_%H_%M_%S")
     end
 
-    def ws_initialize_user(op={})
+    def ws(op={})
         ses_id   = @ses_password
         response = @client.request :initializeUserWS do
-            wsse.credentials ses_id
+            wsse.credentials "session", ses_id
+            wsse.created_at               = Time.now.utc
+            wsse.expires_at               = Time.now.utc + SOAP_TIME
             soap.namespaces["xmlns:user"] = U_SERVICE
-            soap.header = { 
-                          "wsa:To"          => U_ENDPOINT, 
+            soap.namespaces["xmlns:wsa"]  = ADDRESSING
+            soap.header = {
+                          "wsa:To"          => U_ENDPOINT,
                           "wsa:MessageID"   => message_id,
                           "wsa:Action"      => "initializeUserWS"
                           }
             soap.input = ["user:initializeUserWS", {"xmlns:user" => U_SERVICE}]
             soap.body   = {
-                         "user:ignore"  => op[:ignore] || true 
+                         "user:ignore"  => op[:ignore] || true
                           }
         end
         session_reg = /([^><]+)(?=<\/ns:return>)/
@@ -44,10 +47,12 @@ attr_reader :client, :ses_password
     def ws_delete_user(op={})
         ses_id   = @ses_password
         response = @client.request :deleteUser do
-            wsse.credentials ses_id
+            wsse.credentials "session", ses_id
+            wsse.created_at               = Time.now.utc
+            wsse.expires_at               = Time.now.utc + SOAP_TIME
             soap.namespaces["xmlns:user"] = U_SERVICE
-            soap.header = { 
-                          "wsa:To"          => U_ENDPOINT, 
+            soap.header = {
+                          "wsa:To"          => U_ENDPOINT,
                           "wsa:MessageID"   => message_id,
                           "wsa:Action"      => "deleteUser"
                           }
@@ -63,10 +68,12 @@ attr_reader :client, :ses_password
     def ws_get_user(op={})
         ses_id   = @ses_password
         response = @client.request :getUser do
-            wsse.credentials ses_id
+            wsse.credentials "session", ses_id
+            wsse.created_at               = Time.now.utc
+            wsse.expires_at               = Time.now.utc + SOAP_TIME
             soap.namespaces["xmlns:user"] = U_SERVICE
-            soap.header = { 
-                          "wsa:To"          => U_ENDPOINT, 
+            soap.header = {
+                          "wsa:To"          => U_ENDPOINT,
                           "wsa:MessageID"   => message_id,
                           "wsa:Action"      => "getUser"
                           }
@@ -99,16 +106,18 @@ attr_reader :client, :ses_password
     def ws_get_system_roles(op={})
         ses_id   = @ses_password
         response = @client.request :getSystemRoles do
-            wsse.credentials ses_id
-            soap.namespaces["xmlns:user"] = U_SERVICE 
-            soap.header = { 
-                          "wsa:To"          => U_ENDPOINT, 
+            wsse.credentials "session", ses_id
+            wsse.created_at               = Time.now.utc
+            wsse.expires_at               = Time.now.utc + SOAP_TIME
+            soap.namespaces["xmlns:user"] = U_SERVICE
+            soap.header = {
+                          "wsa:To"          => U_ENDPOINT,
                           "wsa:MessageID"   => message_id,
-                          "wsa:Action"      => "getSystemRoles" 
+                          "wsa:Action"      => "getSystemRoles"
                           }
             soap.input  = ["user:getSystemRoles", {"xmlns:user" => U_SERVICE}]
             soap.body   = {
-                         "user:filter" => op[:filter] || nil 
+                         "user:filter" => op[:filter] || nil
                           }
         end
     end
@@ -116,19 +125,22 @@ attr_reader :client, :ses_password
     def ws_save_user(op={})
         ses_id   = @ses_password
         response = @client.request :saveUser do
-            wsse.credentials ses_id
-            soap.namespaces["xmlns:xsd"] = U_SERVICE 
-            soap.header = { 
-                          "wsa:To"          => U_ENDPOINT, 
+            wsse.credentials "session", ses_id
+            wsse.created_at               = Time.now.utc
+            wsse.expires_at               = Time.now.utc + SOAP_TIME
+            soap.namespaces["xmlns:wsa"]  = ADDRESSING
+            soap.namespaces["xmlns:xsd"] = U_SERVICE
+            soap.header = {
+                          "wsa:To"          => U_ENDPOINT,
                           "wsa:MessageID"   => message_id,
-                          "wsa:Action"      => "saveUser" 
+                          "wsa:Action"      => "saveUser"
                           }
             soap.input  = ["user:saveUser", {"xmlns:user" => U_SERVICE}]
             soap.body   = {
                             "user:user"   => {
                                 "xsd:birthDate"         =>  op[:bdate]      || nil,
                                 "xsd:dataSourceId"      =>  op[:data_id]    || 61,
-                                "xsd:educationLevel"    =>  op[:edu_level]  || nil, 
+                                "xsd:educationLevel"    =>  op[:edu_level]  || nil,
                                 "xsd:expansionData"     =>  op[:edata]      || nil,
                                 "xsd:extendedInfo"      =>  {
                                     "xsd:businessFax"       => op[:bfax]        || nil,
@@ -139,7 +151,7 @@ attr_reader :client, :ses_password
                                     "xsd:country"           => op[:country]     || nil,
                                     "xsd:department"        => op[:dept]        || nil,
                                     "xsd:emailAddress"      => op[:email]       || nil,
-                                    "xsd:expansionData"     => op[:edata]       || nil, 
+                                    "xsd:expansionData"     => op[:edata]       || nil,
                                     "xsd:familyName"        => op[:fam_name]    || nil,
                                     "xsd:givenName"         => op[:given_name]  || nil,
                                     "xsd:homeFax"           => op[:hfax]        || nil,
@@ -161,14 +173,14 @@ attr_reader :client, :ses_password
                                 "xsd:name"              => op[:name]        || "zoonie",
                                 "xsd:password"          => op[:password]    || "test123",
                                 "xsd:studentId"         => op[:student_id]  || "testin",
-                                "xsd:systemRoles"       => op[:sys_roles]   || nil, 
+                                "xsd:systemRoles"       => op[:sys_roles]   || nil,
                                 "xsd:title"             => op[:title]       || nil,
                                 "xsd:userBatchUid"      => op[:batch_uid]   || nil,
                                              }
                             }
                 end
     end
-    
+
 ######## The following methods are not working:
 
     def create_user(op={})
@@ -176,7 +188,7 @@ attr_reader :client, :ses_password
         response = @client.request :createUser do
             wsse.credentials "session", ses_id
             wsse.created_at               = Time.now.utc
-            wsse.expires_at               = Time.now.utc + 60
+            wsse.expires_at               = Time.now.utc + SOAP_TIME
             soap.namespaces["xmlns:wsa"]  = ADDRESSING
             soap.namespaces["xmlns:xsd"]  = U_SERVICE
             soap.header = {
@@ -188,8 +200,8 @@ attr_reader :client, :ses_password
             soap.body   =  {
                             "user:user" =>   {
                                 #"xsd:birthDate"         =>  op[:bdate]      || nil,
-                                #"xsd:dataSourceId"      =>  op[:data_id]    || 61,
-                                #"xsd:educationLevel"    =>  op[:edu_level]  || nil, 
+                                "xsd:dataSourceId"      =>  op[:data_id]    || 61,
+                                #"xsd:educationLevel"    =>  op[:edu_level]  || nil,
                                 #"xsd:expansionData"     =>  op[:edata]      || nil,
                                 "xsd:extendedInfo"      =>  {
                                     #"xsd:businessFax"       => op[:bfax]        || nil,
@@ -200,7 +212,7 @@ attr_reader :client, :ses_password
                                     #"xsd:country"           => op[:country]     || nil,
                                     #"xsd:department"        => op[:dept]        || nil,
                                     #"xsd:emailAddress"      => op[:email]       || nil,
-                                    #"xsd:expansionData"     => op[:edata]       || nil, 
+                                    #"xsd:expansionData"     => op[:edata]       || nil,
                                     "xsd:familyName"        => op[:fam_name]    || nil,
                                     "xsd:givenName"         => op[:given_name]  || nil,
                                     #"xsd:homeFax"           => op[:hfax]        || nil,
@@ -222,7 +234,7 @@ attr_reader :client, :ses_password
                                 "xsd:name"              => op[:name]        || nil,
                                 "xsd:password"          => op[:password]    || nil,
                                 #"xsd:studentId"         => op[:student_id]  || nil,
-                                "xsd:systemRoles"       => op[:sys_roles]   || nil, 
+                                "xsd:systemRoles"       => op[:sys_roles]   || nil,
                                 #"xsd:title"             => op[:title]       || nil,
                                 #"xsd:userBatchUid"      => op[:batch_uid]   || nil,
                                              }
@@ -231,16 +243,16 @@ attr_reader :client, :ses_password
         session_reg = /([^><]+)(?=<\/ns:return>)/
         @ses_password = session_reg.match(response.http.body).to_s
     end
-    
+
     def user_information(html)
         user_info = [ "birthDate", "", "dataSourceId", "",
                       "educationLevel", "" , "businessFax",
                       "", "businessPhone1","" , "businessPhone2",
-                      "", "city","", "company","", "country", 
+                      "", "city","", "company","", "country",
                       "", "country","", "department","", "emailAddress",
                       "", "familyName","", "givenName","", "homeFax",
                       "", "homePhone1","","homePhone2","" , "jobTitle",
-                      "", "middleName","", "mobilePhone","" , "state", 
+                      "", "middleName","", "mobilePhone","" , "state",
                       "", "street1","", "street2","" , "webPage",
                       "", "zipCode","", "genderType","" , "id",
                       "", "insRoles","", "isAvailable","" , "name",
@@ -260,5 +272,6 @@ attr_reader :client, :ses_password
         end
         user_hash
     end
-    
+
 end
+

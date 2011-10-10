@@ -2,10 +2,12 @@ require 'rubygems'
 require 'savon'
 require 'gyoku'
 
-ENDPOINT     = "https://lms-temp.csuchico.edu/webapps/ws/services/Context.WS"
-DOCUMENT     = "https://lms-temp.csuchico.edu/webapps/ws/services/Context.WS?wsdl"
-SERVICE      = "http://context.ws.blackboard"
-ADDRESSING   = "http://www.w3.org/2005/08/addressing"
+ENDPOINT      = "https://lms-temp.csuchico.edu/webapps/ws/services/Context.WS"
+DOCUMENT      = "https://lms-temp.csuchico.edu/webapps/ws/services/Context.WS?wsdl"
+SERVICE       = "http://context.ws.blackboard"
+ADDRESSING    = "http://www.w3.org/2005/08/addressing"
+SOAP_TIME     = 60*60
+EXPECTED_LIFE = 3600
 
 
 class ContextWS < ActiveResource::Base
@@ -23,18 +25,17 @@ attr_reader :client, :ses_password
         message_uniq = Time.now.strftime("context_initialize_%m_%d_%Y_%H_%M_%S")
     end
 
-
     def ws
         response = @client.request :initialize do
             wsse.credentials "session", "nosession"
             wsse.created_at               = Time.now.utc
-            wsse.expires_at               = Time.now.utc + 60
+            wsse.expires_at               = Time.now.utc + SOAP_TIME
             soap.namespaces["xmlns:wsa"]  = ADDRESSING
             soap.header = {
                           "wsa:To"          => ENDPOINT,
                           "wsa:MessageID"   => message_id,
                           "wsa:Action"      => "initialize"
-                          }
+                           }
         end
         session_reg = /([^><]+)(?=<\/ns:return>)/
         @ses_password = session_reg.match(response.http.body).to_s
@@ -45,7 +46,7 @@ attr_reader :client, :ses_password
         response = @client.request :loginTool do
             wsse.credentials "session", ses_id
             wsse.created_at               = Time.now.utc
-            wsse.expires_at               = Time.now.utc + 60
+            wsse.expires_at               = Time.now.utc + SOAP_TIME
             soap.namespaces["xmlns:wsa"]  = ADDRESSING
             soap.namespaces["xmlns:bbl"] = SERVICE
             soap.header = {
@@ -59,7 +60,7 @@ attr_reader :client, :ses_password
                          "bbl:clientVendorId"       => "CSU_CHICO",
                          "bbl:clientProgramId"      => "TESTING_BBL_SS",
                          "bbl:loginExtraInfo"       => nil,
-                         "bbl:expectedLifeSeconds"  => 3600,
+                         "bbl:expectedLifeSeconds"  => EXPECTED_LIFE,
                          :order!                    => ["bbl:password",
                                                         "bbl:clientVendorId",
                                                         "bbl:clientProgramId",
@@ -120,7 +121,7 @@ attr_reader :client, :ses_password
                          "bbl:clientVendorId"       => op[:vendor_id]   || 'CSU_CHICO',
                          "bbl:clientProgramId"      => op[:program_id]  || 'RAILS_BBL_SS',
                          "bbl:loginExtraInfo"       => op[:extra]       || nil,
-                         "bbl:expectedLifeSeconds"  => op[:life]        || 3600,
+                         "bbl:expectedLifeSeconds"  => op[:life]        || EXPECTED_LIFE,
                          :order!                    => [
                                                         "bbl:userid",
                                                         "bbl:password",
@@ -138,7 +139,7 @@ attr_reader :client, :ses_password
         response = @client.request :emulateUser do
             wsse.credentials "session", ses_id
             wsse.created_at               = Time.now.utc
-            wsse.expires_at               = Time.now.utc + 60
+            wsse.expires_at               = Time.now.utc + SOAP_TIME
             soap.namespaces["xmlns:wsa"]  = ADDRESSING
             soap.namespaces["xmlns:bbl"] = SERVICE
             soap.header = {
@@ -179,7 +180,7 @@ attr_reader :client, :ses_password
                           "wsa:Action"      => "emulateUser"
                           }
             soap.input  = ["bbl:extendSessionLife", {"xmlns:bbl" => SERVICE}]
-            soap.body   = {"bbl:addtionalSeconds" => op[:seconds] || 3600}
+            soap.body   = {"bbl:addtionalSeconds" => op[:seconds] || EXPECTED_LIFE}
         end
     end
 #Working Method
@@ -255,9 +256,11 @@ attr_reader :client, :ses_password
     end
 
     def ws_initialize_version_2
-        ses_id   = @ses_password
         response = @client.request :initializeVersion2 do
-            wsse.credentials ses_id
+            wsse.credentials "session", "nosession"
+            wsse.created_at               = Time.now.utc
+            wsse.expires_at               = Time.now.utc + SOAP_TIME
+            soap.namespaces["xmlns:wsa"]  = ADDRESSING
             soap.namespaces["xmlns:bbl"] = SERVICE
             soap.header = {
                           "wsa:To"          => ENDPOINT,
@@ -283,7 +286,7 @@ attr_reader :client, :ses_password
                             "bbl:clientVendorId"        => op[:vendor_id]       || "CSU_CHICO",
                             "bbl:clientProgramId"       => op[:program_id]      || "RAILS_BBL_SS",
                             "bbl:loginExtraInfo"        => op[:extra]           || nil,
-                            "bbl:expectedLifeSeconds"   => op[:life_seconds]    || 3600
+                            "bbl:expectedLifeSeconds"   => op[:life_seconds]    || EXPECTED_LIFE
                           }
         end
     end

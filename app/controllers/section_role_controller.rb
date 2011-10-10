@@ -31,6 +31,10 @@ private
   def enrollment_type(role)
 
     case role
+      when 'instructors'
+      enrollment_type = 'P'
+      when 'graders'
+      enrollment_type = 'grader'
       when 'designers'
       enrollment_type = 'gi'
       when 'students'

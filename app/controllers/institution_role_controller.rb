@@ -1,7 +1,11 @@
 class InstitutionRoleController < ApplicationController
 
   def index
-    @institution_roles = UserRole.all
+    @institution_roles = InstitutionRole.find_by_role_id(params[:role])
+  end
+
+  def user_index
+    @user   = User.find_by_user_id(params[:user_id])
   end
 
   def edit #edit_role
