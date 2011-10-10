@@ -21,9 +21,9 @@
    <% if roles_comp :sso_admin, session[:role] %>
      <br/><%= radio_button_tag "mode", "admin" %><%= params[:sso_id] %>
    <% end %>
-   <% if roles_comp :sso_designer, session[:role] %>
+   
      <br/><%= radio_button_tag "mode", "designer" %>Designer
-   <% end %>
+   
    <% if roles_comp :sso_student, session[:role] %>
      <br/><%= radio_button_tag "mode", "student" %>Student
    <% end %>  

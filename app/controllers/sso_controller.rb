@@ -2,7 +2,8 @@ require 'logger'
 
 class SsoController < ApplicationController
   include Sso_connections
-  before_filter :check_permission
+
+  #before_filter :check_permission
 
   def index
   end
