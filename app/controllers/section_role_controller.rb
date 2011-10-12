@@ -34,13 +34,15 @@ private
       when 'instructors'
       enrollment_type = 'P'
       when 'graders'
-      enrollment_type = 'grader'
+      enrollment_type = 'G'
       when 'designers'
       enrollment_type = 'gi'
       when 'students'
       enrollment_type = 'S'
       when 'members'
-      enrollment_type = 'members'
+      enrollment_type = 'U'
+      when 'assistant'
+      enrollment_type = 'T'
     end
     return enrollment_type
 

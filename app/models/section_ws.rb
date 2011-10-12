@@ -2,26 +2,27 @@ require 'rubygems'
 require 'savon'
 require 'gyoku'
 
-C_ENDPOINT     = "https://lms-temp.csuchico.edu/webapps/ws/services/Course.WS"
-C_DOCUMENT     = "https://lms-temp.csuchico.edu/webapps/ws/services/Course.WS?wsdl"
-C_SERVICE      = "http://course.ws.blackboard"
+DOMAIN          = 'https://learn-staging.csuchico.edu/webapps/ws/services/'
+C_ENDPOINT      = DOMAIN + "Course.WS"
+C_DOCUMENT      = DOMAIN + "Course.WS?wsdl"
+C_SERVICE       = "http://course.ws.blackboard"
 
 class SectionWS
 
 attr_reader :client, :ses_password
 
-    def initialize(session_id)
+    def initialize(password)
         @client                       = Savon::Client.new
         @client.wsdl.document         = C_DOCUMENT
         @client.wsdl.endpoint         = C_ENDPOINT
         @client.wsdl.namespace        = C_SERVICE
-		    @ses_password                 = session_id
+        @ses_password                 = password
     end
 
     def message_id
         message_uniq = Time.now.strftime("context_initialize_%m_%d_%Y_%H_%M_%S")
     end
-    
+
     def ws_change_course_data_source_id(op={})
         ses_id   = @ses_password
         response = @client.request :changeCourseDataSourceId do
@@ -40,14 +41,75 @@ attr_reader :client, :ses_password
         end
     end
 
+    def save_course(op={})
+        ses_id   = @ses_password
+        response = @client.request :saveCourse do
+            wsse.credentials "session", ses_id
+            wsse.created_at               = Time.now.utc
+            wsse.expires_at               = Time.now.utc + SOAP_TIME
+            soap.namespaces["xmlns:wsa"]  = ADDRESSING
+            soap.namespaces["xmlns:xsd"]  = C_SERVICE
+            soap.header = {
+                          "wsa:To"          => C_ENDPOINT,
+                          "wsa:MessageID"   => message_id,
+                          "wsa:Action"      => "saveCourse"
+                          }
+            soap.input  = ["cour:saveCourse", {"xmlns:cour" => C_SERVICE}]
+            soap.body   = {
+            "cour:c" =>   {
+                "xsd:allowGuests"           => op[:allow_guest_ind]     || nil,
+                "xsd:allowObservers"        => op[:allow_observer_ind]  || nil,
+                "xsd:available"             => op[:available_ind]       || nil,
+                "xsd:batchUid"              => op[:batch_uid]           || nil,
+                "xsd:buttonStyleBbId"       => op[:buttonstyles_pk1]    || nil,
+                "xsd:buttonStyleShape"      => op[:btn_style_]          || nil,
+                "xsd:buttonStyleType"       => op[:btn_type_]           || nil,
+                "xsd:cartridgeId"           => op[:cartridge_pk1]       || nil,
+                "xsd:classificationId"      => op[:classifications_pk1] || nil,
+                "xsd:courseDuration"        => op[:duration]            || nil,
+                "xsd:courseId"              => op[:course_id]           || nil,
+                "xsd:coursePace"            => op[:pace]                || nil,
+                "xsd:courseServiceLevel"    => op[:service_level]       || nil,
+                "xsd:dataSourceId"          => op[:data_src_pk1]        || nil,
+                #"xsd:decAbsoluteLimit"      => op[:limit_]              || nil,
+                "xsd:description"           => op[:course_desc]         || nil,
+                #"xsd:endDate"               => op[:end_date_]           || nil,
+                #"xsd:enrollmentAccessCode"  => op[:enroll_access_code]  || nil,
+                #"xsd:enrollmentEndDate"     => op[:end_date_]           || nil,
+                #"xsd:enrollmentStartDate"   => op[:start_date_]         || nil,
+                "xsd:enrollmentType"        => op[:enroll_option]       || nil,
+                #"xsd:expansionData"         => op[:expan_data_]         || nil,
+                #"xsd:fee"                   => op[:fee_]                || nil,
+                #"xsd:hasDescriptionPage"    => op[:desc_page_ind]       || nil,
+                "xsd:id"                    => op[:pk1]                 || nil,
+                "xsd:institutionName"       => op[:institution_name]    || nil,
+                "xsd:locale"                => op[:locale]              || nil,
+                "xsd:localeEnforced"        => op[:is_locale_enforced]  || nil,
+                "xsd:lockedOut"             => op[:lockout_ind]         || nil,
+                "xsd:name"                  => op[:course_name]         || nil,
+                "xsd:navCollapsable"        => op[:collapsible_ind]     || nil,
+                "xsd:navColorBg"            => op[:background_color]    || nil,
+                "xsd:navColorFg"            => op[:textcolor]           || nil,
+                "xsd:navigationStyle"       => op[:navigation_style]    || nil,
+                "xsd:numberOfDaysOfUse"     => op[:days_of_use]         || nil,
+                #"xsd:organization"          => op[:org]                 || nil,
+                #"xsd:showInCatalog"         => op[:catalog_ind]         || nil,
+                #"xsd:softLimit"             => op[:soft_limit_]         || nil,
+                #"xsd:startDate"             => op[:start_date_]         || nil,
+                #"xsd:uploadLimit"           => op[:upload_lim_]         || nil
+                          }
+                          }
+        end
+    end
+
     def create_course(op={})
         ses_id   = @ses_password
         response = @client.request :createCourse do
             wsse.credentials "session", ses_id
             wsse.created_at               = Time.now.utc
-            wsse.expires_at               = Time.now.utc + 60
+            wsse.expires_at               = Time.now.utc + SOAP_TIME
             soap.namespaces["xmlns:wsa"]  = ADDRESSING
-            soap.namespaces["xmlns:xsd"] = C_SERVICE
+            soap.namespaces["xmlns:xsd"]  = C_SERVICE
             soap.header = {
                           "wsa:To"          => C_ENDPOINT,
                           "wsa:MessageID"   => message_id,
@@ -58,7 +120,7 @@ attr_reader :client, :ses_password
                             "cour:c" =>   {
                                 #"xsd:allowGuests"           => op[:guests]      || nil,
                                 #"xsd:allowObservers"        => op[:observers]   || nil,
-                                #"xsd:available"             => op[:available]   || nil,
+                                "xsd:available"             => op[:available]   || true,
                                 #"xsd:batchUid"              => op[:batch_id]    || nil,
                                 #"xsd:buttonStyleBbId"       => op[:btn_id]      || nil,
                                 #"xsd:buttonStyleShape"      => op[:btn_style]   || nil,
@@ -69,7 +131,7 @@ attr_reader :client, :ses_password
                                 "xsd:courseId"              => op[:course_id],
                                 #"xsd:coursePace"            => op[:crse_pace]   || nil,
                                 #"xsd:courseServiceLevel"    => op[:crse_level]  || nil,
-                                #"xsd:dataSourceId"          => op[:data_id]     || nil,
+                                "xsd:dataSourceId"          => op[:data_id]     || 41,
                                 #"xsd:decAbsoluteLimit"      => op[:limit]       || nil,
                                 #"xsd:description"           => op[:desc]        || nil,
                                 #"xsd:endDate"               => op[:end_date]    || nil,
@@ -108,9 +170,9 @@ attr_reader :client, :ses_password
         response = @client.request :deleteCourse do
             wsse.credentials "session", ses_id
             wsse.created_at               = Time.now.utc
-            wsse.expires_at               = Time.now.utc + 60
+            wsse.expires_at               = Time.now.utc + SOAP_TIME
             soap.namespaces["xmlns:wsa"]  = ADDRESSING
-            soap.namespaces["xmlns:cour"]   =  C_SERVICE
+            soap.namespaces["xmlns:xsd"]  = C_SERVICE
             soap.header = {
                           "wsa:To"          => C_ENDPOINT,
                           "wsa:MessageID"   => message_id,
@@ -127,7 +189,7 @@ attr_reader :client, :ses_password
         response = @client.request :initializeCourseWS do
             wsse.credentials "session", ses_id
             wsse.created_at               = Time.now.utc
-            wsse.expires_at               = Time.now.utc + 60
+            wsse.expires_at               = Time.now.utc + SOAP_TIME
             soap.namespaces["xmlns:wsa"]  = ADDRESSING
             soap.namespaces["xmlns:cour"] = C_SERVICE
             soap.header = {
@@ -143,7 +205,7 @@ attr_reader :client, :ses_password
     end
 
 ######## The following methods are not working:
-    
+
     def ws_get_course(op={})
     #MUST SET FILTER
     #0 - Load all (course|org)
@@ -172,7 +234,7 @@ attr_reader :client, :ses_password
 #                            "xsd:courseTemplates" => {
 #                                "xsd:allowGuests"           => op[:guests]      || nil,
 #                                "xsd:allowObservers"        => op[:observers]   || nil,
-#                                "xsd:available"             => op[:available]   || nil,
+#      HERE                      "xsd:available"             => op[:available]   || nil,
 #                                "xsd:batchUid"              => op[:batch_id]    || nil,
 #                                "xsd:buttonStyleBbId"       => op[:btn_id]      || nil,
 #                                "xsd:buttonStyleShape"      => op[:btn_style]   || nil,
@@ -206,7 +268,7 @@ attr_reader :client, :ses_password
 #                                "xsd:navigationStyle"       => op[:nav_style]   || nil,
 #                                "xsd:numberOfDaysOfUse"     => op[:num_of_days] || nil,
 #                                "xsd:organization"          => op[:org]         || nil,
-#                                "xsd:showInCatalog"         => op[:show_in_cat] || nil,
+#       HERE                     "xsd:showInCatalog"         => op[:show_in_cat] || nil,
 #                                "xsd:softLimit"             => op[:soft_limit]  || nil,
 #                                "xsd:startDate"             => op[:start_date]  || nil,
 #                                "xsd:uploadLimit"           => op[:upload_lim]  || nil
@@ -227,119 +289,69 @@ attr_reader :client, :ses_password
         end
     end
 
-    def save_course(op={})
-        ses_id   = @ses_password
-        response = @client.request :saveCourse do
-            wsse.credentials ses_id
-            soap.namespaces["xmlns:xsd"] = C_SERVICE
-            soap.header = {
-                          "wsa:To"          => C_ENDPOINT,
-                          "wsa:MessageID"   => message_id,
-                          "wsa:Action"      => "saveCourse"
-                          }
-            soap.input  = ["cour:saveCourse", {"xmlns:cour" => C_SERVICE}]
-            soap.body   = {
-                            "cour:c" =>   {
-                                "xsd:allowGuests"           => op[:guests]      || nil,
-                                "xsd:allowObservers"        => op[:observers]   || nil,
-                                "xsd:available"             => op[:available]   || nil,
-                                "xsd:batchUid"              => op[:batch_id]    || nil,
-                                "xsd:buttonStyleBbId"       => op[:btn_id]      || nil,
-                                "xsd:buttonStyleShape"      => op[:btn_style]   || nil,
-                                "xsd:buttonStyleType"       => op[:btn_type]    || nil,
-                                "xsd:cartridgeId"           => op[:cart_id]     || nil,
-                                "xsd:classificationId"      => op[:class_id]    || nil,
-                                "xsd:courseDuration"        => op[:duration]    || nil,
-                                "xsd:courseId"              => op[:crse_id]     || "test course",
-                                "xsd:coursePace"            => op[:crse_pace]   || nil,
-                                "xsd:courseServiceLevel"    => op[:crse_level]  || nil,
-                                "xsd:dataSourceId"          => op[:data_id]     || nil,
-                                "xsd:decAbsoluteLimit"      => op[:limit]       || nil,
-                                "xsd:description"           => op[:desc]        || nil,
-                                "xsd:endDate"               => op[:end_date]    || nil,
-                                "xsd:enrollmentAccessCode"  => op[:access_code] || nil,
-                                "xsd:enrollmentEndDate"     => op[:end_date]    || nil,
-                                "xsd:enrollmentStartDate"   => op[:start_date]  || nil,
-                                "xsd:enrollmentType"        => op[:enroll_type] || nil,
-                                "xsd:expansionData"         => op[:expan_data]  || nil,
-                                "xsd:fee"                   => op[:fee]         || nil,
-                                "xsd:hasDescriptionPage"    => op[:desc_page]   || nil,
-                                "xsd:id"                    => op[:id]          || nil,
-                                "xsd:institutionName"       => op[:inst_name]   || nil,
-                                "xsd:locale"                => op[:locale]      || nil,
-                                "xsd:localeEnforced"        => op[:loc_enf]     || nil,
-                                "xsd:lockedOut"             => op[:locked_out]  || nil,
-                                "xsd:name"                  => op[:name]        || "mwoods Test Class",
-                                "xsd:navCollapsable"        => op[:nav_cllpe]   || nil,
-                                "xsd:navColorBg"            => op[:nav_clr_bg]  || nil,
-                                "xsd:navColorFg"            => op[:nav_clr_fg]  || nil,
-                                "xsd:navigationStyle"       => op[:nav_style]   || nil,
-                                "xsd:numberOfDaysOfUse"     => op[:num_of_days] || nil,
-                                "xsd:organization"          => op[:org]         || nil,
-                                "xsd:showInCatalog"         => op[:show_in_cat] || nil,
-                                "xsd:softLimit"             => op[:soft_limit]  || nil,
-                                "xsd:startDate"             => op[:start_date]  || nil,
-                                "xsd:uploadLimit"           => op[:upload_lim]  || nil
-                                            }
-                        }
-        end
-    end
 
-    def ws_update_course(op={})
+#If the option is followed by a "_" it means that it is not accessing through
+#the options passed in and is to be left.
+
+
+    def update_course(op={})
         ses_id   = @ses_password
         response = @client.request :updateCourse do
-            wsse.credentials ses_id
-            soap.namespaces["xmlns:cour"] = C_SERVICE
+            wsse.credentials "session", ses_id
+            wsse.created_at               = Time.now.utc
+            wsse.expires_at               = Time.now.utc + SOAP_TIME
+            soap.namespaces["xmlns:wsa"]  = ADDRESSING
+            soap.namespaces["xmlns:xsd"]  = C_SERVICE
             soap.header = {
                           "wsa:To"          => C_ENDPOINT,
                           "wsa:MessageID"   => message_id,
                           "wsa:Action"      => "updateCourse"
                           }
             soap.input  = ["cour:updateCourse", {"xmlns:cour" => C_SERVICE}]
-            soap.body   =  {
-                            "cour:c" =>   {
-                                "xsd:allowGuests"           => op[:guests]      || true,
-                                "xsd:allowObservers"        => op[:observers]   || true,
-                                "xsd:available"             => op[:available]   || true,
-                                "xsd:batchUid"              => op[:batch_id]    || nil,
-                                "xsd:buttonStyleBbId"       => op[:btn_id]      || nil,
-                                "xsd:buttonStyleShape"      => op[:btn_style]   || nil,
-                                "xsd:buttonStyleType"       => op[:btn_type]    || nil,
-                                "xsd:cartridgeId"           => op[:cart_id]     || nil,
-                                "xsd:classificationId"      => op[:class_id]    || nil,
-                                "xsd:courseDuration"        => op[:duration]    || nil,
-                                "xsd:courseId"              => op[:crse_id]     || nil,
-                                "xsd:coursePace"            => op[:crse_pace]   || nil,
-                                "xsd:courseServiceLevel"    => op[:crse_level]  || nil,
-                                "xsd:dataSourceId"          => op[:data_id]     || nil,
-                                "xsd:decAbsoluteLimit"      => op[:limit]       || nil,
-                                "xsd:description"           => op[:desc]        || nil,
-                                "xsd:endDate"               => op[:end_date]    || nil,
-                                "xsd:enrollmentAccessCode"  => op[:access_code] || nil,
-                                "xsd:enrollmentEndDate"     => op[:end_date]    || nil,
-                                "xsd:enrollmentStartDate"   => op[:start_date]  || nil,
-                                "xsd:enrollmentType"        => op[:enroll_type] || nil,
-                                "xsd:expansionData"         => op[:expan_data]  || nil,
-                                "xsd:fee"                   => op[:fee]         || nil,
-                                "xsd:hasDescriptionPage"    => op[:desc_page]   || nil,
-                                "xsd:id"                    => op[:id]          || nil,
-                                "xsd:institutionName"       => op[:inst_name]   || nil,
-                                "xsd:locale"                => op[:locale]      || nil,
-                                "xsd:localeEnforced"        => op[:loc_enf]     || nil,
-                                "xsd:lockedOut"             => op[:locked_out]  || nil,
-                                "xsd:name"                  => op[:name]        || nil,
-                                "xsd:navCollapsable"        => op[:nav_cllpe]   || nil,
-                                "xsd:navColorBg"            => op[:nav_clr_bg]  || nil,
-                                "xsd:navColorFg"            => op[:nav_clr_fg]  || nil,
-                                "xsd:navigationStyle"       => op[:nav_style]   || nil,
-                                "xsd:numberOfDaysOfUse"     => op[:num_of_days] || nil,
-                                "xsd:organization"          => op[:org]         || nil,
-                                "xsd:showInCatalog"         => op[:show_in_cat] || true,
-                                "xsd:softLimit"             => op[:soft_limit]  || nil,
-                                "xsd:startDate"             => op[:start_date]  || nil,
-                                "xsd:uploadLimit"           => op[:upload_lim]  || nil
-                                        }
-                            }
+            soap.body   = {
+            "cour:c" =>   {
+                "xsd:allowGuests"           => op[:allow_guest_ind]     || nil,
+                "xsd:allowObservers"        => op[:allow_observer_ind]  || nil,
+                "xsd:available"             => op[:available_ind]       || nil,
+                "xsd:batchUid"              => op[:batch_uid]           || nil,
+                "xsd:buttonStyleBbId"       => op[:buttonstyles_pk1]    || nil,
+                "xsd:buttonStyleShape"      => op[:btn_style_]          || nil,
+                "xsd:buttonStyleType"       => op[:btn_type_]           || nil,
+                "xsd:cartridgeId"           => op[:cartridge_pk1]       || nil,
+                "xsd:classificationId"      => op[:classifications_pk1] || nil,
+                "xsd:courseDuration"        => op[:duration]            || nil,
+                "xsd:courseId"              => op[:course_id]           || nil,
+                "xsd:coursePace"            => op[:pace]                || nil,
+                "xsd:courseServiceLevel"    => op[:service_level]       || nil,
+                "xsd:dataSourceId"          => op[:data_src_pk1]        || nil,
+                #"xsd:decAbsoluteLimit"      => op[:limit_]              || nil,
+                "xsd:description"           => op[:course_desc]         || nil,
+                #"xsd:endDate"               => op[:end_date_]           || nil,
+                #"xsd:enrollmentAccessCode"  => op[:enroll_access_code]  || nil,
+                #"xsd:enrollmentEndDate"     => op[:end_date_]           || nil,
+                #"xsd:enrollmentStartDate"   => op[:start_date_]         || nil,
+                "xsd:enrollmentType"        => op[:enroll_option]       || nil,
+                #"xsd:expansionData"         => op[:expan_data_]         || nil,
+                #"xsd:fee"                   => op[:fee_]                || nil,
+                #"xsd:hasDescriptionPage"    => op[:desc_page_ind]       || nil,
+                "xsd:id"                    => op[:pk1]                 || nil,
+                "xsd:institutionName"       => op[:institution_name]    || nil,
+                "xsd:locale"                => op[:locale]              || nil,
+                "xsd:localeEnforced"        => op[:is_locale_enforced]  || nil,
+                "xsd:lockedOut"             => op[:lockout_ind]         || nil,
+                "xsd:name"                  => op[:course_name]         || nil,
+                "xsd:navCollapsable"        => op[:collapsible_ind]     || nil,
+                "xsd:navColorBg"            => op[:background_color]    || nil,
+                "xsd:navColorFg"            => op[:textcolor]           || nil,
+                "xsd:navigationStyle"       => op[:navigation_style]    || nil,
+                "xsd:numberOfDaysOfUse"     => op[:days_of_use]         || nil,
+                #"xsd:organization"          => op[:org]                 || nil,
+                #"xsd:showInCatalog"         => op[:catalog_ind]         || nil,
+                #"xsd:softLimit"             => op[:soft_limit_]         || nil,
+                #"xsd:startDate"             => op[:start_date_]         || nil,
+                #"xsd:uploadLimit"           => op[:upload_lim_]         || nil
+                          }
+                          }
         end
     end
 

@@ -2,8 +2,8 @@ require 'rubygems'
 require 'savon'
 require 'gyoku'
 
-U_ENDPOINT     = "https://lms-temp.csuchico.edu/webapps/ws/services/User.WS"
-U_DOCUMENT     = "https://lms-temp.csuchico.edu/webapps/ws/services/User.WS?wsdl"
+U_ENDPOINT     = DOMAIN + "User.WS"
+U_DOCUMENT     = DOMAIN + "User.WS?wsdl"
 U_SERVICE      = "http://user.ws.blackboard"
 
 class UserWS

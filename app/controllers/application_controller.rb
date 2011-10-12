@@ -1,15 +1,12 @@
-require 'oci8'
 require 'rubygems'
 
 class ApplicationController < ActionController::Base
   include CasLogin
   include Permissions
 
-  before_filter :vista_db_setup
   before_filter :authentication
   before_filter :set_session_timeout
 #  before_filter :get_ws_token
-  after_filter  :vista_db_teardown
   helper        :all
 
   protect_from_forgery
@@ -56,6 +53,7 @@ class ApplicationController < ActionController::Base
       session[:user]          = @user
       session[:users_pk1]     = User.find_by_user_id(@user).pk1
       session[:on_behalf_of]  = @user
+      session[:obo_pk1]       = User.find_by_user_id(@user).pk1
   end
 
   def end_session
@@ -106,26 +104,12 @@ class ApplicationController < ActionController::Base
     unless User.find_by_user_id(params['act_as'])
        redirect_to :controller => "application", :action => "invalid_user"
     else
-       session[:on_behalf_of] = params['act_as']
+       session[:on_behalf_of]   = params['act_as']
+       session[:obo_pk1]        = User.find_by_user_id(session[:on_behalf_of]).pk1
        redirect_to :controller => "application", :action => "index"
     end
   end
 
-  #################### DATABASE ##################
-
-  def vista_db_setup
-    vista_db_user = AppConfig.vista_db_user
-    vista_db_password = AppConfig.vista_db_password
-    vista_db_string = AppConfig.vista_db_string
-    $vista_db_conn = OCI8.new(vista_db_user, vista_db_password, vista_db_string)
-    $bbl_db_conn = OCI8.new(AppConfig.bbl_db_user, AppConfig.bbl_db_password, AppConfig.bbl_db_string)
-    $bbl_db_table = AppConfig.bbl_db_table
-  end
-
-  def vista_db_teardown
-    $vista_db_conn.logoff
-    $bbl_db_conn.logoff
-  end
   #################### WEB SERVICES ####################
 
   def get_ws_token

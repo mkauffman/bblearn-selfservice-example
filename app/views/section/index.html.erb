@@ -35,13 +35,21 @@
                     <%= s.section.course_id%>
                 </td>
                 <td>
-                    <%= s.section.available_ind%>
+                    <% if s.section.available_ind == 'Y'%>
+                      <%= link_to "Make Unavailable",
+                      :controller => "section", :action => "available",
+                      :section_id => s.section.pk1 %>
+                    <%else%>
+                      <%= link_to "Make Available",
+                      :controller => "section", :action => "available",
+                      :section_id => s.section.pk1 %>
+                    <%end%>
                 </td>
             </tr>
             <% end %>
         </tbody>
     </table>
-	<%= submit_tag "remove" %>
+	<%= submit_tag "Remove" %>
 	<%= submit_tag "Cancel" %>
 	<% end -%>
 </div>

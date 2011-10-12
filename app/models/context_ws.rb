@@ -2,11 +2,12 @@ require 'rubygems'
 require 'savon'
 require 'gyoku'
 
-ENDPOINT      = "https://lms-temp.csuchico.edu/webapps/ws/services/Context.WS"
-DOCUMENT      = "https://lms-temp.csuchico.edu/webapps/ws/services/Context.WS?wsdl"
+DOMAIN        = "https://#{AppConfig.bbl_ws_domain}/webapps/ws/services/"
+ENDPOINT      = DOMAIN + "Context.WS"
+DOCUMENT      = DOMAIN + "Context.WS?wsdl"
 SERVICE       = "http://context.ws.blackboard"
 ADDRESSING    = "http://www.w3.org/2005/08/addressing"
-SOAP_TIME     = 60*60
+SOAP_TIME     = 3600
 EXPECTED_LIFE = 3600
 
 
@@ -48,7 +49,7 @@ attr_reader :client, :ses_password
             wsse.created_at               = Time.now.utc
             wsse.expires_at               = Time.now.utc + SOAP_TIME
             soap.namespaces["xmlns:wsa"]  = ADDRESSING
-            soap.namespaces["xmlns:bbl"] = SERVICE
+            soap.namespaces["xmlns:bbl"]  = SERVICE
             soap.header = {
                           "wsa:To"          => ENDPOINT,
                           "wsa:MessageID"   => message_id,
@@ -58,7 +59,7 @@ attr_reader :client, :ses_password
             soap.body   = {
                          "bbl:password"             => "atec!d1rn",
                          "bbl:clientVendorId"       => "CSU_CHICO",
-                         "bbl:clientProgramId"      => "TESTING_BBL_SS",
+                         "bbl:clientProgramId"      => "MWOOD_TEST_TOOL",
                          "bbl:loginExtraInfo"       => nil,
                          "bbl:expectedLifeSeconds"  => EXPECTED_LIFE,
                          :order!                    => ["bbl:password",
@@ -74,7 +75,10 @@ attr_reader :client, :ses_password
     def ws_register_tool
         ses_id   = @ses_password
         response = @client.request :registerTool do
-            wsse.credentials ses_id
+            wsse.credentials "session", ses_id
+            wsse.created_at               = Time.now.utc
+            wsse.expires_at               = Time.now.utc + SOAP_TIME
+            soap.namespaces["xmlns:wsa"]  = ADDRESSING
             soap.namespaces["xmlns:bbl"] = SERVICE
             soap.header = {
                           "wsa:To"          => ENDPOINT,
@@ -83,12 +87,13 @@ attr_reader :client, :ses_password
                           }
             soap.input  = ["ns3:registerTool", {"xmlns:ns3" => SERVICE}]
             soap.body = "<ns3:clientVendorId>CSU_CHICO</ns3:clientVendorId>"
-            soap.body += "<ns3:clientProgramId>#{nil}</ns3:clientProgramId>"
+            soap.body += "<ns3:clientProgramId>MWOOD_TEST_TOOL</ns3:clientProgramId>"
             soap.body += "<ns3:registrationPassword>#{nil}</ns3:registrationPassword>"
             soap.body += "<ns3:description>Testing tool</ns3:description>"
             soap.body += "<ns3:initialSharedSecret>#{nil}</ns3:initialSharedSecret>"
             soap.body += "<ns3:requiredToolMethods>Context.WS:getMemberships</ns3:requiredToolMethods>"
             soap.body += "<ns3:requiredToolMethods>Context.WS:emulateUser</ns3:requiredToolMethods>"
+            soap.body += "<ns3:requiredToolMethods>Course.WS:initializeCourseWS</ns3:requiredToolMethods>"
             soap.body += "<ns3:requiredToolMethods>Course.WS:createCourse</ns3:requiredToolMethods>"
             soap.body += "<ns3:requiredToolMethods>Course.WS:deleteCourse</ns3:requiredToolMethods>"
             soap.body += "<ns3:requiredToolMethods>Course.WS:saveCourse</ns3:requiredToolMethods>"

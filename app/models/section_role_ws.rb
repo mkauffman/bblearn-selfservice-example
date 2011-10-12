@@ -2,8 +2,8 @@ require 'rubygems'
 require 'savon'
 require 'gyoku'
 
-CM_ENDPOINT     = "https://lms-temp.csuchico.edu/webapps/ws/services/CourseMembership.WS"
-CM_DOCUMENT     = "https://lms-temp.csuchico.edu/webapps/ws/services/CourseMembership.WS?wsdl"
+CM_ENDPOINT     = DOMAIN + "CourseMembership.WS"
+CM_DOCUMENT     = DOMAIN + "CourseMembership.WS?wsdl"
 CM_SERVICE      = "http://coursemembership.ws.blackboard"
 
 class SectionRoleWS

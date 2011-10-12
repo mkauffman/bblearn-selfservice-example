@@ -81,21 +81,12 @@ development:
  siapi_post_url: https://vista-staging.csuchico.edu/webct/systemIntegrationApi.dowebct
 
  # BBL variables begin
- bbl_context_endpoint: https://lms-temp.csuchico.edu/webapps/ws/services/Context.WS
- bbl_context_document: https://lms-temp.csuchico.edu/webapps/ws/services/Context.WS?wsdl
- bbl_course_mem_endpoint: https://lms-temp.csuchico.edu/webapps/ws/services/CourseMembership.WS
- bbl_course_mem_document: https://lms-temp.csuchico.edu/webapps/ws/services/CourseMembership.WS?wsdl
- bbl_course_endpoint: https://lms-temp.csuchico.edu/webapps/ws/services/Course.WS
- bbl_course_document: https://lms-temp.csuchico.edu/webapps/ws/services/Course.WS?wsdl
- bbl_user_endpoint: https://lms-temp.csuchico.edu/webapps/ws/services/User.WS
- bbl_user_document: https://lms-temp.csuchico.edu/webapps/ws/services/User.WS?wsdl
- bbl_content_endpoint: https://lms-temp.csuchico.edu/webapps/ws/services/Content.WS
- bbl_content_document: https://lms-temp.csuchico.edu/webapps/ws/services/Content.WS?wsdl
+ bbl_ws_domain: "learn-staging.csuchico.edu"
  bbl_tool_pass: atec!d1rn
  bbl_registration_pass: pass1234
  bbl_db_string: //lmsdb2.csuchico.edu:1521/bbtest.lmsdb2.csuchico.edu
  bbl_db_user: learnsupport
  bbl_db_password: adm1nIZ34
- bbl_db_table: BBLEARN2
+ bbl_db_table: BBLEARN
  # BBL variables end
 

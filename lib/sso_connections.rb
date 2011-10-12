@@ -29,15 +29,16 @@ module Sso_connections
   end
 
   def build_url(batchId)
-    host      = "lms-temp.csuchico.edu"
-    block     = "/webapps/bbgs-autosignon-BBLEARN2/autoSignon.do"
+    host      = AppConfig.bbl_ws_domain
+    #host     = "lms-temp.csuchico.edu"
+    block     = "/webapps/bbgs-autosignon-#{AppConfig.bbl_db_table}/autoSignon.do"
     courseId  = Section.find_by_course_id(params[:section]).batch_uid
     timestamp = Time.now.to_i.to_s
     secret    = "3B1!ndM!ce..."
 
     user_id   = batchId.user_id.to_s
 
-    logger.info "LOGGING FOR SSO "+ courseId + ' ' + timestamp + ' ' + user_id + ' ' + secret
+    logger.info "LOGGING FOR SSO "+ courseId + ' ' + timestamp + ' ' + user_id
 
     auth = Digest::MD5.hexdigest(courseId+timestamp+user_id+secret)
 

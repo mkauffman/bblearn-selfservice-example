@@ -29,13 +29,13 @@ class SsoController < ApplicationController
   end
 
   def login
+    section = Section.find_by_course_name(params[:section])
     if params[:mode] == "admin"
       url = admin_signon
     elsif params[:mode] == "designer"
-      section = Section.find_by_course_name(params[:section])
       url = designer_signon(section)
     elsif params[:mode] == "student"
-      url = student_signon
+      url = student_signon(section)
     end
     logger.info 'User: '+session[:user]+' is using the SSO tool on behalf of '+params[:sso_id]+' for course: '+params[:section]
     redirect_to(url)
