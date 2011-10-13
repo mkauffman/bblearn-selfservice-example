@@ -6,9 +6,9 @@
     <% end %>
     <%= link_to "Learn Certifified", :controller => "institution_role", :action => "index", :role => "lrncrt" %> |
     <%= link_to "Administrator", :controller => "institution_role", :action => "index", :role => "admin" %> |
-    <%= link_to "ITSS", :controller => "institution_role", :action => "index", :role => "itss" %> | 
-    <%= link_to "MLIB Staff", :controller => "institution_role", :action => "index", :role => "mlib" %> | 
-    <%= link_to "TLP", :controller => "institution_role", :action => "index", :role => "tlp" %> | 
+    <%= link_to "ITSS", :controller => "institution_role", :action => "index", :role => "itss" %> |
+    <%= link_to "MLIB Staff", :controller => "institution_role", :action => "index", :role => "mlib" %> |
+    <%= link_to "TLP", :controller => "institution_role", :action => "index", :role => "tlp" %> |
     <%= link_to "TLP Admin", :controller => "institution_role", :action => "index", :role => "tlp_admin" %>
     <table class="output sortable">
         <tr>
@@ -40,14 +40,15 @@
                 <%= ur.user.lastname %>
             </td>
             <td>
-                <%= link_to 'Edit', url_for(:action=>"edit_role", :user_id=>ur.user.user_id) %>
+                <%= link_to 'Edit', url_for(:action=>"index", :role => params[:role]) %>
             </td>
             <td>
-                <%= link_to 'Delete', url_for(:action=>"delete", :user_id => ur.user.user_id), :confirm => 'Are you sure?' %>
+                <%= link_to 'Delete', url_for(:action=>"index", :role => params[:role], :confirm => 'Are you sure?') %>
             </td>
         </tr>
         <% end %>
     </table>
     <br/>
-    <%= link_to 'New role', url_for(:action=>"new") %>
+    <%= link_to 'New role', url_for(:action=>"index", :role => params[:role]) %>
 </div>
+

@@ -1,13 +1,15 @@
   <div class="contnt">
-  <b>Create Sections</b>
-  <% form_tag({:action => "add"}) do -%>
-	  <b>Enter in section name</b><br/>
+  <b>Create Prep Area Sections</b>
+  <% form_tag({:action => "add_prep"}) do -%>
+	  <b>Enter in prep section name</b><br/>
+    <%= "Preparea-#{session[:on_behalf_of]}-"%>
     <%= text_field_tag "course_id" %>
     <%= submit_tag "Add" %>
 	  <%= submit_tag "Cancel" %>
 	  <br/>
 	  <%= @role%>
   <% end -%>
+  </br>
 	<% form_tag({:action => "remove"}) do -%>
     <table class="output sortable">
         <thead>
@@ -23,7 +25,7 @@
             </tr>
         </thead>
         <tbody>
-            <% @sections.each do |s|%>
+            <% @prep_sections.each do |s|%>
             <tr>
             	<td class="check_box">
                     <%= radio_button_tag 'sections[]', s.pk1, false, :class => "check" %>

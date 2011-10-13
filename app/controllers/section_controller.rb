@@ -1,22 +1,25 @@
-require 'logger'
-
 class SectionController < ApplicationController
 
     def index
-      @section_roles = SectionRole.find(:all,
-      :conditions => ['users_pk1 = :users_pk1 and role = :role',
-      {:users_pk1 => session[:obo_pk1], :role => 'P'}])
+      sections      = Section.find_all_for_instructor_pk1(session[:obo_pk1])
+      prep_sections = Section.find_all_prepareas_for_instructor_pk1(session[:obo_pk1])
+      @sections     = sections - prep_sections
+    end
+
+    def prep_index
+      @prep_sections = Section.find_all_prepareas_for_instructor_pk1(session[:obo_pk1])
     end
 
     def add
       section_pk1   = Section.create(params[:course_id])
-      @section_role = SectionRole.create(section_pk1, session[:users_pk1], 'P')
+      @section_role = SectionRole.create(section_pk1, session[:obo_pk1], 'P')
       redirect_to :action => 'index'
     end
 
     def add_prep
-      section_pk1   = Section.create_prep_area(course_id)
-      @section_role = SectionRole.create(section_pk1, session[:users_pk1], 'P')
+      course_id     = "Preparea-"+session[:on_behalf_of]+"-"+params[:course_id]
+      section_pk1   = Section.create_prep_area(session[:on_behalf_of], params[:course_id])
+      @section_role = SectionRole.create(section_pk1, session[:obo_pk1], 'P')
       redirect_to :action => 'index'
     end
 

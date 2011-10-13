@@ -2,9 +2,10 @@ require 'rubygems'
 require 'savon'
 require 'gyoku'
 
-U_ENDPOINT     = DOMAIN + "User.WS"
-U_DOCUMENT     = DOMAIN + "User.WS?wsdl"
-U_SERVICE      = "http://user.ws.blackboard"
+DOMAIN      = "https://#{AppConfig.bbl_ws_domain}/webapps/ws/services/"
+U_ENDPOINT  = DOMAIN + "User.WS"
+U_DOCUMENT  = DOMAIN + "User.WS?wsdl"
+U_SERVICE   = "http://user.ws.blackboard"
 
 class UserWS
 
@@ -122,7 +123,7 @@ attr_reader :client, :ses_password
         end
     end
 
-    def ws_save_user(op={})
+    def save(op={})
         ses_id   = @ses_password
         response = @client.request :saveUser do
             wsse.credentials "session", ses_id
@@ -138,69 +139,8 @@ attr_reader :client, :ses_password
             soap.input  = ["user:saveUser", {"xmlns:user" => U_SERVICE}]
             soap.body   = {
                             "user:user"   => {
-                                "xsd:birthDate"         =>  op[:bdate]      || nil,
-                                "xsd:dataSourceId"      =>  op[:data_id]    || 61,
-                                "xsd:educationLevel"    =>  op[:edu_level]  || nil,
-                                "xsd:expansionData"     =>  op[:edata]      || nil,
-                                "xsd:extendedInfo"      =>  {
-                                    "xsd:businessFax"       => op[:bfax]        || nil,
-                                    "xsd:businessPhone1"    => op[:bphone1]     || nil,
-                                    "xsd:businessPhone2"    => op[:bphone2]     || nil,
-                                    "xsd:city"              => op[:city]        || nil,
-                                    "xsd:company"           => op[:company]     || nil,
-                                    "xsd:country"           => op[:country]     || nil,
-                                    "xsd:department"        => op[:dept]        || nil,
-                                    "xsd:emailAddress"      => op[:email]       || nil,
-                                    "xsd:expansionData"     => op[:edata]       || nil,
-                                    "xsd:familyName"        => op[:fam_name]    || nil,
-                                    "xsd:givenName"         => op[:given_name]  || nil,
-                                    "xsd:homeFax"           => op[:hfax]        || nil,
-                                    "xsd:homePhone1"        => op[:hphone1]     || nil,
-                                    "xsd:homePhone2"        => op[:hphone2]     || nil,
-                                    "xsd:jobTitle"          => op[:jtitle]      || nil,
-                                    "xsd:middleName"        => op[:mname]       || nil,
-                                    "xsd:mobilePhone"       => op[:mphone]      || nil,
-                                    "xsd:state"             => op[:state]       || nil,
-                                    "xsd:street1"           => op[:street1]     || nil,
-                                    "xsd:street2"           => op[:street2]     || nil,
-                                    "xsd:webPage"           => op[:wpage]       || nil,
-                                    "xsd:zipCode"           => op[:zip]         || nil,
-                                                            },
-                                "xsd:genderType"        => op[:gender]      || nil,
-                                "xsd:id"                => op[:id]          || nil,
-                                "xsd:insRoles"          => op[:ins_roles]   || nil,
-                                "xsd:isAvailable"       => op[:available]   || true,
-                                "xsd:name"              => op[:name]        || "zoonie",
-                                "xsd:password"          => op[:password]    || "test123",
-                                "xsd:studentId"         => op[:student_id]  || "testin",
-                                "xsd:systemRoles"       => op[:sys_roles]   || nil,
-                                "xsd:title"             => op[:title]       || nil,
-                                "xsd:userBatchUid"      => op[:batch_uid]   || nil,
-                                             }
-                            }
-                end
-    end
-
-######## The following methods are not working:
-
-    def create_user(op={})
-        ses_id   = @ses_password
-        response = @client.request :createUser do
-            wsse.credentials "session", ses_id
-            wsse.created_at               = Time.now.utc
-            wsse.expires_at               = Time.now.utc + SOAP_TIME
-            soap.namespaces["xmlns:wsa"]  = ADDRESSING
-            soap.namespaces["xmlns:xsd"]  = U_SERVICE
-            soap.header = {
-                          "wsa:To"          => U_ENDPOINT,
-                          "wsa:MessageID"   => message_id,
-                          "wsa:Action"      => "createUser"
-                          }
-            soap.input  = ["user:createUser", {"xmlns:user" => U_SERVICE}]
-            soap.body   =  {
-                            "user:user" =>   {
                                 #"xsd:birthDate"         =>  op[:bdate]      || nil,
-                                "xsd:dataSourceId"      =>  op[:data_id]    || 61,
+                                "xsd:dataSourceId"      =>  op[:data_id]    || 41,
                                 #"xsd:educationLevel"    =>  op[:edu_level]  || nil,
                                 #"xsd:expansionData"     =>  op[:edata]      || nil,
                                 "xsd:extendedInfo"      =>  {
@@ -228,20 +168,79 @@ attr_reader :client, :ses_password
                                     #"xsd:zipCode"           => op[:zip]         || nil,
                                                             },
                                 #"xsd:genderType"        => op[:gender]      || nil,
-                                "xsd:id"                => op[:id]          || nil,
+                                #"xsd:id"                => op[:id]          || nil,
+                                #"xsd:insRoles"          => op[:ins_roles]   || nil,
+                                "xsd:isAvailable"       => op[:available]   || true,
+                                "xsd:name"              => op[:name],
+                                "xsd:password"          => op[:password],
+                                "xsd:studentId"         => op[:student_id],
+                                #"xsd:systemRoles"       => op[:sys_roles]   || nil,
+                                #"xsd:title"             => op[:title]       || nil,
+                                #"xsd:userBatchUid"      => op[:batch_uid]   || nil,
+                                             }
+                            }
+                end
+    end
+
+######## The following methods are not working:
+
+    def create_user(op={})
+        ses_id   = @ses_password
+        response = @client.request :createUser do
+            wsse.credentials "session", ses_id
+            wsse.created_at               = Time.now.utc
+            wsse.expires_at               = Time.now.utc + SOAP_TIME
+            soap.namespaces["xmlns:wsa"]  = ADDRESSING
+            soap.namespaces["xmlns:xsd"]  = U_SERVICE
+            soap.header = {
+                          "wsa:To"          => U_ENDPOINT,
+                          "wsa:MessageID"   => message_id,
+                          "wsa:Action"      => "createUser"
+                          }
+            soap.input  = ["user:createUser", {"xmlns:user" => U_SERVICE}]
+            soap.body   =  {
+                            "user:user" =>   {
+                                #"xsd:birthDate"         =>  op[:bdate]      || nil,
+                                "xsd:dataSourceId"      =>  op[:data_id]    || 41,
+                                #"xsd:educationLevel"    =>  op[:edu_level]  || nil,
+                                #"xsd:expansionData"     =>  op[:edata]      || nil,
+                                "xsd:extendedInfo"      =>  {
+                                    #"xsd:businessFax"       => op[:bfax]        || nil,
+                                    #"xsd:businessPhone1"    => op[:bphone1]     || nil,
+                                    #"xsd:businessPhone2"    => op[:bphone2]     || nil,
+                                    #"xsd:city"              => op[:city]        || nil,
+                                    #"xsd:company"           => op[:company]     || nil,
+                                    #"xsd:country"           => op[:country]     || nil,
+                                    #"xsd:department"        => op[:dept]        || nil,
+                                    #"xsd:emailAddress"      => op[:email]       || nil,
+                                    #"xsd:expansionData"     => op[:edata]       || nil,
+                                    "xsd:familyName"        => op[:fam_name]    || nil,
+                                    "xsd:givenName"         => op[:given_name]  || nil,
+                                    #"xsd:homeFax"           => op[:hfax]        || nil,
+                                    #"xsd:homePhone1"        => op[:hphone1]     || nil,
+                                    #"xsd:homePhone2"        => op[:hphone2]     || nil,
+                                    #"xsd:jobTitle"          => op[:jtitle]      || nil,
+                                    #"xsd:middleName"        => op[:mname]       || nil,
+                                    #"xsd:mobilePhone"       => op[:mphone]      || nil,
+                                    #"xsd:state"             => op[:state]       || nil,
+                                    #"xsd:street1"           => op[:street1]     || nil,
+                                    #"xsd:street2"           => op[:street2]     || nil,
+                                    #"xsd:webPage"           => op[:wpage]       || nil,
+                                    #"xsd:zipCode"           => op[:zip]         || nil,
+                                                            },
+                                #"xsd:genderType"        => op[:gender]      || nil,
+                                #"xsd:id"                => op[:id]          || nil,
                                 #"xsd:insRoles"          => op[:ins_roles]   || nil,
                                 #"xsd:isAvailable"       => op[:available]   || true,
                                 "xsd:name"              => op[:name]        || nil,
                                 "xsd:password"          => op[:password]    || nil,
-                                #"xsd:studentId"         => op[:student_id]  || nil,
-                                "xsd:systemRoles"       => op[:sys_roles]   || nil,
+                                "xsd:studentId"         => op[:student_id]  || nil,
+                                #"xsd:systemRoles"       => op[:sys_roles]   || nil,
                                 #"xsd:title"             => op[:title]       || nil,
                                 #"xsd:userBatchUid"      => op[:batch_uid]   || nil,
                                              }
                             }
         end
-        session_reg = /([^><]+)(?=<\/ns:return>)/
-        @ses_password = session_reg.match(response.http.body).to_s
     end
 
     def user_information(html)

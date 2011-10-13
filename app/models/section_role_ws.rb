@@ -2,9 +2,10 @@ require 'rubygems'
 require 'savon'
 require 'gyoku'
 
-CM_ENDPOINT     = DOMAIN + "CourseMembership.WS"
-CM_DOCUMENT     = DOMAIN + "CourseMembership.WS?wsdl"
-CM_SERVICE      = "http://coursemembership.ws.blackboard"
+DOMAIN      = "https://#{AppConfig.bbl_ws_domain}/webapps/ws/services/"
+CM_ENDPOINT = DOMAIN + "CourseMembership.WS"
+CM_DOCUMENT = DOMAIN + "CourseMembership.WS?wsdl"
+CM_SERVICE  = "http://coursemembership.ws.blackboard"
 
 class SectionRoleWS
 

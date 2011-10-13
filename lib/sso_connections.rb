@@ -5,14 +5,25 @@ module Sso_connections
   #       MLIB permissions will factor in (role, not a permission group)
 
 
-  def create_and_add_sso(role,section)
+  def create_and_add_sso(role_id,section)
     user        = User.find_by_user_id(params[:sso_id])
-    prefix      = InstitutionRole.find(user.institution_roles_pk1).role_name + "-"
-    User.create(prefix + user.user_id)
-    user_id     = prefix.downcase! + user.user_id.to_s
-    batchID     = User.find_by_user_id(user_id)
-    SectionRole.create(section.pk1, batchID.pk1, role)
-    build_url(batchID)
+    prefix      = "sso-tlp-"
+    user_id     = prefix + user.user_id.to_s
+    if User.find_by_user_id(user_id).nil?
+      User.create(prefix + user.user_id)
+    end
+    batch_id    = User.find_by_user_id(user_id)
+    logger.info "BATCH: "+batch_id.pk1.to_s
+    logger.info "SECTION: "+section.pk1.to_s
+#TODO: Make a check for section role before creating
+    role        = SectionRole.find_by_users_pk1_and_crsmain_pk1(batch_id.pk1, section.pk1)
+    if role.nil?
+      SectionRole.create(section.pk1, batch_id.pk1, role_id)
+    else
+      SectionRole.destroy(role)
+      SectionRole.create(section.pk1, batch_id.pk1, role_id)
+    end
+    build_url(batch_id)
   end
 
   def admin_signon
@@ -30,7 +41,6 @@ module Sso_connections
 
   def build_url(batchId)
     host      = AppConfig.bbl_ws_domain
-    #host     = "lms-temp.csuchico.edu"
     block     = "/webapps/bbgs-autosignon-#{AppConfig.bbl_db_table}/autoSignon.do"
     courseId  = Section.find_by_course_id(params[:section]).batch_uid
     timestamp = Time.now.to_i.to_s

@@ -32,12 +32,11 @@ class User < ActiveRecord::Base
     con.emulate_user
     use   = UserWS.new(token)
     use.ws
-    use.ws_save_user :fam_name    => last_name,
+    use.save        :fam_name    => last_name,
                     :given_name   => first_name,
                     :student_id   => user_id,
                     :name         => user_id,
-                    :password     => password,
-                    :ins_roles    => 161
+                    :password     => password
   end
 
 

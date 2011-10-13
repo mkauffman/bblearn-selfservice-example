@@ -2,7 +2,7 @@ require 'rubygems'
 require 'savon'
 require 'gyoku'
 
-DOMAIN          = 'https://learn-staging.csuchico.edu/webapps/ws/services/'
+DOMAIN          = "https://#{AppConfig.bbl_ws_domain}/webapps/ws/services/"
 C_ENDPOINT      = DOMAIN + "Course.WS"
 C_DOCUMENT      = DOMAIN + "Course.WS?wsdl"
 C_SERVICE       = "http://course.ws.blackboard"

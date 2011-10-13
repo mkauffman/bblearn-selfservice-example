@@ -7,26 +7,21 @@
         <li><%= link_to "Course Instructors", :controller => "section_role", :action => "index", :enrollment => 'instructors' %></li>
         <li><%= link_to "Guest Instructors", :controller => "section_role", :action => "index", :enrollment => 'designers' %></li>
         <li><%= link_to "Teaching Assistants/Graders", :controller => "section_role", :action => "index", :enrollment => 'graders' %></li>
-        <li><%= link_to "Community Members", :controller => "section_role", :action => "index", :enrollment => 'members' %></li>
         <li><%= link_to "Students", :controller => "section_role", :action => "index", :enrollment => 'students' %></li>
       </ul>
     </li>
 	<li><a href="#">Manage Sections</a>
       <ul>
-      	<li><%= link_to "Create/Delete Prep Areas", :controller => "section", :action => "index" %></li>
+      	<li><%= link_to "Create/Delete Prep Areas", :controller => "section", :action => "prep_index",
+      	 :prep => 'Prep'%></li>
       	<li><%= link_to "Create/Delete Course", :controller => "section", :action => "index" %></li>
-      	<li><%= link_to "Create/Delete Organizations", :controller => "section", :action => "index" %></li>
-      	<li><%= link_to "Change Course ID & External Key", :controller => "section", :action => "index" %></li>
       	<li><%= link_to "Reset Course", :controller => "section", :action => "index" %></li>
-      	<li><%= link_to "Available/Unavailable Course", :controller => "section", :action => "available" %></li>
       </ul>
     </li>
     <li><a href="#">Help Desk</a>
       <ul>
         <li><%= link_to "Edit HTML/CSS", :controller => "tlp_admin", :action => "index" %></li>
         <li><%= link_to "Institution Role Management", :controller => "institution_role", :action => "index", :role => "lrncrt" %></li>
-	<li><%= link_to "Change DSKs", :controller => "institution_role", :action => "index" %></li>
-	<li><%= link_to "Manage Integration Settings", :controller => "institution_role", :action => "index" %></li>
       </ul>
     </li>
 	<li><%= link_to "Single Signon", :controller => "sso", :action => "index" %></li>

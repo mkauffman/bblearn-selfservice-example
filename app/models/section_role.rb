@@ -8,17 +8,30 @@ class SectionRole < ActiveRecord::Base
   belongs_to :user, :foreign_key => "users_pk1"
   belongs_to :section, :foreign_key => "crsmain_pk1"
 
-  def self.destroy(section_role, crsmain_pk1)
+   def self.find_all_preparea_roles_for_user_pk1(user_pk1)
+    prep_section_roles  = []
+    prep_find           = /Preparea-(.+)/
+    section_roles       = self.find_all_by_users_pk1_and_role(user_pk1, 'P')
+
+    section_roles.each do |s|
+      if prep_find.match(s.section.course_id)
+        prep_section_roles << s
+      end
+    end
+    return prep_section_roles
+   end
+
+  def self.destroy(role)
     con   = ContextWS.new
     token = con.ws
     con.login_tool
     con.emulate_user
     sr    = SectionRoleWS.new(token)
     sr.ws
-    sr.delete_course_membership :pk1 => section_role,
-                                :crsmain_pk1 => crsmain_pk1
+    role.attributes.to_options!
+    sr.delete_course_membership(role)
   end
-  
+
   def self.create(crsmain_pk1, users_pk1, role_id)
     con   = ContextWS.new
     token = con.ws
