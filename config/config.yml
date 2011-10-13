@@ -51,7 +51,7 @@ staging:
  bbl_db_string: //lmsdb2.csuchico.edu:1521/bbtest.lmsdb2.csuchico.edu
  bbl_db_user: learnsupport
  bbl_db_password: adm1nIZ34
- bbl_db_table: BBLEARN2
+ bbl_db_table: BBLEARN
  # BBL variables end
 
 development:
