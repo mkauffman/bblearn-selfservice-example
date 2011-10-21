@@ -1,7 +1,7 @@
 .tmp*
 log/*.log
 tmp/**/*
-
+.redcar*
 # Other useful ones to ignore
 doc/api
 doc/app
