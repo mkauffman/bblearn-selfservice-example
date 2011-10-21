@@ -11,21 +11,25 @@ class SectionController < ApplicationController
     end
 
     def add
-      section_pk1   = Section.create(params[:course_id])
+      section_pk1   = Section.create(params[:course_name])
       @section_role = SectionRole.create(section_pk1, session[:obo_pk1], 'P')
       redirect_to :action => 'index'
     end
 
     def add_prep
-      course_id     = "Preparea-"+session[:on_behalf_of]+"-"+params[:course_id]
-      section_pk1   = Section.create_prep_area(session[:on_behalf_of], params[:course_id])
+      section_pk1   = Section.create_prep_area(session[:on_behalf_of], params[:course_name])
       @section_role = SectionRole.create(section_pk1, session[:obo_pk1], 'P')
-      redirect_to :action => 'index'
+      redirect_to :action => 'prep_index'
     end
 
     def remove
       Section.destroy(params[:sections])
       redirect_to :action => 'index'
+    end
+    
+    def remove_prep
+      Section.destroy(params[:sections])
+      redirect_to :action => 'prep_index'
     end
 
     def available
@@ -35,4 +39,5 @@ class SectionController < ApplicationController
     end
 
 end
+
 

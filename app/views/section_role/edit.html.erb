@@ -1,7 +1,8 @@
 <div class="contnt">
     <% form_tag({:action => "add"}) do -%>
-      <b>Enter a user's Portal ID to add them as a <%=params[:enrollment]%>.</b><br/>
-	<span style="font-weight:bold; font-size:x-large;"><%= "Section: "+@section.course_id %></span><br/>
+    <h1>Add or remove <%=params[:enrollment]%>.</h1><br/>
+    <h2>For <%= "section: "+@section.course_id %></h2>
+    <p>To add <%=params[:enrollment]%> enter in a portal id.</p>
     <%= text_field_tag "user_id" %>
 	<%= hidden_field_tag "source_id", params[:source_id] %>
 	<%= hidden_field_tag "enrollment", params[:enrollment] %>
@@ -10,30 +11,11 @@
 	<%= submit_tag "Cancel" %>
 	<br/>
 	<%= @role%>
-	<%= check_box_tag 'instructor_check_box', 'add_instructor' %>
-	<div id="instructor_check_text">
-		<% if @ferpa_text.nil? %>
-			Check this box to add this person as an instructor as well as a designer.
-			<br/>
-			By checking the box, you agree that this person should be allowed to see
-			<br/>
-			student information protected by FERPA. This includes student grades, enrollments
-			<br/>
-			and all other information viewable by instructors in Vista.
-		<% else %>
-			<%= @ferpa_text.to_s %>
-		<% end %>
-	</div>
     <% end -%>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
 	<%= @res %>
 	<div id="guest_table">
 	<hr/>
-    <b>Remove Guest Designers / Instructors</b>
+  <h2>Remove Guest Designers / Instructors</h2>
 	<% form_tag({:action => "remove"}) do -%>
 	<%= hidden_field_tag "source_id", params[:source_id] %>
 	<%= hidden_field_tag "id", params[:id] %>

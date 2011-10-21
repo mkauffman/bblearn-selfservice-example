@@ -24,19 +24,23 @@ class Section < ActiveRecord::Base
      return sections
    end
 
-   def self.create_prep_area(user_id, course_id)
+   def self.create_prep_area(user_id, name)
+      course_id       = name.strip.gsub(" ","-")
+      prefix          = "PrepArea-"+user_id+"-"
       con             = ContextWS.new
       token           = con.ws
       con.login_tool
       con.emulate_user
       ws_section      = SectionWS.new(token)
       ws_section.ws
-      prep_course_id  = "Preparea-"+user_id+"-"+course_id
+      prep_course_id  = prefix+course_id
+      prep_name       = prefix+name
       ws_section.create_course  :course_id  => prep_course_id,
-                                :name       => course_id
+                                :name       => prep_name
    end
 
-   def self.create(course_id)
+   def self.create(name)
+      course_id      = name.strip.gsub(" ","-")
       con            = ContextWS.new
       token          = con.ws
       con.login_tool

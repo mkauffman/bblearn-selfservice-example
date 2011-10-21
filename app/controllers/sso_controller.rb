@@ -31,7 +31,7 @@ class SsoController < ApplicationController
   def login
     section = Section.find_by_course_name(params[:section])
     if section.nil?
-      redirect_to(:controller => "selfservice", :action => "section_id_failure")
+      redirect_to(:controller => "application", :action => "no_valid_sections")
     end
     if params[:mode] == "admin"
       url = admin_signon

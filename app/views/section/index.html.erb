@@ -1,25 +1,27 @@
   <div class="contnt">
-  <b>Create Sections</b>
+    <h1>Create Courses</h1>
   <% form_tag({:action => "add"}) do -%>
-	  <b>Enter in section name</b><br/>
-    <%= text_field_tag "course_id" %>
+  <h2>Enter in course name</h2>
+  <p>Course names can only contain the characters a-z, A-Z, 0-9, dot ("."), 
+    dash ("-"), underscore ("_"), and spaces</p>
+    <%= text_field_tag "course_name" %>
     <%= submit_tag "Add" %>
 	  <%= submit_tag "Cancel" %>
 	  <br/>
 	  <%= @role%>
   <% end -%>
-	<% form_tag({:action => "remove"}) do -%>
+  </br>
+  <hr/>
+  <h2>Choose a course to delete</h2>
+	<% form_tag({:action => "remove"}) do -%>  
     <table class="output sortable">
         <thead>
             <tr>
             	<th id="check_th" class="sorttable_nosort">
             </th>
                 <th id="course_id">
-                    Name
-                </th>
-                <th id="available_ind">
-                    Available
-                </th>
+                    Course Name
+                  </th>                
             </tr>
         </thead>
         <tbody>
@@ -29,28 +31,14 @@
                     <%= radio_button_tag 'sections[]', s.pk1, false, :class => "check" %>
                 </td>
                 <td>
-                    <%= s.course_id%>
-                </td>
-                <td>
-                    <%= s.available_ind%>
-<!--
-                    <% if s.available_ind == 'Y'%>
-                      <%= link_to "Make Unavailable",
-                      :controller => "section", :action => "available",
-                      :section_id => s.pk1 %>
-                    <%else%>
-                      <%= link_to "Make Available",
-                      :controller => "section", :action => "available",
-                      :section_id => s.pk1 %>
-                    <%end%>
-  -->
-                </td>
+                    <%= s.course_name%>
+                  </td>                
             </tr>
             <% end %>
         </tbody>
-    </table>
+      </table>    
 	<%= submit_tag "Remove" %>
 	<%= submit_tag "Cancel" %>
-	<% end -%>
+	<% end -%>    
 </div>
 

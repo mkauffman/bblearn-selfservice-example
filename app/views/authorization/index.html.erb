@@ -1,7 +1,6 @@
 <div class="contnt">
-  <h1>Add or Remove <%=params[:enrollment].capitalize%></h1>
-  <h2> Click on a course below to add or remove <%=params[:enrollment]%>.</h2>
-  <p>Click header to sort.</p>
+  <h1>Manage Authorizations</h1>
+  <h2> Click on check boxes to add or remove role from controller/action</h2>
     <table id="add_guest_table" class="output clickable sortable">
         <thead>
             <tr>
@@ -11,12 +10,6 @@
             </tr>
         </thead>
         <tbody>
-       <% @section_roles.each do |s| %>
-       <% link_url = url_for(
-        :controller => "section_role",
-        :action => 'edit',
-        :id => s.section.pk1,
-        :enrollment => params[:enrollment])%>
         <tr>              
                 <td onClick="window.location='<%= link_url %>'">
                     <%= s.section.course_name %>

@@ -1,13 +1,10 @@
 <div class="contnt">
-    <b>Select Section For Extract</b>
+  <h1>Select Section For Extract</h1>
     <table id="add_guest_table" class="output clickable sortable">
         <thead>
-            <tr>
-                <th id="term">
-                    Term
-                </th>
+          <tr>              
                 <th id="sect_name">
-                    Name
+                    Course Name
                 </th>
             </tr>
         </thead>
@@ -18,10 +15,7 @@
         :action => 'user_tp',
         :id => s.section.pk1,
         :enrollment => params[:enrollment])%>
-            <tr>
-                <td onClick="window.location='<%= link_url %>'">
-                    <%= s.section.course_id %>
-                </td>
+        <tr>              
                 <td onClick="window.location='<%= link_url %>'">
                     <%= s.section.course_name %>
                 </td>

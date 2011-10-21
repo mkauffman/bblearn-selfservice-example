@@ -1,27 +1,28 @@
   <div class="contnt">
-  <b>Create Prep Area Sections</b>
+    <h1>Create Prep Area Sections</h1>
   <% form_tag({:action => "add_prep"}) do -%>
-	  <b>Enter in prep section name</b><br/>
-    <%= "Preparea-#{session[:on_behalf_of]}-"%>
-    <%= text_field_tag "course_id" %>
+  <h2>Enter in a preparea name</h2>
+  <p>Course names can only contain the characters a-z, A-Z, 0-9, dot ("."), 
+    dash ("-"), underscore ("_"), and spaces</p>
+    <%= "PrepArea-#{session[:on_behalf_of]}-"%>
+    <%= text_field_tag "course_name" %>
     <%= submit_tag "Add" %>
 	  <%= submit_tag "Cancel" %>
 	  <br/>
 	  <%= @role%>
   <% end -%>
   </br>
-	<% form_tag({:action => "remove"}) do -%>
-    <table class="output sortable">
+  <hr/>
+  <h2>Choose a course to delete</h2>
+  <%form_tag({:action => "remove_prep"}) do -%>
+  <table id="add_guest_table" class="output sortable">
         <thead>
             <tr>
             	<th id="check_th" class="sorttable_nosort">
             </th>
                 <th id="course_id">
-                    Name
-                </th>
-                <th id="available_ind">
-                    Available
-                </th>
+                    Course Name
+                  </th>                
             </tr>
         </thead>
         <tbody>
@@ -31,22 +32,8 @@
                     <%= radio_button_tag 'sections[]', s.pk1, false, :class => "check" %>
                 </td>
                 <td>
-                    <%= s.course_id%>
-                </td>
-                <td>
-                    <%= s.available_ind%>
-<!--
-                    <% if s.available_ind == 'Y'%>
-                      <%= link_to "Make Unavailable",
-                      :controller => "section", :action => "available",
-                      :section_id => s.pk1 %>
-                    <%else%>
-                      <%= link_to "Make Available",
-                      :controller => "section", :action => "available",
-                      :section_id => s.pk1 %>
-                    <%end%>
-  -->
-                </td>
+                    <%= s.course_name %>
+                  </td>                
             </tr>
             <% end %>
         </tbody>
