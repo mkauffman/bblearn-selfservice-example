@@ -1,0 +1,30 @@
+<div class="contnt">
+<h1>Authorizations Control Panel</h1>
+<table class="output sortable">
+  <tr>
+    <th>Controller</th>
+    <th>Action</th>
+    <%count = 0%>
+    <% @institution_roles.each do |i_role| %>
+      <%if count < 6%>
+        <th><%=i_role.role_id%></th>
+      <%end%>
+        <%count = count + 1%>
+    <%end%>
+  </tr>
+
+<% @ca_managements.each do |ca_management| %>
+  <tr>
+    <td><%=h ca_management.controller %></td>
+    <td><%=h ca_management.action %></td>
+    <%count = 0%>
+    <% @institution_roles.each do |i_role| %>      
+      <%if count < 6%>
+        <td><%=check_box("role","ca")%></td>
+      <%end%>
+        <%count = count + 1%>
+    <%end%>
+  </tr>
+<% end %>
+</table>
+</div>

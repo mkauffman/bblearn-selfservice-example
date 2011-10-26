@@ -2,12 +2,12 @@ class SectionRoleController < ApplicationController
   def index
     @section_roles = SectionRole.find(:all,
         :conditions =>
-        ['users_pk1 = :users_pk1 and role = :role', {:users_pk1 => session[:users_pk1], :role => 'P'}])
+        ['users_pk1 = :users_pk1 and role = :role', {:users_pk1 => session[:obo_pk1], :role => 'P'}])
   end
 
   def add
     role          = enrollment_type(params[:enrollment])
-    user          = User.find_by_user_id(params[:user_id])
+    user          = User.find_by_user_id(params[:on_behalf_of])
     @section_role = SectionRole.create(params[:id], user.pk1, role)
     redirect_to :action => "edit", :enrollment => params[:enrollment], :id => params[:id]
   end

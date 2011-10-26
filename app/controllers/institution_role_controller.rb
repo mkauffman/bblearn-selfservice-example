@@ -5,7 +5,7 @@ class InstitutionRoleController < ApplicationController
   end
 
   def user_index
-    @user   = User.find_by_user_id(params[:user_id])
+    @user   = User.find_by_user_id(params[:on_behalf_of])
   end
 
   def edit #edit_role

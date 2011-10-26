@@ -1,74 +1,27 @@
 span class="re0"> common: &common
  vista_db_user: vistasupport
- tp_extract_post_url: http://clebra.csuchico.edu/download.aspx
- siapi_secret: guS5fezesTaUAuzkBM9cpRdq5wr6phay
- siapi_glcid: URN:X-WEBCT-VISTA-V1:4e5f2e6f-84f1-fb85-0099-504b31d0e1d7
- siapi_adapter: ims
- siapi_action: import
- siapi_option: restrict
-
- #PERMISSIONS  (note: sso_instructor_designer & proxy are the same)
- perm_proxy: admin,tlp,tlp_admin
- perm_migration: admin,tlp,tlp_admin,lrncrt
- perm_helpdesk: admin,tlp_admin
- perm_logs: admin,tlp_admin
- perm_sso: admin,tlp,tlp_admin,itss,mlib
- perm_sso_admin: admin
- perm_sso_designer: admin,tlp,tlp_admin,mlib
- perm_sso_student: admin,tlp,tlp_admin,itss
- perm_sso_instructor_designer: admin,tlp,tlp_admin
 
 production:
  <<: *common
  environment: production
- view_my_webct_url: https://vista.csuchico.edu/webct/urw/ssCSUC/viewMyWebCT.dowebct
- siapi_post_url: https://vista.csuchico.edu/webct/systemIntegrationApi.dowebct
- vista_db_password: noneofyourbusiness
- vista_db_string: //lmsdb1.csuchico.edu:1521/lmsdb1.lmsdb2.csuchico.edu
-
-  # BBL variables begin
  bbl_ws_domain: learn-staging.csuchico.edu
  bbl_tool_pass: atec!d1rn
  bbl_registration_pass: pass1234
- bbl_db_string: //lmsdb2.csuchico.edu:1521/bbtest.lmsdb2.csuchico.edu
- bbl_db_user: learnsupport
- bbl_db_password: adm1nIZ34
  bbl_db_table: BBLEARN
- # BBL variables end
 
 staging:
  <<: *common
  environment: staging
- vista_db_password: adm1nIZ34
- vista_db_string: //lmsdb2.csuchico.edu:1521/stage1.lmsdb2.csuchico.edu
- view_my_webct_url: https://vista-staging.csuchico.edu/webct/urw/ssCSUC/viewMyWebCT.dowebct
- siapi_post_url: https://vista-staging.csuchico.edu/webct/systemIntegrationApi.dowebct
-
-  # BBL variables begin
  bbl_ws_domain: learn-staging.csuchico.edu
  bbl_tool_pass: atec!d1rn
  bbl_registration_pass: pass1234
- bbl_db_string: //lmsdb2.csuchico.edu:1521/bbtest.lmsdb2.csuchico.edu
- bbl_db_user: learnsupport
- bbl_db_password: adm1nIZ34
  bbl_db_table: BBLEARN
- # BBL variables end
 
 development:
  <<: *common
  environment: development
- vista_db_password: adm1nIZ34
- vista_db_string: //lmsdb2.csuchico.edu:1521/stage1.lmsdb2.csuchico.edu
- view_my_webct_url: https://vista-staging.csuchico.edu/webct/urw/ssCSUC/viewMyWebCT.dowebct
- siapi_post_url: https://vista-staging.csuchico.edu/webct/systemIntegrationApi.dowebct
-
- # BBL variables begin
  bbl_ws_domain: learn-staging.csuchico.edu
  bbl_tool_pass: atec!d1rn
  bbl_registration_pass: pass1234
- bbl_db_string: //lmsdb2.csuchico.edu:1521/bbtest.lmsdb2.csuchico.edu
- bbl_db_user: learnsupport
- bbl_db_password: adm1nIZ34
  bbl_db_table: BBLEARN
- # BBL variables end
 

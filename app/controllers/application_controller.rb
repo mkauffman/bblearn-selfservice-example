@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :authentication
   before_filter :set_session_timeout
-#  before_filter :get_ws_token
+# before_filter :get_ws_token
   helper        :all
 
   protect_from_forgery

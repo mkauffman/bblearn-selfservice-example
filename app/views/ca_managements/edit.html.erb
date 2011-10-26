@@ -1,0 +1,20 @@
+<h1>Editing ca_management</h1>
+
+<% form_for(@ca_management) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :controller %><br />
+    <%= f.text_field :controller %>
+  </p>
+  <p>
+    <%= f.label :action %><br />
+    <%= f.text_field :action %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @ca_management %> |
+<%= link_to 'Back', ca_managements_path %>

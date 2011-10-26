@@ -1,0 +1,37 @@
+<div id="task_box">
+  <ul id="left_nav">
+    <li><%= link_to "Home", :controller => "application", :action => "index" %></li>
+    <li><a href="#">Manage Authorizations</a>
+      <ul>
+        <li><%= link_to "Controllers/Actions", :controller => "ca_managements", :action => "index" %></li>
+        <li><%= link_to "Authorizations", :controller => "authorizations", :action => "index" %></li>
+      </ul>
+    <li><a href="#">Manage Enrollments</a>
+      <ul>
+        <li><%= link_to "Course Instructors", :controller => "section_role", :action => "index", :enrollment => 'instructors' %></li>
+        <li><%= link_to "Guest Instructors", :controller => "section_role", :action => "index", :enrollment => 'designers' %></li>
+        <li><%= link_to "Teaching Assistants/Graders", :controller => "section_role", :action => "index", :enrollment => 'graders' %></li>
+        <li><%= link_to "Students", :controller => "section_role", :action => "index", :enrollment => 'students' %></li>
+      </ul>
+    </li>
+	<li><a href="#">Manage Courses</a>
+      <ul>
+      	<li><%= link_to "Create/Delete Prep Areas", :controller => "section", :action => "prep_index",
+      	 :prep => 'Prep'%></li>
+      	<li><%= link_to "Create/Delete Course", :controller => "section", :action => "index" %></li>
+      	<li><%= link_to "Reset Course", :controller => "section", :action => "index" %></li>
+      </ul>
+    </li>
+    <li><a href="#">Help Desk</a>
+      <ul>
+        <li><%= link_to "Edit HTML/CSS", :controller => "tlp_admin", :action => "index" %></li>
+        <li><%= link_to "Institution Role Management", :controller => "institution_role", :action => "index", :role => "lrncrt" %></li>
+      </ul>
+    </li>
+	<li><%= link_to "Single Signon", :controller => "sso", :action => "index" %></li>
+      	<li><%= link_to "View Logs", :controller => "log", :action => "index" %></li>
+    </li>
+    <li><%= link_to 'TurningPoint Extract', :controller=>'tpextract', :action => "index" %></li>
+  </ul>
+</div>
+

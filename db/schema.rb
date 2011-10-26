@@ -9,7 +9,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110422204942) do
+ActiveRecord::Schema.define(:version => 20111026190010) do
+
+  create_table "authorizations", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "ca_management_id"
+    t.integer  "institution_role_pk1"
+  end
 
   create_table "bbl_contexts", :force => true do |t|
     t.string   "user_to_emulate"
@@ -74,6 +81,13 @@ ActiveRecord::Schema.define(:version => 20110422204942) do
     t.string   "system_roles"
     t.string   "title"
     t.string   "user_batch_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ca_managements", :force => true do |t|
+    t.string   "controller"
+    t.string   "action"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

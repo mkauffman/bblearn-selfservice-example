@@ -1,0 +1,51 @@
+<div id="chico_img" class="span-2">
+    <%= link_to(image_tag("csuc-signature.jpg"), "http://www.csuchico.edu/") %>
+</div>
+<% unless (params[:controller] == "sso") %>
+<div id="act_as_div" class="last">
+    <% form_tag({:controller => "selfservice", :action => "act_as"}) do %>
+    <% if session[:user] == session[:on_behalf_of] %>
+      Act on behalf of: <%= text_field_tag "act_as"%>
+    <%else%>
+      Act on behalf of: <%= text_field_tag "act_as", session[:on_behalf_of] %>
+    <%end%>
+    <%= submit_tag "Change" %>
+    <br/>
+    <% end %><!-- end form_tag do -->
+</div>
+<br/>
+<% end %>
+<br/>
+<div id="user_table" class="last">
+    <table>
+        <tr>
+            <% if session[:user] != session[:on_behalf_of] %>
+            <td>
+                Your Portal ID:
+            </td>
+            <td class="odd">
+                <%= session[:user] %>
+            </td>
+            <% else %>
+            <td>
+            </td>
+            <td>
+            </td>
+            <% end %>
+            <td>
+                <%= link_to("Logout", url_for(:controller => "application", :action => "logout"),
+                :confirm => "Are you sure you want to log out?") %>
+            </td>
+        </tr>
+        <% if session[:user] != session[:on_behalf_of] and params[:controller] != "sso" %>
+        <tr>
+            <td colspan="2">
+                Currently acting on behalf of:
+            </td>
+            <td class="odd">
+                <%= session[:on_behalf_of] %>
+            </td>
+        </tr>
+        <% end %>
+    </table>
+</div>

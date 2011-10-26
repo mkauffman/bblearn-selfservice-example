@@ -1,0 +1,23 @@
+<h1>Listing Controller and Actions</h1>
+<%= link_to 'New Controller and Action', new_ca_management_path %>
+<table class="output sortable">
+  <tr>
+    <th>Controller</th>
+    <th>Action</th>
+    <th>Show</th>
+    <th>Edit</th>
+    <th>Destroy</th>
+  </tr>
+
+<% @ca_managements.each do |ca_management| %>
+  <tr>
+    <td><%=h ca_management.controller %></td>
+    <td><%=h ca_management.action %></td>
+    <td><%= link_to 'Show', ca_management %></td>
+    <td><%= link_to 'Edit', edit_ca_management_path(ca_management) %></td>
+    <td><%= link_to 'Destroy', ca_management, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />

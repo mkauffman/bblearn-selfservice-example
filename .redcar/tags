@@ -1,4 +1,4 @@
-1319128812
+1319671270
 ADDRESSING	/home/mwood14/Work/bblearn/app/models/context_ws.rb	ADDRESSING    =
 ADDRESSING	/home/mwood14/Work/bblearn/blackboard_ws/context_ws.rb	ADDRESSING   =
 ARG_VALUE_MAP	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/test/rselenese_test.rb	  ARG_VALUE_MAP =
@@ -8,9 +8,6 @@ AccessorResult	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selen
 ActionController	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/routes.rb	module ActionController
 ActionHandler	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/selenium-commandhandlers.js	function ActionHandler(actionBlock, wait, dontCheckAlerts)
 ActionResult	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/selenium-commandhandlers.js	function ActionResult(terminationCondition)
-AddAttachmentsStudentListToSection	/home/mwood14/Work/bblearn/db/migrate/20110314163552_add_attachments_student_list_to_section.rb	class AddAttachmentsStudentListToSection 
-AddLoggedIn	/home/mwood14/Work/bblearn/db/migrate/20110412213732_add_logged_in.rb	class AddLoggedIn 
-AddSectionStatus	/home/mwood14/Work/bblearn/db/migrate/20110422204942_add_section_status.rb	class AddSectionStatus 
 AdminCrosslistControllerTest	/home/mwood14/Work/bblearn/test/functional/admin_crosslist_controller_test.rb	class AdminCrosslistControllerTest 
 AdminCrosslistHelperTest	/home/mwood14/Work/bblearn/test/unit/helpers/admin_crosslist_helper_test.rb	class AdminCrosslistHelperTest 
 ApplicationController	/home/mwood14/Work/bblearn/app/controllers/application_controller.rb	class ApplicationController 
@@ -19,21 +16,22 @@ AssertHandler	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/seleni
 AssertResult	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/selenium-commandhandlers.js	function AssertResult()
 AssertionArguments	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/htmlutils.js	function AssertionArguments(args)
 AssertionFailedError	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/htmlutils.js	function AssertionFailedError(message)
-AuthorizationController	/home/mwood14/Work/bblearn/app/controllers/authorization_controller.rb	class AuthorizationController 
+Authorization	/home/mwood14/Work/bblearn/app/models/authorization.rb	class Authorization 
+AuthorizationTest	/home/mwood14/Work/bblearn/test/unit/authorization_test.rb	class AuthorizationTest 
+AuthorizationsController	/home/mwood14/Work/bblearn/app/controllers/authorizations_controller.rb	class AuthorizationsController 
+AuthorizationsControllerTest	/home/mwood14/Work/bblearn/test/functional/authorizations_controller_test.rb	class AuthorizationsControllerTest 
+AuthorizationsHelper	/home/mwood14/Work/bblearn/app/helpers/authorizations_helper.rb	module AuthorizationsHelper
+AuthorizationsHelperTest	/home/mwood14/Work/bblearn/test/unit/helpers/authorizations_helper_test.rb	class AuthorizationsHelperTest 
 BASE_URL_PATH	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/acceptance_test_runner.rb	BASE_URL_PATH =
 BROWSERS	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/acceptance_test_runner.rb	BROWSERS =
 Base	/home/mwood14/Work/bblearn/vendor/plugins/cas_login/lib/cas_login.rb	class ActionController::Base 
 BbSoap	/home/mwood14/Work/bblearn/blackboard_ws/backup/bbsoap.rb	class BbSoap
-BblContext	/home/mwood14/Work/bblearn/app/models/old/bbl_context.rb	class BblContext 
 BblContext	/home/mwood14/Work/bblearn/vendor/plugins/bbl_ws/lib/bbl_context.rb	class BblContext 
 BblContextTest	/home/mwood14/Work/bblearn/test/unit/bbl_context_test.rb	class BblContextTest 
-BblCourse	/home/mwood14/Work/bblearn/app/models/old/bbl_course.rb	class BblCourse 
-BblCourseMembership	/home/mwood14/Work/bblearn/app/models/old/bbl_course_membership.rb	class BblCourseMembership 
 BblCourseMembership	/home/mwood14/Work/bblearn/vendor/plugins/bbl_ws/lib/bbl_course_membership.rb	class BblCourseMembership 
 BblCourseMembershipTest	/home/mwood14/Work/bblearn/test/unit/bbl_course_membership_test.rb	class BblCourseMembershipTest 
 BblCourseTest	/home/mwood14/Work/bblearn/test/unit/bbl_course_test.rb	class BblCourseTest 
 BblSectionTest	/home/mwood14/Work/bblearn/test/unit/bbl_section_test.rb	class BblSectionTest 
-BblUser	/home/mwood14/Work/bblearn/app/models/old/bbl_user.rb	class BblUser 
 BblUserTest	/home/mwood14/Work/bblearn/test/unit/bbl_user_test.rb	class BblUserTest 
 BblWs	/home/mwood14/Work/bblearn/vendor/plugins/bbl_ws/lib/bbl_ws.rb	class BblWs
 BblWsTest	/home/mwood14/Work/bblearn/vendor/plugins/bbl_ws/test/bbl_ws_test.rb	class BblWsTest 
@@ -41,6 +39,10 @@ BinaryExpr	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-
 BooleanValue	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/xpath/xpath.js	function BooleanValue(value)
 Boot	/home/mwood14/Work/bblearn/config/boot.rb	  class Boot
 BrowsingTest	/home/mwood14/Work/bblearn/test/performance/browsing_test.rb	class BrowsingTest 
+CAManagement	/home/mwood14/Work/bblearn/app/models/ca_management.rb	class CAManagement 
+CAManagementTest	/home/mwood14/Work/bblearn/test/unit/ca_management_test.rb	class CAManagementTest 
+CAManagementsControllerTest	/home/mwood14/Work/bblearn/test/functional/ca_managements_controller_test.rb	class CAManagementsControllerTest 
+CAManagementsHelperTest	/home/mwood14/Work/bblearn/test/unit/helpers/ca_managements_helper_test.rb	class CAManagementsHelperTest 
 CAS_SERVER_URL	/home/mwood14/Work/bblearn/vendor/plugins/cas_login/lib/cas_login.rb	    CAS_SERVER_URL =
 CM_DOC	/home/mwood14/Work/bblearn/blackboard_ws/backup/bbsoap.rb	CM_DOC     =
 CM_DOCUMENT	/home/mwood14/Work/bblearn/app/models/section_role_ws.rb	CM_DOCUMENT =
@@ -60,6 +62,8 @@ C_ENDPOINT	/home/mwood14/Work/bblearn/app/models/section_ws.rb	C_ENDPOINT      =
 C_ENDPOINT	/home/mwood14/Work/bblearn/blackboard_ws/course_ws.rb	C_ENDPOINT     =
 C_SERVICE	/home/mwood14/Work/bblearn/app/models/section_ws.rb	C_SERVICE       =
 C_SERVICE	/home/mwood14/Work/bblearn/blackboard_ws/course_ws.rb	C_SERVICE      =
+CaManagementsController	/home/mwood14/Work/bblearn/app/controllers/ca_managements_controller.rb	class CaManagementsController 
+CaManagementsHelper	/home/mwood14/Work/bblearn/app/helpers/ca_managements_helper.rb	module CaManagementsHelper
 CasLogin	/home/mwood14/Work/bblearn/vendor/plugins/cas_login/lib/cas_login.rb	module CasLogin
 CasLoginTest	/home/mwood14/Work/bblearn/vendor/plugins/cas_login/test/cas_login_test.rb	class CasLoginTest 
 Command	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/ui-element.js	function Command(command, target, value)
@@ -68,18 +72,11 @@ CommandMatcher	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selen
 CommandMatcherException	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/ui-element.js	function CommandMatcherException(message)
 ContextWS	/home/mwood14/Work/bblearn/app/models/context_ws.rb	class ContextWS 
 ContextWS	/home/mwood14/Work/bblearn/blackboard_ws/context_ws.rb	class ContextWS
+Controllers	/home/mwood14/Work/bblearn/lib/controllers.rb	module Controllers
 CourseMembershipWS	/home/mwood14/Work/bblearn/blackboard_ws/course_membership_ws.rb	class CourseMembershipWS
 CourseWS	/home/mwood14/Work/bblearn/blackboard_ws/course_ws.rb	class CourseWS
-CreateBblContexts	/home/mwood14/Work/bblearn/db/migrate/20110411202808_create_bbl_contexts.rb	class CreateBblContexts 
-CreateBblCourseMemberships	/home/mwood14/Work/bblearn/db/migrate/20110412214817_create_bbl_course_memberships.rb	class CreateBblCourseMemberships 
-CreateBblCourses	/home/mwood14/Work/bblearn/db/migrate/20110413175450_create_bbl_courses.rb	class CreateBblCourses 
-CreateBblUsers	/home/mwood14/Work/bblearn/db/migrate/20110413175513_create_bbl_users.rb	class CreateBblUsers 
-CreateDbsessions	/home/mwood14/Work/bblearn/db/migrate/20101101171304_create_dbsessions.rb	class CreateDbsessions 
-CreatePeople	/home/mwood14/Work/bblearn/db/migrate/20101208190522_create_people.rb	class CreatePeople 
-CreateRoles	/home/mwood14/Work/bblearn/db/migrate/20100223175438_create_roles.rb	class CreateRoles 
-CreateSections	/home/mwood14/Work/bblearn/db/migrate/20101208190551_create_sections.rb	class CreateSections 
-CreateTerms	/home/mwood14/Work/bblearn/db/migrate/20100827164018_create_terms.rb	class CreateTerms 
-CreateTlps	/home/mwood14/Work/bblearn/db/migrate/20100907173224_create_tlps.rb	class CreateTlps 
+CreateAuthorizations	/home/mwood14/Work/bblearn/db/migrate/20111024224312_create_authorizations.rb	class CreateAuthorizations 
+CreateManagements	/home/mwood14/Work/bblearn/db/migrate/20111026185159_create_managements.rb	class CreateManagements 
 CrosslistControllerTest	/home/mwood14/Work/bblearn/test/functional/crosslist_controller_test.rb	class CrosslistControllerTest 
 CrosslistHelperTest	/home/mwood14/Work/bblearn/test/unit/helpers/crosslist_helper_test.rb	class CrosslistHelperTest 
 DOCUMENT	/home/mwood14/Work/bblearn/app/models/context_ws.rb	DOCUMENT      =
@@ -88,13 +85,13 @@ DOMAIN	/home/mwood14/Work/bblearn/app/models/context_ws.rb	DOMAIN        =
 DOMAIN	/home/mwood14/Work/bblearn/app/models/section_role_ws.rb	DOMAIN      =
 DOMAIN	/home/mwood14/Work/bblearn/app/models/section_ws.rb	DOMAIN          =
 DOMAIN	/home/mwood14/Work/bblearn/app/models/user_ws.rb	DOMAIN      =
-Dbsession	/home/mwood14/Work/bblearn/app/models/old/dbsession.rb	class Dbsession 
 DesignersControllerTest	/home/mwood14/Work/bblearn/test/functional/designers_controller_test.rb	class DesignersControllerTest 
 DesignersHelper	/home/mwood14/Work/bblearn/app/helpers/designers_helper.rb	module DesignersHelper
 DesignersHelperTest	/home/mwood14/Work/bblearn/test/unit/helpers/designers_helper_test.rb	class DesignersHelperTest 
 ENDPOINT	/home/mwood14/Work/bblearn/app/models/context_ws.rb	ENDPOINT      =
 ENDPOINT	/home/mwood14/Work/bblearn/blackboard_ws/context_ws.rb	ENDPOINT     =
 EXPECTED_LIFE	/home/mwood14/Work/bblearn/app/models/context_ws.rb	EXPECTED_LIFE =
+EditAuthorizations	/home/mwood14/Work/bblearn/db/migrate/20111026190010_edit_authorizations.rb	class EditAuthorizations 
 Evaluator	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/rselenese.rb	  class Evaluator 
 FilterExpr	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/xpath/xpath.js	function FilterExpr(expr, predicate)
 FixtureLoader	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/fixture_loader.rb	module SeleniumOnRails::FixtureLoader
@@ -109,7 +106,6 @@ InstitutionRoleController	/home/mwood14/Work/bblearn/app/controllers/institution
 KonquerorBrowserBot	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/selenium-browserbot.js	function KonquerorBrowserBot(frame)
 LOG	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/domviewer/selenium-domviewer.js	function LOG(message)
 LiteralExpr	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/xpath/xpath.js	function LiteralExpr(value)
-LoadRoles	/home/mwood14/Work/bblearn/db/migrate/20110125180512_load_roles.rb	class LoadRoles 
 LocationExpr	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/xpath/xpath.js	function LocationExpr()
 LogController	/home/mwood14/Work/bblearn/app/controllers/log_controller.rb	class LogController 
 LogControllerTest	/home/mwood14/Work/bblearn/test/functional/log_controller_test.rb	class LogControllerTest 
@@ -240,9 +236,7 @@ SuiteRendererTest	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/te
 SwitchEnvironmentController	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/controllers/switch_environment_controller.rb	class SwitchEnvironmentController 
 SwitchEnvironmentControllerTest	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/test/switch_environment_controller_test.rb	class SwitchEnvironmentControllerTest 
 TEST_RUNNER_URL	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/acceptance_test_runner.rb	TEST_RUNNER_URL =
-Term	/home/mwood14/Work/bblearn/app/models/old/term.rb	class Term 
 TermTest	/home/mwood14/Work/bblearn/test/unit/term_test.rb	class TermTest 
-TermsController	/home/mwood14/Work/bblearn/app/controllers/old/terms_controller.rb	class TermsController 
 TermsControllerTest	/home/mwood14/Work/bblearn/test/functional/terms_controller_test.rb	class TermsControllerTest 
 TermsHelper	/home/mwood14/Work/bblearn/app/helpers/terms_helper.rb	module TermsHelper
 TermsHelperTest	/home/mwood14/Work/bblearn/test/unit/helpers/terms_helper_test.rb	class TermsHelperTest 
@@ -256,7 +250,6 @@ TestCase	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/test/test_h
 TestLoop	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/selenium-executionloop.js	function TestLoop(commandFactory)
 TestTheTestBuilderFunctions	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/test/test_builder_functions_authortest.rb	class TestTheTestBuilderFunctions 
 TestView	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/test/test_helper.rb	class TestView 
-Tlp	/home/mwood14/Work/bblearn/app/models/old/tlp.rb	class Tlp 
 Tlp	/home/mwood14/Work/bblearn/app/models/tlp.rb	class Tlp 
 TlpAdminController	/home/mwood14/Work/bblearn/app/controllers/tlp_admin_controller.rb	class TlpAdminController 
 TlpAdminControllerTest	/home/mwood14/Work/bblearn/test/functional/tlp_admin_controller_test.rb	class TlpAdminControllerTest 
@@ -312,7 +305,6 @@ _tdata	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_
 _test_root_suite	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/test/suite_renderer_test.rb	  def _test_root_suite 
 abort	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/lib/prototype.js	function abort(message)
 absolutify	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/htmlutils.js	function absolutify(url, baseUrl)
-add	/home/mwood14/Work/bblearn/app/controllers/authorization_controller.rb	  def add
 add	/home/mwood14/Work/bblearn/app/controllers/section_controller.rb	    def add
 add	/home/mwood14/Work/bblearn/app/controllers/section_role_controller.rb	  def add
 addClassName	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/htmlutils.js	function addClassName(element, name)
@@ -350,7 +342,6 @@ booted?	/home/mwood14/Work/bblearn/config/boot.rb	    def booted?
 brake	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/test_builder_actions.rb	  def brake
 buildDriverParams	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/selenium-remoterunner.js	function buildDriverParams()
 buildDriverUrl	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/selenium-remoterunner.js	function buildDriverUrl()
-build_term_object	/home/mwood14/Work/bblearn/app/models/old/term.rb	  def self.build_term_object(cursor)
 build_url	/home/mwood14/Work/bblearn/lib/sso_connections.rb	  def build_url(batchId)
 builder	/home/mwood14/Work/bblearn/blackboard_ws/savon/xml.rb	      def builder
 c	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/acceptance_test_runner.rb	def c(var, default = nil) 
@@ -369,10 +360,7 @@ check_length	/home/mwood14/Work/bblearn/public/javascripts/field_watch.js	functi
 check_length	/home/mwood14/Work/bblearn/public/javascripts/field_watch.js	function check_length(x)
 check_permission	/home/mwood14/Work/bblearn/app/controllers/log_controller.rb	  def check_permission
 check_permission	/home/mwood14/Work/bblearn/app/controllers/sso_controller.rb	  def check_permission
-check_permission	/home/mwood14/Work/bblearn/app/controllers/tlp_admin_controller.rb	  def check_permission
 check_proxy_use	/home/mwood14/Work/bblearn/app/controllers/application_controller.rb	  def check_proxy_use
-check_terms_existence	/home/mwood14/Work/bblearn/app/models/old/term.rb	  def self.check_terms_existence(term_id, start_date, end_date)
-chk_db	/home/mwood14/Work/bblearn/app/controllers/tlp_admin_controller.rb	  def chk_db
 choose_cancel_on_next_confirmation	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/test_builder_actions.rb	  def choose_cancel_on_next_confirmation
 classCreate	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/htmlutils.js	function classCreate()
 clean_text	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/test/test_helper.rb	  def clean_text 
@@ -411,43 +399,34 @@ copy	/home/mwood14/Work/bblearn/public/javascripts/prototype.js	function copy(me
 copyArray	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/xpath/util.js	function copyArray(dst, src)
 copyArrayIgnoringAttributesWithoutValue	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/xpath/util.js	function copyArrayIgnoringAttributesWithoutValue(dst, src)
 count	/home/mwood14/Work/bblearn/blackboard_ws/savon/wsse.rb	    def count
-create	/home/mwood14/Work/bblearn/app/controllers/old/terms_controller.rb	  def create
-create	/home/mwood14/Work/bblearn/app/models/old/term.rb	    def create
+create	/home/mwood14/Work/bblearn/app/controllers/authorizations_controller.rb	  def create
+create	/home/mwood14/Work/bblearn/app/controllers/ca_managements_controller.rb	  def create
 create	/home/mwood14/Work/bblearn/app/models/section.rb	   def self.create(name)
 create	/home/mwood14/Work/bblearn/app/models/section_role.rb	  def self.create(crsmain_pk1, users_pk1, role_id)
 create	/home/mwood14/Work/bblearn/app/models/user.rb	  def self.create(user_id)
 createEventObject	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/htmlutils.js	function createEventObject(element, controlKeyDown, altKeyDown, shiftKeyDown, metaKeyDown)
 createWrapper	/home/mwood14/Work/bblearn/public/javascripts/prototype.js	function createWrapper(element, eventName, handler)
 create_and_add_sso	/home/mwood14/Work/bblearn/lib/sso_connections.rb	  def create_and_add_sso(role_id,section)
-create_client	/home/mwood14/Work/bblearn/app/models/old/bbl_course.rb	  def create_client
-create_client	/home/mwood14/Work/bblearn/app/models/old/bbl_course_membership.rb	  def create_client
-create_context_client	/home/mwood14/Work/bblearn/app/models/old/bbl_context.rb	  def create_context_client
 create_cookie	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/test_builder_actions.rb	  def create_cookie 
-create_course	/home/mwood14/Work/bblearn/app/models/old/bbl_course.rb	  def create_course    
 create_course	/home/mwood14/Work/bblearn/app/models/section_ws.rb	    def create_course(op={})
 create_prep_area	/home/mwood14/Work/bblearn/app/models/section.rb	   def self.create_prep_area(user_id, name)
 create_rsel_file_from	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/test/rselenese_test.rb	  def create_rsel_file_from(input, name)
 create_sel_file_from	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/test/selenese_test.rb	  def create_sel_file_from(input, name)
-create_term	/home/mwood14/Work/bblearn/app/models/old/term.rb	  def create_term
 create_user	/home/mwood14/Work/bblearn/app/models/user_ws.rb	    def create_user(op={})
-create_user_client	/home/mwood14/Work/bblearn/app/models/old/bbl_user.rb	  def create_user_client
 created_at	/home/mwood14/Work/bblearn/blackboard_ws/savon/wsse.rb	    attr_accessor :username, :password, :created_at, :expires_at
 credentials	/home/mwood14/Work/bblearn/blackboard_ws/savon/wsse.rb	    def credentials(password, digest = false)
 cssQuery	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/lib/cssQuery/src/cssQuery.js	function cssQuery()
 data_id	/home/mwood14/Work/bblearn/blackboard_ws/user.rb	    attr_accessor :bdate, :data_id, :edu_level, :edata, :bfax,
-date_used	/home/mwood14/Work/bblearn/app/controllers/old/terms_controller.rb	  def date_used
-dates_check	/home/mwood14/Work/bblearn/app/controllers/old/terms_controller.rb	  def dates_check
 db_down	/home/mwood14/Work/bblearn/app/controllers/application_controller.rb	  def db_down
 dean_addEvent	/home/mwood14/Work/bblearn/public/javascripts/sorttable.js	function dean_addEvent(element, type, handler)
 delete	/home/mwood14/Work/bblearn/app/controllers/institution_role_controller.rb	  def delete
-delete	/home/mwood14/Work/bblearn/app/models/old/term.rb	  def delete
 delete_cookie	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/test_builder_actions.rb	  def delete_cookie 
 delete_course	/home/mwood14/Work/bblearn/app/models/section_ws.rb	    def delete_course(op={})
 delete_course_membership	/home/mwood14/Work/bblearn/app/models/section_role_ws.rb	    def delete_course_membership(op={})
-delete_term	/home/mwood14/Work/bblearn/app/controllers/old/terms_controller.rb	  def delete_term
-delete_term	/home/mwood14/Work/bblearn/app/models/old/term.rb	  def delete_term
 describe	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/htmlutils.js	function describe(object, delimiter)
 designer_signon	/home/mwood14/Work/bblearn/lib/sso_connections.rb	  def designer_signon(section)
+destroy	/home/mwood14/Work/bblearn/app/controllers/authorizations_controller.rb	  def destroy
+destroy	/home/mwood14/Work/bblearn/app/controllers/ca_managements_controller.rb	  def destroy
 destroy	/home/mwood14/Work/bblearn/app/models/section.rb	   def self.destroy(pk1)
 destroy	/home/mwood14/Work/bblearn/app/models/section_role.rb	  def self.destroy(role)
 destroyCache	/home/mwood14/Work/bblearn/public/javascripts/prototype.js	function destroyCache()
@@ -460,7 +439,6 @@ dispatch	/home/mwood14/Work/bblearn/public/javascripts/effects.js	function dispa
 displayDOM	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/domviewer/selenium-domviewer.js	function displayDOM(root)
 displayNode	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/domviewer/selenium-domviewer.js	function displayNode(element, level, isLink)
 do_start_server	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/acceptance_test_runner.rb	      def do_start_server
-doesnt_exist	/home/mwood14/Work/bblearn/app/controllers/old/terms_controller.rb	  def doesnt_exist
 domAppendChild	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/xpath/util.js	function domAppendChild(node, child)
 domCreateAttribute	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/xpath/util.js	function domCreateAttribute(doc, name)
 domCreateCDATASection	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/xpath/util.js	function domCreateCDATASection(doc, data)
@@ -479,20 +457,9 @@ domSetAttribute	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/sele
 domTraverseElements	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/xpath/dom.js	function domTraverseElements(node, opt_pre, opt_post)
 double_click	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/test_builder_actions.rb	  def double_click 
 double_click_at	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/test_builder_actions.rb	  def double_click_at 
-down	/home/mwood14/Work/bblearn/db/migrate/20100223175438_create_roles.rb	  def self.down
-down	/home/mwood14/Work/bblearn/db/migrate/20100827164018_create_terms.rb	  def self.down
-down	/home/mwood14/Work/bblearn/db/migrate/20100907173224_create_tlps.rb	  def self.down
-down	/home/mwood14/Work/bblearn/db/migrate/20101101171304_create_dbsessions.rb	  def self.down
-down	/home/mwood14/Work/bblearn/db/migrate/20101208190522_create_people.rb	  def self.down
-down	/home/mwood14/Work/bblearn/db/migrate/20101208190551_create_sections.rb	  def self.down
-down	/home/mwood14/Work/bblearn/db/migrate/20110125180512_load_roles.rb	  def self.down
-down	/home/mwood14/Work/bblearn/db/migrate/20110314163552_add_attachments_student_list_to_section.rb	  def self.down
-down	/home/mwood14/Work/bblearn/db/migrate/20110411202808_create_bbl_contexts.rb	  def self.down
-down	/home/mwood14/Work/bblearn/db/migrate/20110412213732_add_logged_in.rb	  def self.down
-down	/home/mwood14/Work/bblearn/db/migrate/20110412214817_create_bbl_course_memberships.rb	  def self.down
-down	/home/mwood14/Work/bblearn/db/migrate/20110413175450_create_bbl_courses.rb	  def self.down
-down	/home/mwood14/Work/bblearn/db/migrate/20110413175513_create_bbl_users.rb	  def self.down
-down	/home/mwood14/Work/bblearn/db/migrate/20110422204942_add_section_status.rb	  def self.down
+down	/home/mwood14/Work/bblearn/db/migrate/20111024224312_create_authorizations.rb	  def self.down
+down	/home/mwood14/Work/bblearn/db/migrate/20111026185159_create_managements.rb	  def self.down
+down	/home/mwood14/Work/bblearn/db/migrate/20111026190010_edit_authorizations.rb	  def self.down
 drag_and_drop	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/test_builder_actions.rb	  def drag_and_drop 
 drag_and_drop_to_object	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/test_builder_actions.rb	  def drag_and_drop_to_object 
 draw	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/routes.rb	      def draw
@@ -500,17 +467,15 @@ draw_without_selenium_routes	/home/mwood14/Work/bblearn/vendor/plugins/selenium-
 each_assertion	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/test_builder_accessors.rb	  def self.each_assertion 
 echo	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/test_builder_actions.rb	  def echo 
 edata	/home/mwood14/Work/bblearn/blackboard_ws/user.rb	    attr_accessor :bdate, :data_id, :edu_level, :edata, :bfax,
+edit	/home/mwood14/Work/bblearn/app/controllers/authorizations_controller.rb	  def edit
+edit	/home/mwood14/Work/bblearn/app/controllers/ca_managements_controller.rb	  def edit
 edit	/home/mwood14/Work/bblearn/app/controllers/institution_role_controller.rb	  def edit 
-edit	/home/mwood14/Work/bblearn/app/controllers/old/terms_controller.rb	  def edit
 edit	/home/mwood14/Work/bblearn/app/controllers/section_role_controller.rb	  def edit
-edit_term	/home/mwood14/Work/bblearn/app/controllers/old/terms_controller.rb	  def edit_term
 edu_level	/home/mwood14/Work/bblearn/blackboard_ws/user.rb	    attr_accessor :bdate, :data_id, :edu_level, :edata, :bfax,
 elementGetStyle	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/htmlutils.js	function elementGetStyle(element, style)
 elementSetStyle	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/htmlutils.js	function elementSetStyle(element, style)
 element_form_default	/home/mwood14/Work/bblearn/blackboard_ws/savon/xml.rb	      attr_writer :element_form_default
 element_form_default	/home/mwood14/Work/bblearn/blackboard_ws/savon/xml.rb	      def element_form_default
-empty_param	/home/mwood14/Work/bblearn/app/controllers/old/terms_controller.rb	  def empty_param(*params)
-empty_params	/home/mwood14/Work/bblearn/app/controllers/old/terms_controller.rb	  def empty_params
 emulate_user	/home/mwood14/Work/bblearn/app/models/context_ws.rb	    def emulate_user(op={})
 end_session	/home/mwood14/Work/bblearn/app/controllers/application_controller.rb	  def end_session
 endpoint	/home/mwood14/Work/bblearn/blackboard_ws/savon/xml.rb	      attr_accessor :endpoint
@@ -521,7 +486,6 @@ eval_css	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-co
 eval_locator	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/htmlutils.js	function eval_locator(locator, inDocument, opt_contextNode)
 eval_xpath	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/htmlutils.js	function eval_xpath(xpath, inDocument, opts)
 exactize	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/test_builder.rb	  def exactize 
-exists_check	/home/mwood14/Work/bblearn/app/controllers/old/terms_controller.rb	  def exists_check
 expected_life_seconds	/home/mwood14/Work/bblearn/vendor/plugins/bbl_ws/lib/bbl_ws.rb	  attr_accessor :client_program_id, :login_extra_info, :expected_life_seconds, :ticket, :client, :session_id
 expired_min	/home/mwood14/Work/bblearn/blackboard_ws/savon/wsse.rb	    def expired_min
 expires_at	/home/mwood14/Work/bblearn/blackboard_ws/savon/wsse.rb	    attr_accessor :username, :password, :created_at, :expires_at
@@ -532,10 +496,8 @@ extract_commands	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib
 extract_commands_from_partial	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/partials_support.rb	  def extract_commands_from_partial 
 extract_comments	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/selenese.rb	    def extract_comments 
 fallback	/home/mwood14/Work/bblearn/public/javascripts/controls.js	function fallback(name, expr)
-falsify_all_current_terms	/home/mwood14/Work/bblearn/app/models/old/term.rb	  def self.falsify_all_current_terms
 ferpa	/home/mwood14/Work/bblearn/app/controllers/tlp_admin_controller.rb	  def ferpa
 filename	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/generators/selenium/selenium_generator.rb	  def filename
-filter	/home/mwood14/Work/bblearn/app/controllers/old/terms_controller.rb	  def filter(*params)
 filter	/home/mwood14/Work/bblearn/public/javascripts/filter.js	function filter(term, _id, cellNr)
 findDOMClass	/home/mwood14/Work/bblearn/public/javascripts/prototype.js	function findDOMClass(tagName)
 findWrapper	/home/mwood14/Work/bblearn/public/javascripts/prototype.js	function findWrapper(id, eventName, handler)
@@ -543,13 +505,7 @@ find_all_for_instructor_pk1	/home/mwood14/Work/bblearn/app/models/section.rb	   
 find_all_preparea_roles_for_user_pk1	/home/mwood14/Work/bblearn/app/models/section_role.rb	   def self.find_all_preparea_roles_for_user_pk1(user_pk1)
 find_all_prepareas_for_instructor_pk1	/home/mwood14/Work/bblearn/app/models/section.rb	   def self.find_all_prepareas_for_instructor_pk1(user_pk1)
 find_by_id_comparison	/home/mwood14/Work/bblearn/app/models/section_role.rb	  def self.find_by_id_comparison(slave,master)
-find_current_term	/home/mwood14/Work/bblearn/app/models/old/term.rb	  def self.find_current_term
-find_future_terms	/home/mwood14/Work/bblearn/app/models/old/term.rb	  def self.find_future_terms
-find_irregular_terms	/home/mwood14/Work/bblearn/app/models/old/term.rb	  def self.find_irregular_terms
 find_selenium_path	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/paths.rb	    def find_selenium_path
-find_sso_terms	/home/mwood14/Work/bblearn/app/models/old/term.rb	  def self.find_sso_terms
-find_term_by_term_id	/home/mwood14/Work/bblearn/app/models/old/term.rb	  def self.find_term_by_term_id(term_id)
-find_terms	/home/mwood14/Work/bblearn/app/models/old/term.rb	  def self.find_terms
 fireContentLoadedEvent	/home/mwood14/Work/bblearn/public/javascripts/prototype.js	function fireContentLoadedEvent()
 fire_event	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/test_builder_actions.rb	  def fire_event 
 fixEvent	/home/mwood14/Work/bblearn/public/javascripts/sorttable.js	function fixEvent(event)
@@ -557,8 +513,6 @@ fixtures_path	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/se
 fnBind	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/htmlutils.js	function fnBind()
 fnBindAsEventListener	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/htmlutils.js	function fnBindAsEventListener(fn, object)
 foo	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/selenium-api.js	function foo() { return document.links[1]; }; foo()
-format_check	/home/mwood14/Work/bblearn/app/controllers/old/terms_controller.rb	  def format_check
-format_error	/home/mwood14/Work/bblearn/app/controllers/old/terms_controller.rb	  def format_error
 gem_version	/home/mwood14/Work/bblearn/config/boot.rb	      def gem_version
 generate_and_wait_actions	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/test_builder_actions.rb	  def self.generate_and_wait_actions
 generate_methods	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/test_builder_accessors.rb	  def self.generate_methods
@@ -589,9 +543,8 @@ getTimeoutTime	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selen
 getWrappersForEventName	/home/mwood14/Work/bblearn/public/javascripts/prototype.js	function getWrappersForEventName(id, eventName)
 getXmlHttpPrefix	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/xmlextras.js	function getXmlHttpPrefix()
 get_authenticated_user_id	/home/mwood14/Work/bblearn/vendor/plugins/cas_login/lib/cas_login.rb	    def get_authenticated_user_id
-get_memberships	/home/mwood14/Work/bblearn/app/models/old/bbl_context.rb	  def get_memberships(userid)
+get_controllers_actions	/home/mwood14/Work/bblearn/lib/controllers.rb	  def get_controllers_actions
 get_memberships	/home/mwood14/Work/bblearn/vendor/plugins/bbl_ws/lib/bbl_context.rb	  def get_memberships(userid)
-get_user	/home/mwood14/Work/bblearn/app/models/old/bbl_user.rb	  def get_user(userid)
 get_ws_token	/home/mwood14/Work/bblearn/app/controllers/application_controller.rb	  def get_ws_token
 go_back	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/test_builder_actions.rb	  def go_back
 handleEvent	/home/mwood14/Work/bblearn/public/javascripts/sorttable.js	function handleEvent(event)
@@ -606,14 +559,14 @@ highlight	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-c
 include_partial	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/selenese.rb	    def include_partial 
 include_partial	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/test_builder_actions.rb	  def include_partial 
 index	/home/mwood14/Work/bblearn/app/controllers/application_controller.rb	  def index
-index	/home/mwood14/Work/bblearn/app/controllers/authorization_controller.rb	  def index
+index	/home/mwood14/Work/bblearn/app/controllers/authorizations_controller.rb	  def index
+index	/home/mwood14/Work/bblearn/app/controllers/ca_managements_controller.rb	  def index
 index	/home/mwood14/Work/bblearn/app/controllers/institution_role_controller.rb	  def index
 index	/home/mwood14/Work/bblearn/app/controllers/log_controller.rb	  def index
-index	/home/mwood14/Work/bblearn/app/controllers/old/terms_controller.rb	  def index
 index	/home/mwood14/Work/bblearn/app/controllers/section_controller.rb	    def index
 index	/home/mwood14/Work/bblearn/app/controllers/section_role_controller.rb	  def index
 index	/home/mwood14/Work/bblearn/app/controllers/sso_controller.rb	  def index
-index	/home/mwood14/Work/bblearn/app/controllers/tlp_admin_controller.rb	  def index
+index	/home/mwood14/Work/bblearn/app/controllers/tlp_admin_controller.rb	  def index    
 index	/home/mwood14/Work/bblearn/app/controllers/tpextract_controller.rb	  def index
 index	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/controllers/switch_environment_controller.rb	  def index
 initialize	/home/mwood14/Work/bblearn/app/models/context_ws.rb	    def initialize
@@ -666,17 +619,14 @@ load_rails_gem	/home/mwood14/Work/bblearn/config/boot.rb	    def load_rails_gem
 load_rubygems	/home/mwood14/Work/bblearn/config/boot.rb	      def load_rubygems
 logToRc	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/selenium-remoterunner.js	function logToRc(logLevel, message)
 log_file	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/acceptance_test_runner.rb	      def log_file 
-log_in	/home/mwood14/Work/bblearn/app/models/old/bbl_context.rb	  def self.log_in
 log_path	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/paths.rb	    def log_path 
 logged_in	/home/mwood14/Work/bblearn/app/controllers/application_controller.rb	  def logged_in
 login	/home/mwood14/Work/bblearn/app/controllers/sso_controller.rb	  def login
 login_extra_info	/home/mwood14/Work/bblearn/vendor/plugins/bbl_ws/lib/bbl_ws.rb	  attr_accessor :client_program_id, :login_extra_info, :expected_life_seconds, :ticket, :client, :session_id
 login_tool	/home/mwood14/Work/bblearn/app/models/context_ws.rb	    def login_tool
-login_tool	/home/mwood14/Work/bblearn/app/models/old/bbl_context.rb	  def login_tool
-login_tool	/home/mwood14/Work/bblearn/app/models/old/bbl_course_membership.rb	  def login_tool
 logout	/home/mwood14/Work/bblearn/app/controllers/application_controller.rb	  def logout
 main_css	/home/mwood14/Work/bblearn/app/controllers/tlp_admin_controller.rb	  def main_css
-main_html	/home/mwood14/Work/bblearn/app/controllers/tlp_admin_controller.rb	  def main_html
+main_html	/home/mwood14/Work/bblearn/app/controllers/tlp_admin_controller.rb	  def main_html    
 makeAbbrevStep	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/xpath/xpath.js	function makeAbbrevStep(abbrev)
 makeAddressToAUTFrame	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/selenium-remoterunner.js	function makeAddressToAUTFrame(w, frameNavigationalJSexpression)
 makeArgumentExpr	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/xpath/xpath.js	function makeArgumentExpr(comma, expr)
@@ -743,15 +693,15 @@ namespace_identifier	/home/mwood14/Work/bblearn/blackboard_ws/savon/xml.rb	     
 namespace_identifier	/home/mwood14/Work/bblearn/blackboard_ws/savon/xml.rb	      def namespace_identifier
 namespaces	/home/mwood14/Work/bblearn/blackboard_ws/savon/xml.rb	      attr_writer :namespaces
 namespaces	/home/mwood14/Work/bblearn/blackboard_ws/savon/xml.rb	      def namespaces
+new	/home/mwood14/Work/bblearn/app/controllers/authorizations_controller.rb	  def new
+new	/home/mwood14/Work/bblearn/app/controllers/ca_managements_controller.rb	  def new
 new	/home/mwood14/Work/bblearn/app/controllers/institution_role_controller.rb	  def new
-new_term	/home/mwood14/Work/bblearn/app/controllers/old/terms_controller.rb	  def new_term
 next_line	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/selenese.rb	    def next_line 
 nonce	/home/mwood14/Work/bblearn/blackboard_ws/savon/wsse.rb	    def nonce
 normalizeNewlines	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/htmlutils.js	function normalizeNewlines(text)
 normalizeSpaces	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/htmlutils.js	function normalizeSpaces(text)
 not_allowed	/home/mwood14/Work/bblearn/app/controllers/application_controller.rb	  def not_allowed
 nthChild	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/lib/cssQuery/src/cssQuery-level3.js	function nthChild($element, $arguments, $traverse)
-null_all_current_terms	/home/mwood14/Work/bblearn/app/models/old/term.rb	  def self.null_all_current_terms
 o2s	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/htmlutils.js	function o2s(obj)
 objectExtend	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/htmlutils.js	function objectExtend(destination, source)
 onSeleniumLoad	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/selenium-testrunner.js	function onSeleniumLoad()
@@ -793,10 +743,8 @@ record	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/controlle
 record_table	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/controllers/selenium_controller.rb	  def record_table
 refresh	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/test_builder_actions.rb	  def refresh
 regEscape	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/lib/cssQuery/src/cssQuery.js	function regEscape($string)
-register_tool	/home/mwood14/Work/bblearn/app/models/old/bbl_context.rb	  def register_tool
 register_tool	/home/mwood14/Work/bblearn/vendor/plugins/bbl_ws/lib/bbl_context.rb	  def register_tool
 relayBotToRC	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/selenium-remoterunner.js	function relayBotToRC(s)
-remove	/home/mwood14/Work/bblearn/app/controllers/authorization_controller.rb	  def remove
 remove	/home/mwood14/Work/bblearn/app/controllers/section_controller.rb	    def remove
 remove	/home/mwood14/Work/bblearn/app/controllers/section_role_controller.rb	  def remove
 removeClassName	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/htmlutils.js	function removeClassName(element, name)
@@ -883,6 +831,8 @@ setup	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/test/switch_en
 setup_controller_test	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/test/test_helper.rb	def setup_controller_test(controller)
 shift_key_down	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/test_builder_actions.rb	  def shift_key_down
 shift_key_up	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/test_builder_actions.rb	  def shift_key_up
+show	/home/mwood14/Work/bblearn/app/controllers/authorizations_controller.rb	  def show
+show	/home/mwood14/Work/bblearn/app/controllers/ca_managements_controller.rb	  def show
 skip_file?	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/paths.rb	    def skip_file? 
 stackToString	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/xpath/xpath.js	function stackToString(stack)
 staging	/home/mwood14/Work/bblearn/app/controllers/log_controller.rb	  def staging
@@ -952,17 +902,14 @@ stringSplit	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium
 stripAlpha	/home/mwood14/Work/bblearn/public/javascripts/prototype.js	function stripAlpha(filter)
 student_signon	/home/mwood14/Work/bblearn/lib/sso_connections.rb	  def student_signon(section)
 submit	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/test_builder_actions.rb	  def submit 
-submit_check	/home/mwood14/Work/bblearn/app/controllers/old/terms_controller.rb	  def submit_check(commit)
-submit_chk	/home/mwood14/Work/bblearn/app/controllers/tlp_admin_controller.rb	  def submit_chk
 suite_link	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/generators/selenium/selenium_generator.rb	  def suite_link
 suite_path	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/generators/selenium/selenium_generator.rb	  def suite_path
 support_file	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/controllers/selenium_controller.rb	  def support_file
 sym_convert	/home/mwood14/Work/bblearn/lib/permissions.rb	  def sym_convert(roles)
 table	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/test_builder.rb	  def table 
 tag	/home/mwood14/Work/bblearn/blackboard_ws/savon/xml.rb	      def tag(xml, name, namespaces = {}, &block)
-task_css	/home/mwood14/Work/bblearn/app/controllers/tlp_admin_controller.rb	  def task_css
+task_css	/home/mwood14/Work/bblearn/app/controllers/tlp_admin_controller.rb	  def task_css    
 teardown	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/test/selenium_controller_test.rb	  def teardown
-term_exists_already	/home/mwood14/Work/bblearn/app/controllers/old/terms_controller.rb	  def term_exists_already
 test_accessor_commands	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/test/rselenese_test.rb	  def test_accessor_commands
 test_action_commands	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/test/rselenese_test.rb	  def test_action_commands
 test_case_name	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_helper.rb	  def test_case_name 
@@ -1055,32 +1002,20 @@ type	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on
 type_keys	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/test_builder_actions.rb	  def type_keys 
 unauthorized	/home/mwood14/Work/bblearn/app/controllers/application_controller.rb	  def unauthorized
 uncheck	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/test_builder_actions.rb	  def uncheck 
-up	/home/mwood14/Work/bblearn/db/migrate/20100223175438_create_roles.rb	  def self.up
-up	/home/mwood14/Work/bblearn/db/migrate/20100827164018_create_terms.rb	  def self.up
-up	/home/mwood14/Work/bblearn/db/migrate/20100907173224_create_tlps.rb	  def self.up
-up	/home/mwood14/Work/bblearn/db/migrate/20101101171304_create_dbsessions.rb	   def self.up
-up	/home/mwood14/Work/bblearn/db/migrate/20101208190522_create_people.rb	  def self.up
-up	/home/mwood14/Work/bblearn/db/migrate/20101208190551_create_sections.rb	  def self.up
-up	/home/mwood14/Work/bblearn/db/migrate/20110125180512_load_roles.rb	  def self.up
-up	/home/mwood14/Work/bblearn/db/migrate/20110314163552_add_attachments_student_list_to_section.rb	  def self.up
-up	/home/mwood14/Work/bblearn/db/migrate/20110411202808_create_bbl_contexts.rb	  def self.up
-up	/home/mwood14/Work/bblearn/db/migrate/20110412213732_add_logged_in.rb	  def self.up
-up	/home/mwood14/Work/bblearn/db/migrate/20110412214817_create_bbl_course_memberships.rb	  def self.up
-up	/home/mwood14/Work/bblearn/db/migrate/20110413175450_create_bbl_courses.rb	  def self.up
-up	/home/mwood14/Work/bblearn/db/migrate/20110413175513_create_bbl_users.rb	  def self.up
-up	/home/mwood14/Work/bblearn/db/migrate/20110422204942_add_section_status.rb	  def self.up
+up	/home/mwood14/Work/bblearn/db/migrate/20111024224312_create_authorizations.rb	  def self.up
+up	/home/mwood14/Work/bblearn/db/migrate/20111026185159_create_managements.rb	  def self.up
+up	/home/mwood14/Work/bblearn/db/migrate/20111026190010_edit_authorizations.rb	  def self.up
+update	/home/mwood14/Work/bblearn/app/controllers/authorizations_controller.rb	  def update
+update	/home/mwood14/Work/bblearn/app/controllers/ca_managements_controller.rb	  def update
 update	/home/mwood14/Work/bblearn/app/controllers/institution_role_controller.rb	  def update
-update	/home/mwood14/Work/bblearn/app/models/old/term.rb	  def update
 update	/home/mwood14/Work/bblearn/app/models/section.rb	   def self.update(section)
 update_cert_required	/home/mwood14/Work/bblearn/app/models/role_cert.rb	  def self.update_cert_required(bool)
 update_course	/home/mwood14/Work/bblearn/app/models/section_ws.rb	    def update_course(op={})
-update_term	/home/mwood14/Work/bblearn/app/models/old/term.rb	  def update_term
 url_arg	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/test_builder.rb	  def url_arg 
 user_client	/home/mwood14/Work/bblearn/blackboard_ws/backup/bbsoap.rb	attr_reader :client, :ses_password, :user_client
 user_index	/home/mwood14/Work/bblearn/app/controllers/institution_role_controller.rb	  def user_index
 user_information	/home/mwood14/Work/bblearn/app/models/user_ws.rb	    def user_information(html)
 user_information	/home/mwood14/Work/bblearn/blackboard_ws/user_ws.rb	    def user_information(html)
-user_init	/home/mwood14/Work/bblearn/app/models/old/bbl_user.rb	  def user_init
 user_to_emulate	/home/mwood14/Work/bblearn/vendor/plugins/bbl_ws/lib/bbl_ws.rb	  attr_accessor :user_to_emulate, :additional_seconds, :userid, :method, :password, :client_vendor_id
 user_tp	/home/mwood14/Work/bblearn/app/controllers/tpextract_controller.rb	  def user_tp
 userid	/home/mwood14/Work/bblearn/vendor/plugins/bbl_ws/lib/bbl_ws.rb	  attr_accessor :user_to_emulate, :additional_seconds, :userid, :method, :password, :client_vendor_id
@@ -1146,8 +1081,6 @@ ws_get_system_roles	/home/mwood14/Work/bblearn/app/models/user_ws.rb	    def ws_
 ws_get_system_roles	/home/mwood14/Work/bblearn/blackboard_ws/user_ws.rb	    def ws_get_system_roles(op={})
 ws_get_user	/home/mwood14/Work/bblearn/app/models/user_ws.rb	    def ws_get_user(op={})
 ws_get_user	/home/mwood14/Work/bblearn/blackboard_ws/user_ws.rb	    def ws_get_user(op={})
-ws_init	/home/mwood14/Work/bblearn/app/models/old/bbl_context.rb	  def ws_init
-ws_init	/home/mwood14/Work/bblearn/app/models/old/bbl_course_membership.rb	  def ws_init
 ws_init	/home/mwood14/Work/bblearn/vendor/plugins/bbl_ws/lib/bbl_ws.rb	  def ws_init
 ws_initialize	/home/mwood14/Work/bblearn/blackboard_ws/context_ws.rb	    def ws_initialize
 ws_initialize_course	/home/mwood14/Work/bblearn/blackboard_ws/course_ws.rb	    def ws_initialize_course(op={})

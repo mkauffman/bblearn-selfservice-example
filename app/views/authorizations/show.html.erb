@@ -1,0 +1,20 @@
+<div class="contnt">
+<p>
+  <b>Controller:</b>
+  <%=h @authorization.controller %>
+</p>
+
+<p>
+  <b>Action:</b>
+  <%=h @authorization.action %>
+</p>
+
+<p>
+  <b>Role:</b>
+  <%=h @authorization.role %>
+</p>
+
+
+<%= link_to 'Edit', edit_authorization_path(@authorization) %> |
+<%= link_to 'Back', authorizations_path %>
+</div>
