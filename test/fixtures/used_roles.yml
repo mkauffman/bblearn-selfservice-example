@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  institution_role_pk1: 1
+
+two:
+  name: MyString
+  institution_role_pk1: 1

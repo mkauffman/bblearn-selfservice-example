@@ -1,4 +1,4 @@
-class InstitutionRoleController < ApplicationController
+class InstitutionRolesController < ApplicationController
 
   def index
     @institution_roles = InstitutionRole.find_by_role_id(params[:role])
@@ -8,7 +8,7 @@ class InstitutionRoleController < ApplicationController
     @user   = User.find_by_user_id(params[:on_behalf_of])
   end
 
-  def edit #edit_role
+  def edit
     @institution_role = InstitutionRole.find_by_user_id()
   end
 

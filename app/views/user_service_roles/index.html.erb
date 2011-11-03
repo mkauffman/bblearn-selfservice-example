@@ -1,0 +1,21 @@
+<h1>Listing Service Role Assignments</h1>
+<%= link_to 'New Service Role Assignment', new_user_service_role_path %>
+<table class="output sortable">
+  <tr>
+    <th>User</th>
+    <th>Role</th>
+    <th>Edit</th>
+    <th>Destroy</th>
+  </tr>
+
+<% @user_service_roles.each do |user_service_role| %>
+  <tr>
+    <td><%= user_service_role.user.user_id%></td>
+    <td><%= user_service_role.service_role.name%></td>
+    <td><%= link_to 'Edit', edit_user_service_role_path(user_service_role) %></td>
+    <td><%= link_to 'Destroy', user_service_role, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />

@@ -2,43 +2,38 @@ class AuthorizationsController < ApplicationController
 
   
   def index
-    @ca_managements     = CAManagement.all
-    @institution_roles  = InstitutionRole.all.reverse
-  end
-
-  def show
-    @authorization = Authorization.find(params[:id])
-  end
-
-
-  def new
-    @authorization = Authorization.new
-  end
-
-  def edit
-    @authorization = Authorization.find(params[:id])
-  end
-
-
-  def create
-    @authorization = Authorization.new(params[:authorization])
-    
-    if @authorization.save
-      redirect_to(@authorization, :notice => 'Authorization was successfully created.')
-    end      
+    @ca_managements = CAManagement.all
+    @service_roles  = ServiceRole.all
+    @authorizations = Authorization.all
   end
 
   def update
-    @authorization = Authorization.find(params[:id])
-    
-    if @authorization.update_attributes(params[:authorization])
-        redirect_to(@authorization, :notice => 'Authorization was successfully updated.')
+    if update_authorizations
+      redirect_to(authorizations_url, :notice => 'Authorizations were successfully updated.')
+    else
+      render :action => "index", :error => "Authorizations were not successfully updated"
     end
   end
-
-  def destroy
-    @authorization = Authorization.find(params[:id])
-    @authorization.destroy
-    redirect_to(authorizations_url)     
+  
+  private
+  
+  def update_authorizations
+    controller_actions  = CAManagement.all
+    roles               = ServiceRole.all
+    
+    controller_actions.each do |ca|
+      roles.each do |r|
+        auth                      = Authorization.find_by_ca_management_id_and_service_role_id(ca.id,r.id)
+        auth.ca_management_id     = ca.id
+        auth.service_role_id      = r.id
+        auth.allowed              = params[ca.full_title.to_sym][r.name.to_sym]
+        unless auth.save
+          return false
+        end
+      end
+    end
+    true
   end
+  
+  
 end

@@ -1,13 +1,18 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :user_service_roles
+  
+  map.resources :institional_roles
+
+  map.resources :service_roles
+
   map.resources :ca_managements
 
   map.resources :authorizations
 
   #map.resources :roles
-  map.resources :section_role
+  map.resources :section_roles
   map.resources :application
   map.root :controller => "application"
-  map.connect 'section', :controller => 'section', :action => 'index'
   map.resource "application/logout" => "application#logout"
   # The priority is based upon order of creation: first created -> highest priority.
 

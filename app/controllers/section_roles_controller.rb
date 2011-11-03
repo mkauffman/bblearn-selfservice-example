@@ -1,4 +1,4 @@
-class SectionRoleController < ApplicationController
+class SectionRolesController < ApplicationController
   def index
     @section_roles = SectionRole.find(:all,
         :conditions =>

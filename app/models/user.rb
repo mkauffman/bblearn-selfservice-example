@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   has_many :sections, :through => :course_roles, :foreign_key => "users_pk1"
   has_many :user_roles, :foreign_key => "users_pk1"
   has_many :institution_roles, :through => :user_roles, :foreign_key => "users_pk1"
+  has_many :user_service_roles, :foreign_key => "users_pk1"
+  has_many :service_roles, :through => :user_service_roles, :foreign_key => "users_pk1"
 
   def all_roles
     roles = Array.new
@@ -39,6 +41,9 @@ class User < ActiveRecord::Base
                     :password     => password
   end
 
+  def allowed?(controller,action)
+    self.pk1 
+  end
 
 end
 

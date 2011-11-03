@@ -1,0 +1,17 @@
+<h1>Add Role to User</h1>
+
+<% form_for(@user_service_role) do |f| %>
+  <%= f.error_messages %>
+  <p>
+    User ID<br />
+    <%= text_field :user, "user_id" %>
+  </p> 
+  <p>
+    <%=collection_select(:user_service_role, :role_id, @service_roles, :id, :name, {:prompt => true})%>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', user_service_roles_path %>

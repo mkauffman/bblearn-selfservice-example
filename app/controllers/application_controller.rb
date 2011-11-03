@@ -6,8 +6,9 @@ class ApplicationController < ActionController::Base
 
   before_filter :authentication
   before_filter :set_session_timeout
-# before_filter :get_ws_token
+  #before_filter :get_ws_token
   helper        :all
+  #before_filter :authorization
 
   protect_from_forgery
 
@@ -38,7 +39,23 @@ class ApplicationController < ActionController::Base
     reset_session
     redirect_to "https://cas.csuchico.edu/cas/logout?service=migration"
   end
+  
+  
+  #################### AUTHORIZATION ##################
+    
+  def authorization
+    ca    = CAManagement.find_by_controller_and_action(controller_name,action_name)
+    logger.info "LOGGING CA: " + controller_name + " " + action_name 
+    
+    session[:user_object].service_roles.each do |sr|
+    logger.info "USER: " + session[:user_object].user_id + "ROLE: " + sr.name
+      unless sr.allowed?(ca.id)
+        redirect_to :controller => "application", :action => "index", :error => "Access Denied."
+      end
+    end
+  end
 
+  
   #################### SESSION ##################
 
   def session_exists
@@ -50,10 +67,11 @@ class ApplicationController < ActionController::Base
   end
 
   def set_session
-      session[:user]          = @user
-      session[:users_pk1]     = User.find_by_user_id(@user).pk1
-      session[:on_behalf_of]  = @user
-      session[:obo_pk1]       = User.find_by_user_id(@user).pk1
+    session[:user_object]   = User.find_by_user_id(@user)
+    session[:user]          = @user
+    session[:users_pk1]     = User.find_by_user_id(@user).pk1
+    session[:on_behalf_of]  = @user
+    session[:obo_pk1]       = User.find_by_user_id(@user).pk1
   end
 
   def end_session
@@ -89,6 +107,10 @@ class ApplicationController < ActionController::Base
 
   def set_roles
     session[:role] = sym_convert(@role)
+  end
+  
+  def retrieve_service_roles
+    session[:service_role]
   end
 
   #################### PROXY ##################

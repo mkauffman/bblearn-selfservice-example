@@ -1,4 +1,4 @@
-class LogController < ApplicationController
+class LogsController < ApplicationController
   include CasLogin
   #before_filter :check_permission
 

@@ -4,12 +4,12 @@
     Find roles for user: <%= text_field_tag :user_id%>
     <%= submit_tag "Find Roles" %>
     <% end %>
-    <%= link_to "Learn Certifified", :controller => "institution_role", :action => "index", :role => "lrncrt" %> |
-    <%= link_to "Administrator", :controller => "institution_role", :action => "index", :role => "admin" %> |
-    <%= link_to "ITSS", :controller => "institution_role", :action => "index", :role => "itss" %> |
-    <%= link_to "MLIB Staff", :controller => "institution_role", :action => "index", :role => "mlib" %> |
-    <%= link_to "TLP", :controller => "institution_role", :action => "index", :role => "tlp" %> |
-    <%= link_to "TLP Admin", :controller => "institution_role", :action => "index", :role => "tlp_admin" %>
+    <%= link_to "Learn Certifified", :controller => "institution_roles", :action => "index", :role => "lrncrt" %> |
+    <%= link_to "Administrator", :controller => "institution_roles", :action => "index", :role => "admin" %> |
+    <%= link_to "ITSS", :controller => "institution_roles", :action => "index", :role => "itss" %> |
+    <%= link_to "MLIB Staff", :controller => "institution_roles", :action => "index", :role => "mlib" %> |
+    <%= link_to "TLP", :controller => "institution_roles", :action => "index", :role => "tlp" %> |
+    <%= link_to "TLP Admin", :controller => "institution_roles", :action => "index", :role => "tlp_admin" %>
     <table class="output sortable">
         <tr>
             <th id="user_id">

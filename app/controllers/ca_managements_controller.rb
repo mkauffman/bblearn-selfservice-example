@@ -20,6 +20,14 @@ class CaManagementsController < ApplicationController
     @ca_management = CAManagement.new(params[:ca_management])
     
     if @ca_management.save
+      s_roles = ServiceRole.all
+      s_roles.each do |sr|
+        auth                  = Authorization.new
+        auth.ca_management_id = @ca_management.id
+        auth.service_role_id  = sr.id
+        auth.allowed          = false
+        auth.save
+      end
       redirect_to(@ca_management, :notice => 'CAManagement was successfully created.')
     else
       render :action => "new"
@@ -29,13 +37,11 @@ class CaManagementsController < ApplicationController
   def update
     @ca_management = CAManagement.find(params[:id])
 
-    respond_to do |format|
-      if @ca_management.update_attributes(params[:ca_management])
-        redirect_to(@ca_management, :notice => 'CAManagement was successfully updated.')
-      else
-        render :action => "edit"
-      end
-    end
+    if @ca_management.update_attributes(params[:ca_management])
+      redirect_to(@ca_management, :notice => 'CAManagement was successfully updated.')
+    else
+      render :action => "edit"
+    end      
   end
 
   def destroy

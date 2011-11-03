@@ -1,7 +1,0 @@
- 3/12/10 From the sso feature take the portal id input on the index page, pass it
- through the sections controller and show it on the sections page.
-
-3/16/10 Write the sections action to get the terms and then the sections for the terms for the current user.
-
- 
-                                                   
