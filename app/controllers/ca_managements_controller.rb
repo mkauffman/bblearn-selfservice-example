@@ -26,6 +26,7 @@ class CaManagementsController < ApplicationController
         auth.ca_management_id = @ca_management.id
         auth.service_role_id  = sr.id
         auth.allowed          = false
+        auth.allowed          = true if sr.name == "admin"
         auth.save
       end
       redirect_to(@ca_management, :notice => 'CAManagement was successfully created.')

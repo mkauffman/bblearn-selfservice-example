@@ -1,5 +1,5 @@
 <div class="contnt">
-  <h1>Listing roles <%= @institution_roles.role_name %></h1>
+  <h1>Listing for institution role <%= @institution_role.role_name %></h1>
     <% form_tag({:controller => "institution_role", :action => "user_index"}) do %>
     Find roles for user: <%= text_field_tag :user_id%>
     <%= submit_tag "Find Roles" %>
@@ -20,35 +20,21 @@
             </th>
             <th id="last">
                 Last name
-            </th>
-            <th id="role">
-                Role
-            </th>
-			<th id="modify" colspan="2" class="sorttable_nosort">
-				Modify
-			</th>
+            </th>            
         </tr>
-        <% @institution_roles.user_roles.each do |ur| %>
+        <% @users.each do |u| %>
         <tr>
             <td>
-                <%= ur.user.user_id %>
+                <%= u.user_id %>
             </td>
             <td>
-                <%= ur.user.firstname %>
+                <%= u.firstname %>
             </td>
             <td>
-                <%= ur.user.lastname %>
-            </td>
-            <td>
-                <%= link_to 'Edit', url_for(:action=>"index", :role => params[:role]) %>
-            </td>
-            <td>
-                <%= link_to 'Delete', url_for(:action=>"index", :role => params[:role], :confirm => 'Are you sure?') %>
-            </td>
+                <%= u.lastname %>
+            </td>            
         </tr>
         <% end %>
-    </table>
-    <br/>
-    <%= link_to 'New role', url_for(:action=>"index", :role => params[:role]) %>
+      </table>
 </div>
 

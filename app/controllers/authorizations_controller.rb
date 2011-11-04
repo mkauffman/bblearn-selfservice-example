@@ -20,13 +20,12 @@ class AuthorizationsController < ApplicationController
   def update_authorizations
     controller_actions  = CAManagement.all
     roles               = ServiceRole.all
-    
+
     controller_actions.each do |ca|
       roles.each do |r|
-        auth                      = Authorization.find_by_ca_management_id_and_service_role_id(ca.id,r.id)
-        auth.ca_management_id     = ca.id
-        auth.service_role_id      = r.id
-        auth.allowed              = params[ca.full_title.to_sym][r.name.to_sym]
+        auth          = Authorization.find_by_ca_management_id_and_service_role_id(ca.id,r.id)
+        puts params.inspect        
+        auth.allowed  = params[ca.full_title.to_sym][r.name.to_sym]        
         unless auth.save
           return false
         end

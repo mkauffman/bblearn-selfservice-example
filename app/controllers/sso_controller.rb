@@ -3,17 +3,7 @@ require 'logger'
 class SsoController < ApplicationController
   include Sso_connections
 
-  #before_filter :check_permission
-
   def index
-  end
-
-  def check_permission
-    if roles_comp :sso, session[:role]
-      return true
-    else
-      redirect_to :controller => "application", :action => "not_allowed" and return false
-    end
   end
 
   def sections

@@ -1,7 +1,10 @@
 class InstitutionRolesController < ApplicationController
 
   def index
-    @institution_roles = InstitutionRole.find_by_role_id(params[:role])
+    @institution_role = InstitutionRole.find_by_role_id(params[:role])
+    @user_roles       = @institution_role.user_roles
+    @users            = User.find_all_by_institution_roles_pk1(@institution_role.pk1)
+    @user_roles.each {|ur| @users << ur.user}
   end
 
   def user_index

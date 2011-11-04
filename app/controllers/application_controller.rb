@@ -43,13 +43,9 @@ class ApplicationController < ActionController::Base
   
   #################### AUTHORIZATION ##################
     
-  def authorization
-    ca    = CAManagement.find_by_controller_and_action(controller_name,action_name)
-    logger.info "LOGGING CA: " + controller_name + " " + action_name 
-    
+  def authorization  
     session[:user_object].service_roles.each do |sr|
-    logger.info "USER: " + session[:user_object].user_id + "ROLE: " + sr.name
-      unless sr.allowed?(ca.id)
+      unless sr.allowed?(controller_name,action_name)
         redirect_to :controller => "application", :action => "index", :error => "Access Denied."
       end
     end

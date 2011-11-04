@@ -1,20 +1,26 @@
 class SectionRolesController < ApplicationController
   def index
-    @section_roles = SectionRole.find(:all,
+    @section_roles  = SectionRole.find(:all,
         :conditions =>
-        ['users_pk1 = :users_pk1 and role = :role', {:users_pk1 => session[:obo_pk1], :role => 'P'}])
+        ['users_pk1 = :users_pk1 and role = :role', 
+        {:users_pk1 => session[:obo_pk1], :role => 'P'}])
+    @sections = []    
+    @section_roles.each {|sr| @sections << sr.section }
   end
 
   def add
     role          = enrollment_type(params[:enrollment])
-    user          = User.find_by_user_id(params[:on_behalf_of])
+    user          = User.find_by_user_id(params[:user_id])
     @section_role = SectionRole.create(params[:id], user.pk1, role)
     redirect_to :action => "edit", :enrollment => params[:enrollment], :id => params[:id]
   end
 
 
   def remove
-    SectionRole.destroy(params[:rm_guest], params[:id])
+    params[:rm_guest].each do |sr_ids|
+      @section_role = SectionRole.find(sr_ids)
+      SectionRole.destroy(@section_role)
+    end
     redirect_to :action => "edit", :enrollment => params[:enrollment], :id => params[:id]
   end
 
