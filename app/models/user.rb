@@ -22,23 +22,21 @@ class User < ActiveRecord::Base
     clicker = Tpextract.find_by_bb_user_id(self.user_id)
   end
 
-  def self.create(user_id)
-    # TODO: determine better values for mandatory fields:
-    last_name   = "User"
-    first_name  = "SSO"
-    password    = "tryingtest"
+  def save!
 
-    con   = ContextWS.new
-    token = con.ws
+    con           = ContextWS.new
+    token         = con.ws
+    
     con.login_tool
     con.emulate_user
-    use   = UserWS.new(token)
-    use.ws
-    use.save        :fam_name    => last_name,
-                    :given_name   => first_name,
-                    :student_id   => user_id,
-                    :name         => user_id,
-                    :password     => password
+    
+    user_service  = UserWS.new(token)
+    user_service.ws
+    
+    user = self.attributes.to_options!
+    
+    user_service.save(user)
+    
   end
 
   def allowed?(controller,action)

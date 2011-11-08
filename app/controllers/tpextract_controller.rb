@@ -7,7 +7,6 @@ include REXML
         @section_roles = SectionRole.find(:all,
         :conditions =>
         ['users_pk1 = :users_pk1 and role = :role', {:users_pk1 => session[:users_pk1], :role => 'P'}])
-        render "#{RAILS_ROOT}/monet-parliament.jpg"
   end
 
   def user_tp

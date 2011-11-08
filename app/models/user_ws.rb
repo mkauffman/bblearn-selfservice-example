@@ -139,10 +139,10 @@ attr_reader :client, :ses_password
             soap.input  = ["user:saveUser", {"xmlns:user" => U_SERVICE}]
             soap.body   = {
                             "user:user"   => {
-                                #"xsd:birthDate"         =>  op[:bdate]      || nil,
-                                "xsd:dataSourceId"      =>  op[:data_id]    || 41,
-                                #"xsd:educationLevel"    =>  op[:edu_level]  || nil,
-                                #"xsd:expansionData"     =>  op[:edata]      || nil,
+                                #"xsd:birthDate"         =>  op[:bdate]       || nil,
+                                "xsd:dataSourceId"      =>  op[:data_src_pk1] = 41,
+                                #"xsd:educationLevel"    =>  op[:edu_level]   || nil,
+                                #"xsd:expansionData"     =>  op[:edata]       || nil,
                                 "xsd:extendedInfo"      =>  {
                                     #"xsd:businessFax"       => op[:bfax]        || nil,
                                     #"xsd:businessPhone1"    => op[:bphone1]     || nil,
@@ -153,11 +153,11 @@ attr_reader :client, :ses_password
                                     #"xsd:department"        => op[:dept]        || nil,
                                     #"xsd:emailAddress"      => op[:email]       || nil,
                                     #"xsd:expansionData"     => op[:edata]       || nil,
-                                    "xsd:familyName"        => op[:fam_name]    || nil,
-                                    "xsd:givenName"         => op[:given_name]  || nil,
+                                    "xsd:familyName"        => op[:lastname]     || nil,
+                                    "xsd:givenName"         => op[:firstname]    || nil,
                                     #"xsd:homeFax"           => op[:hfax]        || nil,
-                                    #"xsd:homePhone1"        => op[:hphone1]     || nil,
-                                    #"xsd:homePhone2"        => op[:hphone2]     || nil,
+                                    #"xsd:homePhone1"        => op[:h_phone_1]   || nil,
+                                    #"xsd:homePhone2"        => op[:h_phone_2]   || nil,
                                     #"xsd:jobTitle"          => op[:jtitle]      || nil,
                                     #"xsd:middleName"        => op[:mname]       || nil,
                                     #"xsd:mobilePhone"       => op[:mphone]      || nil,
@@ -167,16 +167,15 @@ attr_reader :client, :ses_password
                                     #"xsd:webPage"           => op[:wpage]       || nil,
                                     #"xsd:zipCode"           => op[:zip]         || nil,
                                                             },
-                                #"xsd:genderType"        => op[:gender]      || nil,
-                                #"xsd:id"                => op[:id]          || nil,
-                                #"xsd:insRoles"          => op[:ins_roles]   || nil,
-                                "xsd:isAvailable"       => op[:available]   || true,
-                                "xsd:name"              => op[:name],
-                                "xsd:password"          => op[:password],
-                                "xsd:studentId"         => op[:student_id],
-                                #"xsd:systemRoles"       => op[:sys_roles]   || nil,
-                                #"xsd:title"             => op[:title]       || nil,
-                                #"xsd:userBatchUid"      => op[:batch_uid]   || nil,
+                                #"xsd:genderType"   => op[:gender]                || nil,
+                                #"xsd:insRoles"     => op[institution_roles_pk1]  || nil,
+                                "xsd:isAvailable"   => op[:available]             || true,
+                                "xsd:name"          => op[:user_id],
+                                "xsd:password"      => op[:passwd],
+                                #"xsd:studentId"    => op[:student_id],
+                                #"xsd:systemRoles"  => op[:sys_roles]             || nil,
+                                #"xsd:title"        => op[:title]                 || nil,
+                                "xsd:userBatchUid" => op[:batch_uid]              || nil,
                                              }
                             }
                 end
@@ -198,12 +197,12 @@ attr_reader :client, :ses_password
                           "wsa:Action"      => "createUser"
                           }
             soap.input  = ["user:createUser", {"xmlns:user" => U_SERVICE}]
-            soap.body   =  {
-                            "user:user" =>   {
-                                #"xsd:birthDate"         =>  op[:bdate]      || nil,
-                                "xsd:dataSourceId"      =>  op[:data_id]    || 41,
-                                #"xsd:educationLevel"    =>  op[:edu_level]  || nil,
-                                #"xsd:expansionData"     =>  op[:edata]      || nil,
+            soap.body   = {
+                            "user:user"   => {
+                                #"xsd:birthDate"         =>  op[:bdate]       || nil,
+                                "xsd:dataSourceId"      =>  op[:data_src_pk1] = 41,
+                                #"xsd:educationLevel"    =>  op[:edu_level]   || nil,
+                                #"xsd:expansionData"     =>  op[:edata]       || nil,
                                 "xsd:extendedInfo"      =>  {
                                     #"xsd:businessFax"       => op[:bfax]        || nil,
                                     #"xsd:businessPhone1"    => op[:bphone1]     || nil,
@@ -214,11 +213,11 @@ attr_reader :client, :ses_password
                                     #"xsd:department"        => op[:dept]        || nil,
                                     #"xsd:emailAddress"      => op[:email]       || nil,
                                     #"xsd:expansionData"     => op[:edata]       || nil,
-                                    "xsd:familyName"        => op[:fam_name]    || nil,
-                                    "xsd:givenName"         => op[:given_name]  || nil,
+                                    "xsd:familyName"        => op[:lastname]    || nil,
+                                    #"xsd:givenName"         => op[:given_name]  || nil,
                                     #"xsd:homeFax"           => op[:hfax]        || nil,
-                                    #"xsd:homePhone1"        => op[:hphone1]     || nil,
-                                    #"xsd:homePhone2"        => op[:hphone2]     || nil,
+                                    #"xsd:homePhone1"        => op[:h_phone_1]   || nil,
+                                    #"xsd:homePhone2"        => op[:h_phone_2]   || nil,
                                     #"xsd:jobTitle"          => op[:jtitle]      || nil,
                                     #"xsd:middleName"        => op[:mname]       || nil,
                                     #"xsd:mobilePhone"       => op[:mphone]      || nil,
@@ -228,16 +227,16 @@ attr_reader :client, :ses_password
                                     #"xsd:webPage"           => op[:wpage]       || nil,
                                     #"xsd:zipCode"           => op[:zip]         || nil,
                                                             },
-                                #"xsd:genderType"        => op[:gender]      || nil,
-                                #"xsd:id"                => op[:id]          || nil,
-                                #"xsd:insRoles"          => op[:ins_roles]   || nil,
-                                #"xsd:isAvailable"       => op[:available]   || true,
-                                "xsd:name"              => op[:name]        || nil,
-                                "xsd:password"          => op[:password]    || nil,
-                                "xsd:studentId"         => op[:student_id]  || nil,
-                                #"xsd:systemRoles"       => op[:sys_roles]   || nil,
-                                #"xsd:title"             => op[:title]       || nil,
-                                #"xsd:userBatchUid"      => op[:batch_uid]   || nil,
+                                #"xsd:genderType"   => op[:gender]      || nil,
+                                #"xsd:id"            => op[:user_id]     || nil,
+                                #"xsd:insRoles"     => op[institution_roles_pk1]  || nil,
+                                "xsd:isAvailable"   => op[:available]   || true,
+                                "xsd:name"          => op[:firstname],
+                                "xsd:password"      => op[:passwd],
+                                "xsd:studentId"    => op[:student_id],
+                                #"xsd:systemRoles"  => op[:sys_roles]   || nil,
+                                #"xsd:title"        => op[:title]       || nil,
+                                "xsd:userBatchUid" => op[:batch_uid]   || nil,
                                              }
                             }
         end

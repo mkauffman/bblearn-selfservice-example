@@ -4,17 +4,17 @@
       <tr>
         <%if @logs[0]%>
           <td>
-            <%= link_to 'Development Log', :controller => 'log', :action => 'development' %>
+            <%= link_to 'Development Log', :controller => 'logs', :action => 'development' %>
           </td>
         <%end%>
         <%if @logs[1]%>
           <td>
-            <%= link_to 'Staging Log', :controller => 'log', :action => 'staging' %>
+            <%= link_to 'Staging Log', :controller => 'logs', :action => 'staging' %>
           </td>
         <%end%>
         <%if @logs[2]%>
           <td>
-            <%= link_to 'Production Log', :controller => 'log', :action => 'production' %>
+            <%= link_to 'Production Log', :controller => 'logs', :action => 'production' %>
           </td>
         <%end%>
        </tr>

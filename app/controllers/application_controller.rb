@@ -2,7 +2,6 @@ require 'rubygems'
 
 class ApplicationController < ActionController::Base
   include CasLogin
-  include Permissions
 
   before_filter :authentication
   before_filter :set_session_timeout
@@ -20,8 +19,6 @@ class ApplicationController < ActionController::Base
     unless session_exists
       if logged_in
         set_session
-        retrieve_roles
-        set_roles
       end
     end
   end
@@ -91,42 +88,11 @@ class ApplicationController < ActionController::Base
   end
 
   #################### ROLE ##################
-
-  def retrieve_roles
-    @role     = Array.new
-    user      = User.find_by_user_id(session[:user])
-    ins_roles = user.all_roles
-    ins_roles.each do |r|
-    @role   << r.role_id
-    end
-  end
-
-  def set_roles
-    session[:role] = sym_convert(@role)
-  end
   
   def retrieve_service_roles
     session[:service_role]
   end
 
-  #################### PROXY ##################
-  def check_proxy_use
-    if roles_comp :proxy, session[:role]
-      validate_proxy
-    else
-      redirect_to :controller => "application", :action => "index" and return
-    end
-  end
-
-  def validate_proxy
-    unless User.find_by_user_id(params['act_as'])
-       redirect_to :controller => "application", :action => "invalid_user"
-    else
-       session[:on_behalf_of]   = params['act_as']
-       session[:obo_pk1]        = User.find_by_user_id(session[:on_behalf_of]).pk1
-       redirect_to :controller => "application", :action => "index"
-    end
-  end
 
   #################### WEB SERVICES ####################
 

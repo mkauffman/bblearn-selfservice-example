@@ -1,3 +1,7 @@
+#TODO: Add sidebar allowed checks
+#TODO: Create module for exporting and importing data.
+#TODO: Fix SSO inputs
+
 class CaManagementsController < ApplicationController
 
   def index

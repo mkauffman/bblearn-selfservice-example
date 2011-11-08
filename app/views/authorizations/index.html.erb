@@ -21,7 +21,6 @@
     <td><%=h ca.controller %></td>
     <td><%=h ca.action %></td>
     <% @service_roles.each do |role| %>
-    <%logger.info "ROLE: "+ role.name%>
       <td><%=check_box(ca.full_title, role.name, {:default => false,
         :checked => role.allowed?(ca.controller,ca.action)}, true)%></td>
     <%end%>

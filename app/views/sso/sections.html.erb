@@ -18,13 +18,13 @@
    </table>
 
    <br/>Role:
-   <% if roles_comp :sso_admin, session[:role] %>
+   <% if user_is_allowed? :controller => 'sso', :action => 'admin'%>
      <br/><%= radio_button_tag "mode", "admin" %><%= params[:sso_id] %>
    <% end %>
-   
+   <% if user_is_allowed? :controller => 'sso', :action => 'designer'%>
      <br/><%= radio_button_tag "mode", "designer" %>Designer
-   
-   <% if roles_comp :sso_student, session[:role] %>
+   <% end %>
+   <% if user_is_allowed? :controller => 'sso', :action => 'student'%>
      <br/><%= radio_button_tag "mode", "student" %>Student
    <% end %>  
 	 
