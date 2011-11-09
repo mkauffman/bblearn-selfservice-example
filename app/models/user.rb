@@ -40,7 +40,11 @@ class User < ActiveRecord::Base
   end
 
   def allowed?(controller,action)
-    self.service_role.allowed?(controller,action)
+    if self.service_role.nil?
+      return false
+    else
+      self.service_role.allowed?(controller,action)
+    end
   end
 
 end
