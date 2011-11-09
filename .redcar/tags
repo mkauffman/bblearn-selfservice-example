@@ -1,4 +1,4 @@
-1320713653
+1320863102
 ADDRESSING	/home/mwood14/Work/bblearn/blackboard_ws/context_ws.rb	ADDRESSING   =
 ARG_VALUE_MAP	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/test/rselenese_test.rb	  ARG_VALUE_MAP =
 AcceptanceTestRunner	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/acceptance_test_runner.rb	  class AcceptanceTestRunner
@@ -82,6 +82,7 @@ FilterExpr	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-
 FixtureLoader	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/fixture_loader.rb	module SeleniumOnRails::FixtureLoader
 FunctionCallExpr	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/xpath/xpath.js	function FunctionCallExpr(name)
 GemBoot	/home/mwood14/Work/bblearn/config/boot.rb	  class GemBoot 
+HOST	/home/mwood14/Work/bblearn/lib/section_enable.rb	HOST =
 HOST	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/acceptance_test_runner.rb	HOST =
 HomeControllerTest	/home/mwood14/Work/bblearn/test/functional/home_controller_test.rb	class HomeControllerTest 
 HomeHelperTest	/home/mwood14/Work/bblearn/test/unit/helpers/home_helper_test.rb	class HomeHelperTest 
@@ -172,6 +173,7 @@ Savon	/home/mwood14/Work/bblearn/blackboard_ws/savon/wsse.rb	module Savon
 Savon	/home/mwood14/Work/bblearn/blackboard_ws/savon/xml.rb	module Savon
 SchemaTypes	/home/mwood14/Work/bblearn/blackboard_ws/savon/xml.rb	      SchemaTypes =
 Section	/home/mwood14/Work/bblearn/app/models/section.rb	class Section 
+SectionEnable	/home/mwood14/Work/bblearn/lib/section_enable.rb	module SectionEnable
 SectionRole	/home/mwood14/Work/bblearn/app/models/section_role.rb	class SectionRole 
 SectionRolesController	/home/mwood14/Work/bblearn/app/controllers/section_roles_controller.rb	class SectionRolesController 
 SectionTest	/home/mwood14/Work/bblearn/test/unit/section_test.rb	class SectionTest 
@@ -254,6 +256,7 @@ UIElementException	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/s
 UIMap	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/ui-element.js	function UIMap()
 UISpecifier	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/ui-element.js	function UISpecifier(uiSpecifierStringOrPagesetName, elementName, args)
 UISpecifierException	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/ui-element.js	function UISpecifierException(message)
+USER	/home/mwood14/Work/bblearn/lib/section_enable.rb	USER =
 USER_DOC	/home/mwood14/Work/bblearn/blackboard_ws/backup/bbsoap.rb	USER_DOC     =
 USER_END	/home/mwood14/Work/bblearn/blackboard_ws/backup/bbsoap.rb	USER_END     =
 USER_NAME	/home/mwood14/Work/bblearn/blackboard_ws/backup/bbsoap.rb	USER_NAME    =
@@ -422,6 +425,7 @@ development	/home/mwood14/Work/bblearn/app/controllers/logs_controller.rb	  def 
 digest	/home/mwood14/Work/bblearn/blackboard_ws/savon/wsse.rb	    attr_writer :digest
 digest?	/home/mwood14/Work/bblearn/blackboard_ws/savon/wsse.rb	    def digest?
 digest_password	/home/mwood14/Work/bblearn/blackboard_ws/savon/wsse.rb	    def digest_password
+disable_section	/home/mwood14/Work/bblearn/lib/section_enable.rb	  def disable_section(section)
 dispatch	/home/mwood14/Work/bblearn/public/javascripts/effects.js	function dispatch(effect, eventName)
 displayDOM	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/domviewer/selenium-domviewer.js	function displayDOM(root)
 displayNode	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/domviewer/selenium-domviewer.js	function displayNode(element, level, isLink)
@@ -471,6 +475,7 @@ elementGetStyle	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/sele
 elementSetStyle	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/htmlutils.js	function elementSetStyle(element, style)
 element_form_default	/home/mwood14/Work/bblearn/blackboard_ws/savon/xml.rb	      attr_writer :element_form_default
 element_form_default	/home/mwood14/Work/bblearn/blackboard_ws/savon/xml.rb	      def element_form_default
+enable_section	/home/mwood14/Work/bblearn/lib/section_enable.rb	  def enable_section(section)
 end_session	/home/mwood14/Work/bblearn/app/controllers/application_controller.rb	  def end_session
 endpoint	/home/mwood14/Work/bblearn/blackboard_ws/savon/xml.rb	      attr_accessor :endpoint
 enrollment_type	/home/mwood14/Work/bblearn/app/controllers/section_roles_controller.rb	  def enrollment_type(role)
@@ -480,6 +485,7 @@ eval_css	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-co
 eval_locator	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/htmlutils.js	function eval_locator(locator, inDocument, opt_contextNode)
 eval_xpath	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/htmlutils.js	function eval_xpath(xpath, inDocument, opts)
 exactize	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/test_builder.rb	  def exactize 
+executable_string	/home/mwood14/Work/bblearn/lib/section_enable.rb	  def executable_string
 expired_min	/home/mwood14/Work/bblearn/blackboard_ws/savon/wsse.rb	    def expired_min
 expires_at	/home/mwood14/Work/bblearn/blackboard_ws/savon/wsse.rb	    attr_accessor :username, :password, :created_at, :expires_at
 exprReturnsNumberValue	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/xpath/util.js	function exprReturnsNumberValue(expr)
@@ -704,6 +710,7 @@ passExpr	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-co
 password	/home/mwood14/Work/bblearn/blackboard_ws/savon/wsse.rb	    attr_accessor :username, :password, :created_at, :expires_at
 path_to_relative_url	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/suite_renderer.rb	    def path_to_relative_url 
 pause	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/test_builder_actions.rb	  def pause 
+perl_script_parameters	/home/mwood14/Work/bblearn/lib/section_enable.rb	  def perl_script_parameters
 permission	/home/mwood14/Work/bblearn/app/controllers/application_controller.rb	  def permission
 pick_boot	/home/mwood14/Work/bblearn/config/boot.rb	    def pick_boot
 predicateExprHasPositionalSelector	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/xpath/util.js	function predicateExprHasPositionalSelector(expr, isRecursiveCall)
@@ -757,6 +764,7 @@ safe_alert	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-
 safe_log	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/htmlutils.js	function safe_log(level, msg)
 save	/home/mwood14/Work/bblearn/app/models/user_ws.rb	    def save(op={})
 save!	/home/mwood14/Work/bblearn/app/models/user.rb	  def save!
+script_location	/home/mwood14/Work/bblearn/lib/section_enable.rb	  def script_location
 section_id_failure	/home/mwood14/Work/bblearn/app/controllers/static_controller.rb	  def section_id_failure
 sections	/home/mwood14/Work/bblearn/app/controllers/sso_controller.rb	  def sections
 selArrayToString	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/htmlutils.js	function selArrayToString(a)
@@ -806,6 +814,7 @@ shift_key_up	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/sel
 show	/home/mwood14/Work/bblearn/app/controllers/ca_managements_controller.rb	  def show
 show	/home/mwood14/Work/bblearn/app/controllers/service_roles_controller.rb	  def show
 skip_file?	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/paths.rb	    def skip_file? 
+ssh_call	/home/mwood14/Work/bblearn/lib/section_enable.rb	  def ssh_call(section,type)
 sso_user_exists?	/home/mwood14/Work/bblearn/lib/sso_connections.rb	  def sso_user_exists?(user_id)
 stackToString	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/xpath/xpath.js	function stackToString(stack)
 staging	/home/mwood14/Work/bblearn/app/controllers/logs_controller.rb	  def staging

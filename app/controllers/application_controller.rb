@@ -60,11 +60,12 @@ class ApplicationController < ActionController::Base
   end
 
   def set_session
-    session[:user_object]   = User.find_by_user_id(@user)
-    session[:user]          = @user
-    session[:users_pk1]     = User.find_by_user_id(@user).pk1
-    session[:on_behalf_of]  = @user
-    session[:obo_pk1]       = User.find_by_user_id(@user).pk1
+    session_user            = User.find_by_user_id(@user)
+    session[:user_object]   = session_user
+    session[:user]          = session_user.user_id
+    session[:users_pk1]     = session_user.pk1
+    session[:on_behalf_of]  = session_user.user_id
+    session[:obo_pk1]       = session_user.pk1
   end
 
   def end_session
