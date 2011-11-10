@@ -1,6 +1,6 @@
 <div id="task_box">
   <ul id="left_nav">
-    <li><%= link_to "Home", :controller => "application", :action => "index" %></li>
+    <li><%= link_to "Home", root_url%></li>
     <%if session[:user_object].allowed? "authorizations", "sidebar" %>
     <li><a href="#">Manage Authorizations</a>
       <ul>
@@ -27,6 +27,7 @@
       	 :prep => 'Prep'%></li>
       	<li><%= link_to "Create/Delete Course", :controller => "sections", :action => "index" %></li>
       	<li><%= link_to "Reset Course", :controller => "sections", :action => "index" %></li>
+      	<li><%= link_to "Enable Learn Course", :controller => "sections", :action => "enable_index" %></li>
       </ul>
     </li>
     <%end%>

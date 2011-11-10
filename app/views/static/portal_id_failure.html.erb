@@ -1,11 +1,13 @@
 <div class="contnt">
-	The portal id(s) you entered was(were) not found.
+  <p>
+  <br/> 
+  User(s) could not be found in our system.<br/>
+	Please go back and try again.
+  </p>
 	<% unless params[:portal_ids].empty? %>
 		<% params[:portal_ids].each do |id| %>
 			<br/>
-			<b><%= id %></b>
+      <strong><%= id %></strong>
 		<% end %>
-	<% end # unless params %>
-	<br/> 
-	Please go back and try again.
+	<% end %>
 </div>

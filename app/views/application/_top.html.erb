@@ -1,7 +1,6 @@
 <div id="chico_img" class="span-2">
   <%= link_to(image_tag("csuc-signature.jpg"), "http://www.csuchico.edu/") %>
 </div>
-
 <% if session[:user_object].allowed? "sessions", "act_as" %>
 <div id="act_as_div" class="last">
   <% form_tag({:controller => "sessions", :action => "act_as"}) do %>
@@ -15,7 +14,6 @@
   <% end %>
 </div>
 <% end %>
-
 <br/>
 <br/>
 <div id="user_table" class="last">
@@ -26,7 +24,7 @@
           Your Portal ID:
         </td>
         <td class="odd">
-          <%= session[:user] %>
+          <%= session[:user]%>
         </td>
       <% else %>
         <td>
@@ -35,8 +33,7 @@
         </td>
       <% end %>
       <td>
-      <%= link_to("Logout", url_for(:controller => "application", :action => "logout"),
-                                    :confirm => "Are you sure you want to log out?") %>
+      <%= link_to "Logout", url_for(:controller => "sessions", :action => "logout") %>
       </td>
     </tr>
         <% if session[:user] != session[:on_behalf_of] && controller_name != "sso" %>

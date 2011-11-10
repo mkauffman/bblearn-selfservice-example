@@ -1,0 +1,52 @@
+<div class="contnt">
+  <h1>Enable Courses For Learn</h1>
+  <h2>Choose a course to enable</h2>
+  <%if session[:user_object].service_role.name == 'admin'%>
+    <h2>Admin may also disable a course</h2>
+  <%end%>
+	<% form_tag({:action => "enable_disable"}) do -%>  
+    <table class="output sortable">
+        <thead>
+          <tr>
+          	<th id="check_th" class="sorttable_nosort">
+          </th>
+            <th id="course_id">
+              Course Name
+            </th>
+            <th>
+              Availability
+            </th>    
+          </tr>
+        </thead>
+        <tbody>
+            <% @sections.each do |s|%>
+            <tr>
+            	<td class="check_box">
+              <%if s.available_ind == "N"%>
+                <%= radio_button_tag 'sections[]', s.pk1, false, :class => "check" %>
+              <%elsif session[:user_object].service_role.name == 'admin'%>
+                <%= radio_button_tag 'sections[]', s.pk1, false, :class => "check" %>
+              <%end%>
+              </td>
+              <td>
+                <%= s.course_name%>
+              </td>
+              <td>
+              <%if s.available_ind == "Y"%>
+                Available
+              <%else%>
+                Unavailable
+              <%end%>
+              </td>           
+            </tr>
+            <% end %>
+        </tbody>
+      </table>
+    <%if session[:user_object].service_role.name == 'admin'%>
+      <%= submit_tag "Enable/Disable" %>
+    <%else%>
+	    <%= submit_tag "Enable" %>
+    <%end%>
+	<% end -%>    
+</div>
+

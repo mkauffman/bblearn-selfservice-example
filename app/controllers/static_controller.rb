@@ -1,7 +1,9 @@
-class Static < ApplicationController
+class StaticController < ApplicationController
 
-  def section_id_failure
+
+  def index
+    @html = Tlp.find(:first, :conditions=>"html_type = 'migrate_contnt_html'").html
   end
-
+  
 end
 

@@ -1,9 +1,11 @@
 class SectionsController < ApplicationController
-
+include SectionEnable
     def index
-      sections      = Section.find_all_for_instructor_pk1(session[:obo_pk1])
-      prep_sections = Section.find_all_prepareas_for_instructor_pk1(session[:obo_pk1])
-      @sections     = sections - prep_sections
+      find_sections_without_prep
+    end
+
+    def enable_index
+      find_sections_without_prep
     end
 
     def prep_index
@@ -33,10 +35,29 @@ class SectionsController < ApplicationController
     end
 
     def available
-      section                 = Section.find(params[:section_id])
+      section = Section.find(params[:section_id])
       Section.update(section)
       redirect_to :action => 'index'
     end
+    
+    def enable_disable
+      section = Section.find(params[:section_id])
+      if section.available_ind == "Y"
+        disable_section(section)
+      else
+        enable_section(section)
+      end
+      redirect_to :action => 'enable_index'
+    end
+
+
+private
+  
+  def find_sections_without_prep
+      sections      = Section.find_all_for_instructor_pk1(session[:obo_pk1])
+      prep_sections = Section.find_all_prepareas_for_instructor_pk1(session[:obo_pk1])
+      @sections     = sections - prep_sections
+  end
 
 end
 
