@@ -7,7 +7,6 @@
         <li><%= link_to "Authorizations", :controller => "authorizations", :action => "index" %></li>
         <li><%= link_to "Controllers/Actions", :controller => "ca_managements", :action => "index" %></li>
         <li><%= link_to "Service Role Management", :controller => "service_roles", :action => "index" %></li>
-        <li><%= link_to "User Role Assignments", :controller => "user_service_roles", :action => "index" %></li>
       </ul>
     <%end%>
     <%if session[:user_object].allowed? "enrollments", "sidebar" %>

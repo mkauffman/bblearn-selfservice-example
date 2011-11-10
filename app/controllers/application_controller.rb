@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   before_filter :update_activity_time
   #before_filter :get_ws_token
   helper        :all
-  #before_filter :authorization
+  before_filter :authorization
 
   protect_from_forgery
   
@@ -61,6 +61,7 @@ class ApplicationController < ActionController::Base
     session[:users_pk1]     = nil
     session[:on_behalf_of]  = nil
     session[:obo_pk1]       = nil
+    redirect_to "https://cas.csuchico.edu/cas/logout?service=bblearn"
   end
 
   def set_session
@@ -98,5 +99,5 @@ class ApplicationController < ActionController::Base
   end
 
 
-end # class ApplicationController
+end
 

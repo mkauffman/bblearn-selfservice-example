@@ -11,8 +11,8 @@
   <tr>
     <th>Controller</th>
     <th>Action</th>
-    <% @service_roles.each do |u_role| %>
-      <th><%=u_role.name%></th>
+    <% @service_roles.each do |s_role| %>
+      <th><%=s_role.name%></th>
     <%end%>
   </tr>
 <% form_tag({:action => "update"}) do -%>

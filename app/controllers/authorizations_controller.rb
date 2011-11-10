@@ -2,9 +2,10 @@ class AuthorizationsController < ApplicationController
 
   
   def index
-    @ca_managements = CAManagement.all
-    @service_roles  = ServiceRole.all
-    @authorizations = Authorization.all
+    @ca_managements     = CAManagement.all
+    @service_roles      = ServiceRole.all
+    @institution_roles  = InstitutionRole.all
+    @authorizations     = Authorization.all
   end
 
   def update
@@ -23,7 +24,7 @@ class AuthorizationsController < ApplicationController
     
     controller_actions.each do |ca|
       roles.each do |r|
-        auth          = Authorization.find_by_ca_management_id_and_service_role_id(ca.id,r.id) 
+        auth          = Authorization.find_by_ca_management_id_and_institution_roles_pk1(ca.id,r.institution_roles_pk1) 
         auth.allowed  = params[ca.full_title.to_sym][r.name.to_sym]        
         unless auth.save
           return false

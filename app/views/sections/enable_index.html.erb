@@ -1,7 +1,7 @@
 <div class="contnt">
   <h1>Enable Courses For Learn</h1>
   <h2>Choose a course to enable</h2>
-  <%if session[:user_object].service_role.name == 'admin'%>
+  <%if session[:user_object].admin?%>
     <h2>Admin may also disable a course</h2>
   <%end%>
 	<% form_tag({:action => "enable_disable"}) do -%>  
@@ -24,7 +24,7 @@
             	<td class="check_box">
               <%if s.available_ind == "N"%>
                 <%= radio_button_tag 'sections[]', s.pk1, false, :class => "check" %>
-              <%elsif session[:user_object].service_role.name == 'admin'%>
+              <%elsif session[:user_object].admin?%>
                 <%= radio_button_tag 'sections[]', s.pk1, false, :class => "check" %>
               <%end%>
               </td>
@@ -42,7 +42,7 @@
             <% end %>
         </tbody>
       </table>
-    <%if session[:user_object].service_role.name == 'admin'%>
+    <%if session[:user_object].admin?%>
       <%= submit_tag "Enable/Disable" %>
     <%else%>
 	    <%= submit_tag "Enable" %>

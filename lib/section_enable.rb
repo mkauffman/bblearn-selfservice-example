@@ -19,8 +19,8 @@ private
 
 
   def perl_script_parameters
-      exec_string = "enable_disable.pl --id \"#{section.course_id}\"  --externalID"
-      exec_string += "\"#{section.batch_uid}\" --name \"#{section.course_name}\""
+      exec_string = "enable_disable.pl --id \"#{section.course_id}\" --externalID "
+      exec_string += "\"#{section.batch_uid}\" --name \"#{section.course_name}\" "
       exec_string += "--state \"#{type}\" --dsk \"#{section.datasource}\""
   end
   
@@ -33,7 +33,7 @@ private
   end
   
   def ssh_call(section,type)
-    Net::SSH.start(HOST, USER, :password => "") do |ssh|
+    Net::SSH.start(HOST, USER, :password => "atec!d1rn") do |ssh|
 
       stdout = String.new
 

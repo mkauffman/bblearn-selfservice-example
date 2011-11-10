@@ -1,4 +1,4 @@
-1320946468
+1320966189
 ADDRESSING	/home/mwood14/Work/bblearn/blackboard_ws/context_ws.rb	ADDRESSING   =
 ARG_VALUE_MAP	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/test/rselenese_test.rb	  ARG_VALUE_MAP =
 AcceptanceTestRunner	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/acceptance_test_runner.rb	  class AcceptanceTestRunner
@@ -58,6 +58,7 @@ CaManagementsController	/home/mwood14/Work/bblearn/app/controllers/ca_management
 CaManagementsHelper	/home/mwood14/Work/bblearn/app/helpers/ca_managements_helper.rb	module CaManagementsHelper
 CasLogin	/home/mwood14/Work/bblearn/vendor/plugins/cas_login/lib/cas_login.rb	module CasLogin
 CasLoginTest	/home/mwood14/Work/bblearn/vendor/plugins/cas_login/test/cas_login_test.rb	class CasLoginTest 
+ChangeAuthorizations	/home/mwood14/Work/bblearn/db/migrate/20111110180712_change_authorizations.rb	class ChangeAuthorizations 
 Command	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/ui-element.js	function Command(command, target, value)
 CommandHandler	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/selenium-commandhandlers.js	function CommandHandler(type, haltOnFailure)
 CommandMatcher	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/ui-element.js	function CommandMatcher(commandMatcherShorthand)
@@ -75,6 +76,7 @@ DOMAIN	/home/mwood14/Work/bblearn/app/models/user_ws.rb	DOMAIN      =
 DesignersControllerTest	/home/mwood14/Work/bblearn/test/functional/designers_controller_test.rb	class DesignersControllerTest 
 DesignersHelper	/home/mwood14/Work/bblearn/app/helpers/designers_helper.rb	module DesignersHelper
 DesignersHelperTest	/home/mwood14/Work/bblearn/test/unit/helpers/designers_helper_test.rb	class DesignersHelperTest 
+DropUsersServiceRoles	/home/mwood14/Work/bblearn/db/migrate/20111110215819_drop_users_service_roles.rb	class DropUsersServiceRoles 
 ENDPOINT	/home/mwood14/Work/bblearn/blackboard_ws/context_ws.rb	ENDPOINT     =
 EditAuthorizations	/home/mwood14/Work/bblearn/db/migrate/20111026190010_edit_authorizations.rb	class EditAuthorizations 
 Evaluator	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/rselenese.rb	  class Evaluator 
@@ -280,9 +282,7 @@ UsedRolesHelperTest	/home/mwood14/Work/bblearn/test/unit/helpers/used_roles_help
 User	/home/mwood14/Work/bblearn/app/models/user.rb	class User 
 User	/home/mwood14/Work/bblearn/blackboard_ws/user.rb	class User 
 UserRole	/home/mwood14/Work/bblearn/app/models/user_role.rb	class UserRole 
-UserServiceRole	/home/mwood14/Work/bblearn/app/models/user_service_role.rb	class UserServiceRole 
 UserServiceRoleTest	/home/mwood14/Work/bblearn/test/unit/user_service_role_test.rb	class UserServiceRoleTest 
-UserServiceRolesController	/home/mwood14/Work/bblearn/app/controllers/user_service_roles_controller.rb	class UserServiceRolesController 
 UserServiceRolesControllerTest	/home/mwood14/Work/bblearn/test/functional/user_service_roles_controller_test.rb	class UserServiceRolesControllerTest 
 UserServiceRolesHelper	/home/mwood14/Work/bblearn/app/helpers/user_service_roles_helper.rb	module UserServiceRolesHelper
 UserServiceRolesHelperTest	/home/mwood14/Work/bblearn/test/unit/helpers/user_service_roles_helper_test.rb	class UserServiceRolesHelperTest 
@@ -316,10 +316,12 @@ addText	/home/mwood14/Work/bblearn/public/javascripts/controls.js	function addTe
 addUrlParams	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/selenium-remoterunner.js	function addUrlParams(url)
 add_prep	/home/mwood14/Work/bblearn/app/controllers/sections_controller.rb	    def add_prep
 add_selection	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/test_builder_actions.rb	  def add_selection 
+admin?	/home/mwood14/Work/bblearn/app/models/user.rb	  def admin?
 admin_signon	/home/mwood14/Work/bblearn/lib/sso_connections.rb	  def admin_signon
 all_roles	/home/mwood14/Work/bblearn/app/models/user.rb	  def all_roles
+allowed?	/home/mwood14/Work/bblearn/app/models/institution_role.rb	  def allowed?(controller,action)
 allowed?	/home/mwood14/Work/bblearn/app/models/service_role.rb	  def allowed?(controller,action)
-allowed?	/home/mwood14/Work/bblearn/app/models/user.rb	  def allowed?(controller,action)
+allowed?	/home/mwood14/Work/bblearn/app/models/user.rb	  def allowed?(controller,action) 
 alt_key_down	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/test_builder_actions.rb	  def alt_key_down
 alt_key_up	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/test_builder_actions.rb	  def alt_key_up
 answer_on_next_prompt	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/test_builder_actions.rb	  def answer_on_next_prompt 
@@ -394,7 +396,6 @@ copyArrayIgnoringAttributesWithoutValue	/home/mwood14/Work/bblearn/vendor/plugin
 count	/home/mwood14/Work/bblearn/blackboard_ws/savon/wsse.rb	    def count
 create	/home/mwood14/Work/bblearn/app/controllers/ca_managements_controller.rb	  def create
 create	/home/mwood14/Work/bblearn/app/controllers/service_roles_controller.rb	  def create
-create	/home/mwood14/Work/bblearn/app/controllers/user_service_roles_controller.rb	  def create
 create	/home/mwood14/Work/bblearn/app/models/section.rb	   def self.create(name)
 create	/home/mwood14/Work/bblearn/app/models/section_role.rb	  def self.create(crsmain_pk1, users_pk1, role_id)
 createEventObject	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/htmlutils.js	function createEventObject(element, controlKeyDown, altKeyDown, shiftKeyDown, metaKeyDown)
@@ -418,7 +419,6 @@ describe	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-co
 designer_signon	/home/mwood14/Work/bblearn/lib/sso_connections.rb	  def designer_signon(section)
 destroy	/home/mwood14/Work/bblearn/app/controllers/ca_managements_controller.rb	  def destroy
 destroy	/home/mwood14/Work/bblearn/app/controllers/service_roles_controller.rb	  def destroy
-destroy	/home/mwood14/Work/bblearn/app/controllers/user_service_roles_controller.rb	  def destroy
 destroy	/home/mwood14/Work/bblearn/app/models/section.rb	   def self.destroy(pk1)
 destroy	/home/mwood14/Work/bblearn/app/models/section_role.rb	  def self.destroy(role)
 destroyCache	/home/mwood14/Work/bblearn/public/javascripts/prototype.js	function destroyCache()
@@ -460,6 +460,8 @@ down	/home/mwood14/Work/bblearn/db/migrate/20111102204047_rename_used_role_to_se
 down	/home/mwood14/Work/bblearn/db/migrate/20111102212424_add_ca_management_id_to_user_service_roles.rb	  def self.down
 down	/home/mwood14/Work/bblearn/db/migrate/20111102213623_add_role_id_to_user_service_role_id.rb	  def self.down
 down	/home/mwood14/Work/bblearn/db/migrate/20111102215928_rename_user_pk1_to_users_pk1.rb	  def self.down
+down	/home/mwood14/Work/bblearn/db/migrate/20111110180712_change_authorizations.rb	  def self.down
+down	/home/mwood14/Work/bblearn/db/migrate/20111110215819_drop_users_service_roles.rb	  def self.down
 drag_and_drop	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/test_builder_actions.rb	  def drag_and_drop 
 drag_and_drop_to_object	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/test_builder_actions.rb	  def drag_and_drop_to_object 
 draw	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/routes.rb	      def draw
@@ -471,7 +473,6 @@ edit	/home/mwood14/Work/bblearn/app/controllers/ca_managements_controller.rb	  d
 edit	/home/mwood14/Work/bblearn/app/controllers/institution_roles_controller.rb	  def edit
 edit	/home/mwood14/Work/bblearn/app/controllers/section_roles_controller.rb	  def edit
 edit	/home/mwood14/Work/bblearn/app/controllers/service_roles_controller.rb	  def edit
-edit	/home/mwood14/Work/bblearn/app/controllers/user_service_roles_controller.rb	  def edit
 edu_level	/home/mwood14/Work/bblearn/blackboard_ws/user.rb	    attr_accessor :bdate, :data_id, :edu_level, :edata, :bfax,
 elementGetStyle	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/htmlutils.js	function elementGetStyle(element, style)
 elementSetStyle	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/htmlutils.js	function elementSetStyle(element, style)
@@ -573,7 +574,6 @@ index	/home/mwood14/Work/bblearn/app/controllers/sso_controller.rb	  def index
 index	/home/mwood14/Work/bblearn/app/controllers/static_controller.rb	  def index
 index	/home/mwood14/Work/bblearn/app/controllers/tlp_admin_controller.rb	  def index    
 index	/home/mwood14/Work/bblearn/app/controllers/tpextract_controller.rb	  def index
-index	/home/mwood14/Work/bblearn/app/controllers/user_service_roles_controller.rb	  def index
 index	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/controllers/switch_environment_controller.rb	  def index
 initialize	/home/mwood14/Work/bblearn/app/models/user_ws.rb	    def initialize(session_id)
 initialize	/home/mwood14/Work/bblearn/blackboard_ws/backup/bbsoap.rb	    def initialize
@@ -592,6 +592,7 @@ initialize	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selen
 initialize	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/selenese.rb	  def initialize 
 initialize	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/test_builder.rb	  def initialize 
 input	/home/mwood14/Work/bblearn/blackboard_ws/savon/xml.rb	      attr_accessor :input
+institution_roles_pk1	/home/mwood14/Work/bblearn/app/models/service_role.rb	  def institution_roles_pk1
 isArray	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/htmlutils.js	function isArray(x)
 isBlah	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/selenium-commandhandlers.js	function isBlah()
 isDefined	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/selenium-browserbot.js	function isDefined(value)
@@ -689,7 +690,6 @@ namespaces	/home/mwood14/Work/bblearn/blackboard_ws/savon/xml.rb	      def names
 new	/home/mwood14/Work/bblearn/app/controllers/ca_managements_controller.rb	  def new
 new	/home/mwood14/Work/bblearn/app/controllers/institution_roles_controller.rb	  def new
 new	/home/mwood14/Work/bblearn/app/controllers/service_roles_controller.rb	  def new
-new	/home/mwood14/Work/bblearn/app/controllers/user_service_roles_controller.rb	  def new
 next_line	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/selenese.rb	    def next_line 
 nonce	/home/mwood14/Work/bblearn/blackboard_ws/savon/wsse.rb	    def nonce
 normalizeNewlines	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/htmlutils.js	function normalizeNewlines(text)
@@ -990,11 +990,12 @@ up	/home/mwood14/Work/bblearn/db/migrate/20111102204047_rename_used_role_to_serv
 up	/home/mwood14/Work/bblearn/db/migrate/20111102212424_add_ca_management_id_to_user_service_roles.rb	  def self.up
 up	/home/mwood14/Work/bblearn/db/migrate/20111102213623_add_role_id_to_user_service_role_id.rb	  def self.up
 up	/home/mwood14/Work/bblearn/db/migrate/20111102215928_rename_user_pk1_to_users_pk1.rb	  def self.up
+up	/home/mwood14/Work/bblearn/db/migrate/20111110180712_change_authorizations.rb	  def self.up
+up	/home/mwood14/Work/bblearn/db/migrate/20111110215819_drop_users_service_roles.rb	  def self.up
 update	/home/mwood14/Work/bblearn/app/controllers/authorizations_controller.rb	  def update
 update	/home/mwood14/Work/bblearn/app/controllers/ca_managements_controller.rb	  def update
 update	/home/mwood14/Work/bblearn/app/controllers/institution_roles_controller.rb	  def update
 update	/home/mwood14/Work/bblearn/app/controllers/service_roles_controller.rb	  def update
-update	/home/mwood14/Work/bblearn/app/controllers/user_service_roles_controller.rb	  def update
 update	/home/mwood14/Work/bblearn/app/models/section.rb	   def self.update(section)
 update_activity_time	/home/mwood14/Work/bblearn/app/controllers/application_controller.rb	  def update_activity_time
 update_authorizations	/home/mwood14/Work/bblearn/app/controllers/authorizations_controller.rb	  def update_authorizations

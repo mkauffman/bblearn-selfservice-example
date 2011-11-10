@@ -6,8 +6,6 @@ class User < ActiveRecord::Base
   has_many :sections, :through => :course_roles, :foreign_key => "users_pk1"
   has_many :user_roles, :foreign_key => "users_pk1"
   has_many :institution_roles, :through => :user_roles, :foreign_key => "users_pk1"
-  has_many :user_service_roles, :foreign_key => "users_pk1"
-  has_one  :service_role, :through => :user_service_roles, :foreign_key => "users_pk1"
 
   def all_roles
     roles = Array.new
@@ -20,6 +18,15 @@ class User < ActiveRecord::Base
 
   def clicker
     clicker = Tpextract.find_by_bb_user_id(self.user_id)
+  end
+  
+  def admin?
+    self.all_roles.each do |r|
+      if r.role_id == "admin"
+        return true
+      end
+    end
+    false
   end
 
   def save!
@@ -39,12 +46,14 @@ class User < ActiveRecord::Base
     
   end
 
-  def allowed?(controller,action)
-    if self.service_role.nil?
-      return false
-    else
-      self.service_role.allowed?(controller,action)
+  def allowed?(controller,action) 
+    return false if self.all_roles.nil?
+    self.all_roles.each do |r|
+      if r.allowed?(controller,action)
+        return true
+      end
     end
+    false
   end
 
 end

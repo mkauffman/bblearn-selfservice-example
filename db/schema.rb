@@ -9,14 +9,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111102215928) do
+ActiveRecord::Schema.define(:version => 20111110215819) do
 
   create_table "authorizations", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "ca_management_id"
-    t.integer  "service_role_id"
     t.boolean  "allowed"
+    t.integer  "institution_roles_pk1"
   end
 
   create_table "bbl_contexts", :force => true do |t|
@@ -195,13 +195,6 @@ ActiveRecord::Schema.define(:version => 20111102215928) do
     t.text     "html"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "user_service_roles", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "users_pk1"
-    t.integer  "role_id"
   end
 
 end
