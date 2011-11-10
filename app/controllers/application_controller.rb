@@ -73,7 +73,7 @@ class ApplicationController < ActionController::Base
       session[:expires_at] = from_now
     else
       time_left = (session[:expires_at].utc - Time.now.utc).to_i
-      if time_left <= 0
+      if time_left < 0
         end_session
       else
         session[:expires_at] = from_now
