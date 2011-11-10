@@ -1,4 +1,4 @@
-1320886007
+1320946468
 ADDRESSING	/home/mwood14/Work/bblearn/blackboard_ws/context_ws.rb	ADDRESSING   =
 ARG_VALUE_MAP	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/test/rselenese_test.rb	  ARG_VALUE_MAP =
 AcceptanceTestRunner	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/acceptance_test_runner.rb	  class AcceptanceTestRunner
@@ -790,13 +790,13 @@ ses_password	/home/mwood14/Work/bblearn/blackboard_ws/course_membership_ws.rb	at
 ses_password	/home/mwood14/Work/bblearn/blackboard_ws/course_ws.rb	attr_reader :client, :ses_password
 ses_password	/home/mwood14/Work/bblearn/blackboard_ws/user_ws.rb	attr_reader :client, :ses_password
 session_exists	/home/mwood14/Work/bblearn/app/controllers/application_controller.rb	  def session_exists
+session_expiry	/home/mwood14/Work/bblearn/app/controllers/application_controller.rb	  def session_expiry
 setSeleniumWindowName	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/selenium-remoterunner.js	function setSeleniumWindowName(seleniumWindowName)
 setText	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/htmlutils.js	function setText(element, text)
 set_context	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/test_builder_actions.rb	  def set_context 
 set_cursor_position	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/test_builder_actions.rb	  def set_cursor_position 
 set_mouse_speed	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/test_builder_actions.rb	  def set_mouse_speed 
 set_session	/home/mwood14/Work/bblearn/app/controllers/application_controller.rb	  def set_session
-set_session_timeout	/home/mwood14/Work/bblearn/app/controllers/application_controller.rb	  def set_session_timeout
 set_timeout	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/test_builder_actions.rb	  def set_timeout 
 setup	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/controllers/selenium_controller.rb	  def setup
 setup	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/test_builder_actions.rb	  def setup 
@@ -996,6 +996,7 @@ update	/home/mwood14/Work/bblearn/app/controllers/institution_roles_controller.r
 update	/home/mwood14/Work/bblearn/app/controllers/service_roles_controller.rb	  def update
 update	/home/mwood14/Work/bblearn/app/controllers/user_service_roles_controller.rb	  def update
 update	/home/mwood14/Work/bblearn/app/models/section.rb	   def self.update(section)
+update_activity_time	/home/mwood14/Work/bblearn/app/controllers/application_controller.rb	  def update_activity_time
 update_authorizations	/home/mwood14/Work/bblearn/app/controllers/authorizations_controller.rb	  def update_authorizations
 update_cert_required	/home/mwood14/Work/bblearn/app/models/role_cert.rb	  def self.update_cert_required(bool)
 url_arg	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/test_builder.rb	  def url_arg 

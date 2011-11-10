@@ -4,7 +4,8 @@ class ApplicationController < ActionController::Base
   include CasLogin
 
   before_filter :authentication
-  before_filter :set_session_timeout
+  before_filter :session_expiry
+  before_filter :update_activity_time
   #before_filter :get_ws_token
   helper        :all
   #before_filter :authorization
@@ -55,7 +56,11 @@ class ApplicationController < ActionController::Base
   end
 
   def end_session
+    session[:user_object]   = nil
     session[:user]          = nil
+    session[:users_pk1]     = nil
+    session[:on_behalf_of]  = nil
+    session[:obo_pk1]       = nil
   end
 
   def set_session
@@ -67,18 +72,19 @@ class ApplicationController < ActionController::Base
     session[:obo_pk1]       = session_user.pk1
   end
 
-  def set_session_timeout
-    from_now = 15.minutes.from_now
+  def session_expiry
     if session[:expires_at].blank?
-      session[:expires_at] = from_now
+      session[:expires_at] = 15.minutes.from_now
     else
-      time_left = (session[:expires_at].utc - Time.now.utc).to_i
-      if time_left < 0
-        end_session
-      else
-        session[:expires_at] = from_now
+      time_left = (session[:expires_at] - Time.now).to_i
+      unless time_left > 0
+        end_session        
       end
     end
+  end
+  
+  def update_activity_time
+    session[:expires_at] = 15.minutes.from_now
   end
 
 
