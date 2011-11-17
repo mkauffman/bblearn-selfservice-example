@@ -62,6 +62,7 @@ class ApplicationController < ActionController::Base
     session[:on_behalf_of]  = nil
     session[:obo_pk1]       = nil
     session[:expires_at]    = nil
+    session[:roles]         = nil
     redirect_to "https://cas.csuchico.edu/cas/logout?service=bblearn"
   end
 
@@ -73,6 +74,7 @@ class ApplicationController < ActionController::Base
     session[:users_pk1]     = session_user.pk1
     session[:on_behalf_of]  = session_user.user_id
     session[:obo_pk1]       = session_user.pk1
+    session[:roles]         = session_user.all_roles
   end
 
   def session_expiry

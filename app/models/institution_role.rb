@@ -11,8 +11,7 @@ class InstitutionRole < ActiveRecord::Base
     auth  = Authorization.find_by_ca_management_id_and_institution_roles_pk1(ca.id,self.pk1)
     
     return false if auth.nil?
-    return true if auth.allowed
-    false
+    auth.allowed
   end
 end
 

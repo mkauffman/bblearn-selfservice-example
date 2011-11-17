@@ -9,6 +9,7 @@ if defined?(ActiveRecord)
 
   # Store the full class name (including module namespace) in STI type column.
   ActiveRecord::Base.store_full_sti_class = true
+  
 end
 
 ActionController::Routing.generate_best_match = false

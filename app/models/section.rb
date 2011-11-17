@@ -5,6 +5,7 @@ class Section < ActiveRecord::Base
   has_many    :section_roles,                             :foreign_key => "crsmain_pk1"
   has_many    :users,         :through => :course_roles,  :foreign_key => "crsmain_pk1"
   belongs_to  :datasource,                                :foreign_key => 'data_src_pk1'
+  set_integer_columns :row_status
 
 
    def self.find_all_prepareas_for_instructor_pk1(user_pk1)

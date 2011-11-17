@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
 
   def allowed?(controller,action) 
     return false if self.all_roles.nil?
-    self.all_roles.each do |r|
+    self.all_roles.each do |r|    
       if r.allowed?(controller,action)
         return true
       end

@@ -42,7 +42,7 @@ include SectionEnable
     
     def enable_disable
       section = Section.find(params[:section_id])
-      if section.available_ind == "Y"
+      if section.row_status == 0
         disable_section(section)
       else
         enable_section(section)

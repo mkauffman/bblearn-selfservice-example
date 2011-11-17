@@ -25,6 +25,7 @@ private
     session[:users_pk1]     = nil
     session[:on_behalf_of]  = nil
     session[:obo_pk1]       = nil
+    session[:roles]         = nil
   end
   
 end
