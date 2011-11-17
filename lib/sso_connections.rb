@@ -22,7 +22,7 @@ module Sso_connections
   
   def create_sso_user_id
     user        = User.find_by_user_id(session[:user])
-    prefix      = user.service_role.name + "-"
+    prefix      = user.sso_role.role_id + "-"
     user_id     = prefix + user.user_id
   end
   
@@ -39,7 +39,7 @@ module Sso_connections
     sso_user_id = create_sso_user_id
     
     create_sso_user(sso_user_id) unless sso_user_exists?(sso_user_id)
-      
+    
     sso_user  = User.find_by_user_id(sso_user_id)
 
 

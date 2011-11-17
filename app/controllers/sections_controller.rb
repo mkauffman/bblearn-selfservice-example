@@ -14,13 +14,13 @@ include SectionEnable
 
     def add
       section_pk1   = Section.create(params[:course_name])
-      @section_role = SectionRole.create(section_pk1, session[:obo_pk1], 'P')
+      @section_role = SectionRole.create(section_pk1, session[:obo_pk1], 'ci')
       redirect_to :action => 'index'
     end
 
     def add_prep
       section_pk1   = Section.create_prep_area(session[:on_behalf_of], params[:course_name])
-      @section_role = SectionRole.create(section_pk1, session[:obo_pk1], 'P')
+      @section_role = SectionRole.create(section_pk1, session[:obo_pk1], 'ci')
       redirect_to :action => 'prep_index'
     end
 

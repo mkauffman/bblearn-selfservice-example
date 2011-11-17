@@ -3,7 +3,7 @@ class SectionRolesController < ApplicationController
     @section_roles  = SectionRole.find(:all,
         :conditions =>
         ['users_pk1 = :users_pk1 and role = :role', 
-        {:users_pk1 => session[:obo_pk1], :role => 'P'}])
+        {:users_pk1 => session[:obo_pk1], :role => 'ci'}])
     @sections = []    
     @section_roles.each {|sr| @sections << sr.section }
   end
@@ -38,7 +38,7 @@ private
 
     case role
       when 'instructors'
-      enrollment_type = 'P'
+      enrollment_type = 'ci'
       when 'graders'
       enrollment_type = 'G'
       when 'designers'

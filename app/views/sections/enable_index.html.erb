@@ -22,17 +22,17 @@
             <% @sections.each do |s|%>
             <tr>
             	<td class="check_box">
-              <%if s.available_ind == "N"%>
-                <%= radio_button_tag 'sections[]', s.pk1, false, :class => "check" %>
+              <%if s.row_status == "2"%>
+                <%= radio_button_tag :section_id, s.pk1, false, :class => "check" %>
               <%elsif session[:user_object].admin?%>
-                <%= radio_button_tag 'sections[]', s.pk1, false, :class => "check" %>
+                <%= radio_button_tag :section_id, s.pk1, false, :class => "check" %>
               <%end%>
               </td>
               <td>
                 <%= s.course_name%>
               </td>
               <td>
-              <%if s.available_ind == "Y"%>
+              <%if s.available_ind == "0"%>
                 Available
               <%else%>
                 Unavailable

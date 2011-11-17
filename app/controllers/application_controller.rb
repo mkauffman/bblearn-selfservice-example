@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
 
   def logged_in
     if is_authenticated?
-      @user =  get_authenticated_user_id
+      @user = get_authenticated_user_id
       return true
     else
       return false
@@ -61,11 +61,13 @@ class ApplicationController < ActionController::Base
     session[:users_pk1]     = nil
     session[:on_behalf_of]  = nil
     session[:obo_pk1]       = nil
+    session[:expires_at]    = nil
     redirect_to "https://cas.csuchico.edu/cas/logout?service=bblearn"
   end
 
   def set_session
     session_user            = User.find_by_user_id(@user)
+    session[:user_roles]    = session_user.all_roles
     session[:user_object]   = session_user
     session[:user]          = session_user.user_id
     session[:users_pk1]     = session_user.pk1

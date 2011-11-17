@@ -55,6 +55,17 @@ class User < ActiveRecord::Base
     end
     false
   end
+  
+  def sso_role
+    role = nil
+    self.all_roles.each do |r|      
+      if r.allowed?('sso','designer') || r.allowed?('sso', 'student')
+        role = r
+      end
+      role = r if r.allowed?('sso','admin')
+    end
+    role
+  end
 
 end
 

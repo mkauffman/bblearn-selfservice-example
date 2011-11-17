@@ -1,4 +1,4 @@
-1320966189
+1321554510
 ADDRESSING	/home/mwood14/Work/bblearn/blackboard_ws/context_ws.rb	ADDRESSING   =
 ARG_VALUE_MAP	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/test/rselenese_test.rb	  ARG_VALUE_MAP =
 AcceptanceTestRunner	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/acceptance_test_runner.rb	  class AcceptanceTestRunner
@@ -73,6 +73,7 @@ CrosslistControllerTest	/home/mwood14/Work/bblearn/test/functional/crosslist_con
 CrosslistHelperTest	/home/mwood14/Work/bblearn/test/unit/helpers/crosslist_helper_test.rb	class CrosslistHelperTest 
 DOCUMENT	/home/mwood14/Work/bblearn/blackboard_ws/context_ws.rb	DOCUMENT     =
 DOMAIN	/home/mwood14/Work/bblearn/app/models/user_ws.rb	DOMAIN      =
+Datasource	/home/mwood14/Work/bblearn/app/models/datasource.rb	class Datasource 
 DesignersControllerTest	/home/mwood14/Work/bblearn/test/functional/designers_controller_test.rb	class DesignersControllerTest 
 DesignersHelper	/home/mwood14/Work/bblearn/app/helpers/designers_helper.rb	module DesignersHelper
 DesignersHelperTest	/home/mwood14/Work/bblearn/test/unit/helpers/designers_helper_test.rb	class DesignersHelperTest 
@@ -93,6 +94,7 @@ IEBrowserBot	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/seleniu
 InstitutionRole	/home/mwood14/Work/bblearn/app/models/institution_role.rb	class InstitutionRole 
 InstitutionRolesController	/home/mwood14/Work/bblearn/app/controllers/institution_roles_controller.rb	class InstitutionRolesController 
 KonquerorBrowserBot	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/selenium-browserbot.js	function KonquerorBrowserBot(frame)
+LD_PATH	/home/mwood14/Work/bblearn/lib/section_enable.rb	LD_PATH =
 LOG	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/domviewer/selenium-domviewer.js	function LOG(message)
 LiteralExpr	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/xpath/xpath.js	function LiteralExpr(value)
 LocationExpr	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/xpath/xpath.js	function LocationExpr()
@@ -814,7 +816,8 @@ shift_key_up	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/sel
 show	/home/mwood14/Work/bblearn/app/controllers/ca_managements_controller.rb	  def show
 show	/home/mwood14/Work/bblearn/app/controllers/service_roles_controller.rb	  def show
 skip_file?	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/paths.rb	    def skip_file? 
-ssh_call	/home/mwood14/Work/bblearn/lib/section_enable.rb	  def ssh_call(section,type)
+ssh_call	/home/mwood14/Work/bblearn/lib/section_enable.rb	  def ssh_call
+sso_role	/home/mwood14/Work/bblearn/app/models/user.rb	  def sso_role
 sso_user_exists?	/home/mwood14/Work/bblearn/lib/sso_connections.rb	  def sso_user_exists?(user_id)
 stackToString	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/xpath/xpath.js	function stackToString(stack)
 staging	/home/mwood14/Work/bblearn/app/controllers/logs_controller.rb	  def staging
