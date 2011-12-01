@@ -1,6 +1,7 @@
 set :stages, %w(staging rfp production)
 set :default_stage, "staging"
 require 'capistrano/ext/multistage'
+require 'bundler/vlad'
 
 # =============================================================================
 # REQUIRED VARIABLES
@@ -34,6 +35,7 @@ before "deploy" do
 end
 
 namespace :deploy do
+  task "vlad:deploy" => %w[vlad:update vlad:bundle:install vlad:start_app vlad:cleanup]
   desc "Touch restart.txt to reload the application"
   task :restart do
     run "touch #{release_path}/tmp/restart.txt" 
