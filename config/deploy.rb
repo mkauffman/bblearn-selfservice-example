@@ -1,7 +1,7 @@
 set :stages, %w(staging rfp production)
 set :default_stage, "staging"
 require 'capistrano/ext/multistage'
-require "bundler/capistrano"
+# require "bundler/capistrano"
 
 # =============================================================================
 # REQUIRED VARIABLES
