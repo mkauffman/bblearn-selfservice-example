@@ -1,7 +1,7 @@
 set :stages, %w(staging rfp production)
 set :default_stage, "staging"
 require 'capistrano/ext/multistage'
-# require "bundler/capistrano"
+require "bundler/capistrano"
 
 # =============================================================================
 # REQUIRED VARIABLES
@@ -25,6 +25,9 @@ set :deploy_via, :remote_cache
 # CUSTOM HOOKS / CAP METHODS
 # =============================================================================
 after "deploy:update_code" do
+  run "echo 'XXXXXXXXXXXXXXXXXXXXXX'"
+  run "echo $PATH"
+  run "echo 'XXXXXXXXXXXXXXXXXXXXXX'"
   rails_config_files.each do |filename|
     run "cp #{shared_path}/config/#{filename} #{release_path}/config/#{filename}"
   end
