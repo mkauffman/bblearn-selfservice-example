@@ -29,51 +29,37 @@ class Section < ActiveRecord::Base
    def self.create_prep_area(user_id, name)
       course_id       = name.strip.gsub(" ","-")
       prefix          = "PrepArea-"+user_id+"-"
-      con             = ContextWS.new
-      token           = con.ws
-      con.login_tool
-      con.emulate_user
-      ws_section      = SectionWS.new(token)
-      ws_section.ws
       prep_course_id  = prefix+course_id
       prep_name       = prefix+name
-      ws_section.create_course  :course_id  => prep_course_id,
-                                :name       => prep_name
+      section_web_service.create_course :course_id  => prep_course_id,
+                                        :name       => prep_name
    end
 
    def self.create(name)
       course_id      = name.strip.gsub(" ","-")
+      section_web_service.create_course :course_id  => course_id,
+                                        :name       => name
+   end
+
+  def destroy
+    #section = self.attributes.to_options
+    section_web_service.delete_course :pk1 => self.pk1
+  end
+
+  def update
+    section_web_service.update_course(section)
+  end
+  
+private
+
+  def section_web_service
       con            = ContextWS.new
       token          = con.ws
       con.login_tool
       con.emulate_user
       ws_section = SectionWS.new(token)
       ws_section.ws
-      ws_section.create_course    :course_id  => course_id,
-                                  :name       => name
-   end
-
-#TODO: Make it able to take an array
-   def self.destroy(pk1)
-      con            = ContextWS.new
-      token          = con.ws
-      con.login_tool
-      con.emulate_user
-      ws_section = SectionWS.new(token)
-      ws_section.ws
-      ws_section.delete_course :pk1 => pk1
-   end
-
-   def self.update(section)
-      con            = ContextWS.new
-      token          = con.ws
-      con.login_tool
-      con.emulate_user
-      section.attributes.to_options!
-      ws_section = SectionWS.new(token)
-      ws_section.ws
-      ws_section.update_course(section)
-   end
-
+      ws_section
+  end
 end
 

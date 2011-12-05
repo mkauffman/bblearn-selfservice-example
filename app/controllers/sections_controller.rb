@@ -25,21 +25,21 @@ include SectionEnable
     end
 
     def remove
-      Section.destroy(params[:sections])
+      destroy_sections
       redirect_to :action => 'index'
     end
     
     def remove_prep
-      Section.destroy(params[:sections])
+      destroy_sections
       redirect_to :action => 'prep_index'
     end
-
-    def available
-      section = Section.find(params[:section_id])
-      Section.update(section)
-      redirect_to :action => 'index'
-    end
     
+#Enable_section and disable_section are called by the
+#SectionEnable library. They run a script on the
+#server that handles the enabling and disabling
+#of both vista and learn sections with the same
+#name.
+
     def enable_disable
       section = Section.find(params[:section_id])
       if section.row_status == 0
@@ -57,6 +57,13 @@ private
       sections      = Section.find_all_for_instructor_pk1(session[:obo_pk1])
       prep_sections = Section.find_all_prepareas_for_instructor_pk1(session[:obo_pk1])
       @sections     = sections - prep_sections
+  end
+
+  def destroy_sections
+    params[:sections].each do |pk1|
+      section = Section.find(pk1)
+      section.destroy
+    end
   end
 
 end

@@ -5,7 +5,7 @@
 <div id="act_as_div" class="last">
   <% form_tag({:controller => "sessions", :action => "act_as"}) do %>
     <% if session[:user] == session[:on_behalf_of] %>
-      Act on behalf of: <%= text_field_tag "act_as"%>
+      Act on behalf of: <%= text_field_tag "act_as", session[:user]%>
     <%else%>
       Act on behalf of: <%= text_field_tag "act_as", session[:on_behalf_of] %>
     <%end%>

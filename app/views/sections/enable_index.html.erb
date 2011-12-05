@@ -1,8 +1,8 @@
 <div class="contnt">
   <h1>Enable Courses For Learn</h1>
-  <h2>Choose a course to enable</h2>
+  <h2>Choose a course to enable in Learn.</h2>
   <%if session[:user_object].admin?%>
-    <h2>Admin may also disable a course</h2>
+    <h2>Admin may also disable a course in Learn.</h2>
   <%end%>
 	<% form_tag({:action => "enable_disable"}) do -%>  
     <table class="output sortable">
@@ -33,9 +33,9 @@
               </td>
               <td>
               <%if s.row_status == 0%>
-                Available
+                In Learn
               <%else%>
-                Unavailable
+                In Vista
               <%end%>
               </td>           
             </tr>

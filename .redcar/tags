@@ -1,4 +1,4 @@
-1321573891
+1322593321
 ADDRESSING	/home/mwood14/Work/bblearn/blackboard_ws/context_ws.rb	ADDRESSING   =
 ARG_VALUE_MAP	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/test/rselenese_test.rb	  ARG_VALUE_MAP =
 AcceptanceTestRunner	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/acceptance_test_runner.rb	  class AcceptanceTestRunner
@@ -159,7 +159,6 @@ Renderer	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/seleniu
 RendererTest	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/test/renderer_test.rb	class RendererTest 
 ResetControllerTest	/home/mwood14/Work/bblearn/test/functional/reset_controller_test.rb	class ResetControllerTest 
 ResetHelperTest	/home/mwood14/Work/bblearn/test/unit/helpers/reset_helper_test.rb	class ResetHelperTest 
-RoleCert	/home/mwood14/Work/bblearn/app/models/role_cert.rb	class RoleCert 
 RoleControllerTest	/home/mwood14/Work/bblearn/test/functional/role_controller_test.rb	class RoleControllerTest 
 RoleHelper	/home/mwood14/Work/bblearn/app/helpers/role_helper.rb	module RoleHelper
 RoleHelperTest	/home/mwood14/Work/bblearn/test/unit/helpers/role_helper_test.rb	class RoleHelperTest 
@@ -338,7 +337,6 @@ assert_text_equal	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/te
 assign_locals_code_from	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/rselenese.rb	  def assign_locals_code_from(local_assigns)
 authentication	/home/mwood14/Work/bblearn/app/controllers/application_controller.rb	  def authentication
 authorization	/home/mwood14/Work/bblearn/app/controllers/application_controller.rb	  def authorization
-available	/home/mwood14/Work/bblearn/app/controllers/sections_controller.rb	    def available
 available_fixtures	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/fixture_loader.rb	  def available_fixtures
 banner	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/generators/selenium/selenium_generator.rb	  def banner
 bdate	/home/mwood14/Work/bblearn/blackboard_ws/user.rb	    attr_accessor :bdate, :data_id, :edu_level, :edata, :bfax,
@@ -360,7 +358,6 @@ call	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on
 canonicalize	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/htmlutils.js	function canonicalize(url)
 check	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/test_builder_actions.rb	  def check 
 checkForChildren	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/domviewer/selenium-domviewer.js	function checkForChildren(element)
-check_cert_required	/home/mwood14/Work/bblearn/app/models/role_cert.rb	  def self.check_cert_required
 check_field	/home/mwood14/Work/bblearn/public/javascripts/field_watch.js	function check_field(x)
 check_field	/home/mwood14/Work/bblearn/public/javascripts/field_watch.js	function check_field(x)
 check_length	/home/mwood14/Work/bblearn/public/javascripts/field_watch.js	function check_length(x)
@@ -421,10 +418,12 @@ describe	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-co
 designer_signon	/home/mwood14/Work/bblearn/lib/sso_connections.rb	  def designer_signon(section)
 destroy	/home/mwood14/Work/bblearn/app/controllers/ca_managements_controller.rb	  def destroy
 destroy	/home/mwood14/Work/bblearn/app/controllers/service_roles_controller.rb	  def destroy
-destroy	/home/mwood14/Work/bblearn/app/models/section.rb	   def self.destroy(pk1)
-destroy	/home/mwood14/Work/bblearn/app/models/section_role.rb	  def self.destroy(role)
+destroy	/home/mwood14/Work/bblearn/app/models/section.rb	  def destroy
+destroy	/home/mwood14/Work/bblearn/app/models/section_role.rb	  def destroy
 destroyCache	/home/mwood14/Work/bblearn/public/javascripts/prototype.js	function destroyCache()
 destroyWrapper	/home/mwood14/Work/bblearn/public/javascripts/prototype.js	function destroyWrapper(id, eventName, handler)
+destroy_section_role	/home/mwood14/Work/bblearn/lib/sso_connections.rb	  def destroy_section_role(sso_user,section)
+destroy_sections	/home/mwood14/Work/bblearn/app/controllers/sections_controller.rb	  def destroy_sections
 development	/home/mwood14/Work/bblearn/app/controllers/logs_controller.rb	  def development
 digest	/home/mwood14/Work/bblearn/blackboard_ws/savon/wsse.rb	    attr_writer :digest
 digest?	/home/mwood14/Work/bblearn/blackboard_ws/savon/wsse.rb	    def digest?
@@ -699,7 +698,6 @@ normalizeSpaces	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/sele
 nthChild	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/lib/cssQuery/src/cssQuery-level3.js	function nthChild($element, $arguments, $traverse)
 o2s	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/htmlutils.js	function o2s(obj)
 objectExtend	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/htmlutils.js	function objectExtend(destination, source)
-old_call	/home/mwood14/Work/bblearn/lib/section_enable.rb	  def old_call
 onSeleniumLoad	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/selenium-testrunner.js	function onSeleniumLoad()
 open	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/test_builder_actions.rb	  def open 
 openSeparateApplicationWindow	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/htmlutils.js	function openSeparateApplicationWindow(url, suppressMozillaWarning)
@@ -769,6 +767,8 @@ safe_log	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-co
 save	/home/mwood14/Work/bblearn/app/models/user_ws.rb	    def save(op={})
 save!	/home/mwood14/Work/bblearn/app/models/user.rb	  def save!
 script_location	/home/mwood14/Work/bblearn/lib/section_enable.rb	  def script_location
+section_role_web_service	/home/mwood14/Work/bblearn/app/models/section_role.rb	  def section_role_web_service
+section_web_service	/home/mwood14/Work/bblearn/app/models/section.rb	  def section_web_service
 sections	/home/mwood14/Work/bblearn/app/controllers/sso_controller.rb	  def sections
 selArrayToString	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/selenium-core/scripts/htmlutils.js	function selArrayToString(a)
 select	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/test_builder_actions.rb	  def select 
@@ -1000,10 +1000,9 @@ update	/home/mwood14/Work/bblearn/app/controllers/authorizations_controller.rb	 
 update	/home/mwood14/Work/bblearn/app/controllers/ca_managements_controller.rb	  def update
 update	/home/mwood14/Work/bblearn/app/controllers/institution_roles_controller.rb	  def update
 update	/home/mwood14/Work/bblearn/app/controllers/service_roles_controller.rb	  def update
-update	/home/mwood14/Work/bblearn/app/models/section.rb	   def self.update(section)
+update	/home/mwood14/Work/bblearn/app/models/section.rb	  def update
 update_activity_time	/home/mwood14/Work/bblearn/app/controllers/application_controller.rb	  def update_activity_time
 update_authorizations	/home/mwood14/Work/bblearn/app/controllers/authorizations_controller.rb	  def update_authorizations
-update_cert_required	/home/mwood14/Work/bblearn/app/models/role_cert.rb	  def self.update_cert_required(bool)
 url_arg	/home/mwood14/Work/bblearn/vendor/plugins/selenium-on-rails/lib/selenium_on_rails/test_builder.rb	  def url_arg 
 user_client	/home/mwood14/Work/bblearn/blackboard_ws/backup/bbsoap.rb	attr_reader :client, :ses_password, :user_client
 user_index	/home/mwood14/Work/bblearn/app/controllers/institution_roles_controller.rb	  def user_index

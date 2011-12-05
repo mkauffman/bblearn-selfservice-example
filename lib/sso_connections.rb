@@ -34,7 +34,14 @@ module Sso_connections
     end
   end
   
+  def destroy_section_role(sso_user,section)
+   section_role = SectionRole.find_by_users_pk1_and_crsmain_pk1(sso_user.pk1, section.pk1)
+   section_role.destroy
+  end
+  
   def create_and_add_sso(role_id,section)
+    
+    section_role = SectionRole.find_by_role_id(role_id)
     
     sso_user_id = create_sso_user_id
     
@@ -46,8 +53,7 @@ module Sso_connections
     if user_is_enrolled?(sso_user,section)
       SectionRole.create(section.pk1, sso_user.pk1, role_id)
     else
-      #TODO: Fix destroy and role
-      SectionRole.destroy(role)
+      destroy_section_role(sso_user.pk1, section.pk1)
       SectionRole.create(section.pk1, sso_user.pk1, role_id)
     end
     build_url(sso_user)

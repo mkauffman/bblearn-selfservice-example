@@ -39,25 +39,10 @@ private
   def ssh_call
     begin
       Rye::Cmd.add_command :enable_disable, executable_string
-      rbox = Rye::Box.new(HOST, {:user => USER,:password => "atec!d1rn"})
+      rbox = Rye::Box.new(HOST, {:user => USER,:password => "#{AppConfig.bbl_tool_pass}"})
       rbox.setenv('LD_LIBRARY_PATH', '/opt/oracle/product/11.2.0.2/lib')
       rbox.enable_disable
     rescue
-    end
-  end
-  
-  def old_call
-    Net::SSH.start(HOST, USER, :password => "atec!d1rn") do |ssh|
-
-      stdout = String.new
-      
-      
-      ssh.exec! "export LD_LIBRARY_PATH=/opt/oracle/product/11.2.0.2/lib"
-      ssh.exec!(executable_string) do |channel, stream, data|
-        stdout << data
-      end
-
-      puts stdout
     end
   end
 

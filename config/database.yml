@@ -8,7 +8,7 @@ development:
   pool: 5
   username: dltservice
   password: eMyEZQc4ev5zeBbm
-  host: localhost
+  host: apphostdev.csuchico.edu
 
 staging:
   adapter: mysql
