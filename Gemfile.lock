@@ -97,6 +97,7 @@ GEM
       rake (>= 0.8.3)
     rake (0.9.2)
     rbx-require-relative (0.0.5)
+    ruby-oci8 (2.0.6-x86-mingw32)
     rubyzip (0.9.4)
     rye (0.9.4)
       annoy
@@ -186,6 +187,7 @@ DEPENDENCIES
   rails (= 2.3.11)
   rake (= 0.9.2)
   rbx-require-relative (= 0.0.5)
+  ruby-oci8 (= 2.0.6)
   rubyzip (= 0.9.4)
   rye (= 0.9.4)
   savon (= 0.9.7)

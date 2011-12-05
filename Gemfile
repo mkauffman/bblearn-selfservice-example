@@ -53,7 +53,8 @@ gem 'mocha', '0.9.12'
 gem 'multi_json', '1.0.3'
 gem 'multi_xml', '0.2.2'
 gem 'multipart-post', '1.1.2'
-gem 'mysql', '2.8.1'
+gem 'mysql', '2.8.1', :platforms => :mingw
+gem 'mysql', '2.8.1', :platforms => :ruby
 # gem 'ncurses', '0.9.1'
 gem 'net-http-digest_auth', '1.1.1'
 gem 'net-http-persistent', '1.9'
@@ -73,6 +74,8 @@ gem 'rack', '1.1.2'
 gem 'rails', '2.3.11'
 gem 'rake', '0.9.2'
 gem 'rbx-require-relative', '0.0.5'
+gem 'ruby-oci8', '2.0.6', :platforms => :mingw
+gem 'ruby-oci8', '2.0.6', :platforms => :ruby
 gem 'rubyzip', '0.9.4'
 gem 'rye', '0.9.4'
 gem 'savon', '0.9.7'
