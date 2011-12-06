@@ -8,7 +8,7 @@ module Sso_connections
     sso_user.user_id    = sso_user_id
     sso_user.passwd     = "atec!d1rn"
     lastname            = session[:user_object].lastname + "(" 
-    sso_user.lastname   = lastname + session[:user_object].service_role.name + ")"
+    sso_user.lastname   = lastname + session[:user_object].sso_role.role_name + ")"
     sso_user.firstname  = session[:user_object].firstname
     sso_user.batch_uid  = sso_user_id + "-support-account-id"
       
@@ -41,7 +41,7 @@ module Sso_connections
   
   def create_and_add_sso(role_id,section)
     
-    section_role = SectionRole.find_by_role_id(role_id)
+    #section_role = SectionRole.find_by_role(role_id)
     
     sso_user_id = create_sso_user_id
     
