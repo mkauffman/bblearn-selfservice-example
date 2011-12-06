@@ -15,10 +15,6 @@ module Sso_connections
     sso_user.save!
       
   end
-
-  def sso_user_exists?(user_id)
-    true if User.find_by_user_id(user_id).nil? else false
-  end
   
   def create_sso_user_id
     user        = User.find_by_user_id(session[:user])
@@ -41,19 +37,14 @@ module Sso_connections
   
   def create_and_add_sso(role_id,section)
     
-    #section_role = SectionRole.find_by_role(role_id)
-    
     sso_user_id = create_sso_user_id
-    
-    create_sso_user(sso_user_id) unless sso_user_exists?(sso_user_id)
+
+    create_sso_user(sso_user_id) if User.find_by_user_id(sso_user_id).nil?
     
     sso_user  = User.find_by_user_id(sso_user_id)
 
 
     if user_is_enrolled?(sso_user,section)
-      SectionRole.create(section.pk1, sso_user.pk1, role_id)
-    else
-      destroy_section_role(sso_user.pk1, section.pk1)
       SectionRole.create(section.pk1, sso_user.pk1, role_id)
     end
     build_url(sso_user)
