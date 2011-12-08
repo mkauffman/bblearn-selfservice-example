@@ -18,20 +18,28 @@ class SsoController < ApplicationController
     end
   end
 
+
+#TODO move much of this code into a model.
   def login
-    section = Section.find_by_course_name(params[:section])
+    section = Section.find_by_course_id(params[:section])
     if section.nil?
-      redirect_to(:controller => "application", :action => "no_valid_sections")
-    end
-    if params[:mode] == "admin"
+      url = nil
+    elsif params[:mode] == "admin"
       url = admin_signon
     elsif params[:mode] == "designer"
       url = designer_signon(section)
     elsif params[:mode] == "student"
       url = student_signon(section)
     end
-    logger.info 'User: '+session[:user]+' is using the SSO tool on behalf of '+params[:sso_id]+' for course: '+params[:section]
-    redirect_to(url)
+    unless section.nil?
+      logger.info 'User: '+session[:user]+' is using the SSO tool on behalf of '
+      logger.info params[:sso_id]+' for course: '+params[:section]
+    end
+    if url.nil?
+      render :action => "invalid_options"
+    else
+      redirect_to(url)
+    end
   end
 
 end

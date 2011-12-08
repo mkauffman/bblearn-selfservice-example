@@ -1,10 +1,15 @@
 <div class="contnt">
-	<b>Single Signon</b>
+	<h1>Single Signon</h1>
+	<% if flash[:alert] %>
+  		<p><%= flash[:alert] %></p>
+	<% end %>
+	<p>
   	<% form_tag(:action => "sections", :method=> "post") do %>
 		Enter the user's portal ID:&nbsp; <%= text_field_tag 'sso_id' %> 
     	<%= submit_tag 'Submit' %>
 		(ex: jdoe)
   	<% end -%>
+  	</p>
 </div>
 
 
