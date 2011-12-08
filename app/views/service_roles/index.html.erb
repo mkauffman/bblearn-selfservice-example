@@ -6,7 +6,6 @@
     <th>Blackboard Learn</th>
     <th>Show</th>
     <th>Edit</th>
-    <th>Destroy</th>
   </tr>
 
 <% @service_roles.each do |service_role| %>
@@ -15,11 +14,11 @@
     <td><%=h service_role.blackboard_check%></td>
     <td><%= link_to 'Show', service_role %></td>
     <td><%= link_to 'Edit', edit_service_role_path(service_role) %></td>
-    <td><%= link_to 'Destroy', service_role, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% link_to 'Destroy', service_role, :confirm => 'Are you sure?', :method => :delete %>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Self Service Role', new_service_role_path %>
+<% link_to 'New Self Service Role', new_service_role_path %>

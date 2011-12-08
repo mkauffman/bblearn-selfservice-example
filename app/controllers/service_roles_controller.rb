@@ -26,10 +26,10 @@ class ServiceRolesController < ApplicationController
     if @service_role.save
       caction  = CAManagement.all
       caction.each do |ca|
-        auth                  = Authorization.new
-        auth.ca_management_id = ca.id
-        auth.service_role_id  = @service_role.instition_roles_pk1
-        auth.allowed          = false
+        auth                        = Authorization.new
+        auth.ca_management_id       = ca.id
+        auth.institution_roles_pk1  = 2
+        auth.allowed                = false
         auth.save
       end
       redirect_to(@service_role, :notice => 'Self Service Role was successfully created.') 

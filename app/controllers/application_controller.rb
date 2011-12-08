@@ -66,15 +66,20 @@ class ApplicationController < ActionController::Base
     redirect_to "https://cas.csuchico.edu/cas/logout?service=bblearn"
   end
 
+  #TODO: Since the user object is being returned some of this code is
+  #redudent but would need to be changed in many other places. If
+  #this code were changed it would also need to be changed in the
+  #end_session method call.
+
   def set_session
     session_user            = User.find_by_user_id(@user)
-    session[:user_roles]    = session_user.all_roles
+    session[:user_roles]    = session_user.all_roles #redundent
     session[:user_object]   = session_user
-    session[:user]          = session_user.user_id
-    session[:users_pk1]     = session_user.pk1
-    session[:on_behalf_of]  = session_user.user_id
-    session[:obo_pk1]       = session_user.pk1
-    session[:roles]         = session_user.all_roles
+    session[:user]          = session_user.user_id #redundent
+    session[:users_pk1]     = session_user.pk1 #redundent
+    session[:on_behalf_of]  = session_user.user_id #possibly redundent
+    session[:obo_pk1]       = session_user.pk1 #possibly redundent
+    session[:roles]         = session_user.all_roles #possibly redundent
   end
 
   def session_expiry
@@ -95,6 +100,11 @@ class ApplicationController < ActionController::Base
 
   #################### WEB SERVICES ####################
 
+  #TODO: This method is currently not used. Right now (12/8/11)
+  #each model call handles its own token fetching. By placing
+  #the token fetching into an application controller call it
+  #could reduce stress on the system.
+   
   def get_ws_token
     if session[:token].nil?
       con             = ContextWS.new

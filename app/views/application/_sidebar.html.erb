@@ -4,9 +4,15 @@
     <%if session[:user_object].allowed? "authorizations", "sidebar" %>
     <li><a href="#">Manage Authorizations</a>
       <ul>
-        <li><%= link_to "Authorizations", :controller => "authorizations", :action => "index" %></li>
-        <li><%= link_to "Controllers/Actions", :controller => "ca_managements", :action => "index" %></li>
-        <li><%= link_to "Service Role Management", :controller => "service_roles", :action => "index" %></li>
+        <%if session[:user_object].allowed? "authorizations", "index" %>
+          <li><%= link_to "Authorizations", :controller => "authorizations", :action => "index" %></li>
+        <%end%>  
+        <%if session[:user_object].allowed? "ca_managements", "index" %>
+          <li><%= link_to "Controllers/Actions", :controller => "ca_managements", :action => "index" %></li>
+        <%end%>  
+        <%if session[:user_object].allowed? "service_roles", "index" %>
+          <li><%= link_to "Service Role Management", :controller => "service_roles", :action => "index" %></li>
+        <%end%>
       </ul>
     <%end%>
     <%if session[:user_object].allowed? "enrollments", "sidebar" %>
@@ -22,29 +28,39 @@
     <%if session[:user_object].allowed? "courses", "sidebar" %>
 	  <li><a href="#">Manage Courses</a>
       <ul>
-      	<li><%= link_to "Create/Delete Prep Areas", :controller => "sections", :action => "prep_index",
-      	 :prep => 'Prep'%></li>
-      	<li><%= link_to "Create/Delete Course", :controller => "sections", :action => "index" %></li>
-      	<li><%= link_to "Enable Learn Course", :controller => "sections", :action => "enable_index" %></li>
+        <%if session[:user_object].allowed? "sections", "prep_index" %>
+      	 <li><%= link_to "Create/Delete Prep Areas", :controller => "sections", :action => "prep_index",:prep => 'Prep'%></li>
+        <%end%>
+        <%if session[:user_object].allowed? "sections", "index" %>
+      	 <li><%= link_to "Create/Delete Course", :controller => "sections", :action => "index" %></li>
+        <%end%>
+        <%if session[:user_object].allowed? "sections", "enable_index" %>
+      	 <li><%= link_to "Enable Learn Course", :controller => "sections", :action => "enable_index" %></li>
+        <%end%>
       </ul>
     </li>
     <%end%>
     <%if session[:user_object].allowed? "help_desk", "sidebar" %>
     <li><a href="#">Help Desk</a>
       <ul>
-        <li><%= link_to "Edit HTML/CSS", :controller => "tlp_admin", :action => "index" %></li>
-        <li><%= link_to "Institution Role Listings", :controller => "institution_roles", :action => "index", :role => "lrncrt" %></li>
+        <%if session[:user_object].allowed? "tlp_admin", "index" %>
+          <li><%= link_to "Edit HTML/CSS", :controller => "tlp_admin", :action => "index" %></li>
+        <%end%>
+
+        <%if session[:user_object].allowed? "institution_roles", "index" %>
+          <li><%= link_to "Institution Role Listings", :controller => "institution_roles", :action => "index", :role => "lrncrt" %></li>
+        <%end%>
       </ul>
     </li>
     <%end%>
     <%if session[:user_object].allowed? "sso", "sidebar" %>
-	  <li><%= link_to "Single Signon", :controller => "sso", :action => "index" %></li>
+	   <li><%= link_to "Single Signon", :controller => "sso", :action => "index" %></li>
     <%end%>
     <%if session[:user_object].allowed? "logs", "sidebar" %>
-    <li><%= link_to "View Logs", :controller => "logs", :action => "index" %></li>
+      <li><%= link_to "View Logs", :controller => "logs", :action => "index" %></li>
     <%end%>
     <%if session[:user_object].allowed? "tpextract", "sidebar" %>
-    <li><%= link_to 'TurningPoint Extract', :controller=>'tpextract', :action => "index" %></li>
+      <li><%= link_to 'TurningPoint Extract', :controller=>'tpextract', :action => "index" %></li>
     <%end%>
   </ul>
 </div>

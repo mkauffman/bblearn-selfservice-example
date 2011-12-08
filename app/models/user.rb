@@ -7,6 +7,12 @@ class User < ActiveRecord::Base
   has_many :user_roles, :foreign_key => "users_pk1"
   has_many :institution_roles, :through => :user_roles, :foreign_key => "users_pk1"
 
+  #Blackboard has two role types, primary and secondary. The primary role
+  #is attached the User table, and the secondary roles are stored in another
+  #table. A user can have one primary and many secondaries. The point of
+  #this code is retrieve all the roles the user has, regardless of primary
+  #or secondary.
+
   def all_roles
     roles = Array.new
     roles << InstitutionRole.find(self.institution_roles_pk1)
@@ -28,6 +34,13 @@ class User < ActiveRecord::Base
     end
     false
   end
+
+  #TODO: The ContextWS.new initializes the webservice call.
+  #It returns a token value that will be used during any
+  #other calls. All the code before "user_service" should be
+  #moved into a library method to improve DRY functionality
+  #through the code. You'll see those four start lines repeated
+  #often throughout the code.
 
   def save!
 
@@ -55,6 +68,8 @@ class User < ActiveRecord::Base
     end
     false
   end
+
+  #This method defines which role is used for sso sign in.
   
   def sso_role
     role = nil
