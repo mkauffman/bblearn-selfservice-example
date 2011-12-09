@@ -65,7 +65,7 @@ module Sso_connections
   def build_url(batch_id)
     host      = AppConfig.bbl_ws_domain
     block     = "/webapps/bbgs-autosignon-#{AppConfig.bbl_db_table}/autoSignon.do"
-    course_id = Section.find_by_course_id(params[:section]).batch_uid
+    course_id = Section.find_by_course_id(params[:section]).course_id
     timestamp = Time.now.to_i.to_s
     secret    = "#{AppConfig.bbl_sso_secret}"
 
