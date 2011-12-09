@@ -153,7 +153,9 @@ attr_reader :client, :ses_password
                           "wsa:Action"      => "emulateUser"
                           }
             soap.input  = ["bbl:emulateUser", {"xmlns:bbl" => SERVICE}]
-            soap.body   = {"bbl:userToEmulate" => op[:user] || "#{AppConfig.bbl_emulate_user}"
+            soap.body   = {
+			    "bbl:userToEmulate" => op[:user] || "#{AppConfig.bbl_emulate_user}"
+                          }
         end
     end
 
