@@ -4,16 +4,14 @@
   <tr>
     <th>Name</th>
     <th>Blackboard Learn</th>
-    <th>Show</th>
-    <th>Edit</th>
   </tr>
 
 <% @service_roles.each do |service_role| %>
   <tr>
     <td><%=h service_role.name %></td>
     <td><%=h service_role.blackboard_check%></td>
-    <td><%= link_to 'Show', service_role %></td>
-    <td><%= link_to 'Edit', edit_service_role_path(service_role) %></td>
+    <% link_to 'Show', service_role %>
+    <% link_to 'Edit', edit_service_role_path(service_role) %>
     <% link_to 'Destroy', service_role, :confirm => 'Are you sure?', :method => :delete %>
   </tr>
 <% end %>

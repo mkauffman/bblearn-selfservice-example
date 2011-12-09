@@ -1,7 +1,7 @@
 class ServiceRole < ActiveRecord::Base
   #has_many :authorizations, :dependent => :delete_all
   belongs_to :user, :foreign_key => :users_pk1
-  #validates_uniqueness_of :users_pk1
+  #validates_uniqueness_of :name
   
   
   def blackboard_check
@@ -13,9 +13,11 @@ class ServiceRole < ActiveRecord::Base
   end
   
   def allowed?(controller,action)
-    i_role = InstitutionRole.find_by_role_id(self.name)
-    return false if InstitutionRole.find_by_role_id(self.name).nil?
-    i_role.allowed?(controller,action)
+    ca    = CAManagement.find_by_controller_and_action(controller,action)
+    auth  = Authorization.find_by_ca_management_id_and_role_name(ca.id,self.name)
+    
+    return false if auth.nil?
+    auth.allowed
   end
   
   def institution_roles
