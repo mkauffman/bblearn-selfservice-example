@@ -37,5 +37,7 @@ development:
  bbl_vendor_id: CSU_CHICO
  bbl_program_id: MWOOD_TEST_TOOL
  bbl_emulate_user: @mwood14
+ bbl_sso_password: atec!d1rn
+ bbl_sso_secret: 3B1!ndM!ce...
  bbl_tool_registration_password:
  bbl_tool_registration_secret:

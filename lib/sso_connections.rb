@@ -6,7 +6,7 @@ module Sso_connections
     sso_user            = User.new
     sso_user.student_id = sso_user_id
     sso_user.user_id    = sso_user_id
-    sso_user.passwd     = "atec!d1rn"
+    sso_user.passwd     = "#{AppConfig.bbl_sso_password}"
     lastname            = session[:user_object].lastname + "(" 
     sso_user.lastname   = lastname + session[:user_object].sso_role.role_name + ")"
     sso_user.firstname  = session[:user_object].firstname
@@ -67,7 +67,7 @@ module Sso_connections
     block     = "/webapps/bbgs-autosignon-#{AppConfig.bbl_db_table}/autoSignon.do"
     course_id = Section.find_by_course_id(params[:section]).batch_uid
     timestamp = Time.now.to_i.to_s
-    secret    = "3B1!ndM!ce..."
+    secret    = "#{AppConfig.bbl_sso_secret}"
 
     user_id   = batch_id.user_id.to_s
 
