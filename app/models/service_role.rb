@@ -1,7 +1,7 @@
 class ServiceRole < ActiveRecord::Base
-  #has_many :authorizations, :dependent => :delete_all
+  has_many :authorizations, :dependent => :delete_all, :foreign_key => :role_name, :primary_key => :name
   belongs_to :user, :foreign_key => :users_pk1
-  #validates_uniqueness_of :name
+  validates_uniqueness_of :name
   
   
   def blackboard_check

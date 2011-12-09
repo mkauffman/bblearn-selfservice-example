@@ -13,5 +13,17 @@ class InstitutionRole < ActiveRecord::Base
     return false if auth.nil?
     auth.allowed
   end
+
+  def find_non_service_roles
+    non_roles = []
+    roles     = self.all
+    roles.each do |r|
+      if ServiceRole.find_by_name(r.role_id).nil?
+        non_roles << r
+      end
+    end
+    non_roles
+  end
+
 end
 

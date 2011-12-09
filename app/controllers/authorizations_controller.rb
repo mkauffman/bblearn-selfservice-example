@@ -24,7 +24,7 @@ class AuthorizationsController < ApplicationController
     
     controller_actions.each do |ca|
       roles.each do |r|
-        auth          = Authorization.find_by_ca_management_id_and_institution_roles_pk1(ca.id,r.institution_roles.pk1) 
+        auth          = Authorization.find_by_ca_management_id_and_role_name(ca.id,r.name) 
         auth.allowed  = params[ca.full_title.to_sym][r.name.to_sym]        
         unless auth.save
           return false
