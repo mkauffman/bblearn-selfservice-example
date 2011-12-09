@@ -57,9 +57,9 @@ attr_reader :client, :ses_password
                           }
             soap.input  = ["bbl:loginTool", {"xmlns:bbl" => SERVICE}]
             soap.body   = {
-                         "bbl:password"             => "atec!d1rn",
-                         "bbl:clientVendorId"       => "CSU_CHICO",
-                         "bbl:clientProgramId"      => "MWOOD_TEST_TOOL",
+                         "bbl:password"             => "#{AppConfig.bbl_tool_pass}",
+                         "bbl:clientVendorId"       => "#{AppConfig.bbl_vendor_id}",
+                         "bbl:clientProgramId"      => "#{AppConfig.bbl_program_id}",
                          "bbl:loginExtraInfo"       => nil,
                          "bbl:expectedLifeSeconds"  => EXPECTED_LIFE,
                          :order!                    => ["bbl:password",
@@ -86,11 +86,11 @@ attr_reader :client, :ses_password
                           "wsa:Action"      => "registerTool"
                           }
             soap.input  = ["ns3:registerTool", {"xmlns:ns3" => SERVICE}]
-            soap.body = "<ns3:clientVendorId>CSU_CHICO</ns3:clientVendorId>"
-            soap.body += "<ns3:clientProgramId>MWOOD_TEST_TOOL</ns3:clientProgramId>"
-            soap.body += "<ns3:registrationPassword>#{nil}</ns3:registrationPassword>"
+            soap.body = "<ns3:clientVendorId>#{AppConfig.bbl_vendor_id}</ns3:clientVendorId>"
+            soap.body += "<ns3:clientProgramId>#{AppConfig.bbl_program_id}</ns3:clientProgramId>"
+            soap.body += "<ns3:registrationPassword>#{AppConfig.bbl_tool_registration_password}</ns3:registrationPassword>"
             soap.body += "<ns3:description>Testing tool</ns3:description>"
-            soap.body += "<ns3:initialSharedSecret>#{nil}</ns3:initialSharedSecret>"
+            soap.body += "<ns3:initialSharedSecret>#{AppConfig.bbl_tool_registration_secret}</ns3:initialSharedSecret>"
             soap.body += "<ns3:requiredToolMethods>Context.WS:getMemberships</ns3:requiredToolMethods>"
             soap.body += "<ns3:requiredToolMethods>Context.WS:emulateUser</ns3:requiredToolMethods>"
             soap.body += "<ns3:requiredToolMethods>Course.WS:initializeCourseWS</ns3:requiredToolMethods>"
@@ -123,8 +123,8 @@ attr_reader :client, :ses_password
             soap.body   = {
                          "bbl:userid"               => op[:user_id]     || "zoonie",
                          "bbl:password"             => op[:password]    || "test123",
-                         "bbl:clientVendorId"       => op[:vendor_id]   || 'CSU_CHICO',
-                         "bbl:clientProgramId"      => op[:program_id]  || 'RAILS_BBL_SS',
+                         "bbl:clientVendorId"       => op[:vendor_id]   || "#{AppConfig.bbl_vendor_id}",
+                         "bbl:clientProgramId"      => op[:program_id]  || "#{AppConfig.bbl_program_id}",
                          "bbl:loginExtraInfo"       => op[:extra]       || nil,
                          "bbl:expectedLifeSeconds"  => op[:life]        || EXPECTED_LIFE,
                          :order!                    => [
@@ -153,7 +153,7 @@ attr_reader :client, :ses_password
                           "wsa:Action"      => "emulateUser"
                           }
             soap.input  = ["bbl:emulateUser", {"xmlns:bbl" => SERVICE}]
-            soap.body   = {"bbl:userToEmulate" => op[:user] || "@mwood14"}
+            soap.body   = {"bbl:userToEmulate" => op[:user] || "#{AppConfig.bbl_emulate_user}"
         end
     end
 
@@ -288,8 +288,8 @@ attr_reader :client, :ses_password
             soap.input  = ["bbl:loginTicket", {"xmlns:bbl" => SERVICE}]
             soap.body   = {
                             "bbl:ticket"                => op[:ticket],
-                            "bbl:clientVendorId"        => op[:vendor_id]       || "CSU_CHICO",
-                            "bbl:clientProgramId"       => op[:program_id]      || "RAILS_BBL_SS",
+                            "bbl:clientVendorId"        => op[:vendor_id]       || "#{AppConfig.bbl_vendor_id}",
+                            "bbl:clientProgramId"       => op[:program_id]      || "#{AppConfig.bbl_program_id}",
                             "bbl:loginExtraInfo"        => op[:extra]           || nil,
                             "bbl:expectedLifeSeconds"   => op[:life_seconds]    || EXPECTED_LIFE
                           }

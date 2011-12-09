@@ -1,7 +1,8 @@
 class ServiceRolesController < ApplicationController
 
   def index
-    @service_roles = ServiceRole.all
+    @service_roles      = ServiceRole.all
+    @non_service_roles  = InstitutionRole.find_non_service_roles
   end
 
 
@@ -28,7 +29,7 @@ class ServiceRolesController < ApplicationController
       caction.each do |ca|
         auth                        = Authorization.new
         auth.ca_management_id       = ca.id
-        auth.institution_roles_pk1  = 2
+        auth.role_name              = @service_role.name
         auth.allowed                = false
         auth.save
       end
@@ -55,5 +56,24 @@ class ServiceRolesController < ApplicationController
 
     redirect_to(service_roles_url)    
   end
+
+  def import
+    @service_role = ServiceRole.new(params[:service_role])
+
+    if @service_role.save
+      caction  = CAManagement.all
+      caction.each do |ca|
+        auth                    = Authorization.new
+        auth.ca_management_id   = ca.id
+        auth.role_name          = @service_role.name
+        auth.allowed            = false
+        auth.save
+      end
+      notice = 'Self Service Role was successfully imported.' 
+    else
+      notice = 'Self Service Role was not successfully imported.'
+    end
+    redirect_to(@service_role, :notice => notice)
+  end    
   
 end

@@ -8,6 +8,11 @@ production:
  bbl_tool_pass: atec!d1rn
  bbl_registration_pass: pass1234
  bbl_db_table: BBLEARN
+ bbl_vendor_id: CSU_CHICO
+ bbl_program_id: MWOOD_TEST_TOOL
+ bbl_emulate_user: @mwood14
+ bbl_tool_registration_password:
+ bbl_tool_registration_secret:
 
 staging:
  <<: *common
@@ -16,6 +21,11 @@ staging:
  bbl_tool_pass: atec!d1rn
  bbl_registration_pass: pass1234
  bbl_db_table: BBLEARN
+ bbl_vendor_id: CSU_CHICO
+ bbl_program_id: MWOOD_TEST_TOOL
+ bbl_emulate_user: @mwood14
+ bbl_tool_registration_password:
+ bbl_tool_registration_secret:
 
 development:
  <<: *common
@@ -24,3 +34,8 @@ development:
  bbl_tool_pass: atec!d1rn
  bbl_registration_pass: pass1234
  bbl_db_table: BBLEARN
+ bbl_vendor_id: CSU_CHICO
+ bbl_program_id: MWOOD_TEST_TOOL
+ bbl_emulate_user: @mwood14
+ bbl_tool_registration_password:
+ bbl_tool_registration_secret:

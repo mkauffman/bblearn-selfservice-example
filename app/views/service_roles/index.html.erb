@@ -12,11 +12,9 @@
     <td><%=h service_role.blackboard_check%></td>
     <% link_to 'Show', service_role %>
     <% link_to 'Edit', edit_service_role_path(service_role) %>
-    <% link_to 'Destroy', service_role, :confirm => 'Are you sure?', :method => :delete %>
+    <%link_to 'Delete', service_role, :confirm => 'Are you sure?', :method => :delete %>
   </tr>
 <% end %>
 </table>
-
-<br />
 
 <% link_to 'New Self Service Role', new_service_role_path %>
