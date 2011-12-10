@@ -1,8 +1,9 @@
 require 'net/ssh'
 require 'rye'
 
-HOST = 'bbdev1.csuchico.edu'
-USER = 'bbuser'
+# DO NOT HARDCODE THESE
+# HOST = 'bbdev1.csuchico.edu'
+# USER = 'bbuser'
 LD_PATH = 'LD_LIBRARY_PATH=/opt/oracle/product/11.2.0.2/lib'
    
 
@@ -39,7 +40,11 @@ private
   def ssh_call
     begin
       Rye::Cmd.add_command :enable_disable, executable_string
-      rbox = Rye::Box.new(HOST, {:user => USER,:password => "#{AppConfig.bbl_tool_pass}"})
+      rbox = Rye::Box.new("#{AppConfig.bbl_script_host}", 
+                                {:user => "#{AppConfig.bbl_script_user}",
+                                 :password => "#{AppConfig.bbl_script_pass}"
+                                }
+                         )
       rbox.setenv('LD_LIBRARY_PATH', '/opt/oracle/product/11.2.0.2/lib')
       rbox.enable_disable
     rescue
