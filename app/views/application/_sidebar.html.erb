@@ -35,7 +35,7 @@
       	 <li><%= link_to "Create/Delete Course", :controller => "sections", :action => "index" %></li>
         <%end%>
         <%if session[:user_object].allowed? "sections", "enable_index" %>
-      	 <li><%= link_to "Enable Learn Course", :controller => "sections", :action => "enable_index" %></li>
+      	 <li><%= link_to "Enable Blackboard Learn Course", :controller => "sections", :action => "enable_index" %></li>
         <%end%>
       </ul>
     </li>

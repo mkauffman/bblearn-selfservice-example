@@ -1,8 +1,8 @@
 <div class="contnt">
-  <h1>Enable Courses For Learn</h1>
-  <h2>Choose a course to enable in Learn.</h2>
+<h1>Enable Courses for Blackboard Learn</h1>
+<p>Select one or more courses you wish to teach using Bb Learn, and click the "Enable" button below. The Vista course will be automatically hidden when the Bb Learn course is enabled, for all users.  Once your Bb Learn course is enabled, you can copy content into it from a Prep Area using <a href="https://wiki.csuchico.edu/confluence/x/wgsJAw">these instructions</a>. If you need assistance, please <a href="http://www.csuchico.edu/tlp/">contact TLP</a>.</p>
   <%if session[:user_object].admin?%>
-    <h2>Admin may also disable a course in Learn.</h2>
+    <h6>Admin may also disable a course in Learn.</h2>
   <%end%>
 	<% form_tag({:action => "enable_disable"}) do -%>  
     <table class="output sortable">
