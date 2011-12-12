@@ -20,6 +20,7 @@
         </thead>
         <tbody>
             <% @sections.each do |s|%>
+            <% if session[:user_object].admin? || s.course_id[0,2] == '12' %>
             <tr>
             	<td class="check_box">
               <%if s.row_status == 2%>
@@ -39,6 +40,7 @@
               <%end%>
               </td>           
             </tr>
+            <% end %>
             <% end %>
         </tbody>
       </table>
