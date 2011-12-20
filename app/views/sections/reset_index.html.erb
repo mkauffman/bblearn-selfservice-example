@@ -1,0 +1,43 @@
+  <div class="contnt">
+    <h1>Create Courses</h1>
+  <% form_tag({:action => "add"}) do -%>
+  <h2>Enter in course name</h2>
+  <p>Course names can only contain the characters a-z, A-Z, 0-9, dot ("."), 
+    dash ("-"), underscore ("_"), and spaces</p>
+    <%= text_field_tag "course_name" %>
+    <%= submit_tag "Add" %>
+	  <%= submit_tag "Cancel" %>
+	  <br/>
+	  <%= @role%>
+  <% end -%>
+  </br>
+  <hr/>
+  <h2>Choose a course to delete</h2>
+	<% form_tag({:action => "remove"}) do -%>  
+    <table class="output sortable">
+        <thead>
+            <tr>
+            	<th id="check_th" class="sorttable_nosort">
+            </th>
+                <th id="course_id">
+                    Course Name
+                  </th>                
+            </tr>
+        </thead>
+        <tbody>
+            <% @sections.each do |s|%>
+            <tr>
+            	<td class="check_box">
+                    <%= radio_button_tag 'sections[]', s.pk1, false, :class => "check" %>
+                </td>
+                <td>
+                    <%= s.course_name%>
+                  </td>                
+            </tr>
+            <% end %>
+        </tbody>
+      </table>    
+	<%= submit_tag "Remove" %>
+	<%= submit_tag "Cancel" %>
+	<% end -%>    
+</div>

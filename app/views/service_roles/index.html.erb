@@ -4,17 +4,35 @@
   <tr>
     <th>Name</th>
     <th>Blackboard Learn</th>
+    <th>Remove</th>
   </tr>
 
 <% @service_roles.each do |service_role| %>
   <tr>
     <td><%=h service_role.name %></td>
     <td><%=h service_role.blackboard_check%></td>
-    <% link_to 'Show', service_role %>
-    <% link_to 'Edit', edit_service_role_path(service_role) %>
-    <%link_to 'Delete', service_role, :confirm => 'Are you sure?', :method => :delete %>
+    <td><%=link_to 'Remove', service_role, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
+
+<h3>Institution Roles that have not been imported to the self service tool</h3>
+<table class="output sortable">
+  <tr>
+    <th>Name</th>
+    <th>Role ID</th>
+    <th>Import</th>
+  </tr>
+
+<% @non_service_roles.each do |i_role| %>
+  <tr>
+    <td><%=h i_role.role_name %></td>
+    <td><%=h i_role.role_id%></td>
+    <td><%=link_to 'Import', service_roles_path(:service_role => {:name => i_role.role_id}),
+          :method => "post"%></td>
+  </tr>
+<% end %>
+</table>
+<br />
 
 <% link_to 'New Self Service Role', new_service_role_path %>

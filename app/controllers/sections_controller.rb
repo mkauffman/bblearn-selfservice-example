@@ -50,6 +50,11 @@ include SectionEnable
       redirect_to :action => 'enable_index'
     end
 
+    def reset_index
+      @sections = Section.find_all_for_instructor_pk1(session[:obo_pk1])
+    end
+
+
 
 private
   
