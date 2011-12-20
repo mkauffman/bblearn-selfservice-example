@@ -15,5 +15,15 @@ module Webservices
       return sec
   end
 
+  def section_web_service
+      con            = ContextWS.new
+      token          = con.ws
+      con.login_tool
+      con.emulate_user
+      ws_section = SectionWS.new(token)
+      ws_section.ws
+      ws_section
+  end
+
 end
 

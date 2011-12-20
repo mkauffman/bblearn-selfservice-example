@@ -11,7 +11,7 @@ class SectionRole < ActiveRecord::Base
    def self.find_all_preparea_roles_for_user_pk1(user_pk1)
     prep_section_roles  = []
     prep_find           = /PrepArea-(.+)/
-    section_roles       = self.find_all_by_users_pk1_and_role(user_pk1, 'P')
+    section_roles       = self.find_all_by_users_pk1_and_role(user_pk1, 'ci')
 
     section_roles.each do |s|
       if prep_find.match(s.section.course_id)

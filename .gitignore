@@ -6,5 +6,7 @@ tmp/**/*
 doc/api
 doc/app
 
+.redcar*
+.redcar/*
 .idea/*
 .idea*

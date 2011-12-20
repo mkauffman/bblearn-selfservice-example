@@ -1,4 +1,7 @@
+require 'webservices'
+
 class Section < ActiveRecord::Base
+  include Webservices
   establish_connection "oracle_#{RAILS_ENV}"
   set_table_name "#{AppConfig.bbl_db_table}.COURSE_MAIN"
   set_primary_key "pk1"
@@ -23,7 +26,7 @@ class Section < ActiveRecord::Base
      roles.each do |p|
        sections << p.section
      end
-     return sections
+     sections
    end
 
    def self.create_prep_area(user_id, name)
@@ -31,35 +34,49 @@ class Section < ActiveRecord::Base
       prefix          = "PrepArea-"+user_id+"-"
       prep_course_id  = prefix+course_id
       prep_name       = prefix+name
-      section_web_service.create_course :course_id  => prep_course_id,
-                                        :name       => prep_name
-   end
 
-   def self.create(name)
-      course_id      = name.strip.gsub(" ","-")
-      section_web_service.create_course :course_id  => course_id,
-                                        :name       => name
-   end
-
-  def destroy
-    #section = self.attributes.to_options
-    section_web_service.delete_course :pk1 => self.pk1
-  end
-
-  def update
-    section_web_service.update_course(section)
-  end
-  
-private
-
-  def section_web_service
-      con            = ContextWS.new
-      token          = con.ws
+      con             = ContextWS.new
+      token           = con.ws
       con.login_tool
       con.emulate_user
       ws_section = SectionWS.new(token)
       ws_section.ws
-      ws_section
+      ws_section.create_course  :course_id  => prep_course_id,
+                                :name       => prep_name
+   end
+
+   def self.create(name)
+      course_id      = name.strip.gsub(" ","-")
+      con             = ContextWS.new
+      token           = con.ws
+      con.login_tool
+      con.emulate_user
+      ws_section = SectionWS.new(token)
+      ws_section.ws
+      ws_section.create_course :course_id  => course_id,
+                               :name       => name
+   end
+
+  def destroy
+    #section = self.attributes.to_options
+    con             = ContextWS.new
+    token           = con.ws
+    con.login_tool
+    con.emulate_user
+    ws_section = SectionWS.new(token)
+    ws_section.ws
+    ws_section.delete_course :pk1 => self.pk1
   end
+
+  def update
+    con             = ContextWS.new
+    token           = con.ws
+    con.login_tool
+    con.emulate_user
+    ws_section = SectionWS.new(token)
+    ws_section.ws
+    ws_section.update_course(section)
+  end
+
 end
 

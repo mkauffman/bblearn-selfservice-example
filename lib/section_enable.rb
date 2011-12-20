@@ -1,9 +1,6 @@
 require 'net/ssh'
 require 'rye'
 
-# DO NOT HARDCODE THESE
-# HOST = 'bbdev1.csuchico.edu'
-# USER = 'bbuser'
 LD_PATH = 'LD_LIBRARY_PATH=/opt/oracle/product/11.2.0.2/lib'
    
 
