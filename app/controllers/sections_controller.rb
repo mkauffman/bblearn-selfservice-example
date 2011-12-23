@@ -80,10 +80,6 @@ include SectionEnable
       redirect_to :action => 'reset_index'
     end
 
-
-
-
-
 private
   
   def find_sections_without_prep

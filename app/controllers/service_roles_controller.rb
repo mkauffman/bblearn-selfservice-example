@@ -33,7 +33,7 @@ class ServiceRolesController < ApplicationController
         auth.allowed                = false
         auth.save
       end
-      redirect_to(@service_role, :notice => 'Self Service Role was successfully created.') 
+        redirect_to(service_roles_url, :notice => 'Self Service Role was successfully created.') 
     else
       render :xml => @service_role.errors, :status => :unprocessable_entity 
     end      
@@ -58,7 +58,8 @@ class ServiceRolesController < ApplicationController
   end
 
   def import
-    @service_role = ServiceRole.new(params[:service_role])
+    @service_role       = ServiceRole.new
+    @service_role.name  = params[:role_name]
 
     if @service_role.save
       caction  = CAManagement.all
