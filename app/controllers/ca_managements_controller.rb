@@ -28,7 +28,7 @@ class CaManagementsController < ApplicationController
       s_roles.each do |sr|
         auth                        = Authorization.new
         auth.ca_management_id       = @ca_management.id
-        auth.institution_roles_pk1  = sr.institution_roles_pk1
+        auth.role_name              = sr.name
         auth.allowed                = false
         auth.allowed                = true if sr.name == "admin"
         auth.save

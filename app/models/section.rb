@@ -42,10 +42,10 @@ class Section < ActiveRecord::Base
       ws_section = SectionWS.new(token)
       ws_section.ws
       ws_section.create_course  :course_id  => prep_course_id,
-                                :name       => prep_name
+                                :course_name       => prep_name
    end
 
-   def self.create(name)
+  def self.create(name)
       course_id      = name.strip.gsub(" ","-")
       con             = ContextWS.new
       token           = con.ws
@@ -53,9 +53,21 @@ class Section < ActiveRecord::Base
       con.emulate_user
       ws_section = SectionWS.new(token)
       ws_section.ws
-      ws_section.create_course :course_id  => course_id,
-                               :name       => name
-   end
+      ws_section.create_course :course_id   => course_id,
+                               :course_name => name
+  end
+
+  def save!
+    con         = ContextWS.new
+    token       = con.ws
+    con.login_tool
+    con.emulate_user
+
+    ws_section  = SectionWS.new(token)
+    ws_section.ws
+    ws_section.create_course self.attributes.to_options
+  end
+
 
   def destroy
     #section = self.attributes.to_options

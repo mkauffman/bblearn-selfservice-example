@@ -50,6 +50,39 @@ include SectionEnable
       redirect_to :action => 'enable_index'
     end
 
+    def reset_index
+      @sections = Section.find_all_for_instructor_pk1(session[:obo_pk1])
+    end
+
+
+#TODO: Move majority of logic to Section model.
+    def reset
+      @section      = Section.find(params[:section_id])
+
+      @roles  = []
+      role    = {}
+
+      @section.section_roles.each do |sr| 
+        role[:users_pk1]  = sr.users_pk1
+        role[:role]       = sr.role
+        @roles << role
+      end
+
+      @new_section  = Section.new(@section.attributes)
+      @section.destroy
+      @new_section.save!
+
+      @new_section = Section.find_by_course_id(@new_section.course_id)
+
+      @roles.each do |role| 
+        SectionRole.create(@new_section.pk1, role[:users_pk1], role[:role])
+      end
+      redirect_to :action => 'reset_index'
+    end
+
+
+
+
 
 private
   

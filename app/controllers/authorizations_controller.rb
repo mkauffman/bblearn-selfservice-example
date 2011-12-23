@@ -2,7 +2,7 @@ class AuthorizationsController < ApplicationController
 
   
   def index
-    @ca_managements     = CAManagement.all
+    @ca_managements     = CAManagement.all_order_by_controller
     @service_roles      = ServiceRole.all
     @institution_roles  = InstitutionRole.all
     @authorizations     = Authorization.all

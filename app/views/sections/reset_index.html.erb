@@ -1,0 +1,30 @@
+  <div class="contnt">
+  <h1>Reset Courses</h1>
+  <h2>Choose a course to reset</h2>
+	<% form_tag({:action => "reset"}) do -%>  
+    <table class="output sortable">
+        <thead>
+            <tr>
+            	<th id="check_th" class="sorttable_nosort">
+            </th>
+                <th id="course_id">
+                    Course Name
+                  </th>                
+            </tr>
+        </thead>
+        <tbody>
+            <% @sections.each do |s|%>
+            <tr>
+            	<td class="check_box">
+                    <%= radio_button_tag 'section_id', s.pk1, false, :class => "check" %>
+                </td>
+                <td>
+                    <%= s.course_name%>
+                  </td>                
+            </tr>
+            <% end %>
+        </tbody>
+      </table>    
+	<%= submit_tag "Reset" %>
+	<% end -%>    
+</div>
