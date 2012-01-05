@@ -96,7 +96,6 @@ attr_reader :client, :ses_password
                                "xsd:filterType"     => op[:filter]      || 4,
                                "xsd:groupId"        => op[:group_id]    || nil,
                                "xsd:id"             => op[:id]          || nil,
-                           #    "xsd:name"           => op[:name]        || "mwood14",
                                "xsd:systemRoles"    => op[:sys_roles]   || nil,
                                                 }
                            }
