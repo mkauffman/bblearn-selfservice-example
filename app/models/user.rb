@@ -1,6 +1,3 @@
-require 'lib/webservices.rb'
-
-
 class User < ActiveRecord::Base
   establish_connection "oracle_#{RAILS_ENV}"
   set_table_name "#{AppConfig.bbl_db_table}.USERS"
@@ -9,9 +6,6 @@ class User < ActiveRecord::Base
   has_many :sections, :through => :course_roles, :foreign_key => "users_pk1"
   has_many :user_roles, :foreign_key => "users_pk1"
   has_many :institution_roles, :through => :user_roles, :foreign_key => "users_pk1"
-
-
-  include Webservices #Initializes the webservice call and returns a token value to be used during all calls
 
   #Blackboard has two role types, primary and secondary. The primary role
   #is attached the User table, and the secondary roles are stored in another
