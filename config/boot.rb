@@ -111,19 +111,19 @@ module Rails
 end
 
 #Following is for bundler
-#class Rails::Boot
-#  def run
-#    load_initializer
+class Rails::Boot
+  def run
+    load_initializer
 
-#    Rails::Initializer.class_eval do
-#        def load_gems
-#	  @bundler_loaded ||= Bundler.require :default, Rails.env
-#	end #def load_gems
-#    end #Rails::Initializer.class_eval do
+    Rails::Initializer.class_eval do
+        def load_gems
+	  @bundler_loaded ||= Bundler.require :default, Rails.env
+	end #def load_gems
+    end #Rails::Initializer.class_eval do
 
-#    Rails::Initializer.run(:set_load_path)
-#  end #def run
-#end #class Rails::Boot
+    Rails::Initializer.run(:set_load_path)
+  end #def run
+end #class Rails::Boot
 
 # All that for this:
 Rails.boot!
