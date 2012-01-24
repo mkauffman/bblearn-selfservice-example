@@ -21,7 +21,7 @@ class SsoController < ApplicationController
 
 #TODO move much of this code into a model.
   def login
-    section = Section.find_by_course_id(params[:section])
+    section = Section.find_by_course_id_and_row_status(params[:section],0)
     if section.nil?
       url = nil
     elsif params[:mode] == "admin"
