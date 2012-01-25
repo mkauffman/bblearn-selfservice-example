@@ -67,7 +67,7 @@ class Section < ActiveRecord::Base
     ws_section.ws
     #May not be saving full data, may need to switch to ws_section.save_course
     ws_section.create_course self.attributes.to_options
-  end
+ end
 
 
   def destroy

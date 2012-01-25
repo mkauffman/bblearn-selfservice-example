@@ -57,17 +57,17 @@ include SectionEnable
 
 #TODO: Move majority of logic to Section model.
     def reset
-      @section      = Section.find(params[:section_id])
-
-      @roles  = []
-      role    = {}
+      @section   = Section.find(params[:section_id])
+      @roles     = []
+      role       = {}
 
       @section.section_roles.each do |sr| 
         role[:users_pk1]  = sr.users_pk1
         role[:role]       = sr.role
-        @roles << role
+        @roles << role 
       end
 
+      
       @new_section  = Section.new(@section.attributes)
       @section.destroy
       @new_section.save!
@@ -75,6 +75,7 @@ include SectionEnable
       @new_section = Section.find_by_course_id(@new_section.course_id)
 
       @roles.each do |role| 
+
         SectionRole.create(@new_section.pk1, role[:users_pk1], role[:role])
       end
       redirect_to :action => 'reset_index'
@@ -91,8 +92,12 @@ private
   def destroy_sections
     params[:sections].each do |pk1|
       section = Section.find(pk1)
+      @section_role = SectionRole.find(:all, 
+                                       :conditions =>
+                                       ['crsmain_pk1 = pk1'])
+      SectionRole.destroy(@section_role)  
       section.destroy
-    end
+  end
   end
 
 end

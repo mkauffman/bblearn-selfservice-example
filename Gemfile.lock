@@ -32,7 +32,8 @@ GEM
     httpclient (2.2.1)
     httpi (0.9.5)
       rack
-    linecache (0.45)
+    linecache (0.46)
+      rbx-require-relative (> 0.0.4)
     mysql (2.8.1)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
@@ -101,7 +102,7 @@ DEPENDENCIES
   highline (= 1.6.8)
   httpclient (= 2.2.1)
   httpi (= 0.9.5)
-  linecache (= 0.45)
+  linecache (= 0.46)
   mysql (= 2.8.1)
   net-scp (= 1.0.4)
   net-sftp (= 2.0.5)
