@@ -62,9 +62,7 @@ include SectionEnable
       role       = {}
 
       @section.section_roles.each do |sr| 
-        role[:users_pk1]  = sr.users_pk1
-        role[:role]       = sr.role
-        @roles << role 
+        @roles << sr 
         SectionRole.destroy(sr)
       end
 
