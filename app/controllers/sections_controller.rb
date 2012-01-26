@@ -65,6 +65,7 @@ include SectionEnable
         role[:users_pk1]  = sr.users_pk1
         role[:role]       = sr.role
         @roles << role 
+        SectionRole.destroy(sr)
       end
 
       
