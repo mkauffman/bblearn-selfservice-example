@@ -28,7 +28,7 @@ class SectionRole < ActiveRecord::Base
     con.emulate_user
     section_role_ws = SectionRoleWS.new(token)
     section_role_ws.ws
-    section_role_ws.delete_course_membership(role)
+    section_role_ws.delete_course_membership :pk1 => self.pk1 
   end
 
   def self.create(crsmain_pk1, users_pk1, role_id)
