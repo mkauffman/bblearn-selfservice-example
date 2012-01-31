@@ -1,0 +1,206 @@
+# Logfile created on Wed Jan 25 12:49:52 -0800 2012SQL (0.4ms)  SET NAMES 'utf8'
+SQL (0.7ms)  SET SQL_AUTO_IS_NULL=0
+
+
+Processing StaticController#index (for 127.0.0.1 at 2012-01-25 12:50:08) [GET]
+TRYING TO ACCESS: http://localhost:3000/
+Redirected to https://cas.csuchico.edu/cas/login?service=http://localhost:3000/
+Filter chain halted as [:authentication] rendered_or_redirected.
+Completed in 0ms (DB: 1) | 302 Found [http://localhost/]
+SQL (0.5ms)  SET NAMES 'utf8'
+SQL (2.7ms)  SET SQL_AUTO_IS_NULL=0
+
+
+Processing StaticController#index (for 127.0.0.1 at 2012-01-25 12:50:20) [GET]
+  Parameters: {"ticket"=>"ST-903181-F9Ddy0rS3HVMWO7xIHWp-cas"}
+TRYING TO ACCESS: http://localhost:3000/
+validate ticket w/ url http://localhost:3000/
+URL: /cas/validate?ticket=ST-903181-F9Ddy0rS3HVMWO7xIHWp-cas&service=http://localhost:3000/
+SERVICE: http://localhost:3000/
+Primary Key (19.7ms)   select cc.column_name
+ from all_constraints c, all_cons_columns cc
+ where c.owner = 'BBLEARN'
+ and c.table_name = 'USERS'
+ and c.constraint_type = 'P'
+ and cc.owner = c.owner
+ and cc.constraint_name = c.constraint_name
+Primary Key Trigger (2.0ms)   SELECT trigger_name
+ FROM all_triggers
+ WHERE owner = 'BBLEARN'
+ AND trigger_name = 'BBLEARN.USERS_PKT'
+ AND table_owner = 'BBLEARN'
+ AND table_name = 'USERS'
+ AND status = 'ENABLED'
+User Columns (75.2ms)   select column_name as name, data_type as sql_type, data_default, nullable,
+ decode(data_type, 'NUMBER', data_precision,
+ 'FLOAT', data_precision,
+ 'VARCHAR2', decode(char_used, 'C', char_length, data_length),
+ 'CHAR', decode(char_used, 'C', char_length, data_length),
+ null) as limit,
+ decode(data_type, 'NUMBER', data_scale, null) as scale
+ from all_tab_columns
+ where owner = 'BBLEARN'
+ and table_name = 'USERS'
+ order by column_id
+User Load (5.4ms)  select * from (SELECT * FROM "BBLEARN"."USERS" WHERE ("BBLEARN"."USERS"."USER_ID" = 'mkauffman') ) where rownum <= 1
+Primary Key (11.4ms)   select cc.column_name
+ from all_constraints c, all_cons_columns cc
+ where c.owner = 'BBLEARN'
+ and c.table_name = 'INSTITUTION_ROLES'
+ and c.constraint_type = 'P'
+ and cc.owner = c.owner
+ and cc.constraint_name = c.constraint_name
+Primary Key Trigger (1.5ms)   SELECT trigger_name
+ FROM all_triggers
+ WHERE owner = 'BBLEARN'
+ AND trigger_name = 'BBLEARN.INSTITUTION_ROLES_PKT'
+ AND table_owner = 'BBLEARN'
+ AND table_name = 'INSTITUTION_ROLES'
+ AND status = 'ENABLED'
+InstitutionRole Columns (10.7ms)   select column_name as name, data_type as sql_type, data_default, nullable,
+ decode(data_type, 'NUMBER', data_precision,
+ 'FLOAT', data_precision,
+ 'VARCHAR2', decode(char_used, 'C', char_length, data_length),
+ 'CHAR', decode(char_used, 'C', char_length, data_length),
+ null) as limit,
+ decode(data_type, 'NUMBER', data_scale, null) as scale
+ from all_tab_columns
+ where owner = 'BBLEARN'
+ and table_name = 'INSTITUTION_ROLES'
+ order by column_id
+InstitutionRole Load (2.3ms)  SELECT * FROM "BBLEARN"."INSTITUTION_ROLES" WHERE ("BBLEARN"."INSTITUTION_ROLES"."PK1" = 2) 
+InstitutionRole Load (2.7ms)  SELECT "BBLEARN"."INSTITUTION_ROLES".* FROM "BBLEARN"."INSTITUTION_ROLES" INNER JOIN "BBLEARN"."USER_ROLES" ON "BBLEARN"."INSTITUTION_ROLES".pk1 = "BBLEARN"."USER_ROLES".institution_roles_pk1 WHERE (("BBLEARN"."USER_ROLES".users_pk1 = 18)) 
+InstitutionRole Load (2.3ms)  SELECT * FROM "BBLEARN"."INSTITUTION_ROLES" WHERE ("BBLEARN"."INSTITUTION_ROLES"."PK1" = 2) 
+Tlp Columns (4.2ms)  SHOW FIELDS FROM `tlps`
+Tlp Load (0.9ms)  SELECT * FROM `tlps` WHERE (`tlps`.`html_type` = 'learn_contnt_html') LIMIT 1
+Rendering template within layouts/application
+Rendering static/index
+Tlp Load (1.1ms)  SELECT * FROM `tlps` WHERE (html_type = 'migrate_tasks_css') LIMIT 1
+Tlp Load (0.7ms)  SELECT * FROM `tlps` WHERE (html_type = 'migrate_main_css') LIMIT 1
+Rendered application/_scripts (2.2ms)
+InstitutionRole Load (1.6ms)  SELECT * FROM "BBLEARN"."INSTITUTION_ROLES" WHERE ("BBLEARN"."INSTITUTION_ROLES"."PK1" = 2) 
+InstitutionRole Load (1.3ms)  SELECT * FROM "BBLEARN"."INSTITUTION_ROLES" WHERE ("BBLEARN"."INSTITUTION_ROLES"."PK1" = 2) 
+CAManagement Columns (1.0ms)  SHOW FIELDS FROM `ca_managements`
+CAManagement Load (0.8ms)  SELECT * FROM `ca_managements` WHERE (`ca_managements`.`action` = 'act_as' AND `ca_managements`.`controller` = 'sessions') LIMIT 1
+Authorization Columns (1.0ms)  SHOW FIELDS FROM `authorizations`
+Authorization Load (1.1ms)  SELECT * FROM `authorizations` WHERE (`authorizations`.`ca_management_id` = 63 AND `authorizations`.`role_name` = 'FACULTY') LIMIT 1
+CACHE (0.0ms)  SELECT * FROM `ca_managements` WHERE (`ca_managements`.`action` = 'act_as' AND `ca_managements`.`controller` = 'sessions') LIMIT 1
+Authorization Load (0.7ms)  SELECT * FROM `authorizations` WHERE (`authorizations`.`ca_management_id` = 63 AND `authorizations`.`role_name` = 'lrncrt') LIMIT 1
+CACHE (0.0ms)  SELECT * FROM `ca_managements` WHERE (`ca_managements`.`action` = 'act_as' AND `ca_managements`.`controller` = 'sessions') LIMIT 1
+Authorization Load (0.7ms)  SELECT * FROM `authorizations` WHERE (`authorizations`.`ca_management_id` = 63 AND `authorizations`.`role_name` = 'admin') LIMIT 1
+Rendered application/_top (33.6ms)
+InstitutionRole Load (1.6ms)  SELECT * FROM "BBLEARN"."INSTITUTION_ROLES" WHERE ("BBLEARN"."INSTITUTION_ROLES"."PK1" = 2) 
+InstitutionRole Load (1.5ms)  SELECT * FROM "BBLEARN"."INSTITUTION_ROLES" WHERE ("BBLEARN"."INSTITUTION_ROLES"."PK1" = 2) 
+CAManagement Load (0.9ms)  SELECT * FROM `ca_managements` WHERE (`ca_managements`.`action` = 'sidebar' AND `ca_managements`.`controller` = 'authorizations') LIMIT 1
+Authorization Load (0.8ms)  SELECT * FROM `authorizations` WHERE (`authorizations`.`ca_management_id` = 64 AND `authorizations`.`role_name` = 'FACULTY') LIMIT 1
+CACHE (0.0ms)  SELECT * FROM `ca_managements` WHERE (`ca_managements`.`action` = 'sidebar' AND `ca_managements`.`controller` = 'authorizations') LIMIT 1
+Authorization Load (1.0ms)  SELECT * FROM `authorizations` WHERE (`authorizations`.`ca_management_id` = 64 AND `authorizations`.`role_name` = 'lrncrt') LIMIT 1
+CACHE (0.0ms)  SELECT * FROM `ca_managements` WHERE (`ca_managements`.`action` = 'sidebar' AND `ca_managements`.`controller` = 'authorizations') LIMIT 1
+Authorization Load (0.7ms)  SELECT * FROM `authorizations` WHERE (`authorizations`.`ca_management_id` = 64 AND `authorizations`.`role_name` = 'admin') LIMIT 1
+InstitutionRole Load (1.5ms)  SELECT * FROM "BBLEARN"."INSTITUTION_ROLES" WHERE ("BBLEARN"."INSTITUTION_ROLES"."PK1" = 2) 
+InstitutionRole Load (1.4ms)  SELECT * FROM "BBLEARN"."INSTITUTION_ROLES" WHERE ("BBLEARN"."INSTITUTION_ROLES"."PK1" = 2) 
+CAManagement Load (0.7ms)  SELECT * FROM `ca_managements` WHERE (`ca_managements`.`action` = 'index' AND `ca_managements`.`controller` = 'authorizations') LIMIT 1
+Authorization Load (0.9ms)  SELECT * FROM `authorizations` WHERE (`authorizations`.`ca_management_id` = 76 AND `authorizations`.`role_name` = 'FACULTY') LIMIT 1
+CACHE (0.0ms)  SELECT * FROM `ca_managements` WHERE (`ca_managements`.`action` = 'index' AND `ca_managements`.`controller` = 'authorizations') LIMIT 1
+Authorization Load (0.7ms)  SELECT * FROM `authorizations` WHERE (`authorizations`.`ca_management_id` = 76 AND `authorizations`.`role_name` = 'lrncrt') LIMIT 1
+CACHE (0.0ms)  SELECT * FROM `ca_managements` WHERE (`ca_managements`.`action` = 'index' AND `ca_managements`.`controller` = 'authorizations') LIMIT 1
+Authorization Load (0.7ms)  SELECT * FROM `authorizations` WHERE (`authorizations`.`ca_management_id` = 76 AND `authorizations`.`role_name` = 'admin') LIMIT 1
+InstitutionRole Load (1.4ms)  SELECT * FROM "BBLEARN"."INSTITUTION_ROLES" WHERE ("BBLEARN"."INSTITUTION_ROLES"."PK1" = 2) 
+InstitutionRole Load (1.6ms)  SELECT * FROM "BBLEARN"."INSTITUTION_ROLES" WHERE ("BBLEARN"."INSTITUTION_ROLES"."PK1" = 2) 
+CAManagement Load (0.9ms)  SELECT * FROM `ca_managements` WHERE (`ca_managements`.`action` = 'index' AND `ca_managements`.`controller` = 'ca_managements') LIMIT 1
+Authorization Load (0.9ms)  SELECT * FROM `authorizations` WHERE (`authorizations`.`ca_management_id` = 23 AND `authorizations`.`role_name` = 'FACULTY') LIMIT 1
+CACHE (0.0ms)  SELECT * FROM `ca_managements` WHERE (`ca_managements`.`action` = 'index' AND `ca_managements`.`controller` = 'ca_managements') LIMIT 1
+Authorization Load (0.6ms)  SELECT * FROM `authorizations` WHERE (`authorizations`.`ca_management_id` = 23 AND `authorizations`.`role_name` = 'lrncrt') LIMIT 1
+CACHE (0.0ms)  SELECT * FROM `ca_managements` WHERE (`ca_managements`.`action` = 'index' AND `ca_managements`.`controller` = 'ca_managements') LIMIT 1
+Authorization Load (0.6ms)  SELECT * FROM `authorizations` WHERE (`authorizations`.`ca_management_id` = 23 AND `authorizations`.`role_name` = 'admin') LIMIT 1
+InstitutionRole Load (1.5ms)  SELECT * FROM "BBLEARN"."INSTITUTION_ROLES" WHERE ("BBLEARN"."INSTITUTION_ROLES"."PK1" = 2) 
+InstitutionRole Load (1.4ms)  SELECT * FROM "BBLEARN"."INSTITUTION_ROLES" WHERE ("BBLEARN"."INSTITUTION_ROLES"."PK1" = 2) 
+CAManagement Load (0.7ms)  SELECT * FROM `ca_managements` WHERE (`ca_managements`.`action` = 'index' AND `ca_managements`.`controller` = 'service_roles') LIMIT 1
+Authorization Load (1.0ms)  SELECT * FROM `authorizations` WHERE (`authorizations`.`ca_management_id` = 77 AND `authorizations`.`role_name` = 'FACULTY') LIMIT 1
+CACHE (0.0ms)  SELECT * FROM `ca_managements` WHERE (`ca_managements`.`action` = 'index' AND `ca_managements`.`controller` = 'service_roles') LIMIT 1
+Authorization Load (0.9ms)  SELECT * FROM `authorizations` WHERE (`authorizations`.`ca_management_id` = 77 AND `authorizations`.`role_name` = 'lrncrt') LIMIT 1
+CACHE (0.0ms)  SELECT * FROM `ca_managements` WHERE (`ca_managements`.`action` = 'index' AND `ca_managements`.`controller` = 'service_roles') LIMIT 1
+Authorization Load (0.8ms)  SELECT * FROM `authorizations` WHERE (`authorizations`.`ca_management_id` = 77 AND `authorizations`.`role_name` = 'admin') LIMIT 1
+InstitutionRole Load (1.4ms)  SELECT * FROM "BBLEARN"."INSTITUTION_ROLES" WHERE ("BBLEARN"."INSTITUTION_ROLES"."PK1" = 2) 
+InstitutionRole Load (1.4ms)  SELECT * FROM "BBLEARN"."INSTITUTION_ROLES" WHERE ("BBLEARN"."INSTITUTION_ROLES"."PK1" = 2) 
+CAManagement Load (1.5ms)  SELECT * FROM `ca_managements` WHERE (`ca_managements`.`action` = 'sidebar' AND `ca_managements`.`controller` = 'enrollments') LIMIT 1
+Authorization Load (0.9ms)  SELECT * FROM `authorizations` WHERE (`authorizations`.`ca_management_id` = 65 AND `authorizations`.`role_name` = 'FACULTY') LIMIT 1
+CACHE (0.0ms)  SELECT * FROM `ca_managements` WHERE (`ca_managements`.`action` = 'sidebar' AND `ca_managements`.`controller` = 'enrollments') LIMIT 1
+Authorization Load (1.0ms)  SELECT * FROM `authorizations` WHERE (`authorizations`.`ca_management_id` = 65 AND `authorizations`.`role_name` = 'lrncrt') LIMIT 1
+CACHE (0.0ms)  SELECT * FROM `ca_managements` WHERE (`ca_managements`.`action` = 'sidebar' AND `ca_managements`.`controller` = 'enrollments') LIMIT 1
+Authorization Load (0.7ms)  SELECT * FROM `authorizations` WHERE (`authorizations`.`ca_management_id` = 65 AND `authorizations`.`role_name` = 'admin') LIMIT 1
+InstitutionRole Load (1.5ms)  SELECT * FROM "BBLEARN"."INSTITUTION_ROLES" WHERE ("BBLEARN"."INSTITUTION_ROLES"."PK1" = 2) 
+InstitutionRole Load (1.4ms)  SELECT * FROM "BBLEARN"."INSTITUTION_ROLES" WHERE ("BBLEARN"."INSTITUTION_ROLES"."PK1" = 2) 
+CAManagement Load (0.7ms)  SELECT * FROM `ca_managements` WHERE (`ca_managements`.`action` = 'sidebar' AND `ca_managements`.`controller` = 'courses') LIMIT 1
+Authorization Load (1.4ms)  SELECT * FROM `authorizations` WHERE (`authorizations`.`ca_management_id` = 66 AND `authorizations`.`role_name` = 'FACULTY') LIMIT 1
+InstitutionRole Load (1.4ms)  SELECT * FROM "BBLEARN"."INSTITUTION_ROLES" WHERE ("BBLEARN"."INSTITUTION_ROLES"."PK1" = 2) 
+InstitutionRole Load (1.4ms)  SELECT * FROM "BBLEARN"."INSTITUTION_ROLES" WHERE ("BBLEARN"."INSTITUTION_ROLES"."PK1" = 2) 
+CAManagement Load (0.6ms)  SELECT * FROM `ca_managements` WHERE (`ca_managements`.`action` = 'prep_index' AND `ca_managements`.`controller` = 'sections') LIMIT 1
+Authorization Load (0.9ms)  SELECT * FROM `authorizations` WHERE (`authorizations`.`ca_management_id` = 2 AND `authorizations`.`role_name` = 'FACULTY') LIMIT 1
+CACHE (0.0ms)  SELECT * FROM `ca_managements` WHERE (`ca_managements`.`action` = 'prep_index' AND `ca_managements`.`controller` = 'sections') LIMIT 1
+Authorization Load (0.8ms)  SELECT * FROM `authorizations` WHERE (`authorizations`.`ca_management_id` = 2 AND `authorizations`.`role_name` = 'lrncrt') LIMIT 1
+CACHE (0.0ms)  SELECT * FROM `ca_managements` WHERE (`ca_managements`.`action` = 'prep_index' AND `ca_managements`.`controller` = 'sections') LIMIT 1
+Authorization Load (0.6ms)  SELECT * FROM `authorizations` WHERE (`authorizations`.`ca_management_id` = 2 AND `authorizations`.`role_name` = 'admin') LIMIT 1
+InstitutionRole Load (1.6ms)  SELECT * FROM "BBLEARN"."INSTITUTION_ROLES" WHERE ("BBLEARN"."INSTITUTION_ROLES"."PK1" = 2) 
+InstitutionRole Load (1.5ms)  SELECT * FROM "BBLEARN"."INSTITUTION_ROLES" WHERE ("BBLEARN"."INSTITUTION_ROLES"."PK1" = 2) 
+CAManagement Load (0.8ms)  SELECT * FROM `ca_managements` WHERE (`ca_managements`.`action` = 'index' AND `ca_managements`.`controller` = 'sections') LIMIT 1
+Authorization Load (0.7ms)  SELECT * FROM `authorizations` WHERE (`authorizations`.`ca_management_id` = 1 AND `authorizations`.`role_name` = 'FACULTY') LIMIT 1
+CACHE (0.0ms)  SELECT * FROM `ca_managements` WHERE (`ca_managements`.`action` = 'index' AND `ca_managements`.`controller` = 'sections') LIMIT 1
+Authorization Load (0.9ms)  SELECT * FROM `authorizations` WHERE (`authorizations`.`ca_management_id` = 1 AND `authorizations`.`role_name` = 'lrncrt') LIMIT 1
+InstitutionRole Load (1.4ms)  SELECT * FROM "BBLEARN"."INSTITUTION_ROLES" WHERE ("BBLEARN"."INSTITUTION_ROLES"."PK1" = 2) 
+InstitutionRole Load (1.4ms)  SELECT * FROM "BBLEARN"."INSTITUTION_ROLES" WHERE ("BBLEARN"."INSTITUTION_ROLES"."PK1" = 2) 
+CAManagement Load (1.0ms)  SELECT * FROM `ca_managements` WHERE (`ca_managements`.`action` = 'enable_index' AND `ca_managements`.`controller` = 'sections') LIMIT 1
+Authorization Load (0.8ms)  SELECT * FROM `authorizations` WHERE (`authorizations`.`ca_management_id` = 84 AND `authorizations`.`role_name` = 'FACULTY') LIMIT 1
+CACHE (0.0ms)  SELECT * FROM `ca_managements` WHERE (`ca_managements`.`action` = 'enable_index' AND `ca_managements`.`controller` = 'sections') LIMIT 1
+Authorization Load (0.8ms)  SELECT * FROM `authorizations` WHERE (`authorizations`.`ca_management_id` = 84 AND `authorizations`.`role_name` = 'lrncrt') LIMIT 1
+InstitutionRole Load (1.4ms)  SELECT * FROM "BBLEARN"."INSTITUTION_ROLES" WHERE ("BBLEARN"."INSTITUTION_ROLES"."PK1" = 2) 
+InstitutionRole Load (1.5ms)  SELECT * FROM "BBLEARN"."INSTITUTION_ROLES" WHERE ("BBLEARN"."INSTITUTION_ROLES"."PK1" = 2) 
+CAManagement Load (1.3ms)  SELECT * FROM `ca_managements` WHERE (`ca_managements`.`action` = 'sidebar' AND `ca_managements`.`controller` = 'help_desk') LIMIT 1
+Authorization Load (1.4ms)  SELECT * FROM `authorizations` WHERE (`authorizations`.`ca_management_id` = 67 AND `authorizations`.`role_name` = 'FACULTY') LIMIT 1
+CACHE (0.0ms)  SELECT * FROM `ca_managements` WHERE (`ca_managements`.`action` = 'sidebar' AND `ca_managements`.`controller` = 'help_desk') LIMIT 1
+Authorization Load (0.7ms)  SELECT * FROM `authorizations` WHERE (`authorizations`.`ca_management_id` = 67 AND `authorizations`.`role_name` = 'lrncrt') LIMIT 1
+CACHE (0.0ms)  SELECT * FROM `ca_managements` WHERE (`ca_managements`.`action` = 'sidebar' AND `ca_managements`.`controller` = 'help_desk') LIMIT 1
+Authorization Load (0.7ms)  SELECT * FROM `authorizations` WHERE (`authorizations`.`ca_management_id` = 67 AND `authorizations`.`role_name` = 'admin') LIMIT 1
+InstitutionRole Load (1.8ms)  SELECT * FROM "BBLEARN"."INSTITUTION_ROLES" WHERE ("BBLEARN"."INSTITUTION_ROLES"."PK1" = 2) 
+InstitutionRole Load (1.4ms)  SELECT * FROM "BBLEARN"."INSTITUTION_ROLES" WHERE ("BBLEARN"."INSTITUTION_ROLES"."PK1" = 2) 
+CAManagement Load (0.7ms)  SELECT * FROM `ca_managements` WHERE (`ca_managements`.`action` = 'index' AND `ca_managements`.`controller` = 'tlp_admin') LIMIT 1
+Authorization Load (0.7ms)  SELECT * FROM `authorizations` WHERE (`authorizations`.`ca_management_id` = 47 AND `authorizations`.`role_name` = 'FACULTY') LIMIT 1
+CACHE (0.0ms)  SELECT * FROM `ca_managements` WHERE (`ca_managements`.`action` = 'index' AND `ca_managements`.`controller` = 'tlp_admin') LIMIT 1
+Authorization Load (0.6ms)  SELECT * FROM `authorizations` WHERE (`authorizations`.`ca_management_id` = 47 AND `authorizations`.`role_name` = 'lrncrt') LIMIT 1
+CACHE (0.0ms)  SELECT * FROM `ca_managements` WHERE (`ca_managements`.`action` = 'index' AND `ca_managements`.`controller` = 'tlp_admin') LIMIT 1
+Authorization Load (0.9ms)  SELECT * FROM `authorizations` WHERE (`authorizations`.`ca_management_id` = 47 AND `authorizations`.`role_name` = 'admin') LIMIT 1
+InstitutionRole Load (1.3ms)  SELECT * FROM "BBLEARN"."INSTITUTION_ROLES" WHERE ("BBLEARN"."INSTITUTION_ROLES"."PK1" = 2) 
+InstitutionRole Load (1.2ms)  SELECT * FROM "BBLEARN"."INSTITUTION_ROLES" WHERE ("BBLEARN"."INSTITUTION_ROLES"."PK1" = 2) 
+CAManagement Load (0.7ms)  SELECT * FROM `ca_managements` WHERE (`ca_managements`.`action` = 'index' AND `ca_managements`.`controller` = 'institution_roles') LIMIT 1
+Authorization Load (0.7ms)  SELECT * FROM `authorizations` WHERE (`authorizations`.`ca_management_id` = 30 AND `authorizations`.`role_name` = 'FACULTY') LIMIT 1
+CACHE (0.0ms)  SELECT * FROM `ca_managements` WHERE (`ca_managements`.`action` = 'index' AND `ca_managements`.`controller` = 'institution_roles') LIMIT 1
+Authorization Load (1.2ms)  SELECT * FROM `authorizations` WHERE (`authorizations`.`ca_management_id` = 30 AND `authorizations`.`role_name` = 'lrncrt') LIMIT 1
+CACHE (0.0ms)  SELECT * FROM `ca_managements` WHERE (`ca_managements`.`action` = 'index' AND `ca_managements`.`controller` = 'institution_roles') LIMIT 1
+Authorization Load (0.7ms)  SELECT * FROM `authorizations` WHERE (`authorizations`.`ca_management_id` = 30 AND `authorizations`.`role_name` = 'admin') LIMIT 1
+InstitutionRole Load (1.2ms)  SELECT * FROM "BBLEARN"."INSTITUTION_ROLES" WHERE ("BBLEARN"."INSTITUTION_ROLES"."PK1" = 2) 
+InstitutionRole Load (1.2ms)  SELECT * FROM "BBLEARN"."INSTITUTION_ROLES" WHERE ("BBLEARN"."INSTITUTION_ROLES"."PK1" = 2) 
+CAManagement Load (0.9ms)  SELECT * FROM `ca_managements` WHERE (`ca_managements`.`action` = 'sidebar' AND `ca_managements`.`controller` = 'sso') LIMIT 1
+Authorization Load (0.8ms)  SELECT * FROM `authorizations` WHERE (`authorizations`.`ca_management_id` = 68 AND `authorizations`.`role_name` = 'FACULTY') LIMIT 1
+CACHE (0.0ms)  SELECT * FROM `ca_managements` WHERE (`ca_managements`.`action` = 'sidebar' AND `ca_managements`.`controller` = 'sso') LIMIT 1
+Authorization Load (1.8ms)  SELECT * FROM `authorizations` WHERE (`authorizations`.`ca_management_id` = 68 AND `authorizations`.`role_name` = 'lrncrt') LIMIT 1
+CACHE (0.0ms)  SELECT * FROM `ca_managements` WHERE (`ca_managements`.`action` = 'sidebar' AND `ca_managements`.`controller` = 'sso') LIMIT 1
+Authorization Load (0.7ms)  SELECT * FROM `authorizations` WHERE (`authorizations`.`ca_management_id` = 68 AND `authorizations`.`role_name` = 'admin') LIMIT 1
+InstitutionRole Load (1.6ms)  SELECT * FROM "BBLEARN"."INSTITUTION_ROLES" WHERE ("BBLEARN"."INSTITUTION_ROLES"."PK1" = 2) 
+InstitutionRole Load (1.4ms)  SELECT * FROM "BBLEARN"."INSTITUTION_ROLES" WHERE ("BBLEARN"."INSTITUTION_ROLES"."PK1" = 2) 
+CAManagement Load (0.7ms)  SELECT * FROM `ca_managements` WHERE (`ca_managements`.`action` = 'sidebar' AND `ca_managements`.`controller` = 'logs') LIMIT 1
+Authorization Load (1.1ms)  SELECT * FROM `authorizations` WHERE (`authorizations`.`ca_management_id` = 69 AND `authorizations`.`role_name` = 'FACULTY') LIMIT 1
+CACHE (0.0ms)  SELECT * FROM `ca_managements` WHERE (`ca_managements`.`action` = 'sidebar' AND `ca_managements`.`controller` = 'logs') LIMIT 1
+Authorization Load (0.9ms)  SELECT * FROM `authorizations` WHERE (`authorizations`.`ca_management_id` = 69 AND `authorizations`.`role_name` = 'lrncrt') LIMIT 1
+CACHE (0.0ms)  SELECT * FROM `ca_managements` WHERE (`ca_managements`.`action` = 'sidebar' AND `ca_managements`.`controller` = 'logs') LIMIT 1
+Authorization Load (1.1ms)  SELECT * FROM `authorizations` WHERE (`authorizations`.`ca_management_id` = 69 AND `authorizations`.`role_name` = 'admin') LIMIT 1
+InstitutionRole Load (1.7ms)  SELECT * FROM "BBLEARN"."INSTITUTION_ROLES" WHERE ("BBLEARN"."INSTITUTION_ROLES"."PK1" = 2) 
+InstitutionRole Load (1.4ms)  SELECT * FROM "BBLEARN"."INSTITUTION_ROLES" WHERE ("BBLEARN"."INSTITUTION_ROLES"."PK1" = 2) 
+CAManagement Load (0.6ms)  SELECT * FROM `ca_managements` WHERE (`ca_managements`.`action` = 'sidebar' AND `ca_managements`.`controller` = 'tpextract') LIMIT 1
+Authorization Load (0.7ms)  SELECT * FROM `authorizations` WHERE (`authorizations`.`ca_management_id` = 70 AND `authorizations`.`role_name` = 'FACULTY') LIMIT 1
+CACHE (0.0ms)  SELECT * FROM `ca_managements` WHERE (`ca_managements`.`action` = 'sidebar' AND `ca_managements`.`controller` = 'tpextract') LIMIT 1
+Authorization Load (0.7ms)  SELECT * FROM `authorizations` WHERE (`authorizations`.`ca_management_id` = 70 AND `authorizations`.`role_name` = 'lrncrt') LIMIT 1
+CACHE (0.0ms)  SELECT * FROM `ca_managements` WHERE (`ca_managements`.`action` = 'sidebar' AND `ca_managements`.`controller` = 'tpextract') LIMIT 1
+Authorization Load (0.8ms)  SELECT * FROM `authorizations` WHERE (`authorizations`.`ca_management_id` = 70 AND `authorizations`.`role_name` = 'admin') LIMIT 1
+Rendered application/_sidebar (169.8ms)
+Rendered application/_status (0.7ms)
+Completed in 1753ms (View: 275, DB: 64) | 200 OK [http://localhost/?ticket=ST-903181-F9Ddy0rS3HVMWO7xIHWp-cas]
