@@ -1,12 +1,12 @@
-  <div class="contnt">
+<div class="contnt">
     <h1>Create Courses</h1>
   <% form_tag({:action => "add"}) do -%>
   <h2>Enter in course name</h2>
   <p>Course names can only contain the characters a-z, A-Z, 0-9, dot ("."), 
     dash ("-"), underscore ("_"), and spaces</p>
     <%= text_field_tag "course_name" %>
-    <%= submit_tag "Add" %>
-	  <%= submit_tag "Cancel" %>
+    <%= submit_tag "Add", :onclick => "return validateName(0, 1);" %>
+	  <%= submit_tag "Cancel" %> 
 	  <br/>
 	  <%= @role%>
   <% end -%>

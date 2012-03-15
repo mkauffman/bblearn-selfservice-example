@@ -3,12 +3,12 @@ require 'webservices'
 class Section < ActiveRecord::Base
   include Webservices
   establish_connection "oracle_#{RAILS_ENV}"
-  set_table_name "#{AppConfig.bbl_db_table}.COURSE_MAIN"
-  set_primary_key "pk1"
-  has_many            :section_roles,                             :foreign_key => "crsmain_pk1"
-  has_many            :users,         :through => :course_roles,  :foreign_key => "crsmain_pk1"
-  belongs_to          :datasource,                                :foreign_key => 'data_src_pk1'
-  set_integer_columns :row_status
+  set_table_name       "#{AppConfig.bbl_db_table}.COURSE_MAIN"
+  set_primary_key      "pk1"
+  has_many             :section_roles,                             :foreign_key => "crsmain_pk1"
+  has_many             :users,         :through => :course_roles,  :foreign_key => "crsmain_pk1"
+  belongs_to           :datasource,                                :foreign_key => 'data_src_pk1'
+  set_integer_columns  :row_status
 
 
    def self.find_all_prepareas_for_instructor_pk1(user_pk1)
@@ -30,32 +30,13 @@ class Section < ActiveRecord::Base
    end
 
    def self.create_prep_area(user_id, name)
-      prep_count = 0
       prep_section_roles      = []
-      prep_find  = /PrepArea-(.+)/i
-      urole      = UserRoles.find_by_users_pk1(user_id)
-      irole      = urole.institution_pk1 
-      max_prep_msg = "You have exceeded your number of prep areas. Please delete an existing prep area before adding a new one."
-      section_roles = SectionRoles.find_by_users_pk1(user_id)
+      prep_find               = /PrepArea-(.+)/i
+      urole                   = UserRoles.find_by_users_pk1(user_id)
+      irole                   = urole.institution_pk1 
+      section_roles           = SectionRoles.find_by_users_pk1(user_id)
 
-# limit # of prep roles - not working yet
 
-#      section_roles.each do |s|
-#        if prep_find.match(s.section.course_id)
-#          prep_count + 1      
-#        end
-#      end
-
-#      case irole
-#        when 'Admin'
-#          if prep_count > 100
-#            puts max_prep_msg
-#          end    
-#        when 'MLIB'
-#          if prep_count > 20
-#            puts max_prep_msg
-#          end
-#        else 
           course_id       = name.strip.gsub(" ","-")
           prefix          = "PrepArea-"+user_id+"-"
           prep_course_id  = prefix+course_id
@@ -65,20 +46,19 @@ class Section < ActiveRecord::Base
           token           = con.ws
           con.login_tool
           con.emulate_user
-          ws_section = SectionWS.new(token)
+          ws_section      = SectionWS.new(token)
           ws_section.ws
-          ws_section.create_course  :course_id  => prep_course_id,
-                                :course_name       => prep_name
-        end
+          ws_section.create_course  :course_id   => prep_course_id,
+                                    :course_name => prep_name
   end
 
   def self.create(name)
-      course_id      = name.strip.gsub(" ","-")
+      course_id       = name.strip.gsub(" ","-")
       con             = ContextWS.new
       token           = con.ws
       con.login_tool
       con.emulate_user
-      ws_section = SectionWS.new(token)
+      ws_section      = SectionWS.new(token)
       ws_section.ws
       ws_section.create_course :course_id   => course_id,
                                :course_name => name
@@ -103,7 +83,7 @@ class Section < ActiveRecord::Base
     token           = con.ws
     con.login_tool
     con.emulate_user
-    ws_section = SectionWS.new(token)
+    ws_section      = SectionWS.new(token)
     ws_section.ws
     ws_section.delete_course :pk1 => self.pk1
   end
@@ -113,10 +93,24 @@ class Section < ActiveRecord::Base
     token           = con.ws
     con.login_tool
     con.emulate_user
-    ws_section = SectionWS.new(token)
+    ws_section      = SectionWS.new(token)
     ws_section.ws
     ws_section.update_course(section)
   end
 
+#not in use right now
+  def max_prep(role, count)
+    if (role == 'Admin'           && count > 100) ||
+       (role == 'MLIB'            && count > 20)  ||
+       (role == 'TLP'             && count > 20)  ||
+       (role == 'TLP Admin'       && count > 20)  ||
+       (role == 'Learn Certified' && count > 20)  ||
+       (role == 'ITSS'            && count > 20)  ||
+       (role == /FACULTY*/        && count > 20)  
+      return true
+    else
+      return false   
+    end
+  end 
 end
 

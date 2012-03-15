@@ -8,7 +8,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :ca_managements
 
   map.resources :authorizations, :only => [:index, :update]
-
+  map.resources :preparealimits
   map.resources :section_roles
   map.resources :application
   map.root      :controller => "static", :action => "index"

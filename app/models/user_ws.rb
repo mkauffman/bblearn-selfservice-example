@@ -150,7 +150,7 @@ attr_reader :client, :ses_password
                                     #"xsd:company"           => op[:company]     || nil,
                                     #"xsd:country"           => op[:country]     || nil,
                                     #"xsd:department"        => op[:dept]        || nil,
-                                    #"xsd:emailAddress"      => op[:email]       || nil,
+                                    "xsd:emailAddress"      => op[:email]       || nil,
                                     #"xsd:expansionData"     => op[:edata]       || nil,
                                     "xsd:familyName"        => op[:lastname]     || nil,
                                     "xsd:givenName"         => op[:firstname]    || nil,

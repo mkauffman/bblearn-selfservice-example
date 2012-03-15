@@ -11,6 +11,7 @@ module Sso_connections
     sso_user.lastname   = lastname + session[:user_object].sso_role.role_name + ")"
     sso_user.firstname  = session[:user_object].firstname
     sso_user.batch_uid  = sso_user_id + "-support-account-id"
+    sso_user.email      = session[:user_object].email
       
     sso_user.save!
       
