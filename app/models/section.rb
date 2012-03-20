@@ -30,12 +30,6 @@ class Section < ActiveRecord::Base
    end
 
    def self.create_prep_area(user_id, name)
-      prep_section_roles      = []
-      prep_find               = /PrepArea-(.+)/i
-      urole                   = UserRoles.find_by_users_pk1(user_id)
-      irole                   = urole.institution_pk1 
-      section_roles           = SectionRoles.find_by_users_pk1(user_id)
-
 
           course_id       = name.strip.gsub(" ","-")
           prefix          = "PrepArea-"+user_id+"-"
@@ -98,19 +92,5 @@ class Section < ActiveRecord::Base
     ws_section.update_course(section)
   end
 
-#not in use right now
-  def max_prep(role, count)
-    if (role == 'Admin'           && count > 100) ||
-       (role == 'MLIB'            && count > 20)  ||
-       (role == 'TLP'             && count > 20)  ||
-       (role == 'TLP Admin'       && count > 20)  ||
-       (role == 'Learn Certified' && count > 20)  ||
-       (role == 'ITSS'            && count > 20)  ||
-       (role == /FACULTY*/        && count > 20)  
-      return true
-    else
-      return false   
-    end
-  end 
 end
 
