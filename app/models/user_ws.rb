@@ -199,7 +199,7 @@ attr_reader :client, :ses_password
             soap.body   = {
                             "user:user"   => {
                                 #"xsd:birthDate"         =>  op[:bdate]       || nil,
-                                "xsd:dataSourceId"      =>  op[:data_src_pk1] = 41,
+                                "xsd:dataSourceId"      =>  op[:data_src_pk1] = AppConfig.selfservice_dsk_pk1,
                                 #"xsd:educationLevel"    =>  op[:edu_level]   || nil,
                                 #"xsd:expansionData"     =>  op[:edata]       || nil,
                                 "xsd:extendedInfo"      =>  {
