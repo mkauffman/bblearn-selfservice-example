@@ -18,7 +18,7 @@ production:
  bbl_sso_secret: 3B1!ndM!ce...
  bbl_tool_registration_password: atec!d1rn
  bbl_tool_registration_secret: atec!d1rn
- selfservice_dsk_pk1: 21
+ selfservice_dsk_pk1: AppConfig.selfservice_dsk_pk1
 
 staging:
  <<: *common
@@ -38,7 +38,7 @@ staging:
  bbl_sso_secret: 3B1!ndM!ce...
  bbl_tool_registration_password: atec!d1rn
  bbl_tool_registration_secret: atec!d1rn
- selfservice_dsk_pk1: 21
+ selfservice_dsk_pk1: AppConfig.selfservice_dsk_pk1
 
 development:
  <<: *common
@@ -57,4 +57,4 @@ development:
  bbl_sso_secret: 3B1!ndM!ce...
  bbl_tool_registration_password: atec!d1rn
  bbl_tool_registration_secret: atec!d1rn
- selfservice_dsk_pk1: 21
+ selfservice_dsk_pk1: AppConfig.selfservice_dsk_pk1
