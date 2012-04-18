@@ -1,3 +1,4 @@
+.project
 .tmp*
 log/*.log
 tmp/**/*
@@ -8,6 +9,3 @@ doc/app
 
 .idea/*
 .idea*
-
-.project
-
