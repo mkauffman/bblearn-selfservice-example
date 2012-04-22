@@ -36,8 +36,8 @@ staging:
  bbl_script_pass: atec!d1rn
  bbl_sso_password: atec!d1rn
  bbl_sso_secret: 3B1!ndM!ce...
- bbl_tool_registration_password:
- bbl_tool_registration_secret:
+ bbl_tool_registration_password: atec!d1rn
+ bbl_tool_registration_secret: atec!d1rn
  selfservice_dsk_pk1: 21
 
 development:
@@ -55,6 +55,6 @@ development:
  bbl_script_pass: atec!d1rn
  bbl_sso_password: atec!d1rn
  bbl_sso_secret: 3B1!ndM!ce...
- bbl_tool_registration_password:
- bbl_tool_registration_secret:
+ bbl_tool_registration_password: atec!d1rn
+ bbl_tool_registration_secret: atec!d1rn
  selfservice_dsk_pk1: 21
