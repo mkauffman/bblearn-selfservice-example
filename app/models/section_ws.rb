@@ -131,7 +131,7 @@ attr_reader :client, :ses_password
                                 "xsd:courseId"              => op[:course_id],
                                 #"xsd:coursePace"            => op[:crse_pace]   || nil,
                                 #"xsd:courseServiceLevel"    => op[:crse_level]  || nil,
-                                "xsd:dataSourceId"          => op[:data_id]     || 41,
+                                "xsd:dataSourceId"          => op[:data_id]     || 21,
                                 #"xsd:decAbsoluteLimit"      => op[:limit]       || nil,
                                 #"xsd:description"           => op[:desc]        || nil,
                                 #"xsd:endDate"               => op[:end_date]    || nil,

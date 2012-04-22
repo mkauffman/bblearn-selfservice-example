@@ -38,7 +38,7 @@ staging:
  bbl_sso_secret: 3B1!ndM!ce...
  bbl_tool_registration_password:
  bbl_tool_registration_secret:
- selfservice_dsk_pk1: 41
+ selfservice_dsk_pk1: 21
 
 development:
  <<: *common
@@ -57,4 +57,4 @@ development:
  bbl_sso_secret: 3B1!ndM!ce...
  bbl_tool_registration_password:
  bbl_tool_registration_secret:
- selfservice_dsk_pk1: 41
+ selfservice_dsk_pk1: 21
