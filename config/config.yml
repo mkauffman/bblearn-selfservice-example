@@ -6,7 +6,6 @@ production:
  environment: production
  bbl_ws_domain: learn-staging.csuchico.edu
  bbl_tool_pass: atec!d1rn
- bbl_registration_pass: pass1234
  bbl_db_table: BBLEARN
  bbl_vendor_id: CSU_CHICO
  bbl_program_id: MWOOD_TEST_TOOL
@@ -18,17 +17,16 @@ production:
  bbl_sso_secret: 3B1!ndM!ce...
  bbl_tool_registration_password: atec!d1rn
  bbl_tool_registration_secret: atec!d1rn
- selfservice_dsk_pk1: AppConfig.selfservice_dsk_pk1
+ selfservice_dsk_pk1: 21
 
 staging:
  <<: *common
  environment: staging
  bbl_ws_domain: learn-staging.csuchico.edu
  bbl_tool_pass: atec!d1rn
- bbl_registration_pass: atec!d1rn
  bbl_db_table: BBLEARN
  bbl_vendor_id: CSU_CHICO
- bbl_program_id: MWOOD_TEST_TOOL
+ bbl_program_id: CSUC_SS_TOOL
  bbl_emulate_user: @selfservice
  bbl_emulate_user: @selfservice 
  bbl_script_host: bbdev1.csuchico.edu
@@ -38,17 +36,16 @@ staging:
  bbl_sso_secret: 3B1!ndM!ce...
  bbl_tool_registration_password: atec!d1rn
  bbl_tool_registration_secret: atec!d1rn
- selfservice_dsk_pk1: AppConfig.selfservice_dsk_pk1
+ selfservice_dsk_pk1: 21
 
 development:
  <<: *common
  environment: development
  bbl_ws_domain: learn-staging.csuchico.edu
  bbl_tool_pass: atec!d1rn
- bbl_registration_pass: atec!d1rn
  bbl_db_table: BBLEARN
  bbl_vendor_id: CSU_CHICO
- bbl_program_id: MWOOD_TEST_TOOL
+ bbl_program_id: CSUC_SS_TOOL 
  bbl_emulate_user: @selfservice
  bbl_script_host: bbdev1.csuchico.edu
  bbl_script_user: bbuser
@@ -57,4 +54,4 @@ development:
  bbl_sso_secret: 3B1!ndM!ce...
  bbl_tool_registration_password: atec!d1rn
  bbl_tool_registration_secret: atec!d1rn
- selfservice_dsk_pk1: AppConfig.selfservice_dsk_pk1
+ selfservice_dsk_pk1: 21
