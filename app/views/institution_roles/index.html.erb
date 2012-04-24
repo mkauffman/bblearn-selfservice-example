@@ -1,6 +1,6 @@
 <div class="contnt">
   <h1>Listing for institution role <%= @institution_role.role_name %></h1>
-    <% form_tag({:controller => "institution_role", :action => "user_index"}) do %>
+    <% form_tag({:controller => "institution_roles", :action => "user_index"}) do %>
     Find roles for user: <%= text_field_tag :user_id%>
     <%= submit_tag "Find Roles" %>
     <% end %>
