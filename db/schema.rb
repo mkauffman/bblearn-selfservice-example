@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111209001806) do
+ActiveRecord::Schema.define(:version => 20120427163315) do
 
   create_table "authorizations", :force => true do |t|
     t.datetime "created_at"
@@ -125,6 +125,13 @@ ActiveRecord::Schema.define(:version => 20111209001806) do
     t.datetime "updated_at"
   end
 
+  create_table "prep_area_limits", :force => true do |t|
+    t.string   "role"
+    t.integer  "limit"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "roles", :force => true do |t|
     t.string   "portal_id"
     t.string   "first_name"
@@ -177,6 +184,16 @@ ActiveRecord::Schema.define(:version => 20111209001806) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "sessions", :force => true do |t|
+    t.string   "session_id", :null => false
+    t.text     "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
+  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
   create_table "terms", :force => true do |t|
     t.string   "term_id"
