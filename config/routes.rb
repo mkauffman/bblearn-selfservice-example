@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :user_service_roles
+  map.resources :service_roles
   
   map.resources :institional_roles
 

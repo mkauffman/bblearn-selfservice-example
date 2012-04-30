@@ -1,6 +1,6 @@
 class DropUsersServiceRoles < ActiveRecord::Migration
   def self.up
-    drop_table :user_service_roles
+    drop_table :service_roles
   end
 
   def self.down

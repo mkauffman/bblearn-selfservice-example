@@ -4,7 +4,7 @@ class UserServiceRolesControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:user_service_roles)
+    assert_not_nil assigns(:service_roles)
   end
 
   test "should get new" do
@@ -21,25 +21,25 @@ class UserServiceRolesControllerTest < ActionController::TestCase
   end
 
   test "should show user_service_role" do
-    get :show, :id => user_service_roles(:one).to_param
+    get :show, :id => service_roles(:one).to_param
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, :id => user_service_roles(:one).to_param
+    get :edit, :id => service_roles(:one).to_param
     assert_response :success
   end
 
   test "should update user_service_role" do
-    put :update, :id => user_service_roles(:one).to_param, :user_service_role => { }
+    put :update, :id => service_roles(:one).to_param, :user_service_role => { }
     assert_redirected_to user_service_role_path(assigns(:user_service_role))
   end
 
   test "should destroy user_service_role" do
     assert_difference('UserServiceRole.count', -1) do
-      delete :destroy, :id => user_service_roles(:one).to_param
+      delete :destroy, :id => service_roles(:one).to_param
     end
 
-    assert_redirected_to user_service_roles_path
+    assert_redirected_to service_roles_path
   end
 end
