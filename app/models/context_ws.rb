@@ -7,8 +7,8 @@ ENDPOINT      = DOMAIN + "Context.WS"
 DOCUMENT      = DOMAIN + "Context.WS?wsdl"
 SERVICE       = "http://context.ws.blackboard"
 ADDRESSING    = "http://www.w3.org/2005/08/addressing"
-SOAP_TIME     = 9600
-EXPECTED_LIFE = 9600
+SOAP_TIME     = 20000
+EXPECTED_LIFE = 20000
 
 
 class ContextWS < ActiveResource::Base
