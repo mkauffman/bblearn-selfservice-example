@@ -8,7 +8,7 @@ class InstitutionRolesController < ApplicationController
   end
 
   def user_index
-    @user   = User.find_by_user_id(params[:on_behalf_of])
+    @user   = User.find_by_user_id(params[:user_id])
   end
 
   def edit
@@ -25,9 +25,9 @@ class InstitutionRolesController < ApplicationController
   end
 
   def delete
-    logger.info 'Delete self service user, user: '+session[:user]+', delete user: '+params[:portal_id]
-    @institution_role = InstitutionRole.find(:first, :conditions => "portal_id = '"+params[:portal_id]+"'")
-    @institution_role.destroy
-    redirect_to(:action=>"index")
+     logger.info 'Delete self service user, user: '+session[:user]+', delete user: '+params[:portal_id]
+     @institution_role = InstitutionRole.find(:first, :conditions => "portal_id = '"+params[:portal_id]+"'")
+     @institution_role.destroy
+     redirect_to(:action=>"index")
   end
 end

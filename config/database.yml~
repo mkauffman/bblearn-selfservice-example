@@ -6,9 +6,9 @@ development:
   reconnect: false
   database: dlt_vista_development
   pool: 5
-  username: root
-  password: admin
-  host: localhost
+  username: dltservice
+  password: eMyEZQc4ev5zeBbm
+  host: apphostdev.csuchico.edu
 
 staging:
   adapter: mysql
