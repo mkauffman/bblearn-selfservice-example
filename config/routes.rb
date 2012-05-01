@@ -9,6 +9,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :authorizations, :only => [:index, :update]
   map.resources :preparealimits
+  map.comm_index         '/comm_index', :controller => 'section_roles', :action => 'comm_index'
   map.resources :section_roles
   map.resources :application
   map.root      :controller => "static", :action => "index"
