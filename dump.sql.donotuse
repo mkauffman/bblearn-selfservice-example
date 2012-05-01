@@ -14,6 +14,25 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `authorizations`
+--
+
+DROP TABLE IF EXISTS `authorizations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `authorizations` (
+  `id` int(11) NOT NULL auto_increment,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  `ca_management_id` int(11) default NULL,
+  `allowed` tinyint(1) default NULL,
+  `role_name` varchar(255) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1185 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
 --
 -- Dumping data for table `authorizations`
 --
@@ -25,6 +44,34 @@ INSERT INTO `authorizations` VALUES (408,'2011-11-10 18:42:22','2011-12-08 23:59
 UNLOCK TABLES;
 
 --
+-- Table structure for table `bbl_contexts`
+--
+
+DROP TABLE IF EXISTS `bbl_contexts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `bbl_contexts` (
+  `id` int(11) NOT NULL auto_increment,
+  `user_to_emulate` varchar(255) default NULL,
+  `additional_seconds` varchar(255) default NULL,
+  `userid` varchar(255) default NULL,
+  `method` varchar(255) default NULL,
+  `password` varchar(255) default NULL,
+  `client_vendor_id` varchar(255) default NULL,
+  `client_program_id` varchar(255) default NULL,
+  `login_extra_info` varchar(255) default NULL,
+  `expected_life_seconds` varchar(255) default NULL,
+  `ticket` varchar(255) default NULL,
+  `client` varchar(255) default NULL,
+  `session_id` varchar(255) default NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  `logged_in` tinyint(1) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `bbl_contexts`
 --
 
@@ -32,6 +79,21 @@ LOCK TABLES `bbl_contexts` WRITE;
 /*!40000 ALTER TABLE `bbl_contexts` DISABLE KEYS */;
 /*!40000 ALTER TABLE `bbl_contexts` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `bbl_course_memberships`
+--
+
+DROP TABLE IF EXISTS `bbl_course_memberships`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `bbl_course_memberships` (
+  `id` int(11) NOT NULL auto_increment,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `bbl_course_memberships`
@@ -43,6 +105,21 @@ LOCK TABLES `bbl_course_memberships` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `bbl_courses`
+--
+
+DROP TABLE IF EXISTS `bbl_courses`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `bbl_courses` (
+  `id` int(11) NOT NULL auto_increment,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `bbl_courses`
 --
 
@@ -52,6 +129,55 @@ LOCK TABLES `bbl_courses` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `bbl_users`
+--
+
+DROP TABLE IF EXISTS `bbl_users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `bbl_users` (
+  `id` int(11) NOT NULL auto_increment,
+  `birth_date` varchar(255) default NULL,
+  `datasource_id` varchar(255) default NULL,
+  `education_level` varchar(255) default NULL,
+  `expansion_data` varchar(255) default NULL,
+  `business_fax` varchar(255) default NULL,
+  `business_phone_1` varchar(255) default NULL,
+  `business_phone_2` varchar(255) default NULL,
+  `city` varchar(255) default NULL,
+  `company` varchar(255) default NULL,
+  `country` varchar(255) default NULL,
+  `department` varchar(255) default NULL,
+  `email` varchar(255) default NULL,
+  `family_name` varchar(255) default NULL,
+  `given_name` varchar(255) default NULL,
+  `home_fax` varchar(255) default NULL,
+  `home_phone_1` varchar(255) default NULL,
+  `home_phone_2` varchar(255) default NULL,
+  `job_title` varchar(255) default NULL,
+  `middle_name` varchar(255) default NULL,
+  `mobile_phone` varchar(255) default NULL,
+  `state` varchar(255) default NULL,
+  `street_1` varchar(255) default NULL,
+  `street_2` varchar(255) default NULL,
+  `web_page` varchar(255) default NULL,
+  `zip_code` varchar(255) default NULL,
+  `gender` varchar(255) default NULL,
+  `ins_roles` varchar(255) default NULL,
+  `is_available` varchar(255) default NULL,
+  `name` varchar(255) default NULL,
+  `password` varchar(255) default NULL,
+  `student_id` varchar(255) default NULL,
+  `system_roles` varchar(255) default NULL,
+  `title` varchar(255) default NULL,
+  `user_batch_id` varchar(255) default NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `bbl_users`
 --
 
@@ -59,6 +185,23 @@ LOCK TABLES `bbl_users` WRITE;
 /*!40000 ALTER TABLE `bbl_users` DISABLE KEYS */;
 /*!40000 ALTER TABLE `bbl_users` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `ca_managements`
+--
+
+DROP TABLE IF EXISTS `ca_managements`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ca_managements` (
+  `id` int(11) NOT NULL auto_increment,
+  `controller` varchar(255) default NULL,
+  `action` varchar(255) default NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=95 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `ca_managements`
@@ -71,6 +214,25 @@ INSERT INTO `ca_managements` VALUES (1,'sections','index','2011-10-26 22:47:10',
 UNLOCK TABLES;
 
 --
+-- Table structure for table `dbsessions`
+--
+
+DROP TABLE IF EXISTS `dbsessions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `dbsessions` (
+  `id` int(11) NOT NULL auto_increment,
+  `session_number` varchar(255) default NULL,
+  `section_id` varchar(255) default NULL,
+  `section_type` varchar(255) default NULL,
+  `section_parent` varchar(255) default NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `dbsessions`
 --
 
@@ -78,6 +240,39 @@ LOCK TABLES `dbsessions` WRITE;
 /*!40000 ALTER TABLE `dbsessions` DISABLE KEYS */;
 /*!40000 ALTER TABLE `dbsessions` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `people`
+--
+
+DROP TABLE IF EXISTS `people`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `people` (
+  `id` int(11) NOT NULL auto_increment,
+  `sourced_id` varchar(255) default NULL,
+  `source` varchar(255) default NULL,
+  `empl_id` varchar(255) default NULL,
+  `webct_id` varchar(255) default NULL,
+  `full_name` varchar(255) default NULL,
+  `last_name` varchar(255) default NULL,
+  `first_name` varchar(255) default NULL,
+  `name_prefix` varchar(255) default NULL,
+  `name_suffix` varchar(255) default NULL,
+  `nickname` varchar(255) default NULL,
+  `email` varchar(255) default NULL,
+  `datasource` varchar(255) default NULL,
+  `is_mail_forwarded` varchar(255) default NULL,
+  `role` varchar(255) default NULL,
+  `primary` varchar(255) default NULL,
+  `status` varchar(255) default NULL,
+  `password` varchar(255) default NULL,
+  `rec_status` varchar(255) default NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `people`
@@ -89,6 +284,25 @@ LOCK TABLES `people` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `roles`
+--
+
+DROP TABLE IF EXISTS `roles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `roles` (
+  `id` int(11) NOT NULL auto_increment,
+  `portal_id` varchar(255) default NULL,
+  `first_name` varchar(255) default NULL,
+  `last_name` varchar(255) default NULL,
+  `role` varchar(255) default NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `roles`
 --
 
@@ -98,10 +312,101 @@ INSERT INTO `roles` VALUES (3,'skodai','Scott','Kodai','admin','2011-02-08 18:48
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 UNLOCK TABLES;
 
+--
+-- Table structure for table `schema_migrations`
+--
+
+DROP TABLE IF EXISTS `schema_migrations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_migrations` (
+  `version` varchar(255) NOT NULL,
+  UNIQUE KEY `unique_schema_migrations` (`version`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_migrations`
+--
+
+LOCK TABLES `schema_migrations` WRITE;
+/*!40000 ALTER TABLE `schema_migrations` DISABLE KEYS */;
+INSERT INTO `schema_migrations` VALUES ('20100223175438'),('20100827164018'),('20100907173224'),('20101101171304'),('20101208190522'),('20101208190551'),('20110125180512'),('20110314163552'),('20110411202808'),('20110412213732'),('20110412214817'),('20110413175450'),('20110413175513'),('20110422204942'),('20111024224312'),('20111026185159'),('20111026190010'),('20111027180651'),('20111027180924'),('20111102161909'),('20111102204047'),('20111102211254'),('20111102211626'),('20111102212424'),('20111102213623'),('20111102215928'),('20111110180712'),('20111110215819'),('20111208235317'),('20111209001806');
+/*!40000 ALTER TABLE `schema_migrations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sections`
+--
+
+DROP TABLE IF EXISTS `sections`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sections` (
+  `id` int(11) NOT NULL auto_increment,
+  `source` varchar(255) default NULL,
+  `lc_id` varchar(255) default NULL,
+  `section_id` varchar(255) default NULL,
+  `short_name` varchar(255) default NULL,
+  `long_name` varchar(255) default NULL,
+  `full_name` varchar(255) default NULL,
+  `timeframe_begin` varchar(255) default NULL,
+  `timeframe_restrict_begin` varchar(255) default NULL,
+  `timeframe_end` varchar(255) default NULL,
+  `timeframe_restrict_end` varchar(255) default NULL,
+  `accept_enrollment` varchar(255) default NULL,
+  `datasource` varchar(255) default NULL,
+  `parent_source` varchar(255) default NULL,
+  `parent_id` varchar(255) default NULL,
+  `template_parent_id` varchar(255) default NULL,
+  `template_parent_source` varchar(255) default NULL,
+  `template_zip_or_epk_path` varchar(255) default NULL,
+  `template_none` varchar(255) default NULL,
+  `delivery_unit_type` varchar(255) default NULL,
+  `term_name` varchar(255) default NULL,
+  `term_id` varchar(255) default NULL,
+  `admin_period` varchar(255) default NULL,
+  `term_datasource` varchar(255) default NULL,
+  `primary_instructor_name` varchar(255) default NULL,
+  `primary_instructor_id` varchar(255) default NULL,
+  `admin_xlist_sect_type` varchar(255) default NULL,
+  `level` varchar(255) default NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  `student_list_file_name` varchar(255) default NULL,
+  `student_list_content_type` varchar(255) default NULL,
+  `student_list_file_size` int(11) default NULL,
+  `student_list_updated_at` datetime default NULL,
+  `status` varchar(255) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sections`
+--
+
 LOCK TABLES `sections` WRITE;
 /*!40000 ALTER TABLE `sections` DISABLE KEYS */;
 /*!40000 ALTER TABLE `sections` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `service_roles`
+--
+
+DROP TABLE IF EXISTS `service_roles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `service_roles` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(255) default NULL,
+  `institution_role_pk1` int(11) default NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `service_roles`
@@ -114,6 +419,28 @@ INSERT INTO `service_roles` VALUES (1,'admin',NULL,'2011-10-27 18:15:37','2011-1
 UNLOCK TABLES;
 
 --
+-- Table structure for table `terms`
+--
+
+DROP TABLE IF EXISTS `terms`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `terms` (
+  `id` int(11) NOT NULL auto_increment,
+  `term_id` varchar(255) default NULL,
+  `new_term_id` varchar(255) default NULL,
+  `start_date` int(11) default NULL,
+  `end_date` int(11) default NULL,
+  `description` varchar(255) default NULL,
+  `current_term` tinyint(1) default NULL,
+  `old_term_id` varchar(255) default NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `terms`
 --
 
@@ -121,6 +448,23 @@ LOCK TABLES `terms` WRITE;
 /*!40000 ALTER TABLE `terms` DISABLE KEYS */;
 /*!40000 ALTER TABLE `terms` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `tlps`
+--
+
+DROP TABLE IF EXISTS `tlps`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tlps` (
+  `id` int(11) NOT NULL auto_increment,
+  `html_type` text,
+  `html` text,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `tlps`
