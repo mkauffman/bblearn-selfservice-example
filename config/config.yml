@@ -45,11 +45,10 @@ development:
  environment: development
  bbl_ws_domain: learn-staging.csuchico.edu
  bbl_tool_pass: atec!d1rn
- bbl_registration_pass: pass1234
  bbl_db_table: BBLEARN
  bbl_vendor_id: CSU_CHICO
- bbl_program_id: MWOOD_TEST_TOOL
- bbl_emulate_user: @mwood14
+ bbl_program_id: CSUC_SS_TOOL
+ bbl_emulate_user: @selfservice
  bbl_script_host: bbdev1.csuchico.edu
  bbl_script_user: bbuser
  bbl_script_pass: atec!d1rn
