@@ -1,21 +1,41 @@
 <div class="contnt">
-    <% form_tag({:action => "add"}) do -%>
-    <h1>Add or remove <%=params[:enrollment]%>.</h1>
-    <h2>For section: <%= @section.course_id %></h2>
-    <p>To add <%=params[:enrollment]%> enter in a portal id.</p>
-    <%= text_field_tag "user_id" %>
-	<%= hidden_field_tag "source_id", params[:source_id] %>
-	<%= hidden_field_tag "enrollment", params[:enrollment] %>
-	<%= hidden_field_tag "id", params[:id] %>
-    <%= submit_tag "Add" %>
-    <%= submit_tag "Cancel" %>
-    <br/>
-    <% end -%>
+  <div id="content"> 
+
+   <h1><%= @section.course_id %></h1>
+   <br />
+   <% form_tag({:action => "add"}) do -%>
+     <h3>Add <%=params[:enrollment]%></h3>
+     <p>Enter in a portal id.<br />
+     <%= text_field_tag "user_id" %>
+     <%= hidden_field_tag "source_id", params[:source_id] %>
+     <%= hidden_field_tag "enrollment", params[:enrollment] %>
+     <%= hidden_field_tag "id", params[:id] %>
+     <%= submit_tag "Add" %>
+     <%= submit_tag "Cancel" %>
+     </p>
+   <% end -%>   
+  
+   <% if(params[:enrollment] == 'Co-leaders' || params[:enrollment] == 'Participants') %>
+      <% form_tag({:action => "add_multiple"}, :multipart => true, :method => "post") do -%>
+        <h3>or upload a csv file to add multiple <%=params[:enrollment]%></h3>
+        <%= hidden_field_tag "source_id", params[:source_id] %>
+        <%= label_tag 'member_list', 'Member List CSV:' %>
+        <%= file_field_tag 'member_list' %>
+        <%= submit_tag 'Add' %>
+        <%= submit_tag 'Cancel' %>
+      <% end -%>
+   <% end %>
+
+
+
+<div class="contnt">
+    <br />
 
     <%= @res %>
     <div id="guest_table">
     <hr/>
-    <h2>Remove <%= params[:enrollment]%></h2>
+    <br /> 
+    <h3>Remove <%= params[:enrollment]%></h3>
 	<% form_tag({:action => "remove"}) do -%>
 	<%= hidden_field_tag "source_id", params[:source_id] %>
 	<%= hidden_field_tag "id", params[:id] %>
@@ -61,5 +81,5 @@
 	<%= submit_tag "Remove" %>
 	<%= submit_tag "Cancel" %>
 	<% end -%>
-</div>
-
+   </div> 
+ </div>

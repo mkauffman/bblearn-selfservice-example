@@ -1,6 +1,7 @@
 <div class="contnt">
-  <h1>Add or Remove <%=params[:enrollment]%></h1>
-  <h2> Click on a community below to add or remove <%=params[:enrollment]%>.</h2>
+ <div id="content">
+  <h2>Add or Remove <%=params[:enrollment]%></h2>
+  <h3> Click on a community below to add or remove <%=params[:enrollment]%>.</h3>
   <p>Click header to sort.</p>
     <table id="add_guest_table" class="output clickable sortable">
         <thead>
@@ -25,5 +26,5 @@
        <% end %>
 	</tbody>
      </table>
+  </div>
 </div>
-

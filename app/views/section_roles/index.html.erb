@@ -1,13 +1,14 @@
 <div class="contnt">
-  <h1>Add or Remove <%=params[:enrollment].capitalize%></h1>
-  <h2> Click on a course below to add or remove <%=params[:enrollment]%>.</h2>
+ <div id="content">
+  <h2>Add or Remove <%=params[:enrollment].capitalize%></h2>
+  <h3> Click on a course below to add or remove <%=params[:enrollment]%>.</h3>
   <p>Click header to sort.</p>
     <table id="add_guest_table" class="output clickable sortable">
         <thead>
             <tr>
                 <th id="term">
                     Course Name
-                  </th>                
+                 </th>                
             </tr>
         </thead>
         <tbody>
@@ -17,13 +18,14 @@
           :action        => 'edit',
           :id            => s.pk1,
           :enrollment    => params[:enrollment])%>
-        <tr>              
-                <td onClick="window.location='<%= link_url %>'">
-                    <%= s.course_name %>
-                </td>
-			</tr>
+           <tr>              
+             <td onClick="window.location='<%= link_url %>'">
+                 <%= s.course_name %>
+             </td>
+	   </tr>
         <% end %>
-		</tbody>
+	</tbody>
 	</table>
+  </div>
 </div>
 

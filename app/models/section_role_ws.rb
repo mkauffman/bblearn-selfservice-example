@@ -42,15 +42,14 @@ attr_reader :client, :ses_password
                            "cour:cmArray"          => {
                            "xsd:available"         =>  op[:available]    || true,
                            "xsd:courseId"          =>  op[:crsmain_pk1]  || nil,
-                           #"xsd:dataSourceId"      =>  op[:data_id]      || nil,
+                           "xsd:dataSourceId"      => op[:data_id]     || AppConfig.selfservice_dsk_pk1,
                            #"xsd:enrollmentDate"    =>  op[:enroll_date]  || nil,
                            #"xsd:expansionData"     =>  op[:expan_data]   || nil,
                            #"xsd:hasCartridgeAccess"=>  op[:has_cart]     || nil,
                            #"xsd:id"                =>  op[:id]           || nil,
                            #"xsd:imageFile"         =>  op[:image_file]   || nil,
                            "xsd:roleId"            =>   op[:role_id]      || nil,
-                           "xsd:userId"            =>   op[:users_pk1]    || nil,
-                           #"xds:service_level"     =>   op[:service_level]|| 'F'
+                           "xsd:userId"            =>   op[:users_pk1]    || nil
                                                       }
                           }
         end
