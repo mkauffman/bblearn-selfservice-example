@@ -22,7 +22,9 @@
         <li><%= link_to "Guest Instructors", section_roles_url(:enrollment => 'designers')%></li>
         <li><%= link_to "Teaching Assistants/Graders", section_roles_url(:enrollment => 'graders')%></li>
         <li><%= link_to "Students", section_roles_url(:enrollment => 'students') %></li>
-      </ul>
+        <li><%= link_to "Community Co-Leaders", :controller => "section_roles", :action => "comm_index", :enrollment => "Co-leaders" %></li>
+        <li><%= link_to "Community Participants", :controller=>"section_roles", :action => "comm_index", :enrollment => "Participants"%></li>  
+    </ul>
     </li>
     <%end%>
     <%if session[:user_object].allowed? "courses", "sidebar" %>

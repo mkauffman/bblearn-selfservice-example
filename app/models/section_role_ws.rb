@@ -48,8 +48,9 @@ attr_reader :client, :ses_password
                            #"xsd:hasCartridgeAccess"=>  op[:has_cart]     || nil,
                            #"xsd:id"                =>  op[:id]           || nil,
                            #"xsd:imageFile"         =>  op[:image_file]   || nil,
-                           "xsd:roleId"            =>  op[:role_id]      || nil,
-                           "xsd:userId"            =>  op[:users_pk1]    || nil
+                           "xsd:roleId"            =>   op[:role_id]      || nil,
+                           "xsd:userId"            =>   op[:users_pk1]    || nil,
+                           #"xds:service_level"     =>   op[:service_level]|| 'F'
                                                       }
                           }
         end

@@ -13,10 +13,10 @@
         <tbody>
        <% @sections.each do |s| %>
        <% link_url = url_for(
-        :controller => "section_roles",
-        :action => 'edit',
-        :id => s.pk1,
-        :enrollment => params[:enrollment])%>
+          :controller    => "section_roles",
+          :action        => 'edit',
+          :id            => s.pk1,
+          :enrollment    => params[:enrollment])%>
         <tr>              
                 <td onClick="window.location='<%= link_url %>'">
                     <%= s.course_name %>

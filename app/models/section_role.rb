@@ -38,9 +38,10 @@ class SectionRole < ActiveRecord::Base
     con.emulate_user
     section_role_ws = SectionRoleWS.new(token)
     section_role_ws.ws
-    section_role_ws.save_course_membership  :crsmain_pk1 => crsmain_pk1,
-                                            :users_pk1 => users_pk1,
-                                            :role_id => role_id
+    section_role_ws.save_course_membership  :crsmain_pk1   => crsmain_pk1,
+                                            :users_pk1     => users_pk1,
+                                            :role_id       => role_id 
+                                            #:service_level => service_level
   end
 
   def self.find_by_id_comparison(slave,master)

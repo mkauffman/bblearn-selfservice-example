@@ -1,21 +1,21 @@
 <div class="contnt">
     <% form_tag({:action => "add"}) do -%>
-    <h1>Add or remove <%=params[:enrollment]%>.</h1><br/>
-    <h2>For <%= "section: "+@section.course_id %></h2>
+    <h1>Add or remove <%=params[:enrollment]%>.</h1>
+    <h2>For section: <%= @section.course_id %></h2>
     <p>To add <%=params[:enrollment]%> enter in a portal id.</p>
     <%= text_field_tag "user_id" %>
 	<%= hidden_field_tag "source_id", params[:source_id] %>
 	<%= hidden_field_tag "enrollment", params[:enrollment] %>
 	<%= hidden_field_tag "id", params[:id] %>
     <%= submit_tag "Add" %>
-	<%= submit_tag "Cancel" %>
-	<br/>
-	<%= @role%>
+    <%= submit_tag "Cancel" %>
+    <br/>
     <% end -%>
-	<%= @res %>
-	<div id="guest_table">
-	<hr/>
-  <h2>Remove Guest Designers / Instructors</h2>
+
+    <%= @res %>
+    <div id="guest_table">
+    <hr/>
+    <h2>Remove <%= params[:enrollment]%></h2>
 	<% form_tag({:action => "remove"}) do -%>
 	<%= hidden_field_tag "source_id", params[:source_id] %>
 	<%= hidden_field_tag "id", params[:id] %>
@@ -25,15 +25,15 @@
             <tr>
             	<th id="check_th" class="sorttable_nosort">
             		<%= check_box_tag('check_all', 'check_all', false, :onClick =>
-                "$$('input.check').each(function(box){
-      box.checked=(box.checked==false)?true:false});") %>
-	  			</th>
+                                          "$$('input.check').each(function(box){
+                                           box.checked=(box.checked==false)?true:false});") %>
+	  	</th>
                 <th id="full_name">
                     Name
                 </th>
-				<th id="user_id">
-					Portal ID
-				</th>
+		<th id="user_id">
+ 	  	    Portal ID
+		</th>
                 <th id="email">
                     Email
                 </th>
