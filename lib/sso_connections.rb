@@ -44,9 +44,9 @@ module Sso_connections
     
     sso_user  = User.find_by_user_id(sso_user_id)
 
-    if user_is_enrolled?(sso_user,section)
+    # if user_is_enrolled?(sso_user,section)
       SectionRole.create(section.pk1, sso_user.pk1, role_id)
-    end
+    # end
     build_url(sso_user)
   end
 
