@@ -4,20 +4,20 @@ development:
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: dlt_vista_development
+  database: dlt_bblearn_development
   pool: 5
-  username: dltservice
-  password: eMyEZQc4ev5zeBbm
-  host: apphostdev.csuchico.edu
-#  username: root
-#  password: admin
-#  host: localhost
+#  username: dltservice
+#  password: eMyEZQc4ev5zeBbm
+#  host: apphostdev.csuchico.edu
+  username: root
+  password: admin
+  host: localhost
 
 staging:
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: dlt_vista_development
+  database: dlt_bblearn_development
   pool: 5
   username: dltservice
   password: eMyEZQc4ev5zeBbm
@@ -27,7 +27,7 @@ production:
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: dlt_vista_production
+  database: dlt_bblearn_production
   pool: 5
   username: dltservice
   password: eMyEZQc4ev5zeBbm

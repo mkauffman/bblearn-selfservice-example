@@ -25,42 +25,6 @@ INSERT INTO `authorizations` VALUES (408,'2011-11-10 18:42:22','2011-12-08 23:59
 UNLOCK TABLES;
 
 --
--- Dumping data for table `bbl_contexts`
---
-
-LOCK TABLES `bbl_contexts` WRITE;
-/*!40000 ALTER TABLE `bbl_contexts` DISABLE KEYS */;
-/*!40000 ALTER TABLE `bbl_contexts` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Dumping data for table `bbl_course_memberships`
---
-
-LOCK TABLES `bbl_course_memberships` WRITE;
-/*!40000 ALTER TABLE `bbl_course_memberships` DISABLE KEYS */;
-/*!40000 ALTER TABLE `bbl_course_memberships` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Dumping data for table `bbl_courses`
---
-
-LOCK TABLES `bbl_courses` WRITE;
-/*!40000 ALTER TABLE `bbl_courses` DISABLE KEYS */;
-/*!40000 ALTER TABLE `bbl_courses` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Dumping data for table `bbl_users`
---
-
-LOCK TABLES `bbl_users` WRITE;
-/*!40000 ALTER TABLE `bbl_users` DISABLE KEYS */;
-/*!40000 ALTER TABLE `bbl_users` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Dumping data for table `ca_managements`
 --
 
@@ -71,39 +35,6 @@ INSERT INTO `ca_managements` VALUES (1,'sections','index','2011-10-26 22:47:10',
 UNLOCK TABLES;
 
 --
--- Dumping data for table `dbsessions`
---
-
-LOCK TABLES `dbsessions` WRITE;
-/*!40000 ALTER TABLE `dbsessions` DISABLE KEYS */;
-/*!40000 ALTER TABLE `dbsessions` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Dumping data for table `people`
---
-
-LOCK TABLES `people` WRITE;
-/*!40000 ALTER TABLE `people` DISABLE KEYS */;
-/*!40000 ALTER TABLE `people` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Dumping data for table `roles`
---
-
-LOCK TABLES `roles` WRITE;
-/*!40000 ALTER TABLE `roles` DISABLE KEYS */;
-INSERT INTO `roles` VALUES (3,'skodai','Scott','Kodai','admin','2011-02-08 18:48:26','2011-02-08 18:48:26'),(4,'mlulic','Miroslav','Lulic','admin','2011-02-08 18:48:26','2011-02-08 18:48:26'),(5,'leaston','lewis','easton','itss','2011-02-11 00:47:39','2011-02-11 00:47:39'),(6,'mkauffman','Mark','Kauffman','admin','2011-02-21 18:31:19','2011-02-21 18:31:19'),(8,'mwood14','Michael','Wood','admin','2011-03-14 21:27:49','2011-03-14 21:27:49'),(9,'abykerk-kauffman','Ann','Bykerk-Kauffman','admin','2011-04-26 21:55:14','2011-06-03 22:10:31'),(10,'jweir1','James','Weir','admin','2011-06-03 21:37:57','2011-06-03 21:37:57'),(11,'cfranquet','Claudine','Franquet','tlp','2011-07-20 19:56:06','2011-07-20 19:56:06'),(12,'asteckel','Ann','Steckel','tlp','2011-07-20 19:56:23','2011-07-20 19:56:23'),(13,'lsederberg','Laura','Sederberg','tlp','2011-07-20 19:56:46','2011-07-20 19:56:46'),(14,'cwilson9','Carey','Wilson','tlp','2011-07-20 19:57:05','2011-07-20 19:57:05'),(15,'ashah8','Arpit','Shah','tlp','2011-07-20 19:58:53','2011-07-20 19:58:53'),(16,'jaird','Jim','Aird','tlp','2011-07-20 19:59:10','2011-07-20 19:59:10'),(17,'jclowser1','Josh','Clowser','tlp','2011-07-20 19:59:28','2011-07-20 19:59:28'),(18,'dmccluskey','David','McCluskey','tlp','2011-07-20 19:59:53','2011-07-20 19:59:53'),(19,'akhan15','Asad','Khan','tlp','2011-07-20 20:00:17','2011-07-20 20:00:17'),(20,'cdbumgarner','Cindy','Bumgarner','tlp','2011-07-20 20:00:38','2011-07-20 20:00:38'),(21,'pdifalco','Peter','DiFalco','tlp_admin','2011-07-20 20:00:53','2011-07-20 20:00:53'),(22,'lmiller-galvin','Lauren','Miller-Galvin','tlp','2011-07-20 20:01:18','2011-07-20 20:01:18'),(23,'bmeredith','Bree','Sears','admin','2011-11-08 17:50:56','2011-11-08 17:50:56');
-/*!40000 ALTER TABLE `roles` ENABLE KEYS */;
-UNLOCK TABLES;
-
-LOCK TABLES `sections` WRITE;
-/*!40000 ALTER TABLE `sections` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sections` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Dumping data for table `service_roles`
 --
 
@@ -111,15 +42,6 @@ LOCK TABLES `service_roles` WRITE;
 /*!40000 ALTER TABLE `service_roles` DISABLE KEYS */;
 INSERT INTO `service_roles` VALUES (1,'admin',NULL,'2011-10-27 18:15:37','2011-10-27 18:15:37'),(2,'tlp',NULL,'2011-10-27 18:18:24','2011-10-27 18:18:24'),(3,'mlib',NULL,'2011-10-27 18:18:34','2011-10-27 18:18:34'),(4,'tlp_admin',NULL,'2011-10-27 18:18:42','2011-10-27 18:18:42'),(5,'lrncrt',NULL,'2011-10-27 18:18:49','2011-10-27 18:18:49'),(6,'itss',NULL,'2011-10-27 18:18:56','2011-10-27 18:18:56'),(16,'FACULTY',NULL,'2011-12-08 23:35:41','2011-12-08 23:35:41');
 /*!40000 ALTER TABLE `service_roles` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Dumping data for table `terms`
---
-
-LOCK TABLES `terms` WRITE;
-/*!40000 ALTER TABLE `terms` DISABLE KEYS */;
-/*!40000 ALTER TABLE `terms` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
