@@ -1,0 +1,13 @@
+<p>
+  <b>Course:</b>
+  <%=h @course_model.course_id %>
+</p>
+
+<p>
+  <b>Friendly name:</b>
+  <%=h @course_model.friendly_name %>
+</p>
+
+
+<%= link_to 'Edit', edit_course_model_path(@course_model) %> |
+<%= link_to 'Back', course_models_path %>

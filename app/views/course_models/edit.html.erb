@@ -1,0 +1,20 @@
+<h1>Editing course_model</h1>
+
+<% form_for(@course_model) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :course_id %><br />
+    <%= f.text_field :course_id %>
+  </p>
+  <p>
+    <%= f.label :friendly_name %><br />
+    <%= f.text_field :friendly_name %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @course_model %> |
+<%= link_to 'Back', course_models_path %>

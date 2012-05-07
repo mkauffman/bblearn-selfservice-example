@@ -1,0 +1,22 @@
+<h1>Listing course_models</h1>
+
+<table>
+  <tr>
+    <th>Course</th>
+    <th>Friendly name</th>
+  </tr>
+
+<% @course_models.each do |course_model| %>
+  <tr>
+    <td><%=h course_model.course_id %></td>
+    <td><%=h course_model.friendly_name %></td>
+    <td><%= link_to 'Show', course_model %></td>
+    <td><%= link_to 'Edit', edit_course_model_path(course_model) %></td>
+    <td><%= link_to 'Destroy', course_model, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New course_model', new_course_model_path %>

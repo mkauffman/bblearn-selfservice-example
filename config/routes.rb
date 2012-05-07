@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :course_models
+
   map.resources :service_roles
   
   map.resources :institional_roles
