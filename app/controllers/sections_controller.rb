@@ -54,6 +54,10 @@ include SectionEnable
       @sections = Section.find_all_for_instructor_pk1(session[:obo_pk1])
     end
 
+    def remodel_index
+      @course_models = CourseModel.all
+      @sections = Section.find_all_for_instructor_pk1(session[:obo_pk1])
+    end
 
 #TODO: Move majority of logic to Section model.
     def reset

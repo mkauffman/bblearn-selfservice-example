@@ -1,0 +1,53 @@
+  <div class="contnt">
+  <h1>Remodel Course</h1>
+  
+<h1>Listing course_models</h1>
+
+<table class="output sortable">
+  <tr>
+  	<th id="check_th" class="sorttable_nosort">
+    <th>Course id</th>
+    <th>Friendly name</th>
+  </tr>
+
+<% @course_models.each do |course_model| %>
+  <tr>
+  	<td class="check_box">
+
+    </td>
+    <td><%=h course_model.course_id %></td>
+    <td><%=h course_model.friendly_name %></td>
+  </tr>
+<% end %>
+</table>
+<br />
+  
+
+  <h2>Choose a course to remodel</h2>
+	<% form_tag({:action => "reset"}) do -%>  
+    <table class="output sortable">
+        <thead>
+            <tr>
+            	<th id="check_th" class="sorttable_nosort">
+            </th>
+                <th id="course_id">
+                    Course Name
+                  </th>                
+            </tr>
+        </thead>
+        <tbody>
+            <% @sections.each do |s|%>
+            <tr>
+            	<td class="check_box">
+                    <%= radio_button_tag 'section_id', s.pk1, false, :class => "check" %>
+                </td>
+                <td>
+                    <%= s.course_name%>
+                  </td>                
+            </tr>
+            <% end %>
+        </tbody>
+      </table>    
+	<%= submit_tag "Remodel" %>
+	<% end -%>    
+</div>
