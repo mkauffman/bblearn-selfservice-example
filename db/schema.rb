@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120507192408) do
+ActiveRecord::Schema.define(:version => 20120508194138) do
 
   create_table "authorizations", :force => true do |t|
     t.datetime "created_at"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20120507192408) do
     t.string   "friendly_name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "description"
   end
 
   create_table "prep_area_limits", :force => true do |t|

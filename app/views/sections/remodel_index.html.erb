@@ -6,8 +6,8 @@
 <table class="output sortable">
   <tr>
   	<th id="check_th" class="sorttable_nosort">
-    <th>Course id</th>
     <th>Friendly name</th>
+    <th>Description</th>
   </tr>
 
 <% @course_models.each do |course_model| %>
@@ -15,8 +15,8 @@
 	<td class="check_box">
         <input type="radio" value="model_id" name="model"/>
     </td>
-    <td><%=h course_model.course_id %></td>
     <td><%=h course_model.friendly_name %></td>
+    <td><%=h course_model.description %></td>
   </tr>
 <% end %>
 </table>

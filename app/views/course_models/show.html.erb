@@ -8,6 +8,11 @@
   <%=h @course_model.friendly_name %>
 </p>
 
+<p>
+  <b>Description:</b>
+  <%=h @course_model.description %>
+</p>
+
 
 <%= link_to 'Edit', edit_course_model_path(@course_model) %> |
 <%= link_to 'Back', course_models_path %>
