@@ -15,7 +15,7 @@
     </td>
     <td><%=h course_model.course_id %></td>
     <td><%=h course_model.friendly_name %></td>
-    <td><%=h course_model.description %></td>
+    <td><%= course_model.description %></td>
     <td><%= link_to 'Show', course_model %></td>
     <td><%= link_to 'Edit', edit_course_model_path(course_model) %></td>
     <td><%= link_to 'Destroy', course_model, :confirm => 'Are you sure?', :method => :delete %></td>
