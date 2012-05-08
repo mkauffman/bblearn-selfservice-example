@@ -1,7 +1,7 @@
   <div class="contnt">
   <h1>Remodel Course</h1>
   
-<h1>Listing course_models</h1>
+<h2>Step 1: Select a course model</h2>
 
 <table class="output sortable">
   <tr>
@@ -12,8 +12,8 @@
 
 <% @course_models.each do |course_model| %>
   <tr>
-  	<td class="check_box">
-
+	<td class="check_box">
+        <input type="radio" value="model_id" name="model"/>
     </td>
     <td><%=h course_model.course_id %></td>
     <td><%=h course_model.friendly_name %></td>
@@ -22,8 +22,7 @@
 </table>
 <br />
   
-
-  <h2>Choose a course to remodel</h2>
+<h2>Step 2: Select a target course</h2>
 	<% form_tag({:action => "reset"}) do -%>  
     <table class="output sortable">
         <thead>
@@ -48,6 +47,7 @@
             <% end %>
         </tbody>
       </table>    
-	<%= submit_tag "Remodel" %>
+      <br />
+	<%= submit_tag "Remodel"%>
 	<% end -%>    
 </div>
