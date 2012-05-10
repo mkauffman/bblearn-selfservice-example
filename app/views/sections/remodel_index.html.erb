@@ -12,7 +12,7 @@
 
 <% @course_models.each do |course_model| %>
   <tr>
-	<td class="check_box">
+	<td class="check_box" width="5%">
 		<% if (course_model.course_id == "MOD-BlankModel") %>
 		
 		<%= radio_button_tag 'course_id', course_model.course_id, true, :class => "check" %>
@@ -23,7 +23,7 @@
  
  		<% end %>
     </td>
-    <td><%=h course_model.friendly_name %></td>
+    <td width="20%"><%=h course_model.friendly_name %></td>
     <td width="60%"><%= course_model.description %></td>
   </tr>
 <% end %>
