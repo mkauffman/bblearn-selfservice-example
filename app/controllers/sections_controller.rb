@@ -70,7 +70,6 @@ include SectionEnable
         SectionRole.destroy(sr)
       end
 
-      
       @new_section  = Section.new(@section.attributes)
       @section.destroy
       @new_section.save!
