@@ -83,6 +83,9 @@ include SectionEnable
       redirect_to :action => 'reset_index'
     end
 
+    def confirm_remodel
+      
+    end
 private
   
   def find_sections_without_prep

@@ -31,7 +31,7 @@
 <br />
   
 <h2>Step 2: Select a target course</h2>
-	<% form_tag({:action => "reset"}) do -%>  
+	<% form_tag({:action => "confirm_remodel"}) do -%>  
     <table class="output sortable">
         <thead>
             <tr>
@@ -57,14 +57,7 @@
       </table>    
       <br />
       
-    <h2> Confirm Information </h2>
-    <br />
-    <%= section_id %>
-    <br />
-    <%= course_id %>
-    <br />
-    Confirm by typing remodel:
-    
+
 	<%= submit_tag "Confirm"%>
 	<% end -%>    
 </div>
