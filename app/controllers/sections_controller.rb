@@ -61,13 +61,17 @@ include SectionEnable
 
 #TODO: Move majority of logic to Section model.
     def reset
-      @confirm   = params[:confirm => :remodel]
+      check   = params[:check]
 
-      @section   = Section.find(params[:section_id])
-      @model     = CourseModel.find_by_course_id(params[:course_id])
+#     @section   = Section.find_by_course_id(params[:section_id])
+#    @model     = CourseModel.find_by_course_id(params[:course_id])
       @roles     = []
       role       = {}
-
+      
+      if check != "remodel"
+       #do nothing
+       redirect_to :action => 'confirm_remodel'
+      else      
       @section.section_roles.each do |sr| 
         @roles << sr 
         SectionRole.destroy(sr)
@@ -83,10 +87,11 @@ include SectionEnable
         SectionRole.create(@new_section.pk1, role[:users_pk1], role[:role])
       end
       redirect_to :action => 'reset_index'
+      end
     end
 
     def confirm_remodel
-      @section   = Section.find(params[:section_id])
+      @section   = Section.find_by_pk1(params[:section_id])
       @model     = CourseModel.find_by_course_id(params[:course_id])
       @roles     = []
       role       = {}
