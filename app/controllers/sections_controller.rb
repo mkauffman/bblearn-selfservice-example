@@ -61,7 +61,10 @@ include SectionEnable
 
 #TODO: Move majority of logic to Section model.
     def reset
+      @confirm   = params[:confirm => :remodel]
+
       @section   = Section.find(params[:section_id])
+      @model     = CourseModel.find_by_course_id(params[:course_id])
       @roles     = []
       role       = {}
 
@@ -77,7 +80,6 @@ include SectionEnable
       @new_section = Section.find_by_course_id(@new_section.course_id)
 
       @roles.each do |role| 
-
         SectionRole.create(@new_section.pk1, role[:users_pk1], role[:role])
       end
       redirect_to :action => 'reset_index'
