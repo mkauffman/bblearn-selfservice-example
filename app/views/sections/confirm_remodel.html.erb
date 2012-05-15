@@ -1,14 +1,45 @@
 <div class="contnt">
 	<% form_tag({:action => "reset"}) do -%> 
 	
-<u><h1><font color="red">Warning!!!</font></h1></u>
-<h3>You are about to remodel <h3>Course:  <font color="green"> <%= @section.course_name %> </font><h3>
-	with <h3>Model:  <font color="green"> <%= @model.friendly_name %> </font><h3> <br />
-	Please confirm your action by typing in <font color="red">remodel</font> and then click confirm. <br />
+	<u>
+		<h1>
+			<font color="red">
+				Warning!!!
+			</font>
+		</h1>
+	</u>
+
+	<h3>
+		You are about to remodel
+		<br />
+		<br />
+		Course:
+		<font color="green">
+			<%= @section.course_name %>
+		</font>
+	<h3>
+	with
+	<h3>
+		Model:  
+		<font color="green">
+			<%= @model.friendly_name %>
+		</font>
+	<h3>
 	
+	<br />
+	
+	Please confirm your action by typing in
+	<font color="red">
+		remodel
+	</font>
+	and then click confirm.
+	
+	<br />
 	
 	<%= text_field_tag :check %>
+	
 	<%= submit_tag "Confirm" %>
+	
 	<% end -%>
 	<br />
 	<br />

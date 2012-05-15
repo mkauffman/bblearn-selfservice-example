@@ -62,15 +62,11 @@ include SectionEnable
 #TODO: Move majority of logic to Section model.
     def reset
       check   = params[:check]
-
-#     @section   = Section.find_by_course_id(params[:section_id])
-#    @model     = CourseModel.find_by_course_id(params[:course_id])
       @roles     = []
       role       = {}
       
       if check != "remodel"
        #do nothing
-       redirect_to :action => 'confirm_remodel'
       else      
       @section.section_roles.each do |sr| 
         @roles << sr 
@@ -93,8 +89,6 @@ include SectionEnable
     def confirm_remodel
       @section   = Section.find_by_pk1(params[:section_id])
       @model     = CourseModel.find_by_course_id(params[:course_id])
-      @roles     = []
-      role       = {}
     end
 private
   
