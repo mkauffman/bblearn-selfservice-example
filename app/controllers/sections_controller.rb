@@ -84,7 +84,10 @@ include SectionEnable
     end
 
     def confirm_remodel
-      
+      @section   = Section.find(params[:section_id])
+      @model     = CourseModel.find_by_course_id(params[:course_id])
+      @roles     = []
+      role       = {}
     end
 private
   

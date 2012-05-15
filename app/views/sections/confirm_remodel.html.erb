@@ -1,10 +1,15 @@
 <div class="contnt">
-
-<u><h2><font color="red">Warning!!!</font></h2></u>
-<h3>You are about to remodel Course: PREPAREA with a model named (Model 1)<br />
-	Please confirm your action by typing in 'remodel' and then click confirm. <br />
+	<% form_tag({:action => "reset"}) do -%> 
+<u><h1><font color="red">Warning!!!</font></h1></u>
+<h3>You are about to remodel <h3>Course:  <font color="green"> <%= @section.course_name %> </font><h3>
+	with <h3>Model:  <font color="green"> <%= @model.friendly_name %> </font><h3> <br />
+	Please confirm your action by typing in <font color="red">remodel</font> and then click confirm. <br />
 	<input type="text" />
-	<input type="submit" />
+	<%= submit_tag "Confirm" %>
+	<% end -%>
+	<br />
+	<br />
+   
 </h3>
 
 </div>

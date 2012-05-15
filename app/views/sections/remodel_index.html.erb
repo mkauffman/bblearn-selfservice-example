@@ -1,5 +1,7 @@
   <div class="contnt">
   <h1>Remodel Course</h1>
+
+	<% form_tag({:action => "confirm_remodel"}) do -%> 
   
 <h2>Step 1: Select a course model</h2>
 
@@ -31,7 +33,7 @@
 <br />
   
 <h2>Step 2: Select a target course</h2>
-	<% form_tag({:action => "confirm_remodel"}) do -%>  
+ 
     <table class="output sortable">
         <thead>
             <tr>
