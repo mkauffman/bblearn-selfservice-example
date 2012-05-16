@@ -89,6 +89,9 @@ include SectionEnable
     def confirm_remodel
       @section   = Section.find_by_pk1(params[:section_id])
       @model     = CourseModel.find_by_course_id(params[:course_id])
+      if(@section.nil? || @model.nil?)
+        redirect_to :action => 'remodel_index'
+      end
     end
 private
   
