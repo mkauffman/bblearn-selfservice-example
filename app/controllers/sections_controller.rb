@@ -61,7 +61,7 @@ include SectionEnable
 
 #TODO: Move majority of logic to Section model.
     def reset
-      @section   = Section.find(params[:section_id])
+      @section   = Section.find_by_course_id(params[:section_id])
       @model     = CourseModel.find_by_course_id(params[:course_id])
       check   = params[:check]
       @roles     = []
