@@ -61,6 +61,8 @@ include SectionEnable
 
 #TODO: Move majority of logic to Section model.
     def reset
+      @section   = Section.find(params[:section_id])
+      @model     = CourseModel.find_by_course_id(params[:course_id])
       check   = params[:check]
       @roles     = []
       role       = {}
@@ -90,7 +92,7 @@ include SectionEnable
       @section   = Section.find_by_pk1(params[:section_id])
       @model     = CourseModel.find_by_course_id(params[:course_id])
       if(@section.nil? || @model.nil?)
-        redirect_to :action => 'remodel_index'
+        redirect_to :action => 'remodel_index', :alert => "Please select a target course!!!"
       end
     end
 private

@@ -1,5 +1,7 @@
 <div class="contnt">
 	<% form_tag({:action => "reset"}) do -%> 
+    <%= hidden_field_tag 'section_id', @section.course_id%>
+    <%= hidden_field_tag 'course_id', @model.course_id%>
 	
 	<u>
 		<h1>
@@ -35,7 +37,9 @@
 	and then click confirm.
 	
 	<br />
-	
+	<%
+		@section = @section
+	%>
 	<%= text_field_tag :check %>
 	
 	<%= submit_tag "Confirm" %>

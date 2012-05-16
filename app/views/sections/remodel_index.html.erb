@@ -1,65 +1,66 @@
   <div class="contnt">
-  <h1>Remodel Course</h1>
+
+	<h1>Remodel Course</h1>
 
 	<% form_tag({:action => "confirm_remodel"}) do -%> 
   
-<h2>Step 1: Select a course model</h2>
+	<h2>Step 1: Select a course model</h2>
 
-<table class="output sortable">
-  <tr>
-  	<th id="check_th" class="sorttable_nosort">
-    <th>Friendly name</th>
-    <th>Description</th>
-  </tr>
+	<table class="output sortable">
+  		<tr>
+  			<th id="check_th" class="sorttable_nosort">
+    		<th>Friendly name</th>
+    		<th>Description</th>
+  		</tr>
 
-<% @course_models.each do |course_model| %>
-  <tr>
-	<td class="check_box" width="5%">
-		<% if (course_model.course_id == "MOD-BlankModel") %>
+		<% @course_models.each do |course_model| %>
+  		<tr>
+			<td class="check_box" width="5%">
+				<% if (course_model.course_id == "MOD-BlankModel") %>
 		
-		<%= radio_button_tag 'course_id', course_model.course_id, true, :class => "check" %>
+					<%= radio_button_tag 'course_id', course_model.course_id, true, :class => "check" %>
  		
- 		<% else %>
+ 				<% else %>
  		
-        <%= radio_button_tag 'course_id', course_model.course_id, false, :class => "check" %>
+        			<%= radio_button_tag 'course_id', course_model.course_id, false, :class => "check" %>
  
- 		<% end %>
-    </td>
-    <td width="20%"><%=h course_model.friendly_name %></td>
-    <td width="60%"><%= course_model.description %></td>
-  </tr>
-<% end %>
-</table>
-<br />
-  
-<h2>Step 2: Select a target course</h2>
- 
-    <table class="output sortable">
-        <thead>
-            <tr>
-            	<th id="check_th" class="sorttable_nosort">
-            </th>
-                <th id="course_id">
-                    Course Name
-                  </th>                
-            </tr>
-        </thead>
-        <tbody>
-            <% @sections.each do |s|%>
-            <tr>
-            	<td class="check_box">
-                    <%= radio_button_tag 'section_id', s.pk1, false, :class => "check" %>
-                </td>
-                <td>
-                    <%= s.course_name%>
-                  </td>                
-            </tr>
-            <% end %>
-        </tbody>
-      </table>    
-      <br />
-      
+ 				<% end %>
+    		</td>
+    		<td width="20%"><%=h course_model.friendly_name %></td>
+    		<td width="60%"><%= course_model.description %></td>
+  		</tr>
+		<% end %>
+	</table>
 
+	<br />
+  
+	<h2>Step 2: Select a target course</h2>
+ 
+		<table class="output sortable">
+        	<thead>
+            <tr>
+            	<th id="check_th" class="sorttable_nosort"></th>
+                <th id="course_id">Course Name</th>                
+            </tr>
+        	</thead>
+        	<tbody>
+            	<% @sections.each do |s|%>
+            		<tr>
+            			<td class="check_box">
+                    		<%= radio_button_tag 'section_id', s.pk1, false, :class => "check" %>
+                		</td>
+                		<td>
+                    		<%= s.course_name%>
+                  		</td>                
+            		</tr>
+            	<% end %>
+        	</tbody>
+      </table>    
+	
+	<br />
+      
 	<%= submit_tag "Confirm"%>
-	<% end -%>    
+	
+	<% end -%>
+
 </div>
