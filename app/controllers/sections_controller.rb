@@ -68,7 +68,7 @@ include SectionEnable
       role       = {}
       
       if check != "remodel"
-       #do nothing
+       redirect_to :action => 'error_confirm_remodel'
       else      
       @section.section_roles.each do |sr| 
         @roles << sr 
