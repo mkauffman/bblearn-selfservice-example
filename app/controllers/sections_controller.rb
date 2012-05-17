@@ -63,6 +63,8 @@ include SectionEnable
     def reset
       @section   = Section.find_by_course_id(params[:section_id])
       @model     = CourseModel.find_by_course_id(params[:course_id])
+      @course_name = @section.course_name
+      @friendly_name = @model.friendly_name
       check   = params[:check]
       @roles     = []
       role       = {}
@@ -84,7 +86,7 @@ include SectionEnable
       @roles.each do |role| 
         SectionRole.create(@new_section.pk1, role[:users_pk1], role[:role])
       end
-      redirect_to :action => 'reset_index'
+      redirect_to :action => 'success_remodel'
       end
     end
 
@@ -94,7 +96,7 @@ include SectionEnable
       if(@section.nil? || @model.nil?)
         redirect_to :action => 'remodel_index', :alert => "Please select a target course!!!"
       end
-    end
+    end    
 private
   
   def find_sections_without_prep
