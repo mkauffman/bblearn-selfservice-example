@@ -7,6 +7,8 @@ class Section < ActiveRecord::Base
   set_primary_key      "pk1"
   has_many             :section_roles,                             :foreign_key => "crsmain_pk1"
   has_many             :users,         :through => :course_roles,  :foreign_key => "crsmain_pk1"
+  has_one	       :course_term,    :foreign_key => "crsmain_pk1"
+  has_one	       :term, 		:through => :course_term,  :foreign_key => "crsmain_pk1"
   belongs_to           :datasource,                                :foreign_key => 'data_src_pk1'
   set_integer_columns  :row_status
   
