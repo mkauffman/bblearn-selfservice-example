@@ -7,10 +7,10 @@ development:
   database: dlt_bblearn_development
   pool: 5
   username: dltservice
-  password: eMyEZQc4ev5zeBbm
+  password: 
   host: apphostdev.csuchico.edu
 #  username: root
-#  password: admin
+#  password: 
 #  host: localhost
 
 staging:
@@ -20,7 +20,7 @@ staging:
   database: dlt_bblearn_development
   pool: 5
   username: dltservice
-  password: eMyEZQc4ev5zeBbm
+  password: 
   host: localhost
 
 production:
@@ -30,7 +30,7 @@ production:
   database: dlt_bblearn_production
   pool: 5
   username: dltservice
-  password: eMyEZQc4ev5zeBbm
+  password: 
   host: localhost
 
 oracle_development:
@@ -38,19 +38,19 @@ oracle_development:
   host: lmsdb2.csuchico.edu
   database: bbdev1.lmsdb2.csuchico.edu
   username: learnsupport
-  password: adm1nIZ34
+  password:
 
 oracle_staging:
   adapter: oracle_enhanced
   host: lmsdb2.csuchico.edu
   database: bbdev1.lmsdb2.csuchico.edu
   username: learnsupport
-  password: adm1nIZ34
+  password: 
 
 oracle_production:
   adapter: oracle_enhanced
   host: lmsdb2.csuchico.edu
   database: bbdev1.lmsdb2.csuchico.edu
   username: learnsupport
-  password: adm1nIZ34
+  password:
 
